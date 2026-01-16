@@ -30,16 +30,22 @@ const Contact = () => {
   };
 
   return (
-    <section id="kontakt" className="section-padding bg-secondary/30">
-      <div className="container mx-auto">
+    <section id="kontakt" className="section-padding bg-secondary/40 relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-honey/10 rounded-full blur-2xl" />
+      <div className="absolute bottom-20 right-10 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto relative">
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-accent font-medium mb-2 inline-block">Kontakt</span>
+          <span className="inline-flex items-center gap-2 text-accent font-medium mb-3 bg-accent/10 px-3 py-1 rounded-full text-sm">
+            ☎️ Porozmawiajmy
+          </span>
           <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-4">
-            Masz pytania? Napisz do nas!
+            Chcesz pogadać? Jesteśmy tu dla Ciebie! 💬
           </h2>
           <p className="text-muted-foreground">
-            Chętnie odpowiemy na wszystkie pytania dotyczące naszych produktów, 
-            zamówień i dostaw.
+            Masz pytania o nasze produkty? Chcesz złożyć zamówienie? 
+            Napisz lub zadzwoń — odpowiemy jak sąsiadowi przez płot! 🏡
           </p>
         </div>
 
@@ -78,14 +84,14 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="bg-card p-6 rounded-xl shadow-soft">
+            <div className="bg-card p-6 rounded-2xl shadow-soft border border-primary/20">
               <h3 className="font-serif text-lg font-semibold text-foreground mb-2">
-                Jak zamówić?
+                💡 Jak zamówić?
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Skontaktuj się z nami telefonicznie lub mailowo. 
-                Ustalimy szczegóły zamówienia i dogodny termin odbioru lub dostawy.
-                Płatność przy odbiorze lub przelewem.
+                To proste! Zadzwoń lub napisz, a ustalimy wszystko po sąsiedzku. 
+                Możesz odebrać osobiście (zapraszamy na herbatę! ☕) lub umówimy dostawę.
+                Płatność przy odbiorze lub przelewem — jak Ci wygodniej.
               </p>
             </div>
           </div>

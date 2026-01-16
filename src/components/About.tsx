@@ -1,65 +1,71 @@
-import { Heart, Leaf, Award, Users } from "lucide-react";
+import { Heart, Sparkles, Home, Users } from "lucide-react";
 
 const features = [
   {
-    icon: Leaf,
+    icon: Sparkles,
     title: "100% Naturalne",
-    description: "Bez sztucznych dodatków, konserwantów i GMO.",
+    description: "Bez sztucznych dodatków — tak jak u babci.",
   },
   {
     icon: Heart,
-    title: "Robione z Pasją",
-    description: "Każdy produkt tworzymy ręcznie z miłością do rzemiosła.",
+    title: "Robione z Miłością",
+    description: "Każdy słoik to kawałek naszego serca.",
   },
   {
-    icon: Award,
-    title: "Sprawdzona Jakość",
-    description: "Testowane receptury i najlepsze składniki.",
+    icon: Home,
+    title: "Rodzinna Tradycja",
+    description: "Przepisy przekazywane z pokolenia na pokolenie.",
   },
   {
     icon: Users,
-    title: "Dla Zdrowia",
-    description: "Produkty wspierające zdrowy styl życia.",
+    title: "Dla Twojej Rodziny",
+    description: "Produkty, które sami dajemy naszym dzieciom.",
   },
 ];
 
 const About = () => {
   return (
-    <section id="o-nas" className="section-padding bg-background">
-      <div className="container mx-auto">
+    <section id="o-nas" className="section-padding bg-background relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute top-10 right-10 w-64 h-64 bg-honey/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 left-10 w-48 h-48 bg-primary/5 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto relative">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <div>
-            <span className="text-accent font-medium mb-2 inline-block">O Nas</span>
+            <span className="inline-flex items-center gap-2 text-accent font-medium mb-3 bg-accent/10 px-3 py-1 rounded-full text-sm">
+              <Heart className="w-4 h-4" /> Nasza Historia
+            </span>
             <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-6">
-              Tradycja i pasja w każdym produkcie
+              Witaj w naszym domu! 🏡
             </h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                Jesteśmy rodziną, która wierzy w moc naturalnego jedzenia. 
-                Od lat tworzymy produkty, które sami jemy i którymi chętnie dzielimy się z innymi.
+                Jesteśmy zwykłą rodziną, która odkryła magię domowego jedzenia. 
+                To, co zaczęło się jako pasja — fermentacja pierwszej kombuchy w kuchni — 
+                dziś stało się sposobem życia, którym chcemy się dzielić.
               </p>
               <p>
-                Nasza przygoda z fermentacją zaczęła się od prostej kombuchy. 
-                Dziś oferujemy szeroki wybór domowych wyrobów — od napojów probiotycznych, 
-                przez tradycyjny chleb na zakwasie, aż po mięso z naszej hodowli królików.
+                Nasze produkty powstają dokładnie tak, jak robiły to nasze babcie — 
+                bez pośpiechu, z sercem i z najlepszych składników. Króliki hodujemy sami, 
+                chleb pieczymy na zakwasie, który ma już ponad 3 lata!
               </p>
-              <p>
-                Wierzymy, że zdrowe jedzenie nie musi być nudne ani drogie. 
-                Chcemy, abyś mógł cieszyć się smakiem natury bez kompromisów.
+              <p className="text-foreground font-medium bg-secondary/50 p-4 rounded-xl border-l-4 border-primary">
+                ✨ Wierzymy, że dobre jedzenie łączy ludzi. Zapraszamy Cię do naszego stołu!
               </p>
             </div>
           </div>
 
           {/* Features Grid */}
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 gap-5">
             {features.map((feature) => (
               <div
                 key={feature.title}
-                className="bg-card p-6 rounded-xl shadow-soft hover:shadow-card transition-all duration-300"
+                className="bg-card p-6 rounded-2xl shadow-soft hover:shadow-card transition-all duration-300 border border-border/50 group hover:-translate-y-1"
               >
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <feature.icon className="w-6 h-6 text-primary" />
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-honey/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <feature.icon className="w-7 h-7 text-primary" />
                 </div>
                 <h3 className="font-serif text-lg font-semibold text-foreground mb-2">
                   {feature.title}

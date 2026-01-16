@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Leaf } from "lucide-react";
+import { Menu, X, Home } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,17 +12,20 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/50">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center transition-transform group-hover:scale-105">
-              <Leaf className="w-5 h-5 text-primary-foreground" />
+          <a href="#" className="flex items-center gap-3 group">
+            <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary to-honey flex items-center justify-center transition-transform group-hover:scale-105 shadow-soft">
+              <Home className="w-5 h-5 text-primary-foreground" />
             </div>
-            <span className="font-serif text-xl font-semibold text-earth">
-              Naturalne Smaki
-            </span>
+            <div className="flex flex-col">
+              <span className="font-serif text-xl font-semibold text-earth leading-tight">
+                Rodzinne Smaki
+              </span>
+              <span className="text-xs text-muted-foreground">z serca do serca ❤️</span>
+            </div>
           </a>
 
           {/* Desktop Navigation */}
@@ -31,13 +34,13 @@ const Header = () => {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-muted-foreground hover:text-primary transition-colors font-medium"
+                className="text-muted-foreground hover:text-primary transition-colors font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full"
               >
                 {link.label}
               </a>
             ))}
-            <Button variant="default" size="default">
-              Zamów teraz
+            <Button variant="default" size="default" className="shadow-soft">
+              Zamów z miłością
             </Button>
           </nav>
 
@@ -53,7 +56,7 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 border-t border-border pt-4 animate-fade-in">
+          <nav className="md:hidden mt-4 pb-4 border-t border-border/50 pt-4 animate-fade-in">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
@@ -66,7 +69,7 @@ const Header = () => {
                 </a>
               ))}
               <Button variant="default" size="default" className="mt-2">
-                Zamów teraz
+                Zamów z miłością
               </Button>
             </div>
           </nav>
