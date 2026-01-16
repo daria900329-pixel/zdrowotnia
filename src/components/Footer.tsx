@@ -1,34 +1,43 @@
-import { Leaf, Instagram, Facebook } from "lucide-react";
+import { Home, Instagram, Facebook, Heart } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-earth text-earth-foreground py-12">
+    <footer className="bg-earth text-earth-foreground py-16">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="flex flex-col items-center text-center gap-8">
           {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <Leaf className="w-5 h-5 text-primary-foreground" />
+          <div className="flex flex-col items-center gap-3">
+            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-honey flex items-center justify-center shadow-lg">
+              <Home className="w-7 h-7 text-primary-foreground" />
             </div>
-            <span className="font-serif text-xl font-semibold">
-              Naturalne Smaki
-            </span>
+            <div>
+              <span className="font-serif text-2xl font-semibold block">
+                Rodzinne Smaki
+              </span>
+              <span className="text-sm opacity-80">z serca do serca ❤️</span>
+            </div>
           </div>
+
+          {/* Warm message */}
+          <p className="max-w-md text-earth-foreground/80 leading-relaxed">
+            Dziękujemy, że nas odwiedzasz! 🙏 Jesteśmy zwykłą rodziną, która kocha dobre jedzenie 
+            i chce się nim dzielić. Do zobaczenia przy stole!
+          </p>
 
           {/* Social Links */}
           <div className="flex items-center gap-4">
             <a
               href="#"
-              className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary/30 transition-colors"
+              className="w-12 h-12 rounded-full bg-primary/30 flex items-center justify-center hover:bg-primary/50 transition-all hover:scale-110"
               aria-label="Instagram"
             >
               <Instagram className="w-5 h-5" />
             </a>
             <a
               href="#"
-              className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary/30 transition-colors"
+              className="w-12 h-12 rounded-full bg-primary/30 flex items-center justify-center hover:bg-primary/50 transition-all hover:scale-110"
               aria-label="Facebook"
             >
               <Facebook className="w-5 h-5" />
@@ -36,9 +45,11 @@ const Footer = () => {
           </div>
 
           {/* Copyright */}
-          <p className="text-sm opacity-80">
-            © {currentYear} Naturalne Smaki. Wszystkie prawa zastrzeżone.
-          </p>
+          <div className="pt-6 border-t border-earth-foreground/20 w-full">
+            <p className="text-sm opacity-70 flex items-center justify-center gap-2">
+              © {currentYear} Rodzinne Smaki • Robione z <Heart className="w-4 h-4 text-accent inline" /> w Polsce
+            </p>
+          </div>
         </div>
       </div>
     </footer>
