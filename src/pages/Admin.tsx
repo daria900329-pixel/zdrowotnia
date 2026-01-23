@@ -11,8 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Loader2, Plus, Trash2, Edit, Save, X, LogOut, Upload, Package, FileText, Layers } from "lucide-react";
-import { AdminVariants } from "@/components/admin/AdminVariants";
+import { Loader2, Plus, Trash2, Edit, Save, X, LogOut, Upload, Package, FileText } from "lucide-react";
 import { AdminCMS } from "@/components/admin/AdminCMS";
 import { AdminOrders } from "@/components/admin/AdminOrders";
 import { ProductVariantsInline } from "@/components/admin/ProductVariantsInline";
@@ -253,9 +252,8 @@ const Admin = () => {
         </div>
 
         <Tabs defaultValue="products" className="space-y-6">
-          <TabsList className="grid grid-cols-4 w-full">
+          <TabsList className="grid grid-cols-3 w-full">
             <TabsTrigger value="products"><Package className="w-4 h-4 mr-2" />Produkty</TabsTrigger>
-            <TabsTrigger value="variants"><Layers className="w-4 h-4 mr-2" />Warianty</TabsTrigger>
             <TabsTrigger value="content"><FileText className="w-4 h-4 mr-2" />Treści</TabsTrigger>
             <TabsTrigger value="orders"><Package className="w-4 h-4 mr-2" />Zamówienia</TabsTrigger>
           </TabsList>
@@ -664,9 +662,6 @@ const Admin = () => {
         )}
           </TabsContent>
 
-          <TabsContent value="variants">
-            <AdminVariants />
-          </TabsContent>
 
           <TabsContent value="content">
             <AdminCMS />
