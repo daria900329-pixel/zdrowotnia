@@ -95,7 +95,7 @@ export function ProductVariantSelect({ productId, productName, imageUrl }: Produ
                   : "bg-background border-border hover:border-primary/50"
               }`}
             >
-              {variant.value} {variant.unit}
+              {variant.name} {variant.unit}
             </button>
           ))}
         </div>
