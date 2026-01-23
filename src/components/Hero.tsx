@@ -10,7 +10,8 @@ const Hero = () => {
         <img
           src={heroImage}
           alt="Domowe produkty naturalne"
-          className="w-full h-full object-cover object-right"
+          className="w-full h-full object-cover"
+          style={{ objectPosition: '30% center' }}
         />
         <div className="absolute inset-0 bg-gradient-to-l from-background/90 via-transparent to-transparent" />
       </div>
