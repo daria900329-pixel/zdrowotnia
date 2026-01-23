@@ -15,6 +15,7 @@ import { Loader2, Plus, Trash2, Edit, Save, X, LogOut, Upload, Package, FileText
 import { AdminCMS } from "@/components/admin/AdminCMS";
 import { AdminOrders } from "@/components/admin/AdminOrders";
 import { ProductVariantsInline } from "@/components/admin/ProductVariantsInline";
+import { ProductImagesManager } from "@/components/admin/ProductImagesManager";
 
 interface Product {
   id: string;
@@ -581,6 +582,12 @@ const Admin = () => {
                       <ProductVariantsInline 
                         productId={product.id} 
                         productName={product.name} 
+                      />
+
+                      {/* Product Images Gallery */}
+                      <ProductImagesManager
+                        productId={product.id}
+                        productName={product.name}
                       />
 
                       <div className="flex gap-2">
