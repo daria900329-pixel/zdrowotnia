@@ -3,6 +3,7 @@ import type * as React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Heart } from "lucide-react";
 import heroImage from "@/assets/hero-products.jpg";
+import { useSiteContent } from "@/hooks/useSiteContent";
 
 const HERO_IMAGE_POS_X_KEY = "rodzinne-smaki.hero-image-pos-x";
 
@@ -11,6 +12,7 @@ function clamp(n: number, min: number, max: number) {
 }
 
 const Hero = () => {
+  const { content } = useSiteContent("hero");
   // translateX range: -50% to +50% of image width (gives much more movement)
   const [translateX, setTranslateX] = useState<number>(0);
   const [scale, setScale] = useState<number>(150);
@@ -109,16 +111,15 @@ const Hero = () => {
       <div className="container mx-auto px-6 relative z-10 flex justify-end">
         <div className="max-w-md lg:max-w-lg bg-background/85 backdrop-blur-sm p-6 lg:p-8 rounded-3xl shadow-warm">
           <span className="inline-flex items-center gap-2 text-primary font-semibold mb-3 animate-fade-up bg-primary/15 px-3 py-1.5 rounded-full text-sm">
-            <span>🌾</span> Z serca • Dla rodziny • Z miłością
+            <span>🌾</span> {content.badge || "Z serca • Dla rodziny • Z miłością"}
           </span>
           
           <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-4 animate-fade-up drop-shadow-sm" style={{ animationDelay: '0.1s' }}>
-            Domowe smaki <br />
-            <span className="text-primary">prosto z serca</span>
+            {content.title || "Domowe smaki prosto z serca"}
           </h1>
           
           <p className="text-base lg:text-lg text-muted-foreground mb-6 leading-relaxed animate-fade-up" style={{ animationDelay: '0.2s' }}>
-            Witaj w naszej rodzinnej spiżarni! ❤️ Tworzymy zdrowe, domowe produkty — tak jak robiły nasze babcie.
+            {content.subtitle || "Witaj w naszej rodzinnej spiżarni! ❤️ Tworzymy zdrowe, domowe produkty — tak jak robiły nasze babcie."}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-3 animate-fade-up" style={{ animationDelay: '0.3s' }}>
