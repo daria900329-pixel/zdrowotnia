@@ -10,7 +10,11 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
-import { Loader2, Plus, Trash2, Edit, Save, X, LogOut, Upload } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Loader2, Plus, Trash2, Edit, Save, X, LogOut, Upload, Package, FileText, Layers } from "lucide-react";
+import { AdminVariants } from "@/components/admin/AdminVariants";
+import { AdminCMS } from "@/components/admin/AdminCMS";
+import { AdminOrders } from "@/components/admin/AdminOrders";
 
 interface Product {
   id: string;
@@ -243,12 +247,21 @@ const Admin = () => {
           </div>
         </div>
 
-        <div className="mb-6">
-          <Button onClick={() => setIsAdding(true)} disabled={isAdding}>
-            <Plus className="w-4 h-4 mr-2" />
-            Dodaj produkt
-          </Button>
-        </div>
+        <Tabs defaultValue="products" className="space-y-6">
+          <TabsList className="grid grid-cols-4 w-full">
+            <TabsTrigger value="products"><Package className="w-4 h-4 mr-2" />Produkty</TabsTrigger>
+            <TabsTrigger value="variants"><Layers className="w-4 h-4 mr-2" />Warianty</TabsTrigger>
+            <TabsTrigger value="content"><FileText className="w-4 h-4 mr-2" />Treści</TabsTrigger>
+            <TabsTrigger value="orders"><Package className="w-4 h-4 mr-2" />Zamówienia</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="products">
+            <div className="mb-6">
+              <Button onClick={() => setIsAdding(true)} disabled={isAdding}>
+                <Plus className="w-4 h-4 mr-2" />
+                Dodaj produkt
+              </Button>
+            </div>
 
         {isAdding && (
           <Card className="mb-6">
@@ -609,6 +622,20 @@ const Admin = () => {
             ))}
           </div>
         )}
+          </TabsContent>
+
+          <TabsContent value="variants">
+            <AdminVariants />
+          </TabsContent>
+
+          <TabsContent value="content">
+            <AdminCMS />
+          </TabsContent>
+
+          <TabsContent value="orders">
+            <AdminOrders />
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   );

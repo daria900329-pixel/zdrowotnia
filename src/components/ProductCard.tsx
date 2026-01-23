@@ -1,15 +1,15 @@
-import { Button } from "@/components/ui/button";
 import { Heart } from "lucide-react";
+import { ProductVariantSelect } from "./ProductVariantSelect";
 
 interface ProductCardProps {
+  id: string;
   name: string;
   description: string;
   image: string;
-  price?: string;
   badge?: string;
 }
 
-const ProductCard = ({ name, description, image, price, badge }: ProductCardProps) => {
+const ProductCard = ({ id, name, description, image, badge }: ProductCardProps) => {
   return (
     <div className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-hover transition-all duration-300 hover:-translate-y-2 border border-border/30">
       <div className="relative aspect-square overflow-hidden">
@@ -36,17 +36,11 @@ const ProductCard = ({ name, description, image, price, badge }: ProductCardProp
           {description}
         </p>
         
-        <div className="flex items-center justify-between">
-          {price && (
-            <span className="font-semibold text-lg text-primary">
-              {price}
-            </span>
-          )}
-          <Button variant="default" size="sm" className="ml-auto shadow-soft group/btn">
-            <Heart className="w-4 h-4 mr-1.5 group-hover/btn:scale-110 transition-transform" />
-            Zamów
-          </Button>
-        </div>
+        <ProductVariantSelect
+          productId={id}
+          productName={name}
+          imageUrl={image}
+        />
       </div>
     </div>
   );

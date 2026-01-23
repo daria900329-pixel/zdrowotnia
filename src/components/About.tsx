@@ -1,4 +1,5 @@
-import { Heart, Sparkles, Home, Users } from "lucide-react";
+import { Heart, Sparkles, Home, Users, Loader2 } from "lucide-react";
+import { useSiteContent } from "@/hooks/useSiteContent";
 
 const features = [
   {
@@ -24,6 +25,22 @@ const features = [
 ];
 
 const About = () => {
+  const { content, loading } = useSiteContent("about");
+
+  const title = content.title || "Witaj w naszym domu! 🏡";
+  const badge = content.badge || "Nasza Historia";
+  const paragraph1 = content.paragraph1 || "Jesteśmy zwykłą rodziną, która odkryła magię domowego jedzenia. To, co zaczęło się jako pasja — fermentacja pierwszej kombuchy w kuchni — dziś stało się sposobem życia, którym chcemy się dzielić.";
+  const paragraph2 = content.paragraph2 || "Nasze produkty powstają dokładnie tak, jak robiły to nasze babcie — bez pośpiechu, z sercem i z najlepszych składników. Króliki hodujemy sami, chleb pieczyemy na zakwasie, który ma już ponad 3 lata!";
+  const highlight = content.highlight || "✨ Wierzymy, że dobre jedzenie łączy ludzi. Zapraszamy Cię do naszego stołu!";
+
+  if (loading) {
+    return (
+      <section id="o-nas" className="section-padding bg-background flex justify-center items-center">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </section>
+    );
+  }
+
   return (
     <section id="o-nas" className="section-padding bg-background relative overflow-hidden">
       {/* Decorative background elements */}
@@ -35,24 +52,16 @@ const About = () => {
           {/* Text Content */}
           <div>
             <span className="inline-flex items-center gap-2 text-accent font-medium mb-3 bg-accent/10 px-3 py-1 rounded-full text-sm">
-              <Heart className="w-4 h-4" /> Nasza Historia
+              <Heart className="w-4 h-4" /> {badge}
             </span>
             <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-6">
-              Witaj w naszym domu! 🏡
+              {title}
             </h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
-                Jesteśmy zwykłą rodziną, która odkryła magię domowego jedzenia. 
-                To, co zaczęło się jako pasja — fermentacja pierwszej kombuchy w kuchni — 
-                dziś stało się sposobem życia, którym chcemy się dzielić.
-              </p>
-              <p>
-                Nasze produkty powstają dokładnie tak, jak robiły to nasze babcie — 
-                bez pośpiechu, z sercem i z najlepszych składników. Króliki hodujemy sami, 
-                chleb pieczymy na zakwasie, który ma już ponad 3 lata!
-              </p>
+              <p>{paragraph1}</p>
+              <p>{paragraph2}</p>
               <p className="text-foreground font-medium bg-secondary/50 p-4 rounded-xl border-l-4 border-primary">
-                ✨ Wierzymy, że dobre jedzenie łączy ludzi. Zapraszamy Cię do naszego stołu!
+                {highlight}
               </p>
             </div>
           </div>

@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Home } from "lucide-react";
+import { Menu, X, Home, User, LogOut } from "lucide-react";
+import { CartSheet } from "./CartSheet";
+import { useAuth } from "@/hooks/useAuth";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, signOut } = useAuth();
 
   const navLinks = [
     { label: "Produkty", href: "#produkty" },
@@ -29,7 +32,7 @@ const Header = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.label}
@@ -39,19 +42,36 @@ const Header = () => {
                 {link.label}
               </a>
             ))}
-            <Button variant="default" size="default" className="shadow-soft">
-              Zamów z miłością
-            </Button>
+            
+            <CartSheet />
+            
+            {user ? (
+              <div className="flex items-center gap-2">
+                <Button variant="ghost" size="icon" onClick={signOut}>
+                  <LogOut className="w-5 h-5" />
+                </Button>
+              </div>
+            ) : (
+              <Button variant="outline" size="sm" asChild>
+                <a href="/auth">
+                  <User className="w-4 h-4 mr-2" />
+                  Zaloguj
+                </a>
+              </Button>
+            )}
           </nav>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-foreground"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <CartSheet />
+            <button
+              className="p-2 text-foreground"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -68,9 +88,19 @@ const Header = () => {
                   {link.label}
                 </a>
               ))}
-              <Button variant="default" size="default" className="mt-2">
-                Zamów z miłością
-              </Button>
+              {user ? (
+                <Button variant="outline" onClick={signOut}>
+                  <LogOut className="w-4 h-4 mr-2" />
+                  Wyloguj
+                </Button>
+              ) : (
+                <Button variant="default" asChild>
+                  <a href="/auth">
+                    <User className="w-4 h-4 mr-2" />
+                    Zaloguj się
+                  </a>
+                </Button>
+              )}
             </div>
           </nav>
         )}
