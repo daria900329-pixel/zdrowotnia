@@ -5,10 +5,15 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import woodPattern from "@/assets/wood-pattern.jpg";
 
 const queryClient = new QueryClient();
 
 const App = () => (
+  <div 
+    className="min-h-screen bg-repeat"
+    style={{ backgroundImage: `url(${woodPattern})` }}
+  >
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
@@ -22,6 +27,7 @@ const App = () => (
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
+  </div>
 );
 
 export default App;
