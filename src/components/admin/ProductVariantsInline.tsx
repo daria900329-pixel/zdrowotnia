@@ -17,7 +17,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { ChevronDown, Loader2, Plus, Trash2, Save, X, Edit } from "lucide-react";
+import { ChevronDown, ChevronUp, Loader2, Plus, Trash2, Save, X, Edit, ArrowUp, ArrowDown } from "lucide-react";
 
 interface Variant {
   id: string;
@@ -168,6 +168,42 @@ export function ProductVariantsInline({ productId, productName }: ProductVariant
     }
   };
 
+  const handleMoveVariant = async (variantId: string, direction: "up" | "down") => {
+    const currentIndex = variants.findIndex((v) => v.id === variantId);
+    if (currentIndex === -1) return;
+
+    const targetIndex = direction === "up" ? currentIndex - 1 : currentIndex + 1;
+    if (targetIndex < 0 || targetIndex >= variants.length) return;
+
+    const currentVariant = variants[currentIndex];
+    const targetVariant = variants[targetIndex];
+
+    // Swap display_order values
+    const updates = [
+      supabase
+        .from("product_variants")
+        .update({ display_order: targetVariant.display_order })
+        .eq("id", currentVariant.id),
+      supabase
+        .from("product_variants")
+        .update({ display_order: currentVariant.display_order })
+        .eq("id", targetVariant.id),
+    ];
+
+    const results = await Promise.all(updates);
+    const hasError = results.some((r) => r.error);
+
+    if (hasError) {
+      toast({
+        title: "Błąd",
+        description: "Nie udało się zmienić kolejności",
+        variant: "destructive",
+      });
+    } else {
+      fetchVariants();
+    }
+  };
+
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen} className="border rounded-lg bg-secondary/30">
       <CollapsibleTrigger className="flex items-center justify-between w-full p-4 hover:bg-secondary/50 transition-colors">
@@ -250,7 +286,28 @@ export function ProductVariantsInline({ productId, productName }: ProductVariant
                     </div>
                   </div>
                 ) : (
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2">
+                    {/* Order controls */}
+                    <div className="flex flex-col gap-0.5">
+                      <Button
+                        size="icon"
+                        variant="ghost"
+                        className="h-5 w-5"
+                        onClick={() => handleMoveVariant(variant.id, "up")}
+                        disabled={variants.findIndex((v) => v.id === variant.id) === 0}
+                      >
+                        <ArrowUp className="w-3 h-3" />
+                      </Button>
+                      <Button
+                        size="icon"
+                        variant="ghost"
+                        className="h-5 w-5"
+                        onClick={() => handleMoveVariant(variant.id, "down")}
+                        disabled={variants.findIndex((v) => v.id === variant.id) === variants.length - 1}
+                      >
+                        <ArrowDown className="w-3 h-3" />
+                      </Button>
+                    </div>
                     <div className="flex-1">
                       <span className="font-medium text-sm">{variant.name}</span>
                       <span className="text-muted-foreground text-sm ml-2">
