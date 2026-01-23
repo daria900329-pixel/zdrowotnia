@@ -11,17 +11,27 @@ function clamp(n: number, min: number, max: number) {
 }
 
 const Hero = () => {
-  const [objectX, setObjectX] = useState<number>(30);
+  // translateX range: -50% to +50% of image width (gives much more movement)
+  const [translateX, setTranslateX] = useState<number>(0);
+  const [scale, setScale] = useState<number>(150);
   const [isAdjusting, setIsAdjusting] = useState(false);
   const frameRef = useRef<HTMLDivElement | null>(null);
   const draggingRef = useRef(false);
+  const startXRef = useRef(0);
+  const startTranslateRef = useRef(0);
 
   useEffect(() => {
     try {
-      const raw = localStorage.getItem(HERO_IMAGE_POS_X_KEY);
-      if (!raw) return;
-      const parsed = Number(raw);
-      if (Number.isFinite(parsed)) setObjectX(clamp(parsed, 0, 100));
+      const rawX = localStorage.getItem(HERO_IMAGE_POS_X_KEY);
+      const rawScale = localStorage.getItem("rodzinne-smaki.hero-image-scale");
+      if (rawX) {
+        const parsed = Number(rawX);
+        if (Number.isFinite(parsed)) setTranslateX(clamp(parsed, -50, 50));
+      }
+      if (rawScale) {
+        const parsed = Number(rawScale);
+        if (Number.isFinite(parsed)) setScale(clamp(parsed, 100, 250));
+      }
     } catch {
       // ignore
     }
@@ -29,32 +39,33 @@ const Hero = () => {
 
   useEffect(() => {
     try {
-      localStorage.setItem(HERO_IMAGE_POS_X_KEY, String(objectX));
+      localStorage.setItem(HERO_IMAGE_POS_X_KEY, String(translateX));
+      localStorage.setItem("rodzinne-smaki.hero-image-scale", String(scale));
     } catch {
       // ignore
     }
-  }, [objectX]);
+  }, [translateX, scale]);
 
-  const objectPosition = useMemo(() => `${objectX}% center`, [objectX]);
-
-  const setFromClientX = (clientX: number) => {
-    const el = frameRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const pct = ((clientX - rect.left) / rect.width) * 100;
-    setObjectX(clamp(pct, 0, 100));
-  };
+  const imageStyle = useMemo(() => ({
+    transform: `translateX(${translateX}%) scale(${scale / 100})`,
+    transformOrigin: 'center center',
+  }), [translateX, scale]);
 
   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!isAdjusting) return;
     draggingRef.current = true;
+    startXRef.current = e.clientX;
+    startTranslateRef.current = translateX;
     e.currentTarget.setPointerCapture(e.pointerId);
-    setFromClientX(e.clientX);
   };
 
   const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!isAdjusting || !draggingRef.current) return;
-    setFromClientX(e.clientX);
+    const el = frameRef.current;
+    if (!el) return;
+    const deltaX = e.clientX - startXRef.current;
+    const pctDelta = (deltaX / el.getBoundingClientRect().width) * 100;
+    setTranslateX(clamp(startTranslateRef.current + pctDelta, -50, 50));
   };
 
   const onPointerUp = () => {
@@ -66,7 +77,7 @@ const Hero = () => {
       {/* Background Image */}
       <div
         ref={frameRef}
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 overflow-hidden"
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
@@ -76,8 +87,8 @@ const Hero = () => {
         <img
           src={heroImage}
           alt="Domowe produkty naturalne"
-          className="w-full h-full object-cover"
-          style={{ objectPosition }}
+          className="min-w-full min-h-full object-cover"
+          style={imageStyle}
         />
         <div className="absolute inset-0 bg-gradient-to-l from-background/90 via-transparent to-transparent" />
         {isAdjusting && (
@@ -137,29 +148,45 @@ const Hero = () => {
           <button
             type="button"
             className="rounded-full border border-border bg-background/80 backdrop-blur px-3 py-1.5 text-sm font-medium text-foreground hover:bg-background/90 transition-colors"
-            onClick={() => setObjectX(30)}
+            onClick={() => { setTranslateX(0); setScale(150); }}
           >
             Reset
           </button>
         </div>
 
         {isAdjusting && (
-          <div className="rounded-2xl border border-border bg-background/80 backdrop-blur px-3 py-2">
+          <div className="rounded-2xl border border-border bg-background/80 backdrop-blur px-3 py-2 space-y-3">
             <p className="text-xs text-muted-foreground">
-              Przeciągnij palcem/myszą po zdjęciu, aby ustawić kadr.
+              Przeciągnij palcem/myszą po zdjęciu, aby przesunąć.
             </p>
-            <div className="mt-2 flex items-center gap-3">
+            <div className="flex items-center gap-3">
+              <span className="text-xs text-muted-foreground w-16">Pozycja:</span>
               <input
                 aria-label="Pozycja zdjęcia"
                 type="range"
-                min={0}
-                max={100}
-                value={Math.round(objectX)}
-                onChange={(e) => setObjectX(Number(e.target.value))}
-                className="w-44"
+                min={-50}
+                max={50}
+                value={Math.round(translateX)}
+                onChange={(e) => setTranslateX(Number(e.target.value))}
+                className="w-32"
               />
-              <span className="text-xs tabular-nums text-muted-foreground w-10 text-right">
-                {Math.round(objectX)}%
+              <span className="text-xs tabular-nums text-muted-foreground w-12 text-right">
+                {Math.round(translateX)}%
+              </span>
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="text-xs text-muted-foreground w-16">Zoom:</span>
+              <input
+                aria-label="Skala zdjęcia"
+                type="range"
+                min={100}
+                max={250}
+                value={Math.round(scale)}
+                onChange={(e) => setScale(Number(e.target.value))}
+                className="w-32"
+              />
+              <span className="text-xs tabular-nums text-muted-foreground w-12 text-right">
+                {Math.round(scale)}%
               </span>
             </div>
           </div>
