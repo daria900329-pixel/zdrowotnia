@@ -45,10 +45,16 @@ const Footer = () => {
           </div>
 
           {/* Copyright */}
-          <div className="pt-6 border-t border-earth-foreground/20 w-full">
+          <div className="pt-6 border-t border-earth-foreground/20 w-full space-y-2">
             <p className="text-sm opacity-70 flex items-center justify-center gap-2">
               © {currentYear} Rodzinne Smaki • Robione z <Heart className="w-4 h-4 text-accent inline" /> w Polsce
             </p>
+            <a 
+              href="/admin" 
+              className="text-xs opacity-50 hover:opacity-80 transition-opacity"
+            >
+              Panel administracyjny
+            </a>
           </div>
         </div>
       </div>
