@@ -2,16 +2,24 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Phone, Mail, MapPin, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Send, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useSiteContent } from "@/hooks/useSiteContent";
 
 const Contact = () => {
   const { toast } = useToast();
+  const { content, loading } = useSiteContent("contact");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+
+  const title = content.title || "Porozmawiajmy! 💬";
+  const subtitle = content.subtitle || "Masz pytania? Chcesz złożyć zamówienie? Napisz lub zadzwoń — odpowiadamy szybko i z uśmiechem!";
+  const phone = content.phone || "+48 123 456 789";
+  const email = content.email || "kontakt@rodzinnesmaki.pl";
+  const address = content.address || "Odbiór osobisty po wcześniejszym umówieniu";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,6 +37,14 @@ const Contact = () => {
     }));
   };
 
+  if (loading) {
+    return (
+      <section id="kontakt" className="section-padding bg-secondary/40 flex justify-center items-center">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </section>
+    );
+  }
+
   return (
     <section id="kontakt" className="section-padding bg-secondary/40 relative overflow-hidden">
       {/* Decorative elements */}
@@ -41,11 +57,10 @@ const Contact = () => {
             ☎️ Porozmawiajmy
           </span>
           <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-4">
-            Chcesz pogadać? Jesteśmy tu dla Ciebie! 💬
+            {title}
           </h2>
           <p className="text-muted-foreground">
-            Masz pytania o nasze produkty? Chcesz złożyć zamówienie? 
-            Napisz lub zadzwoń — odpowiemy jak sąsiadowi przez płot! 🏡
+            {subtitle}
           </p>
         </div>
 
@@ -58,7 +73,7 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-foreground mb-1">Telefon</h3>
-                <p className="text-muted-foreground">+48 123 456 789</p>
+                <p className="text-muted-foreground">{phone}</p>
               </div>
             </div>
 
@@ -68,7 +83,7 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                <p className="text-muted-foreground">kontakt@naturalnesmaki.pl</p>
+                <p className="text-muted-foreground">{email}</p>
               </div>
             </div>
 
@@ -78,9 +93,7 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-foreground mb-1">Adres</h3>
-                <p className="text-muted-foreground">
-                  Odbiór osobisty po wcześniejszym umówieniu
-                </p>
+                <p className="text-muted-foreground">{address}</p>
               </div>
             </div>
 
@@ -89,9 +102,8 @@ const Contact = () => {
                 💡 Jak zamówić?
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                To proste! Zadzwoń lub napisz, a ustalimy wszystko po sąsiedzku. 
-                Możesz odebrać osobiście (zapraszamy na herbatę! ☕) lub umówimy dostawę.
-                Płatność przy odbiorze lub przelewem — jak Ci wygodniej.
+                Dodaj produkty do koszyka i przejdź do płatności. 
+                Po opłaceniu zamówienia skontaktujemy się, aby ustalić szczegóły dostawy lub odbioru osobistego.
               </p>
             </div>
           </div>

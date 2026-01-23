@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ProductCard from "@/components/ProductCard";
 import { supabase } from "@/integrations/supabase/client";
 import { Sparkles, Loader2 } from "lucide-react";
+import { useSiteContent } from "@/hooks/useSiteContent";
 
 // Fallback static products (used when DB is empty)
 import kombuchaImg from "@/assets/product-kombucha.jpg";
@@ -11,30 +12,30 @@ import rabbitImg from "@/assets/product-rabbit.jpg";
 
 const fallbackProducts = [
   {
+    id: "fallback-1",
     name: "Kombucha",
     description: "Nasz rodzinny eliksir zdrowia! Fermentowany napój pełen dobrych bakterii. Mama robi ją od 5 lat. 🫖",
     image: kombuchaImg,
-    price: "od 15 zł",
     badge: "Ulubiona!",
   },
   {
+    id: "fallback-2",
     name: "Ocet Jabłkowy",
     description: "Z polskich jabłuszek, fermentowany miesiącami. Babciny przepis na zdrowie i urodę! 🍎",
     image: vinegarImg,
-    price: "od 18 zł",
   },
   {
+    id: "fallback-3",
     name: "Chleb na Zakwasie",
     description: "Pieczony z miłością, na 3-letnim zakwasie. Aromat, który wypełnia cały dom. 🍞",
     image: breadImg,
-    price: "od 12 zł",
     badge: "Ciepły!",
   },
   {
+    id: "fallback-4",
     name: "Mięso z Królika",
     description: "Z naszej domowej hodowli. Króliki mają imiona i jedzą zioła z ogrodu. Chude i delikatne. 🐰",
     image: rabbitImg,
-    price: "od 45 zł/kg",
   },
 ];
 
@@ -42,7 +43,6 @@ interface DBProduct {
   id: string;
   name: string;
   description: string | null;
-  price: string | null;
   badge: string | null;
   image_url: string | null;
   display_order: number;
@@ -53,6 +53,12 @@ const Products = () => {
   const [products, setProducts] = useState<DBProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [useFallback, setUseFallback] = useState(false);
+  const { content } = useSiteContent("products");
+
+  const title = content.title || "Co dziś dla Ciebie przygotowaliśmy? 🥰";
+  const subtitle = content.subtitle || "Każdy produkt robimy ręcznie, w małych partiach. Dokładnie tak, jak byśmy przygotowywali je dla własnej rodziny — bo tak właśnie jest!";
+  const badge = content.badge || "Prosto z Naszej Kuchni";
+  const comingSoon = content.coming_soon || "Pasztet z królika • Kurczaki z wolnego wybiegu • Jajka od szczęśliwych kurek • Oliwa z Włoch";
 
   useEffect(() => {
     async function fetchProducts() {
@@ -87,14 +93,13 @@ const Products = () => {
       <div className="container mx-auto relative">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="inline-flex items-center gap-2 text-accent font-medium mb-3 bg-accent/10 px-3 py-1 rounded-full text-sm">
-            <Sparkles className="w-4 h-4" /> Prosto z Naszej Kuchni
+            <Sparkles className="w-4 h-4" /> {badge}
           </span>
           <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-4">
-            Co dziś dla Ciebie przygotowaliśmy? 🥰
+            {title}
           </h2>
           <p className="text-muted-foreground">
-            Każdy produkt robimy ręcznie, w małych partiach. Dokładnie tak, 
-            jak byśmy przygotowywali je dla własnej rodziny — bo tak właśnie jest!
+            {subtitle}
           </p>
         </div>
 
@@ -106,15 +111,22 @@ const Products = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {useFallback
               ? fallbackProducts.map((product) => (
-                  <ProductCard key={product.name} {...product} />
+                  <ProductCard
+                    key={product.id}
+                    id={product.id}
+                    name={product.name}
+                    description={product.description}
+                    image={product.image}
+                    badge={product.badge}
+                  />
                 ))
               : products.map((product) => (
                   <ProductCard
                     key={product.id}
+                    id={product.id}
                     name={product.name}
                     description={product.description || ""}
                     image={product.image_url || ""}
-                    price={product.price || ""}
                     badge={product.badge || undefined}
                   />
                 ))}
@@ -127,7 +139,7 @@ const Products = () => {
               🌟 <strong>Wkrótce w naszej spiżarni:</strong>
             </p>
             <p className="text-muted-foreground">
-              Pasztet z królika • Kurczaki z wolnego wybiegu • Jajka od szczęśliwych kurek • Oliwa z Włoch
+              {comingSoon}
             </p>
           </div>
         </div>

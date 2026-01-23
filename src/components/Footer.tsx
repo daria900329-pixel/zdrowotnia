@@ -1,7 +1,13 @@
 import { Home, Instagram, Facebook, Heart } from "lucide-react";
+import { useSiteContent } from "@/hooks/useSiteContent";
+import { useIsAdmin } from "@/hooks/useIsAdmin";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { content } = useSiteContent("footer");
+  const { isAdmin } = useIsAdmin();
+
+  const tagline = content.tagline || "Dziękujemy, że nas odwiedzasz! 🙏 Jesteśmy zwykłą rodziną, która kocha dobre jedzenie i chce się nim dzielić. Do zobaczenia przy stole!";
 
   return (
     <footer className="bg-earth text-earth-foreground py-16">
@@ -22,8 +28,7 @@ const Footer = () => {
 
           {/* Warm message */}
           <p className="max-w-md text-earth-foreground/80 leading-relaxed">
-            Dziękujemy, że nas odwiedzasz! 🙏 Jesteśmy zwykłą rodziną, która kocha dobre jedzenie 
-            i chce się nim dzielić. Do zobaczenia przy stole!
+            {tagline}
           </p>
 
           {/* Social Links */}
@@ -49,12 +54,14 @@ const Footer = () => {
             <p className="text-sm opacity-70 flex items-center justify-center gap-2">
               © {currentYear} Rodzinne Smaki • Robione z <Heart className="w-4 h-4 text-accent inline" /> w Polsce
             </p>
-            <a 
-              href="/admin" 
-              className="text-xs opacity-50 hover:opacity-80 transition-opacity"
-            >
-              Panel administracyjny
-            </a>
+            {isAdmin && (
+              <a 
+                href="/admin" 
+                className="text-xs opacity-50 hover:opacity-80 transition-opacity"
+              >
+                Panel administracyjny
+              </a>
+            )}
           </div>
         </div>
       </div>
