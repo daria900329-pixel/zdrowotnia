@@ -26,12 +26,12 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-2xl">
-          <span className="inline-flex items-center gap-2 text-accent font-medium mb-4 animate-fade-up bg-accent/10 px-4 py-2 rounded-full">
+        <div className="max-w-2xl bg-background/80 backdrop-blur-sm p-8 rounded-3xl shadow-warm">
+          <span className="inline-flex items-center gap-2 text-primary font-semibold mb-4 animate-fade-up bg-primary/15 px-4 py-2 rounded-full">
             <span className="text-lg">🌾</span> Z serca • Dla rodziny • Z miłością
           </span>
           
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight mb-6 animate-fade-up" style={{ animationDelay: '0.1s' }}>
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 animate-fade-up drop-shadow-sm" style={{ animationDelay: '0.1s' }}>
             Domowe smaki <br />
             <span className="text-primary">prosto z serca</span>
           </h1>
