@@ -26,8 +26,8 @@ export function CartSheet() {
             variant_id: item.variant_id,
             product_name: item.product_name,
             variant_name: item.variant_name,
-            price: item.price,
             quantity: item.quantity,
+            // Note: price is now validated server-side, not sent from client
           })),
           success_url: `${window.location.origin}/checkout/success`,
           cancel_url: `${window.location.origin}/checkout/cancel`,
