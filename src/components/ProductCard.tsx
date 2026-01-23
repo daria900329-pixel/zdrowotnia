@@ -19,7 +19,7 @@ const ProductCard = ({ id, name, description, image, badge }: ProductCardProps) 
     <div className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-hover transition-all duration-300 hover:-translate-y-2 border border-border/30">
       <Link 
         to={isFallback ? "#" : `/product/${id}`}
-        className="block relative aspect-square overflow-hidden bg-secondary/30 flex items-center justify-center"
+        className="block relative aspect-square overflow-hidden bg-white flex items-center justify-center"
       >
         <img
           src={displayImage}
