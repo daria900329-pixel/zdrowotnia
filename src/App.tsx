@@ -13,9 +13,9 @@ const App = () => (
   <div
     className="min-h-screen"
     style={{
-      backgroundImage: `linear-gradient(hsl(var(--background) / 0.35), hsl(var(--background) / 0.35)), url(${woodPattern})`,
+      backgroundImage: `url(${woodPattern})`,
       backgroundRepeat: "repeat",
-      backgroundSize: "1600px auto",
+      backgroundSize: "1200px auto",
       backgroundPosition: "top center",
     }}
   >
