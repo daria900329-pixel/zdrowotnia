@@ -98,14 +98,24 @@ export function ProductImagesManager({ productId, productName }: ProductImagesMa
       ? Math.max(...images.map(img => img.display_order)) 
       : -1;
 
+    const isFirstImage = images.length === 0;
+
     const { error: insertError } = await supabase
       .from("product_images")
       .insert({
         product_id: productId,
         image_url: urlData.publicUrl,
         display_order: maxOrder + 1,
-        is_primary: images.length === 0,
+        is_primary: isFirstImage,
       });
+
+    // If first image, sync to products.image_url
+    if (isFirstImage && !insertError) {
+      await supabase
+        .from("products")
+        .update({ image_url: urlData.publicUrl })
+        .eq("id", productId);
+    }
 
     if (insertError) {
       toast({
@@ -223,6 +233,14 @@ export function ProductImagesManager({ productId, productName }: ProductImagesMa
       .update({ image_url: urlData.publicUrl })
       .eq("id", image.id);
 
+    // If this is the primary image, sync to products.image_url
+    if (image.is_primary) {
+      await supabase
+        .from("products")
+        .update({ image_url: urlData.publicUrl })
+        .eq("id", productId);
+    }
+
     fetchImages();
   };
 
@@ -244,6 +262,9 @@ export function ProductImagesManager({ productId, productName }: ProductImagesMa
   };
 
   const handleSetPrimary = async (id: string) => {
+    const targetImage = images.find(img => img.id === id);
+    if (!targetImage) return;
+
     // First, unset all primary
     await supabase
       .from("product_images")
@@ -255,6 +276,12 @@ export function ProductImagesManager({ productId, productName }: ProductImagesMa
       .from("product_images")
       .update({ is_primary: true })
       .eq("id", id);
+
+    // Sync to products.image_url
+    await supabase
+      .from("products")
+      .update({ image_url: targetImage.image_url })
+      .eq("id", productId);
 
     fetchImages();
     toast({ title: "Sukces", description: "Ustawiono jako główne zdjęcie" });
