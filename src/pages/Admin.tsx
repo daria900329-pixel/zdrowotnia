@@ -15,11 +15,13 @@ import { Loader2, Plus, Trash2, Edit, Save, X, LogOut, Upload, Package, FileText
 import { AdminVariants } from "@/components/admin/AdminVariants";
 import { AdminCMS } from "@/components/admin/AdminCMS";
 import { AdminOrders } from "@/components/admin/AdminOrders";
+import { ProductVariantsInline } from "@/components/admin/ProductVariantsInline";
 
 interface Product {
   id: string;
   name: string;
   description: string | null;
+  long_description: string | null;
   price: string | null;
   badge: string | null;
   image_url: string | null;
@@ -41,6 +43,7 @@ const Admin = () => {
   const [newProduct, setNewProduct] = useState<Partial<Product>>({
     name: "",
     description: "",
+    long_description: "",
     price: "",
     badge: "",
     image_url: "",
@@ -132,6 +135,7 @@ const Admin = () => {
     const { error } = await supabase.from("products").insert({
       name: newProduct.name,
       description: newProduct.description || null,
+      long_description: newProduct.long_description || null,
       price: newProduct.price || null,
       badge: newProduct.badge || null,
       image_url: newProduct.image_url || null,
@@ -154,6 +158,7 @@ const Admin = () => {
       setNewProduct({
         name: "",
         description: "",
+        long_description: "",
         price: "",
         badge: "",
         image_url: "",
@@ -293,13 +298,26 @@ const Admin = () => {
               </div>
 
               <div className="space-y-2">
-                <Label>Opis</Label>
+                <Label>Opis (krótki)</Label>
                 <Textarea
                   value={newProduct.description || ""}
                   onChange={(e) =>
                     setNewProduct({ ...newProduct, description: e.target.value })
                   }
-                  placeholder="Opis produktu..."
+                  placeholder="Krótki opis widoczny na liście produktów..."
+                  rows={2}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label>Opis szczegółowy (strona produktu)</Label>
+                <Textarea
+                  value={newProduct.long_description || ""}
+                  onChange={(e) =>
+                    setNewProduct({ ...newProduct, long_description: e.target.value })
+                  }
+                  placeholder="Rozbudowany opis produktu widoczny na stronie produktu..."
+                  rows={5}
                 />
               </div>
 
@@ -396,6 +414,7 @@ const Admin = () => {
                     setNewProduct({
                       name: "",
                       description: "",
+                      long_description: "",
                       price: "",
                       badge: "",
                       image_url: "",
@@ -451,7 +470,7 @@ const Admin = () => {
                       </div>
 
                       <div className="space-y-2">
-                        <Label>Opis</Label>
+                        <Label>Opis (krótki)</Label>
                         <Textarea
                           value={editForm.description || ""}
                           onChange={(e) =>
@@ -460,6 +479,21 @@ const Admin = () => {
                               description: e.target.value,
                             })
                           }
+                          rows={2}
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label>Opis szczegółowy (strona produktu)</Label>
+                        <Textarea
+                          value={editForm.long_description || ""}
+                          onChange={(e) =>
+                            setEditForm({
+                              ...editForm,
+                              long_description: e.target.value,
+                            })
+                          }
+                          rows={5}
                         />
                       </div>
 
@@ -544,6 +578,12 @@ const Admin = () => {
                         />
                         <Label>Aktywny</Label>
                       </div>
+
+                      {/* Inline Variants Editor */}
+                      <ProductVariantsInline 
+                        productId={product.id} 
+                        productName={product.name} 
+                      />
 
                       <div className="flex gap-2">
                         <Button onClick={() => handleUpdateProduct(product.id)}>
