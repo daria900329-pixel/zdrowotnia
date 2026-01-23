@@ -10,7 +10,7 @@ const Hero = () => {
         <img
           src={heroImage}
           alt="Domowe produkty naturalne"
-          className="w-full h-full object-cover object-left"
+          className="w-full h-full object-cover object-right"
         />
         <div className="absolute inset-0 bg-gradient-to-l from-background/90 via-transparent to-transparent" />
       </div>
