@@ -1,11 +1,15 @@
+import { useEffect, useState } from "react";
 import ProductCard from "@/components/ProductCard";
+import { supabase } from "@/integrations/supabase/client";
+import { Sparkles, Loader2 } from "lucide-react";
+
+// Fallback static products (used when DB is empty)
 import kombuchaImg from "@/assets/product-kombucha.jpg";
 import vinegarImg from "@/assets/product-vinegar.jpg";
 import breadImg from "@/assets/product-bread.jpg";
 import rabbitImg from "@/assets/product-rabbit.jpg";
-import { Sparkles } from "lucide-react";
 
-const products = [
+const fallbackProducts = [
   {
     name: "Kombucha",
     description: "Nasz rodzinny eliksir zdrowia! Fermentowany napój pełen dobrych bakterii. Mama robi ją od 5 lat. 🫖",
@@ -34,7 +38,45 @@ const products = [
   },
 ];
 
+interface DBProduct {
+  id: string;
+  name: string;
+  description: string | null;
+  price: string | null;
+  badge: string | null;
+  image_url: string | null;
+  display_order: number;
+  is_active: boolean;
+}
+
 const Products = () => {
+  const [products, setProducts] = useState<DBProduct[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [useFallback, setUseFallback] = useState(false);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      const { data, error } = await supabase
+        .from("products")
+        .select("*")
+        .eq("is_active", true)
+        .order("display_order", { ascending: true });
+
+      if (error) {
+        console.error("Error fetching products:", error);
+        setUseFallback(true);
+      } else if (!data || data.length === 0) {
+        setUseFallback(true);
+      } else {
+        setProducts(data);
+        setUseFallback(false);
+      }
+      setLoading(false);
+    }
+
+    fetchProducts();
+  }, []);
+
   return (
     <section id="produkty" className="section-padding bg-secondary/40 relative">
       {/* Decorative pattern */}
@@ -56,11 +98,28 @@ const Products = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product) => (
-            <ProductCard key={product.name} {...product} />
-          ))}
-        </div>
+        {loading ? (
+          <div className="flex justify-center py-12">
+            <Loader2 className="w-8 h-8 animate-spin text-primary" />
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {useFallback
+              ? fallbackProducts.map((product) => (
+                  <ProductCard key={product.name} {...product} />
+                ))
+              : products.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    name={product.name}
+                    description={product.description || ""}
+                    image={product.image_url || ""}
+                    price={product.price || ""}
+                    badge={product.badge || undefined}
+                  />
+                ))}
+          </div>
+        )}
 
         <div className="mt-12 text-center">
           <div className="inline-block bg-card border border-primary/20 rounded-2xl px-8 py-6 shadow-soft">
