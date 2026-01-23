@@ -227,6 +227,15 @@ export function ProductImagesManager({ productId, productName }: ProductImagesMa
       .from("product-images")
       .getPublicUrl(fileName);
 
+    // Fetch current state from DB to check if primary
+    const { data: currentImage } = await supabase
+      .from("product_images")
+      .select("is_primary")
+      .eq("id", image.id)
+      .single();
+
+    const isPrimary = currentImage?.is_primary ?? image.is_primary;
+
     // Update database record
     await supabase
       .from("product_images")
@@ -234,7 +243,7 @@ export function ProductImagesManager({ productId, productName }: ProductImagesMa
       .eq("id", image.id);
 
     // If this is the primary image, sync to products.image_url
-    if (image.is_primary) {
+    if (isPrimary) {
       await supabase
         .from("products")
         .update({ image_url: urlData.publicUrl })
