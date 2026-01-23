@@ -1,6 +1,7 @@
 import { Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ProductVariantSelect } from "./ProductVariantSelect";
+import { useProductPrimaryImage } from "./ProductGallery";
 
 interface ProductCardProps {
   id: string;
@@ -12,7 +13,8 @@ interface ProductCardProps {
 
 const ProductCard = ({ id, name, description, image, badge }: ProductCardProps) => {
   const isFallback = id.startsWith("fallback-");
-
+  const primaryImage = useProductPrimaryImage(id, image);
+  const displayImage = primaryImage || image;
   return (
     <div className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-hover transition-all duration-300 hover:-translate-y-2 border border-border/30">
       <Link 
@@ -20,7 +22,7 @@ const ProductCard = ({ id, name, description, image, badge }: ProductCardProps) 
         className="block relative aspect-square overflow-hidden"
       >
         <img
-          src={image}
+          src={displayImage}
           alt={name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
@@ -47,7 +49,7 @@ const ProductCard = ({ id, name, description, image, badge }: ProductCardProps) 
         <ProductVariantSelect
           productId={id}
           productName={name}
-          imageUrl={image}
+          imageUrl={displayImage}
         />
       </div>
     </div>

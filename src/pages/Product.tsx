@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ProductVariantSelect } from "@/components/ProductVariantSelect";
+import { ProductGallery } from "@/components/ProductGallery";
 import { ArrowLeft, Loader2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -101,23 +102,15 @@ const Product = () => {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Product Image */}
+            {/* Product Gallery */}
             <div className="relative">
-              <div className="aspect-square rounded-3xl overflow-hidden shadow-hover bg-secondary/30">
-                {product.image_url ? (
-                  <img
-                    src={product.image_url}
-                    alt={product.name}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                    Brak zdjęcia
-                  </div>
-                )}
-              </div>
+              <ProductGallery
+                productId={product.id}
+                productName={product.name}
+                fallbackImage={product.image_url}
+              />
               {product.badge && (
-                <span className="absolute top-6 left-6 bg-gradient-to-r from-accent to-primary text-accent-foreground text-sm font-semibold px-4 py-2 rounded-full shadow-soft">
+                <span className="absolute top-6 left-6 z-10 bg-gradient-to-r from-accent to-primary text-accent-foreground text-sm font-semibold px-4 py-2 rounded-full shadow-soft">
                   {product.badge}
                 </span>
               )}
