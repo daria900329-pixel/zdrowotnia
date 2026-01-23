@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Home, User, LogOut } from "lucide-react";
+import { Menu, X, User, LogOut } from "lucide-react";
 import { CartSheet } from "./CartSheet";
 import { useAuth } from "@/hooks/useAuth";
+import logoStamp from "@/assets/logo-stamp.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,9 +21,11 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
-            <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary to-honey flex items-center justify-center transition-transform group-hover:scale-105 shadow-soft">
-              <Home className="w-5 h-5 text-primary-foreground" />
-            </div>
+            <img 
+              src={logoStamp} 
+              alt="Od Ziemi - robione powoli" 
+              className="w-14 h-14 transition-transform group-hover:scale-105"
+            />
             <div className="flex flex-col">
               <span className="font-serif text-xl font-semibold text-earth leading-tight">
                 Rodzinne Smaki
