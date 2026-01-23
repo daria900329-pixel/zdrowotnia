@@ -12,7 +12,6 @@ interface CartItem {
   variant_id: string;
   product_name: string;
   variant_name: string;
-  price: number;
   quantity: number;
 }
 
@@ -34,22 +33,72 @@ serve(async (req) => {
     }
 
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
-    const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
+    const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     
     const authHeader = req.headers.get("Authorization")!;
-    const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+    
+    // Use anon key client for auth check
+    const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
+    const supabaseAuth = createClient(supabaseUrl, supabaseAnonKey, {
       global: { headers: { Authorization: authHeader } },
     });
 
-    const { data: { user }, error: userError } = await supabase.auth.getUser();
+    const { data: { user }, error: userError } = await supabaseAuth.auth.getUser();
     if (userError || !user) {
       throw new Error("Unauthorized");
     }
+
+    // Use service role client for database queries (bypasses RLS for price verification)
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     const { items, success_url, cancel_url }: CheckoutRequest = await req.json();
 
     if (!items || items.length === 0) {
       throw new Error("No items in cart");
+    }
+
+    // SECURITY FIX: Validate all variant IDs exist and get prices from database
+    const variantIds = items.map(item => item.variant_id);
+    const { data: variants, error: variantsError } = await supabase
+      .from("product_variants")
+      .select("id, price, name, product_id, is_active")
+      .in("id", variantIds);
+
+    if (variantsError) {
+      console.error("Variants query error:", variantsError);
+      throw new Error("Failed to validate products");
+    }
+
+    if (!variants || variants.length !== items.length) {
+      throw new Error("One or more products are unavailable");
+    }
+
+    // Validate all variants are active
+    const inactiveVariants = variants.filter(v => !v.is_active);
+    if (inactiveVariants.length > 0) {
+      throw new Error("One or more products are no longer available");
+    }
+
+    // Get product names from database for security
+    const productIds = [...new Set(items.map(item => item.product_id))];
+    const { data: products, error: productsError } = await supabase
+      .from("products")
+      .select("id, name, is_active")
+      .in("id", productIds);
+
+    if (productsError) {
+      console.error("Products query error:", productsError);
+      throw new Error("Failed to validate products");
+    }
+
+    if (!products || products.length !== productIds.length) {
+      throw new Error("One or more products are unavailable");
+    }
+
+    // Validate all products are active
+    const inactiveProducts = products.filter(p => !p.is_active);
+    if (inactiveProducts.length > 0) {
+      throw new Error("One or more products are no longer available");
     }
 
     const stripe = new Stripe(stripeKey, {
@@ -70,10 +119,38 @@ serve(async (req) => {
       customerId = customer.id;
     }
 
-    // Calculate total for order record
-    const totalAmount = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    // Calculate total using SERVER-SIDE prices (not client-provided)
+    let totalAmount = 0;
+    const lineItems = items.map(item => {
+      const variant = variants.find(v => v.id === item.variant_id);
+      const product = products.find(p => p.id === item.product_id);
+      
+      if (!variant || !product) {
+        throw new Error("Invalid product or variant");
+      }
 
-    // Create order in database
+      // Verify product_id matches the variant's product_id
+      if (variant.product_id !== item.product_id) {
+        throw new Error("Product and variant mismatch");
+      }
+
+      const serverPrice = Number(variant.price);
+      totalAmount += serverPrice * item.quantity;
+
+      return {
+        price_data: {
+          currency: "pln",
+          product_data: {
+            name: product.name,
+            description: variant.name,
+          },
+          unit_amount: Math.round(serverPrice * 100), // Use SERVER-VALIDATED price
+        },
+        quantity: item.quantity,
+      };
+    });
+
+    // Create order in database with SERVER-VALIDATED total
     const { data: order, error: orderError } = await supabase
       .from("orders")
       .insert({
@@ -89,16 +166,21 @@ serve(async (req) => {
       throw new Error("Failed to create order");
     }
 
-    // Insert order items
-    const orderItems = items.map(item => ({
-      order_id: order.id,
-      product_id: item.product_id,
-      variant_id: item.variant_id,
-      product_name: item.product_name,
-      variant_name: item.variant_name,
-      price: item.price,
-      quantity: item.quantity,
-    }));
+    // Insert order items with SERVER-VALIDATED prices
+    const orderItems = items.map(item => {
+      const variant = variants.find(v => v.id === item.variant_id);
+      const product = products.find(p => p.id === item.product_id);
+      
+      return {
+        order_id: order.id,
+        product_id: item.product_id,
+        variant_id: item.variant_id,
+        product_name: product!.name,
+        variant_name: variant!.name,
+        price: Number(variant!.price),
+        quantity: item.quantity,
+      };
+    });
 
     const { error: itemsError } = await supabase
       .from("order_items")
@@ -109,18 +191,6 @@ serve(async (req) => {
     }
 
     // Create Stripe checkout session
-    const lineItems = items.map(item => ({
-      price_data: {
-        currency: "pln",
-        product_data: {
-          name: item.product_name,
-          description: item.variant_name,
-        },
-        unit_amount: Math.round(item.price * 100), // Convert to grosz
-      },
-      quantity: item.quantity,
-    }));
-
     const session = await stripe.checkout.sessions.create({
       customer: customerId,
       line_items: lineItems,
