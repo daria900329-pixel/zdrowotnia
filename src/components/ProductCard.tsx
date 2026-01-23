@@ -1,4 +1,5 @@
 import { Heart } from "lucide-react";
+import { Link } from "react-router-dom";
 import { ProductVariantSelect } from "./ProductVariantSelect";
 
 interface ProductCardProps {
@@ -10,9 +11,14 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ id, name, description, image, badge }: ProductCardProps) => {
+  const isFallback = id.startsWith("fallback-");
+
   return (
     <div className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-hover transition-all duration-300 hover:-translate-y-2 border border-border/30">
-      <div className="relative aspect-square overflow-hidden">
+      <Link 
+        to={isFallback ? "#" : `/product/${id}`}
+        className="block relative aspect-square overflow-hidden"
+      >
         <img
           src={image}
           alt={name}
@@ -26,13 +32,15 @@ const ProductCard = ({ id, name, description, image, badge }: ProductCardProps) 
         <div className="absolute top-4 right-4 w-10 h-10 bg-background/80 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer hover:bg-background hover:scale-110">
           <Heart className="w-5 h-5 text-accent" />
         </div>
-      </div>
+      </Link>
       
       <div className="p-6">
-        <h3 className="font-serif text-xl font-semibold text-foreground mb-2">
-          {name}
-        </h3>
-        <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+        <Link to={isFallback ? "#" : `/product/${id}`}>
+          <h3 className="font-serif text-xl font-semibold text-foreground mb-2 hover:text-primary transition-colors">
+            {name}
+          </h3>
+        </Link>
+        <p className="text-muted-foreground text-sm mb-4 leading-relaxed line-clamp-2">
           {description}
         </p>
         
