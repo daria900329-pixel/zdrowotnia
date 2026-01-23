@@ -126,48 +126,29 @@ export function ProductImagesManager({ productId, productName }: ProductImagesMa
     setEditingImage(image);
     
     try {
-      const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${import.meta.env.VITE_LOVABLE_API_KEY || ""}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: "google/gemini-2.5-flash-image-preview",
-          messages: [
-            {
-              role: "user",
-              content: [
-                {
-                  type: "text",
-                  text: "Remove the background from this product image and replace it with a clean white background. Keep only the product itself with crisp edges."
-                },
-                {
-                  type: "image_url",
-                  image_url: {
-                    url: image.image_url
-                  }
-                }
-              ]
-            }
-          ],
-          modalities: ["image", "text"]
-        })
+      const { data, error } = await supabase.functions.invoke('edit-image', {
+        body: { imageUrl: image.image_url }
       });
 
-      const data = await response.json();
-      const editedImageUrl = data.choices?.[0]?.message?.images?.[0]?.image_url?.url;
+      if (error) {
+        throw error;
+      }
 
-      if (editedImageUrl) {
-        await saveEditedImage(image, editedImageUrl);
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      if (data.imageUrl) {
+        await saveEditedImage(image, data.imageUrl);
         toast({ title: "Sukces", description: "Tło zostało usunięte" });
       } else {
         throw new Error("No image returned");
       }
     } catch (error) {
+      console.error("Remove background error:", error);
       toast({
         title: "Błąd",
-        description: "Nie udało się usunąć tła",
+        description: error instanceof Error ? error.message : "Nie udało się usunąć tła",
         variant: "destructive",
       });
     }
@@ -182,40 +163,23 @@ export function ProductImagesManager({ productId, productName }: ProductImagesMa
     setProcessing(true);
     
     try {
-      const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${import.meta.env.VITE_LOVABLE_API_KEY || ""}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: "google/gemini-2.5-flash-image-preview",
-          messages: [
-            {
-              role: "user",
-              content: [
-                {
-                  type: "text",
-                  text: editPrompt
-                },
-                {
-                  type: "image_url",
-                  image_url: {
-                    url: editingImage.image_url
-                  }
-                }
-              ]
-            }
-          ],
-          modalities: ["image", "text"]
-        })
+      const { data, error } = await supabase.functions.invoke('edit-image', {
+        body: { 
+          imageUrl: editingImage.image_url,
+          prompt: editPrompt
+        }
       });
 
-      const data = await response.json();
-      const editedImageUrl = data.choices?.[0]?.message?.images?.[0]?.image_url?.url;
+      if (error) {
+        throw error;
+      }
 
-      if (editedImageUrl) {
-        await saveEditedImage(editingImage, editedImageUrl);
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      if (data.imageUrl) {
+        await saveEditedImage(editingImage, data.imageUrl);
         toast({ title: "Sukces", description: "Zdjęcie zostało zmodyfikowane" });
         setEditPrompt("");
         setEditingImage(null);
@@ -223,9 +187,10 @@ export function ProductImagesManager({ productId, productName }: ProductImagesMa
         throw new Error("No image returned");
       }
     } catch (error) {
+      console.error("Custom edit error:", error);
       toast({
         title: "Błąd",
-        description: "Nie udało się zmodyfikować zdjęcia",
+        description: error instanceof Error ? error.message : "Nie udało się zmodyfikować zdjęcia",
         variant: "destructive",
       });
     }
