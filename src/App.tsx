@@ -10,9 +10,14 @@ import woodPattern from "@/assets/wood-pattern.jpg";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <div 
-    className="min-h-screen bg-repeat"
-    style={{ backgroundImage: `url(${woodPattern})` }}
+  <div
+    className="min-h-screen"
+    style={{
+      backgroundImage: `linear-gradient(hsl(var(--background) / 0.35), hsl(var(--background) / 0.35)), url(${woodPattern})`,
+      backgroundRepeat: "repeat",
+      backgroundSize: "1600px auto",
+      backgroundPosition: "top center",
+    }}
   >
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
