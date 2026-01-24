@@ -19,7 +19,7 @@ const Footer = () => {
             <img 
               src={logoStamp} 
               alt="Zdrowotnia - prawdziwe jedzenie z prostych powodów" 
-              className="h-36"
+              className="h-72"
             />
           </div>
 
