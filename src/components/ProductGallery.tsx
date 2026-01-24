@@ -52,12 +52,12 @@ export function ProductGallery({ productId, productName, fallbackImage }: Produc
   // If no gallery images, show fallback
   if (!loading && images.length === 0) {
     return (
-      <div className="aspect-square rounded-3xl overflow-hidden shadow-hover bg-white flex items-center justify-center">
+      <div className="aspect-square rounded-3xl overflow-hidden shadow-hover bg-white p-4">
         {fallbackImage ? (
           <img
             src={fallbackImage}
             alt={productName}
-            className="max-w-full max-h-full object-contain"
+            className="w-full h-full object-contain"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-muted-foreground">
@@ -77,11 +77,11 @@ export function ProductGallery({ productId, productName, fallbackImage }: Produc
   return (
     <div className="space-y-4">
       {/* Main Image */}
-      <div className="aspect-square rounded-3xl overflow-hidden shadow-hover bg-white flex items-center justify-center">
+      <div className="aspect-square rounded-3xl overflow-hidden shadow-hover bg-white p-4">
         <img
           src={images[selectedIndex]?.image_url}
           alt={`${productName} - zdjęcie ${selectedIndex + 1}`}
-          className="max-w-full max-h-full object-contain"
+          className="w-full h-full object-contain"
         />
       </div>
 
