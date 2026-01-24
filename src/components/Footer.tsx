@@ -42,7 +42,9 @@ const Footer = () => {
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61586838341028"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-12 h-12 rounded-full bg-primary/30 flex items-center justify-center hover:bg-primary/50 transition-all hover:scale-110"
                 aria-label="Facebook"
               >
