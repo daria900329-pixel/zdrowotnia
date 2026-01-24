@@ -1,6 +1,7 @@
-import { Home, Instagram, Facebook, Heart } from "lucide-react";
+import { Instagram, Facebook, Heart } from "lucide-react";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import { useIsAdmin } from "@/hooks/useIsAdmin";
+import logoStamp from "@/assets/logo-stamp.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -15,15 +16,11 @@ const Footer = () => {
         <div className="flex flex-col items-center text-center gap-8">
           {/* Logo */}
           <div className="flex flex-col items-center gap-3">
-            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-honey flex items-center justify-center shadow-lg">
-              <Home className="w-7 h-7 text-primary-foreground" />
-            </div>
-            <div>
-              <span className="font-serif text-2xl font-semibold block">
-                Rodzinne Smaki
-              </span>
-              <span className="text-sm opacity-80">z serca do serca ❤️</span>
-            </div>
+            <img 
+              src={logoStamp} 
+              alt="Zdrowotnia - prawdziwe jedzenie z prostych powodów" 
+              className="h-20"
+            />
           </div>
 
           {/* Warm message */}
@@ -52,7 +49,7 @@ const Footer = () => {
           {/* Copyright */}
           <div className="pt-6 border-t border-earth-foreground/20 w-full space-y-2">
             <p className="text-sm opacity-70 flex items-center justify-center gap-2">
-              © {currentYear} Rodzinne Smaki • Robione z <Heart className="w-4 h-4 text-accent inline" /> w Polsce
+              © {currentYear} Zdrowotnia • Robione z <Heart className="w-4 h-4 text-accent inline" /> w Polsce
             </p>
             {isAdmin && (
               <a 

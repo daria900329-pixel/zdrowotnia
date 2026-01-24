@@ -23,15 +23,9 @@ const Header = () => {
           <a href="#" className="flex items-center gap-3 group">
             <img 
               src={logoStamp} 
-              alt="Od Ziemi - robione powoli" 
-              className="w-14 h-14 transition-transform group-hover:scale-105"
+              alt="Zdrowotnia - prawdziwe jedzenie z prostych powodów" 
+              className="h-14 transition-transform group-hover:scale-105"
             />
-            <div className="flex flex-col">
-              <span className="font-serif text-xl font-semibold text-earth leading-tight">
-                Rodzinne Smaki
-              </span>
-              <span className="text-xs text-muted-foreground">z serca do serca ❤️</span>
-            </div>
           </a>
 
           {/* Desktop Navigation */}
