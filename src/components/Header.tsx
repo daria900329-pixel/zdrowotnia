@@ -24,7 +24,7 @@ const Header = () => {
             <img 
               src={logoStamp} 
               alt="Zdrowotnia - prawdziwe jedzenie z prostych powodów" 
-              className="h-48 transition-transform group-hover:scale-105"
+              className="h-32 transition-transform group-hover:scale-105"
             />
           </a>
 
