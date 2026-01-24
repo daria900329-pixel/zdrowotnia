@@ -53,9 +53,6 @@ const Contact = () => {
       
       <div className="container mx-auto relative">
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="inline-flex items-center gap-2 text-accent font-medium mb-3 bg-accent/10 px-3 py-1 rounded-full text-sm">
-            ☎️ Porozmawiajmy
-          </span>
           <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-4">
             {title}
           </h2>
