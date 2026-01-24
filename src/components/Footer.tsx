@@ -1,7 +1,7 @@
 import { Instagram, Facebook, Heart } from "lucide-react";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import { useIsAdmin } from "@/hooks/useIsAdmin";
-import logoStamp from "@/assets/logo-stamp.png";
+import logoStampDark from "@/assets/logo-stamp-dark.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -17,7 +17,7 @@ const Footer = () => {
           {/* Logo */}
           <div className="flex flex-col items-center gap-3">
             <img 
-              src={logoStamp} 
+              src={logoStampDark} 
               alt="Zdrowotnia - prawdziwe jedzenie z prostych powodów" 
               className="h-72"
             />
