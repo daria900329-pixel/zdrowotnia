@@ -75,7 +75,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center pt-20">
+    <section className="relative min-h-[70vh] flex items-center pt-20">
       {/* Background Image */}
       <div
         ref={frameRef}
