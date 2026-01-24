@@ -10,6 +10,7 @@ interface Variant {
   unit: string;
   value: number;
   price: number;
+  promo_price: number | null;
 }
 
 interface ProductVariantSelectProps {
@@ -29,7 +30,7 @@ export function ProductVariantSelect({ productId, productName, imageUrl }: Produ
     async function fetchVariants() {
       const { data, error } = await supabase
         .from("product_variants")
-        .select("id, name, unit, value, price")
+        .select("id, name, unit, value, price, promo_price")
         .eq("product_id", productId)
         .eq("is_active", true)
         .order("display_order", { ascending: true });
@@ -103,9 +104,22 @@ export function ProductVariantSelect({ productId, productName, imageUrl }: Produ
 
       <div className="flex items-center justify-between gap-2">
         {selectedVariant && (
-          <span className="font-semibold text-lg text-primary">
-            {formatPrice(selectedVariant.price)}
-          </span>
+          <div className="flex items-center gap-2">
+            {selectedVariant.promo_price ? (
+              <>
+                <span className="text-muted-foreground line-through text-sm">
+                  {formatPrice(selectedVariant.price)}
+                </span>
+                <span className="font-semibold text-lg text-destructive">
+                  {formatPrice(selectedVariant.promo_price)}
+                </span>
+              </>
+            ) : (
+              <span className="font-semibold text-lg text-primary">
+                {formatPrice(selectedVariant.price)}
+              </span>
+            )}
+          </div>
         )}
         <Button
           onClick={handleAddToCart}

@@ -26,6 +26,7 @@ interface Variant {
   unit: string;
   value: number;
   price: number;
+  promo_price: number | null;
   display_order: number;
   is_active: boolean;
 }
@@ -48,6 +49,7 @@ export function ProductVariantsInline({ productId, productName }: ProductVariant
     unit: "ml",
     value: 0,
     price: 0,
+    promo_price: null as number | null,
     display_order: 0,
     is_active: true,
   });
@@ -95,6 +97,7 @@ export function ProductVariantsInline({ productId, productName }: ProductVariant
       unit: newVariant.unit,
       value: newVariant.value,
       price: newVariant.price,
+      promo_price: newVariant.promo_price,
       display_order: newVariant.display_order,
       is_active: newVariant.is_active,
     });
@@ -113,6 +116,7 @@ export function ProductVariantsInline({ productId, productName }: ProductVariant
         unit: "ml",
         value: 0,
         price: 0,
+        promo_price: null,
         display_order: 0,
         is_active: true,
       });
@@ -273,6 +277,17 @@ export function ProductVariantsInline({ productId, productName }: ProductVariant
                           className="h-8 text-sm"
                         />
                       </div>
+                      <div className="space-y-1">
+                        <Label className="text-xs">Cena promo (PLN)</Label>
+                        <Input
+                          type="number"
+                          step="0.01"
+                          value={editForm.promo_price ?? ""}
+                          onChange={(e) => setEditForm({ ...editForm, promo_price: e.target.value ? parseFloat(e.target.value) : null })}
+                          placeholder="Puste = brak"
+                          className="h-8 text-sm"
+                        />
+                      </div>
                     </div>
                     <div className="flex gap-2">
                       <Button size="sm" onClick={() => handleUpdateVariant(variant.id)}>
@@ -314,9 +329,22 @@ export function ProductVariantsInline({ productId, productName }: ProductVariant
                         ({variant.value} {variant.unit})
                       </span>
                     </div>
-                    <span className="font-semibold text-primary text-sm">
-                      {formatPrice(variant.price)}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      {variant.promo_price ? (
+                        <>
+                          <span className="text-muted-foreground text-sm line-through">
+                            {formatPrice(variant.price)}
+                          </span>
+                          <span className="font-semibold text-destructive text-sm">
+                            {formatPrice(variant.promo_price)}
+                          </span>
+                        </>
+                      ) : (
+                        <span className="font-semibold text-primary text-sm">
+                          {formatPrice(variant.price)}
+                        </span>
+                      )}
+                    </div>
                     <Switch
                       checked={variant.is_active}
                       onCheckedChange={() => handleToggleActive(variant)}
@@ -394,6 +422,17 @@ export function ProductVariantsInline({ productId, productName }: ProductVariant
                       value={newVariant.price}
                       onChange={(e) => setNewVariant({ ...newVariant, price: parseFloat(e.target.value) || 0 })}
                       placeholder="np. 15.00"
+                      className="h-8 text-sm"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <Label className="text-xs">Cena promo</Label>
+                    <Input
+                      type="number"
+                      step="0.01"
+                      value={newVariant.promo_price ?? ""}
+                      onChange={(e) => setNewVariant({ ...newVariant, promo_price: e.target.value ? parseFloat(e.target.value) : null })}
+                      placeholder="Puste = brak"
                       className="h-8 text-sm"
                     />
                   </div>

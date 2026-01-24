@@ -197,6 +197,7 @@ export type Database = {
           name: string
           price: number
           product_id: string
+          promo_price: number | null
           unit: string
           value: number
         }
@@ -208,6 +209,7 @@ export type Database = {
           name: string
           price: number
           product_id: string
+          promo_price?: number | null
           unit?: string
           value: number
         }
@@ -219,6 +221,7 @@ export type Database = {
           name?: string
           price?: number
           product_id?: string
+          promo_price?: number | null
           unit?: string
           value?: number
         }
