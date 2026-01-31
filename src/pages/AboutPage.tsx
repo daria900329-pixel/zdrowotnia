@@ -2,6 +2,7 @@ import { Heart, Sparkles, Home, Users, Leaf, Clock, Award, MapPin, Loader2 } fro
 import { useSiteContent } from "@/hooks/useSiteContent";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AboutGallery from "@/components/AboutGallery";
 
 const values = [
   {
@@ -164,6 +165,9 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Gallery Section */}
+      <AboutGallery />
 
       {/* Timeline Section */}
       <section className="py-20 bg-secondary/30">
