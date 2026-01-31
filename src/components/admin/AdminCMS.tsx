@@ -31,13 +31,21 @@ const sections: ContentSection[] = [
   },
   {
     key: "about",
-    label: "O nas",
+    label: "O nas (główna)",
     fields: [
       { name: "title", label: "Tytuł", type: "input" },
       { name: "badge", label: "Odznaka", type: "input" },
       { name: "paragraph1", label: "Akapit 1", type: "textarea" },
       { name: "paragraph2", label: "Akapit 2", type: "textarea" },
       { name: "highlight", label: "Wyróżnienie", type: "textarea" },
+    ],
+  },
+  {
+    key: "about_page",
+    label: "O nas (strona)",
+    fields: [
+      { name: "gallery_title", label: "Tytuł galerii", type: "input" },
+      { name: "gallery_subtitle", label: "Podtytuł galerii", type: "textarea" },
     ],
   },
   {
@@ -145,9 +153,9 @@ export function AdminCMS() {
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="hero">
-          <TabsList className="grid grid-cols-5 mb-6">
+          <TabsList className="grid grid-cols-6 mb-6">
             {sections.map((section) => (
-              <TabsTrigger key={section.key} value={section.key}>
+              <TabsTrigger key={section.key} value={section.key} className="text-xs md:text-sm">
                 {section.label}
               </TabsTrigger>
             ))}
