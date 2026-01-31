@@ -10,9 +10,9 @@ const Header = () => {
   const { user, signOut } = useAuth();
 
   const navLinks = [
-    { label: "Produkty", href: "#produkty" },
-    { label: "O nas", href: "#o-nas" },
-    { label: "Kontakt", href: "#kontakt" },
+    { label: "Produkty", href: "/#produkty" },
+    { label: "O nas", href: "/o-nas" },
+    { label: "Kontakt", href: "/#kontakt" },
   ];
 
   return (
