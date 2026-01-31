@@ -11,6 +11,7 @@ import Admin from "./pages/Admin";
 import Product from "./pages/Product";
 import CheckoutSuccess from "./pages/CheckoutSuccess";
 import CheckoutCancel from "./pages/CheckoutCancel";
+import AboutPage from "./pages/AboutPage";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/o-nas" element={<AboutPage />} />
             <Route path="/product/:id" element={<Product />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/admin" element={<Admin />} />
