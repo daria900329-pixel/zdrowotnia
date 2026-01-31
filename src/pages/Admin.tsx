@@ -11,12 +11,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Loader2, Plus, Trash2, Edit, Save, X, LogOut, Upload, Package, FileText, Image } from "lucide-react";
+import { Loader2, Plus, Trash2, Edit, Save, X, LogOut, Upload, Package, FileText } from "lucide-react";
 import { AdminCMS } from "@/components/admin/AdminCMS";
 import { AdminOrders } from "@/components/admin/AdminOrders";
 import { ProductVariantsInline } from "@/components/admin/ProductVariantsInline";
 import { ProductImagesManager } from "@/components/admin/ProductImagesManager";
-import { AdminAboutGallery } from "@/components/admin/AdminAboutGallery";
 
 interface Product {
   id: string;
@@ -254,10 +253,9 @@ const Admin = () => {
         </div>
 
         <Tabs defaultValue="products" className="space-y-6">
-          <TabsList className="grid grid-cols-4 w-full">
+          <TabsList className="grid grid-cols-3 w-full">
             <TabsTrigger value="products"><Package className="w-4 h-4 mr-2" />Produkty</TabsTrigger>
             <TabsTrigger value="content"><FileText className="w-4 h-4 mr-2" />Treści</TabsTrigger>
-            <TabsTrigger value="gallery"><Image className="w-4 h-4 mr-2" />Galeria</TabsTrigger>
             <TabsTrigger value="orders"><Package className="w-4 h-4 mr-2" />Zamówienia</TabsTrigger>
           </TabsList>
 
@@ -674,10 +672,6 @@ const Admin = () => {
 
           <TabsContent value="content">
             <AdminCMS />
-          </TabsContent>
-
-          <TabsContent value="gallery">
-            <AdminAboutGallery />
           </TabsContent>
 
           <TabsContent value="orders">
