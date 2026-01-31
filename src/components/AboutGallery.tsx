@@ -1,29 +1,30 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Loader2 } from "lucide-react";
+import { Loader2, Play, X } from "lucide-react";
 import { useSiteContent } from "@/hooks/useSiteContent";
 
-interface GalleryImage {
+interface GalleryItem {
   id: string;
   image_url: string;
   caption: string | null;
   display_order: number;
+  media_type: "image" | "video";
 }
 
 const AboutGallery = () => {
-  const [images, setImages] = useState<GalleryImage[]>([]);
+  const [items, setItems] = useState<GalleryItem[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+  const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
   const { content } = useSiteContent("about_page");
 
   const galleryTitle = content.gallery_title || "Nasza Codzienność";
   const gallerySubtitle = content.gallery_subtitle || "Zajrzyj za kulisy naszej pracy";
 
   useEffect(() => {
-    fetchImages();
+    fetchItems();
   }, []);
 
-  const fetchImages = async () => {
+  const fetchItems = async () => {
     const { data, error } = await supabase
       .from("about_gallery")
       .select("*")
@@ -31,7 +32,7 @@ const AboutGallery = () => {
       .order("display_order", { ascending: true });
 
     if (!error && data) {
-      setImages(data);
+      setItems(data as GalleryItem[]);
     }
     setLoading(false);
   };
@@ -46,7 +47,7 @@ const AboutGallery = () => {
     );
   }
 
-  if (images.length === 0) {
+  if (items.length === 0) {
     return null;
   }
 
@@ -64,21 +65,40 @@ const AboutGallery = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {images.map((image) => (
+            {items.map((item) => (
               <div
-                key={image.id}
+                key={item.id}
                 className="relative group cursor-pointer overflow-hidden rounded-xl aspect-square"
-                onClick={() => setSelectedImage(image)}
+                onClick={() => setSelectedItem(item)}
               >
-                <img
-                  src={image.image_url}
-                  alt={image.caption || ""}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300" />
-                {image.caption && (
+                {item.media_type === "video" ? (
+                  <>
+                    <video
+                      src={item.image_url}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      muted
+                      playsInline
+                      preload="metadata"
+                    />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Play className="w-5 h-5 text-primary ml-0.5" fill="currentColor" />
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <img
+                      src={item.image_url}
+                      alt={item.caption || ""}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300" />
+                  </>
+                )}
+                {item.caption && (
                   <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="text-white text-sm">{image.caption}</p>
+                    <p className="text-white text-sm">{item.caption}</p>
                   </div>
                 )}
               </div>
@@ -88,20 +108,40 @@ const AboutGallery = () => {
       </section>
 
       {/* Lightbox */}
-      {selectedImage && (
+      {selectedItem && (
         <div
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
+          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
+          onClick={() => setSelectedItem(null)}
         >
-          <div className="relative max-w-4xl max-h-[90vh]">
-            <img
-              src={selectedImage.image_url}
-              alt={selectedImage.caption || ""}
-              className="max-w-full max-h-[90vh] object-contain rounded-lg"
-            />
-            {selectedImage.caption && (
-              <p className="absolute bottom-4 left-4 right-4 text-white text-center bg-black/50 p-3 rounded-lg">
-                {selectedImage.caption}
+          <button
+            className="absolute top-4 right-4 text-white/70 hover:text-white z-10"
+            onClick={() => setSelectedItem(null)}
+          >
+            <X className="w-8 h-8" />
+          </button>
+          
+          <div 
+            className="relative max-w-5xl w-full max-h-[90vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {selectedItem.media_type === "video" ? (
+              <video
+                src={selectedItem.image_url}
+                className="w-full max-h-[85vh] object-contain rounded-lg"
+                controls
+                autoPlay
+                playsInline
+              />
+            ) : (
+              <img
+                src={selectedItem.image_url}
+                alt={selectedItem.caption || ""}
+                className="w-full max-h-[85vh] object-contain rounded-lg"
+              />
+            )}
+            {selectedItem.caption && (
+              <p className="text-white text-center mt-4 text-lg">
+                {selectedItem.caption}
               </p>
             )}
           </div>
