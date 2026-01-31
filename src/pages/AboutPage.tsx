@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AboutGallery from "@/components/AboutGallery";
 
-const values = [
+const defaultValues = [
   {
     icon: Sparkles,
     title: "100% Naturalne",
@@ -27,44 +27,54 @@ const values = [
   },
 ];
 
-const timeline = [
-  {
-    year: "2018",
-    title: "Pierwsze Eksperymenty",
-    description: "Zaczęliśmy od fermentacji pierwszej kombuchy w domowej kuchni. To był początek wielkiej przygody.",
-  },
-  {
-    year: "2020",
-    title: "Rozwój Hodowli",
-    description: "Założyliśmy własną hodowlę królików, stawiając na dobrostan zwierząt i jakość mięsa.",
-  },
-  {
-    year: "2022",
-    title: "Powiększenie Asortymentu",
-    description: "Do oferty dołączyły octy owocowe, chleb na zakwasie i przetwory domowe.",
-  },
-  {
-    year: "2024",
-    title: "Zdrowotnia Online",
-    description: "Uruchomiliśmy sklep internetowy, by dzielić się naszymi produktami z całą Polską.",
-  },
-];
-
-const stats = [
-  { value: "6+", label: "Lat Doświadczenia", icon: Clock },
-  { value: "1000+", label: "Zadowolonych Klientów", icon: Users },
-  { value: "100%", label: "Naturalne Składniki", icon: Leaf },
-  { value: "3+", label: "Lata Naszego Zakwasu", icon: Award },
-];
+const valueIcons = [Sparkles, Heart, Home, Users];
+const statIcons = [Clock, Users, Leaf, Award];
 
 const AboutPage = () => {
-  const { content, loading } = useSiteContent("about");
+  const { content, loading } = useSiteContent("about_page");
 
-  const title = content.title || "Witaj w naszym domu! 🏡";
-  const badge = content.badge || "Nasza Historia";
-  const paragraph1 = content.paragraph1 || "Jesteśmy zwykłą rodziną, która odkryła magię domowego jedzenia. To, co zaczęło się jako pasja — fermentacja pierwszej kombuchy w kuchni — dziś stało się sposobem życia, którym chcemy się dzielić.";
-  const paragraph2 = content.paragraph2 || "Nasze produkty powstają dokładnie tak, jak robiły to nasze babcie — bez pośpiechu, z sercem i z najlepszych składników. Króliki hodujemy sami, chleb pieczyemy na zakwasie, który ma już ponad 3 lata!";
-  const highlight = content.highlight || "✨ Wierzymy, że dobre jedzenie łączy ludzi. Zapraszamy Cię do naszego stołu!";
+  // Hero
+  const heroTitle = content.hero_title || "Witaj w naszym domu! 🏡";
+  const heroBadge = content.hero_badge || "Nasza Historia";
+  const heroParagraph = content.hero_paragraph1 || "Jesteśmy zwykłą rodziną, która odkryła magię domowego jedzenia.";
+
+  // Story
+  const storyTitle = content.story_title || "Nasza Droga do Zdrowotni";
+  const storyParagraph1 = content.story_paragraph1 || "Króliki hodujemy sami, chleb pieczyemy na zakwasie.";
+  const storyParagraph2 = content.story_paragraph2 || "Wszystko zaczęło się od prostej potrzeby — chcieliśmy wiedzieć, co jemy.";
+  const storyParagraph3 = content.story_paragraph3 || "Dziś nasza kuchnia to prawdziwa manufaktura.";
+  const storyHighlight = content.story_highlight || "✨ Wierzymy, że dobre jedzenie łączy ludzi. Zapraszamy Cię do naszego stołu!";
+
+  // Stats
+  const stats = [
+    { value: content.stat1_value || "6+", label: content.stat1_label || "Lat Doświadczenia", icon: statIcons[0] },
+    { value: content.stat2_value || "1000+", label: content.stat2_label || "Zadowolonych Klientów", icon: statIcons[1] },
+    { value: content.stat3_value || "100%", label: content.stat3_label || "Naturalne Składniki", icon: statIcons[2] },
+    { value: content.stat4_value || "3+", label: content.stat4_label || "Lata Naszego Zakwasu", icon: statIcons[3] },
+  ];
+
+  // Values
+  const values = [
+    { icon: valueIcons[0], title: content.value1_title || defaultValues[0].title, description: content.value1_desc || defaultValues[0].description },
+    { icon: valueIcons[1], title: content.value2_title || defaultValues[1].title, description: content.value2_desc || defaultValues[1].description },
+    { icon: valueIcons[2], title: content.value3_title || defaultValues[2].title, description: content.value3_desc || defaultValues[2].description },
+    { icon: valueIcons[3], title: content.value4_title || defaultValues[3].title, description: content.value4_desc || defaultValues[3].description },
+  ];
+
+  // Timeline
+  const timelineTitle = content.timeline_title || "Nasza Historia";
+  const timelineSubtitle = content.timeline_subtitle || "Od pierwszego słoika kombuchy do pełnoprawnej manufaktury — oto nasza droga.";
+  const timeline = [
+    { year: content.timeline1_year || "2018", title: content.timeline1_title || "Pierwsze Eksperymenty", description: content.timeline1_desc || "Zaczęliśmy od fermentacji pierwszej kombuchy w domowej kuchni." },
+    { year: content.timeline2_year || "2020", title: content.timeline2_title || "Rozwój Hodowli", description: content.timeline2_desc || "Założyliśmy własną hodowlę królików." },
+    { year: content.timeline3_year || "2022", title: content.timeline3_title || "Powiększenie Asortymentu", description: content.timeline3_desc || "Do oferty dołączyły octy owocowe, chleb na zakwasie i przetwory." },
+    { year: content.timeline4_year || "2024", title: content.timeline4_title || "Zdrowotnia Online", description: content.timeline4_desc || "Uruchomiliśmy sklep internetowy." },
+  ];
+
+  // Location
+  const locationTitle = content.location_title || "Gdzie Nas Znajdziesz?";
+  const locationDescription = content.location_description || "Działamy z małej miejscowości na Mazurach.";
+  const locationCta = content.location_cta || "Skontaktuj się z Nami";
 
   if (loading) {
     return (
@@ -86,13 +96,13 @@ const AboutPage = () => {
         <div className="container mx-auto px-6 relative">
           <div className="max-w-3xl mx-auto text-center">
             <span className="inline-flex items-center gap-2 text-accent font-medium mb-4 bg-accent/10 px-4 py-2 rounded-full text-sm">
-              <Heart className="w-4 h-4" /> {badge}
+              <Heart className="w-4 h-4" /> {heroBadge}
             </span>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-6">
-              {title}
+              {heroTitle}
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              {paragraph1}
+              {heroParagraph}
             </p>
           </div>
         </div>
@@ -123,23 +133,14 @@ const AboutPage = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-6">
-                Nasza Droga do Zdrowotni
+                {storyTitle}
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>{paragraph2}</p>
-                <p>
-                  Wszystko zaczęło się od prostej potrzeby — chcieliśmy wiedzieć, co jemy. 
-                  Zmęczeni listami składników, których nie potrafimy wymówić, postanowiliśmy 
-                  wrócić do korzeni. Do kuchni naszych babć, gdzie jedzenie było proste, 
-                  prawdziwe i pełne smaku.
-                </p>
-                <p>
-                  Dziś nasza kuchnia to prawdziwa manufaktura. Fermentujemy, kisimy, 
-                  wędzimy i pieczemy — wszystko według tradycyjnych receptur, które 
-                  udoskonalaliśmy przez lata.
-                </p>
+                <p>{storyParagraph1}</p>
+                <p>{storyParagraph2}</p>
+                <p>{storyParagraph3}</p>
                 <p className="text-foreground font-medium bg-secondary/50 p-4 rounded-xl border-l-4 border-primary">
-                  {highlight}
+                  {storyHighlight}
                 </p>
               </div>
             </div>
@@ -174,10 +175,10 @@ const AboutPage = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-4">
-              Nasza Historia
+              {timelineTitle}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Od pierwszego słoika kombuchy do pełnoprawnej manufaktury — oto nasza droga.
+              {timelineSubtitle}
             </p>
           </div>
 
@@ -225,19 +226,17 @@ const AboutPage = () => {
               <MapPin className="w-8 h-8 text-primary" />
             </div>
             <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-4">
-              Gdzie Nas Znajdziesz?
+              {locationTitle}
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              Działamy z małej miejscowości na Mazurach, gdzie czyste powietrze 
-              i piękna natura inspirują nas każdego dnia. Nasze produkty wysyłamy 
-              do całej Polski — świeże i starannie zapakowane.
+              {locationDescription}
             </p>
             <a
               href="/#kontakt"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-medium hover:bg-primary/90 transition-colors"
             >
               <Heart className="w-4 h-4" />
-              Skontaktuj się z Nami
+              {locationCta}
             </a>
           </div>
         </div>
