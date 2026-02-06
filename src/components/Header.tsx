@@ -46,11 +46,23 @@ const Header = () => {
             
             <CartSheet />
             
-            <div className="relative group">
-              <div className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
-                <span className="text-xs text-muted-foreground font-medium">Zmiana nastroju jednym kliknięciem</span>
-                <svg className="w-4 h-4 mx-auto mt-1 text-muted-foreground animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            <div className="relative">
+              <div className="absolute -top-14 left-1/2 -translate-x-1/2 pointer-events-none whitespace-nowrap flex flex-col items-center">
+                <span 
+                  className="text-sm text-earth dark:text-honey -rotate-2"
+                  style={{ fontFamily: "'Caveat', cursive", fontSize: '15px' }}
+                >
+                  Zmiana nastroju jednym kliknięciem
+                </span>
+                <svg 
+                  className="w-6 h-6 text-earth dark:text-honey mt-0.5 rotate-6" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor"
+                  style={{ strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: 1.5 }}
+                >
+                  <path d="M12 5c0 0 -1 4 -1 8c0 2 0.5 4 0.5 4" />
+                  <path d="M8 14c1.5 1.5 3 3 4 4c1-1 2.5-2.5 4-4" />
                 </svg>
               </div>
               <ThemeToggle />
