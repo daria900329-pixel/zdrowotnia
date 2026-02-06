@@ -3,11 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, User, LogOut } from "lucide-react";
 import { CartSheet } from "./CartSheet";
 import { useAuth } from "@/hooks/useAuth";
+import { ThemeToggle } from "./ThemeToggle";
 import logoStamp from "@/assets/logo-stamp.png";
+import logoStampDark from "@/assets/logo-stamp-dark.png";
+import { useTheme } from "next-themes";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, signOut } = useAuth();
+  const { resolvedTheme } = useTheme();
 
   const navLinks = [
     { label: "Produkty", href: "/#produkty" },
@@ -22,7 +26,7 @@ const Header = () => {
           {/* Logo */}
           <a href="/" className="flex items-center gap-3 group">
             <img 
-              src={logoStamp} 
+              src={resolvedTheme === "dark" ? logoStampDark : logoStamp} 
               alt="Zdrowotnia - prawdziwe jedzenie z prostych powodów" 
               className="h-32 transition-transform group-hover:scale-105"
             />
@@ -41,6 +45,8 @@ const Header = () => {
             ))}
             
             <CartSheet />
+            
+            <ThemeToggle />
             
             {user ? (
               <div className="flex items-center gap-2">
@@ -61,6 +67,7 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-2">
             <CartSheet />
+            <ThemeToggle />
             <button
               className="p-2 text-foreground"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
