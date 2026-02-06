@@ -46,7 +46,15 @@ const Header = () => {
             
             <CartSheet />
             
-            <ThemeToggle />
+            <div className="relative group">
+              <div className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                <span className="text-xs text-muted-foreground font-medium">Zmiana nastroju jednym kliknięciem</span>
+                <svg className="w-4 h-4 mx-auto mt-1 text-muted-foreground animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </div>
+              <ThemeToggle />
+            </div>
             
             {user ? (
               <div className="flex items-center gap-2">
