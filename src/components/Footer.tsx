@@ -12,8 +12,8 @@ const Footer = () => {
 
   return (
     <footer>
-      {/* Logo section - white background */}
-      <div className="bg-background py-12">
+      {/* Logo section - white background, beige in dark mode */}
+      <div className="bg-background dark:bg-[#c9c0ae] py-12">
         <div className="container mx-auto px-6 flex justify-center">
           <img 
             src={logoStampDark} 

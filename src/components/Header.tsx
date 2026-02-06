@@ -25,11 +25,13 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="/" className="flex items-center gap-3 group">
-            <img 
-              src={resolvedTheme === "dark" ? logoStampDark : logoStamp} 
-              alt="Zdrowotnia - prawdziwe jedzenie z prostych powodów" 
-              className="h-32 transition-transform group-hover:scale-105"
-            />
+            <div className="dark:bg-[#c9c0ae] dark:rounded-full dark:p-2">
+              <img 
+                src={resolvedTheme === "dark" ? logoStampDark : logoStamp} 
+                alt="Zdrowotnia - prawdziwe jedzenie z prostych powodów" 
+                className="h-32 transition-transform group-hover:scale-105"
+              />
+            </div>
           </a>
 
           {/* Desktop Navigation */}
