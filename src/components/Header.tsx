@@ -20,16 +20,18 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 dark:bg-[#c9c0ae]/95 backdrop-blur-sm border-b border-border/50">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/50">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="/" className="flex items-center gap-3 group">
-            <img 
-              src={resolvedTheme === "dark" ? logoStampDark : logoStamp} 
-              alt="Zdrowotnia - prawdziwe jedzenie z prostych powodów" 
-              className="h-32 transition-transform group-hover:scale-105"
-            />
+            <div className="dark:bg-[#c9c0ae] dark:rounded-full dark:p-2">
+              <img 
+                src={resolvedTheme === "dark" ? logoStampDark : logoStamp} 
+                alt="Zdrowotnia - prawdziwe jedzenie z prostych powodów" 
+                className="h-32 transition-transform group-hover:scale-105"
+              />
+            </div>
           </a>
 
           {/* Desktop Navigation */}

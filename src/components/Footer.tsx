@@ -24,7 +24,7 @@ const Footer = () => {
       </div>
 
       {/* Brown section - message, socials, copyright */}
-      <div className="bg-earth dark:bg-[#c9c0ae] text-earth-foreground dark:text-earth py-12">
+      <div className="bg-earth text-earth-foreground py-12">
         <div className="container mx-auto px-6">
           <div className="flex flex-col items-center text-center gap-8">
             {/* Warm message */}
