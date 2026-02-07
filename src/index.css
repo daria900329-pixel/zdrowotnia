@@ -133,6 +133,10 @@
     font-family: 'Playfair Display', serif;
     @apply font-medium tracking-tight;
   }
+
+  .font-handwritten {
+    font-family: 'Dancing Script', cursive;
+  }
 }
 
 @layer components {
