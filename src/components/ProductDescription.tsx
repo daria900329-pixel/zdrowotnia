@@ -168,7 +168,7 @@ export function ProductDescription({ description }: ProductDescriptionProps) {
   const scrollToSection = (sectionId: string) => {
     const element = sectionRefs.current[sectionId];
     if (element) {
-      const offset = 120;
+      const offset = 180; // Increased to account for sticky header
       const elementPosition = element.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
         top: elementPosition - offset,
