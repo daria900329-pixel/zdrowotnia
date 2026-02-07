@@ -2,6 +2,7 @@ import { Heart, Sparkles, Home, Users, Loader2, ArrowRight } from "lucide-react"
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { ScrollReveal, ScrollRevealGroup } from "@/components/ScrollReveal";
 
 const features = [
   {
@@ -52,7 +53,7 @@ const About = () => {
       <div className="container mx-auto relative">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
-          <div>
+          <ScrollReveal variant="fade-right">
             <span className="inline-flex items-center gap-2 text-accent font-medium mb-3 bg-accent/10 px-3 py-1 rounded-full text-sm">
               <Heart className="w-4 h-4" /> {badge}
             </span>
@@ -73,10 +74,14 @@ const About = () => {
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-          </div>
+          </ScrollReveal>
 
           {/* Features Grid */}
-          <div className="grid grid-cols-2 gap-5">
+          <ScrollRevealGroup 
+            className="grid grid-cols-2 gap-5"
+            staggerDelay={150}
+            variant="zoom-in"
+          >
             {features.map((feature) => (
               <div
                 key={feature.title}
@@ -93,7 +98,7 @@ const About = () => {
                 </p>
               </div>
             ))}
-          </div>
+          </ScrollRevealGroup>
         </div>
       </div>
     </section>

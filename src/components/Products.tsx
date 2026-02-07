@@ -3,6 +3,7 @@ import ProductCard from "@/components/ProductCard";
 import { supabase } from "@/integrations/supabase/client";
 import { Sparkles, Loader2 } from "lucide-react";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { ScrollReveal, ScrollRevealGroup } from "@/components/ScrollReveal";
 
 // Fallback static products (used when DB is empty)
 import kombuchaImg from "@/assets/product-kombucha.jpg";
@@ -83,6 +84,8 @@ const Products = () => {
     fetchProducts();
   }, []);
 
+  const displayProducts = useFallback ? fallbackProducts : products;
+
   return (
     <section id="produkty" className="section-padding bg-secondary/40 relative">
       {/* Decorative pattern */}
@@ -91,7 +94,7 @@ const Products = () => {
       }} />
       
       <div className="container mx-auto relative">
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <ScrollReveal className="text-center max-w-2xl mx-auto mb-12">
           <span className="inline-flex items-center gap-2 text-accent font-medium mb-3 bg-accent/10 px-3 py-1 rounded-full text-sm">
             <Sparkles className="w-4 h-4" /> {badge}
           </span>
@@ -101,39 +104,32 @@ const Products = () => {
           <p className="text-muted-foreground">
             {subtitle}
           </p>
-        </div>
+        </ScrollReveal>
 
         {loading ? (
           <div className="flex justify-center py-12">
             <Loader2 className="w-8 h-8 animate-spin text-primary" />
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {useFallback
-              ? fallbackProducts.map((product) => (
-                  <ProductCard
-                    key={product.id}
-                    id={product.id}
-                    name={product.name}
-                    description={product.description}
-                    image={product.image}
-                    badge={product.badge}
-                  />
-                ))
-              : products.map((product) => (
-                  <ProductCard
-                    key={product.id}
-                    id={product.id}
-                    name={product.name}
-                    description={product.description || ""}
-                    image={product.image_url || ""}
-                    badge={product.badge || undefined}
-                  />
-                ))}
-          </div>
+          <ScrollRevealGroup 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            staggerDelay={150}
+            variant="fade-up"
+          >
+            {displayProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                id={product.id}
+                name={product.name}
+                description={useFallback ? (product as typeof fallbackProducts[0]).description : (product.description || "")}
+                image={useFallback ? (product as typeof fallbackProducts[0]).image : ((product as DBProduct).image_url || "")}
+                badge={useFallback ? (product as typeof fallbackProducts[0]).badge : ((product as DBProduct).badge || undefined)}
+              />
+            ))}
+          </ScrollRevealGroup>
         )}
 
-        <div className="mt-12 text-center">
+        <ScrollReveal delay={400} className="mt-12 text-center">
           <div className="inline-block bg-card border border-primary/20 rounded-2xl px-8 py-6 shadow-soft">
             <p className="text-foreground font-medium mb-2">
               🌟 <strong>Wkrótce w naszej spiżarni:</strong>
@@ -142,7 +138,7 @@ const Products = () => {
               {comingSoon}
             </p>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );
