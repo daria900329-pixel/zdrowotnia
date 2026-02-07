@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ProductVariantSelect } from "@/components/ProductVariantSelect";
 import { ProductGallery } from "@/components/ProductGallery";
+import { ProductDescription } from "@/components/ProductDescription";
 import { ArrowLeft, Loader2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -142,16 +143,9 @@ const Product = () => {
                 />
               </div>
 
-              {/* Long Description */}
+              {/* Long Description with Navigation */}
               {product.long_description && (
-                <div className="prose prose-stone max-w-none">
-                  <h3 className="font-serif text-xl font-semibold text-foreground mb-4">
-                    O produkcie
-                  </h3>
-                  <div className="text-muted-foreground leading-relaxed whitespace-pre-line">
-                    {product.long_description}
-                  </div>
-                </div>
+                <ProductDescription description={product.long_description} />
               )}
             </div>
           </div>
