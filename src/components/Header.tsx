@@ -52,7 +52,7 @@ const Header = () => {
               <div className="absolute -top-14 left-1/2 -translate-x-1/2 pointer-events-none whitespace-nowrap flex flex-col items-center">
                 <span 
                   className="text-sm text-earth dark:text-honey -rotate-2"
-                  style={{ fontFamily: "'Caveat', 'Segoe Script', cursive", fontSize: '15px' }}
+                  style={{ fontFamily: "'Kalam', cursive", fontSize: '15px' }}
                 >
                   Zmiana nastroju jednym kliknięciem
                 </span>
@@ -93,7 +93,7 @@ const Header = () => {
               <div className="absolute -top-10 left-1/2 -translate-x-1/2 pointer-events-none whitespace-nowrap flex flex-col items-center">
                 <span 
                   className="text-xs text-earth dark:text-honey -rotate-2"
-                  style={{ fontFamily: "'Caveat', 'Segoe Script', cursive", fontSize: '12px' }}
+                  style={{ fontFamily: "'Kalam', cursive", fontSize: '12px' }}
                 >
                   Zmień nastrój
                 </span>
