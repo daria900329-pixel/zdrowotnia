@@ -16,6 +16,7 @@ import { AdminCMS } from "@/components/admin/AdminCMS";
 import { AdminOrders } from "@/components/admin/AdminOrders";
 import { ProductVariantsInline } from "@/components/admin/ProductVariantsInline";
 import { ProductImagesManager } from "@/components/admin/ProductImagesManager";
+import { AdminProductSections } from "@/components/admin/AdminProductSections";
 
 interface Product {
   id: string;
@@ -611,6 +612,9 @@ const Admin = () => {
                         productId={product.id}
                         productName={product.name}
                       />
+
+                      {/* Product Description Sections */}
+                      <AdminProductSections productId={product.id} />
 
                       <div className="flex gap-2">
                         <Button onClick={() => handleUpdateProduct(product.id)}>
