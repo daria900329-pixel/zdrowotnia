@@ -143,9 +143,11 @@ const Product = () => {
                   imageUrl={product.image_url}
                 />
               </div>
+            </div>
 
-              {/* Description Sections from Database */}
-              <ProductDescription 
+            {/* Detailed description & menu sections (spans both columns) */}
+            <div className="lg:col-span-2 pt-10 lg:pt-14">
+              <ProductDescription
                 productId={product.id}
                 fallbackDescription={product.long_description}
               />
