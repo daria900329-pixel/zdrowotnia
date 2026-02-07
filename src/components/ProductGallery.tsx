@@ -8,7 +8,6 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
-import { ProductImageFrame } from "@/components/ProductImageFrame";
 
 interface ProductImage {
   id: string;
@@ -53,30 +52,38 @@ export function ProductGallery({ productId, productName, fallbackImage }: Produc
   // If no gallery images, show fallback
   if (!loading && images.length === 0) {
     return (
-      <ProductImageFrame
-        src={fallbackImage}
-        alt={productName}
-        aspectClassName="aspect-[4/5]"
-        className="rounded-3xl shadow-hover"
-      />
+      <div className="aspect-[3/4] rounded-3xl overflow-hidden shadow-hover">
+        {fallbackImage ? (
+          <img
+            src={fallbackImage}
+            alt={productName}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-muted text-muted-foreground">
+            Brak zdjęcia
+          </div>
+        )}
+      </div>
     );
   }
 
   if (loading) {
     return (
-      <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-hover bg-muted animate-pulse" />
+      <div className="aspect-[3/4] rounded-3xl overflow-hidden shadow-hover bg-muted animate-pulse" />
     );
   }
 
   return (
     <div className="space-y-4">
       {/* Main Image */}
-      <ProductImageFrame
-        src={images[selectedIndex]?.image_url}
-        alt={`${productName} - zdjęcie ${selectedIndex + 1}`}
-        aspectClassName="aspect-[4/5]"
-        className="rounded-3xl shadow-hover"
-      />
+      <div className="aspect-[3/4] rounded-3xl overflow-hidden shadow-hover">
+        <img
+          src={images[selectedIndex]?.image_url}
+          alt={`${productName} - zdjęcie ${selectedIndex + 1}`}
+          className="w-full h-full object-cover"
+        />
+      </div>
 
       {/* Thumbnails Carousel */}
       {images.length > 1 && (

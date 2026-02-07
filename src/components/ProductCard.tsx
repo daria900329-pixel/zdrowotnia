@@ -2,7 +2,6 @@ import { Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ProductVariantSelect } from "./ProductVariantSelect";
 import { useProductPrimaryImage } from "./ProductGallery";
-import { ProductImageFrame } from "./ProductImageFrame";
 
 interface ProductCardProps {
   id: string;
@@ -20,20 +19,19 @@ const ProductCard = ({ id, name, description, image, badge }: ProductCardProps) 
     <div className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-hover transition-all duration-300 hover:-translate-y-2 border border-border/30">
       <Link 
         to={isFallback ? "#" : `/product/${id}`}
-        className="block relative"
+        className="block relative aspect-square overflow-hidden bg-secondary"
       >
-        <ProductImageFrame
+        <img
           src={displayImage}
           alt={name}
-          aspectClassName="aspect-[4/5]"
-          className="rounded-none"
+          className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
         />
         {badge && (
-          <span className="absolute top-4 left-4 z-[2] bg-gradient-to-r from-accent to-primary text-accent-foreground text-xs font-semibold px-3 py-1.5 rounded-full shadow-soft">
+          <span className="absolute top-4 left-4 bg-gradient-to-r from-accent to-primary text-accent-foreground text-xs font-semibold px-3 py-1.5 rounded-full shadow-soft">
             {badge}
           </span>
         )}
-        <div className="absolute top-4 right-4 z-[2] w-10 h-10 bg-background/80 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer hover:bg-background hover:scale-110">
+        <div className="absolute top-4 right-4 w-10 h-10 bg-background/80 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer hover:bg-background hover:scale-110">
           <Heart className="w-5 h-5 text-accent" />
         </div>
       </Link>
