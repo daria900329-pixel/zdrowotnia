@@ -1,3 +1,6 @@
+import "@fontsource/dancing-script/400.css";
+import "@fontsource/dancing-script/700.css";
+
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
