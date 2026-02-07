@@ -1,5 +1,6 @@
 import { Heart, Sparkles, Home, Users, Loader2, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import { useSiteContent } from "@/hooks/useSiteContent";
 
 const features = [
@@ -66,13 +67,12 @@ const About = () => {
               </p>
             </div>
             
-            <Link 
-              to="/o-nas" 
-              className="inline-flex items-center gap-2 mt-6 text-primary hover:text-primary/80 font-medium group transition-colors"
-            >
-              <span>Opowiedzieć Ci więcej?</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            <Button variant="default" size="lg" asChild className="mt-6 group">
+              <Link to="/o-nas">
+                Opowiedzieć Ci więcej?
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </Button>
           </div>
 
           {/* Features Grid */}
