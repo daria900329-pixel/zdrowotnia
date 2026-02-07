@@ -34,7 +34,7 @@ const AboutPage = () => {
   const { content, loading } = useSiteContent("about_page");
 
   // Hero
-  const heroTitle = content.hero_title || "Witaj w naszym domu! 🏡";
+  const heroTitle = content.hero_title || "Witaj w naszym domu!";
   const heroBadge = content.hero_badge || "Nasza Historia";
   const heroParagraph = content.hero_paragraph1 || "Jesteśmy zwykłą rodziną, która odkryła magię domowego jedzenia.";
 
