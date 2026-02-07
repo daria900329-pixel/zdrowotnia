@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Send, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -52,115 +53,119 @@ const Contact = () => {
       <div className="absolute bottom-20 right-10 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />
       
       <div className="container mx-auto relative">
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <ScrollReveal className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-4">
             {title}
           </h2>
           <p className="text-muted-foreground">
             {subtitle}
           </p>
-        </div>
+        </ScrollReveal>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Contact Info */}
-          <div className="space-y-8">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Phone className="w-5 h-5 text-primary" />
+          <ScrollReveal variant="fade-right" delay={100}>
+            <div className="space-y-8">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">Telefon</h3>
+                  <p className="text-muted-foreground">{phone}</p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-semibold text-foreground mb-1">Telefon</h3>
-                <p className="text-muted-foreground">{phone}</p>
-              </div>
-            </div>
 
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Mail className="w-5 h-5 text-primary" />
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">Email</h3>
+                  <p className="text-muted-foreground">{email}</p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                <p className="text-muted-foreground">{email}</p>
-              </div>
-            </div>
 
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <MapPin className="w-5 h-5 text-primary" />
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">Adres</h3>
+                  <p className="text-muted-foreground">{address}</p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-semibold text-foreground mb-1">Adres</h3>
-                <p className="text-muted-foreground">{address}</p>
-              </div>
-            </div>
 
-            <div className="bg-card p-6 rounded-2xl shadow-soft border border-primary/20">
-              <h3 className="font-serif text-lg font-semibold text-foreground mb-2">
-                💡 Jak zamówić?
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Dodaj produkty do koszyka i przejdź do płatności. 
-                Po opłaceniu zamówienia skontaktujemy się, aby ustalić szczegóły dostawy lub odbioru osobistego.
-              </p>
+              <div className="bg-card p-6 rounded-2xl shadow-soft border border-primary/20">
+                <h3 className="font-serif text-lg font-semibold text-foreground mb-2">
+                  💡 Jak zamówić?
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Dodaj produkty do koszyka i przejdź do płatności. 
+                  Po opłaceniu zamówienia skontaktujemy się, aby ustalić szczegóły dostawy lub odbioru osobistego.
+                </p>
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="bg-card p-8 rounded-xl shadow-card">
-            <div className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                  Imię i nazwisko
-                </label>
-                <Input
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Jan Kowalski"
-                  required
-                  className="bg-background"
-                />
-              </div>
+          <ScrollReveal variant="fade-left" delay={200}>
+            <form onSubmit={handleSubmit} className="bg-card p-8 rounded-xl shadow-card">
+              <div className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                    Imię i nazwisko
+                  </label>
+                  <Input
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Jan Kowalski"
+                    required
+                    className="bg-background"
+                  />
+                </div>
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                  Email
-                </label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="jan@przyklad.pl"
-                  required
-                  className="bg-background"
-                />
-              </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                    Email
+                  </label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="jan@przyklad.pl"
+                    required
+                    className="bg-background"
+                  />
+                </div>
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                  Wiadomość
-                </label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Opisz, które produkty Cię interesują..."
-                  required
-                  rows={5}
-                  className="bg-background resize-none"
-                />
-              </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                    Wiadomość
+                  </label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Opisz, które produkty Cię interesują..."
+                    required
+                    rows={5}
+                    className="bg-background resize-none"
+                  />
+                </div>
 
-              <Button type="submit" variant="default" size="lg" className="w-full">
-                <Send className="w-4 h-4 mr-2" />
-                Wyślij wiadomość
-              </Button>
-            </div>
-          </form>
+                <Button type="submit" variant="default" size="lg" className="w-full">
+                  <Send className="w-4 h-4 mr-2" />
+                  Wyślij wiadomość
+                </Button>
+              </div>
+            </form>
+          </ScrollReveal>
         </div>
       </div>
     </section>

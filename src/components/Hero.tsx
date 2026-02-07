@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown, Heart } from "lucide-react";
 import heroImage from "@/assets/hero-products.jpg";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { cn } from "@/lib/utils";
 
 const HERO_IMAGE_POS_X_KEY = "rodzinne-smaki.hero-image-pos-x";
 
@@ -13,6 +15,8 @@ function clamp(n: number, min: number, max: number) {
 
 const Hero = () => {
   const { content } = useSiteContent("hero");
+  const { ref: heroRef, isVisible } = useScrollReveal<HTMLDivElement>({ threshold: 0.2, triggerOnce: true });
+  
   // translateX range: -50% to +50% of image width (gives much more movement)
   const [translateX, setTranslateX] = useState<number>(0);
   const [scale, setScale] = useState<number>(150);
@@ -75,11 +79,14 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center pt-20">
-      {/* Background Image */}
+    <section ref={heroRef} className="relative min-h-screen flex items-center pt-20">
+      {/* Background Image with parallax-like fade in */}
       <div
         ref={frameRef}
-        className="absolute inset-0 z-0 overflow-hidden"
+        className={cn(
+          "absolute inset-0 z-0 overflow-hidden transition-all duration-1000",
+          isVisible ? "opacity-100 scale-100" : "opacity-0 scale-105"
+        )}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
@@ -102,27 +109,53 @@ const Hero = () => {
       </div>
 
       {/* Decorative elements */}
-      <div className="absolute top-32 left-20 text-honey/30 hidden lg:block">
+      <div className={cn(
+        "absolute top-32 left-20 text-honey/30 hidden lg:block transition-all duration-1000 delay-500",
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"
+      )}>
         <svg width="80" height="80" viewBox="0 0 120 120" fill="currentColor" className="animate-pulse">
           <path d="M60 10 L65 45 L100 50 L65 55 L60 90 L55 55 L20 50 L55 45 Z" />
         </svg>
       </div>
 
       <div className="container mx-auto px-6 relative z-10 flex justify-end">
-        <div className="max-w-md lg:max-w-lg bg-background/85 backdrop-blur-sm p-6 lg:p-8 rounded-3xl shadow-warm">
-          <span className="inline-flex items-center gap-2 text-primary font-semibold mb-3 animate-fade-up bg-primary/15 px-3 py-1.5 rounded-full text-sm">
+        <div className={cn(
+          "max-w-md lg:max-w-lg bg-background/85 backdrop-blur-sm p-6 lg:p-8 rounded-3xl shadow-warm transition-all duration-700",
+          isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
+        )}>
+          <span 
+            className={cn(
+              "inline-flex items-center gap-2 text-primary font-semibold mb-3 bg-primary/15 px-3 py-1.5 rounded-full text-sm transition-all duration-700 delay-100",
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            )}
+          >
             <span>🌾</span> {content.badge || "Z serca • Dla rodziny • Z miłością"}
           </span>
           
-          <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-4 animate-fade-up drop-shadow-sm" style={{ animationDelay: '0.1s' }}>
+          <h1 
+            className={cn(
+              "font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-4 drop-shadow-sm transition-all duration-700 delay-200",
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            )}
+          >
             {content.title || "Domowe smaki prosto z serca"}
           </h1>
           
-          <p className="text-base lg:text-lg text-muted-foreground mb-6 leading-relaxed animate-fade-up" style={{ animationDelay: '0.2s' }}>
+          <p 
+            className={cn(
+              "text-base lg:text-lg text-muted-foreground mb-6 leading-relaxed transition-all duration-700 delay-300",
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            )}
+          >
             {content.subtitle || "Witaj w naszej rodzinnej spiżarni! ❤️ Tworzymy zdrowe, domowe produkty — tak jak robiły nasze babcie."}
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-3 animate-fade-up" style={{ animationDelay: '0.3s' }}>
+          <div 
+            className={cn(
+              "flex flex-col sm:flex-row gap-3 transition-all duration-700 delay-[400ms]",
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            )}
+          >
             <Button variant="default" size="lg" asChild className="group">
               <a href="#produkty">
                 <Heart className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
@@ -195,7 +228,10 @@ const Hero = () => {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className={cn(
+        "absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce transition-all duration-700 delay-700",
+        isVisible ? "opacity-100" : "opacity-0"
+      )}>
         <a href="#produkty" className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
           <span className="text-sm font-medium">Zapraszamy niżej</span>
           <ArrowDown className="w-5 h-5" />
