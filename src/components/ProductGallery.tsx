@@ -57,7 +57,7 @@ export function ProductGallery({ productId, productName, fallbackImage }: Produc
           <img
             src={fallbackImage}
             alt={productName}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-top"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-muted text-muted-foreground">
@@ -81,7 +81,7 @@ export function ProductGallery({ productId, productName, fallbackImage }: Produc
         <img
           src={images[selectedIndex]?.image_url}
           alt={`${productName} - zdjęcie ${selectedIndex + 1}`}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-top"
         />
       </div>
 
