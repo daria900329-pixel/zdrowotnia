@@ -52,7 +52,7 @@ const Header = () => {
               <div className="absolute -top-14 left-1/2 -translate-x-1/2 pointer-events-none whitespace-nowrap flex flex-col items-center">
                 <span 
                   className="text-sm text-earth dark:text-honey -rotate-2"
-                  style={{ fontFamily: "'Caveat', cursive", fontSize: '15px' }}
+                  style={{ fontFamily: "'Caveat', 'Segoe Script', cursive", fontSize: '15px' }}
                 >
                   Zmiana nastroju jednym kliknięciem
                 </span>
@@ -89,7 +89,27 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-2">
             <CartSheet />
-            <ThemeToggle />
+            <div className="relative">
+              <div className="absolute -top-10 left-1/2 -translate-x-1/2 pointer-events-none whitespace-nowrap flex flex-col items-center">
+                <span 
+                  className="text-xs text-earth dark:text-honey -rotate-2"
+                  style={{ fontFamily: "'Caveat', 'Segoe Script', cursive", fontSize: '12px' }}
+                >
+                  Zmień nastrój
+                </span>
+                <svg 
+                  className="w-4 h-4 text-earth dark:text-honey rotate-6" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor"
+                  style={{ strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: 1.5 }}
+                >
+                  <path d="M12 5c0 0 -1 4 -1 8c0 2 0.5 4 0.5 4" />
+                  <path d="M8 14c1.5 1.5 3 3 4 4c1-1 2.5-2.5 4-4" />
+                </svg>
+              </div>
+              <ThemeToggle />
+            </div>
             <button
               className="p-2 text-foreground"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
