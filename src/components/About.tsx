@@ -1,4 +1,5 @@
-import { Heart, Sparkles, Home, Users, Loader2 } from "lucide-react";
+import { Heart, Sparkles, Home, Users, Loader2, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useSiteContent } from "@/hooks/useSiteContent";
 
 const features = [
@@ -64,6 +65,14 @@ const About = () => {
                 {highlight}
               </p>
             </div>
+            
+            <Link 
+              to="/o-nas" 
+              className="inline-flex items-center gap-2 mt-6 text-primary hover:text-primary/80 font-medium group transition-colors"
+            >
+              <span>Opowiedzieć Ci więcej?</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
 
           {/* Features Grid */}
