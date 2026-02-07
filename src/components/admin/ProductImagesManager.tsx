@@ -71,6 +71,28 @@ export function ProductImagesManager({ productId, productName }: ProductImagesMa
   };
 
   const handleUpload = async (file: File) => {
+    // Validate file type
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+    if (!allowedTypes.includes(file.type)) {
+      toast({
+        title: "Błąd",
+        description: "Dozwolone tylko pliki JPG, PNG, WebP, GIF",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Validate file size (5MB limit)
+    const maxSize = 5 * 1024 * 1024;
+    if (file.size > maxSize) {
+      toast({
+        title: "Błąd",
+        description: "Plik zbyt duży (max 5MB)",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setUploading(true);
     
     const fileExt = file.name.split(".").pop();
