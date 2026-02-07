@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import Header from "@/components/Header";
@@ -18,21 +18,11 @@ interface Product {
   image_url: string | null;
 }
 
-interface ActiveSection {
-  id: string;
-  title: string;
-  content: string | null;
-  image_url: string | null;
-  display_order: number;
-  show_in_menu: boolean;
-}
-
 const Product = () => {
   const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
-  const [activeSectionImage, setActiveSectionImage] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchProduct() {
@@ -62,14 +52,6 @@ const Product = () => {
 
     fetchProduct();
   }, [id]);
-
-  const handleActiveSectionChange = useCallback((section: ActiveSection | null) => {
-    if (section?.image_url) {
-      setActiveSectionImage(section.image_url);
-    } else {
-      setActiveSectionImage(null);
-    }
-  }, []);
 
   if (loading) {
     return (
@@ -121,25 +103,13 @@ const Product = () => {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Product Gallery - with section image overlay */}
+            {/* Product Gallery */}
             <div className="relative lg:sticky lg:top-24">
-              {/* Main Gallery */}
               <ProductGallery
                 productId={product.id}
                 productName={product.name}
                 fallbackImage={product.image_url}
               />
-              
-              {/* Section Image Overlay */}
-              {activeSectionImage && (
-                <div className="mt-6 aspect-[4/3] rounded-2xl overflow-hidden shadow-hover animate-fade-in">
-                  <img
-                    src={activeSectionImage}
-                    alt="Zdjęcie sekcji"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              )}
               
               {product.badge && (
                 <span className="absolute top-6 left-6 z-10 bg-gradient-to-r from-accent to-primary text-accent-foreground text-sm font-semibold px-4 py-2 rounded-full shadow-soft">
@@ -178,7 +148,6 @@ const Product = () => {
               <ProductDescription 
                 productId={product.id}
                 fallbackDescription={product.long_description}
-                onActiveSectionChange={handleActiveSectionChange}
               />
             </div>
           </div>

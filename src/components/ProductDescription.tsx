@@ -14,13 +14,11 @@ interface Section {
 interface ProductDescriptionProps {
   productId: string;
   fallbackDescription?: string | null;
-  onActiveSectionChange?: (section: Section | null) => void;
 }
 
 export function ProductDescription({ 
   productId, 
-  fallbackDescription,
-  onActiveSectionChange 
+  fallbackDescription
 }: ProductDescriptionProps) {
   const [sections, setSections] = useState<Section[]>([]);
   const [loading, setLoading] = useState(true);
@@ -43,7 +41,6 @@ export function ProductDescription({
           const firstMenu = data.find(s => s.show_in_menu);
           if (firstMenu) {
             setActiveSection(firstMenu.id);
-            onActiveSectionChange?.(firstMenu);
           }
         }
       }
@@ -64,7 +61,6 @@ export function ProductDescription({
           if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
             if (activeSection !== section.id) {
               setActiveSection(section.id);
-              onActiveSectionChange?.(section);
             }
             break;
           }
@@ -74,7 +70,7 @@ export function ProductDescription({
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [menuSections, activeSection, onActiveSectionChange]);
+  }, [menuSections, activeSection]);
 
   const scrollToSection = (sectionId: string) => {
     const element = sectionRefs.current[sectionId];
@@ -116,8 +112,8 @@ export function ProductDescription({
 
   return (
     <div className="space-y-6">
-      {/* Navigation Menu */}
-      {menuSections.length > 1 && (
+      {/* Navigation Menu - show even for single section */}
+      {menuSections.length > 0 && (
         <nav className="flex flex-wrap gap-2 p-4 bg-secondary/50 rounded-xl border border-border/50">
           {menuSections.map((section) => (
             <button
@@ -145,14 +141,33 @@ export function ProductDescription({
             ref={(el) => (sectionRefs.current[section.id] = el)}
             className="scroll-mt-48"
           >
-            <h3 className="font-serif text-xl font-semibold text-foreground mb-4">
-              {section.title}
-            </h3>
-            {section.content && (
-              <div className="text-muted-foreground leading-relaxed whitespace-pre-line">
-                {section.content}
+            <div className={cn(
+              "grid gap-6",
+              section.image_url ? "lg:grid-cols-[1fr_300px]" : ""
+            )}>
+              {/* Text content */}
+              <div>
+                <h3 className="font-serif text-xl font-semibold text-foreground mb-4">
+                  {section.title}
+                </h3>
+                {section.content && (
+                  <div className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                    {section.content}
+                  </div>
+                )}
               </div>
-            )}
+              
+              {/* Section image - displayed to the right of content */}
+              {section.image_url && (
+                <div className="aspect-[4/3] rounded-xl overflow-hidden shadow-soft">
+                  <img
+                    src={section.image_url}
+                    alt={section.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+            </div>
           </section>
         ))}
       </div>
