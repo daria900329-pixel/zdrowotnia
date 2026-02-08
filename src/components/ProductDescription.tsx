@@ -20,9 +20,16 @@ interface DisplaySection {
   show_in_menu: boolean;
 }
 
+export interface ActiveSection {
+  id: string;
+  title: string;
+  image_url: string | null;
+}
+
 interface ProductDescriptionProps {
   productId: string;
   fallbackDescription?: string | null;
+  onActiveSectionChange?: (section: ActiveSection | null) => void;
 }
 
 type ParsedSection = { title: string; content: string };
@@ -85,7 +92,7 @@ function parseMenuSections(text: string): ParsedSection[] {
   return sections.length ? sections : [{ title: "Opis szczegółowy", content: trimmed }];
 }
 
-export function ProductDescription({ productId, fallbackDescription }: ProductDescriptionProps) {
+export function ProductDescription({ productId, fallbackDescription, onActiveSectionChange }: ProductDescriptionProps) {
   const [dbSections, setDbSections] = useState<DbSection[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeSection, setActiveSection] = useState<string>("");
@@ -200,7 +207,17 @@ export function ProductDescription({ productId, fallbackDescription }: ProductDe
 
         const { offsetTop, offsetHeight } = element;
         if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-          setActiveSection((prev) => (prev === section.id ? prev : section.id));
+          if (activeSection !== section.id) {
+            setActiveSection(section.id);
+            // Notify parent about active section change
+            if (onActiveSectionChange) {
+              onActiveSectionChange({
+                id: section.id,
+                title: section.title,
+                image_url: section.image_url,
+              });
+            }
+          }
           break;
         }
       }
@@ -208,7 +225,7 @@ export function ProductDescription({ productId, fallbackDescription }: ProductDe
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [menuSections]);
+  }, [menuSections, activeSection, onActiveSectionChange]);
 
   const scrollToSection = (sectionId: string) => {
     const element = sectionRefs.current[sectionId];
@@ -220,6 +237,16 @@ export function ProductDescription({ productId, fallbackDescription }: ProductDe
       top: elementPosition - offset,
       behavior: "smooth",
     });
+    
+    // Find the section and notify parent
+    const section = displaySections.find(s => s.id === sectionId);
+    if (section && onActiveSectionChange) {
+      onActiveSectionChange({
+        id: section.id,
+        title: section.title,
+        image_url: section.image_url,
+      });
+    }
   };
 
   if (loading) {
@@ -255,7 +282,7 @@ export function ProductDescription({ productId, fallbackDescription }: ProductDe
         </nav>
       )}
 
-      {/* Sections Content */}
+      {/* Sections Content - single column, images handled by parent */}
       <div className="space-y-10">
         {displaySections.map((section) => (
           <section
@@ -264,33 +291,14 @@ export function ProductDescription({ productId, fallbackDescription }: ProductDe
             ref={(el) => (sectionRefs.current[section.id] = el)}
             className="scroll-mt-48"
           >
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-start">
-              {/* Section image (left column, same side as main product gallery) */}
-              <div className={cn(section.image_url ? "block" : "hidden lg:block")}>
-                {section.image_url && (
-                  <div className="rounded-2xl overflow-hidden border border-border/50 shadow-soft bg-card h-full min-h-56">
-                    <img
-                      src={section.image_url}
-                      alt={section.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                )}
+            <h3 className="font-serif text-xl font-semibold text-foreground mb-4">
+              {section.title}
+            </h3>
+            {section.content && (
+              <div className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                {section.content}
               </div>
-
-              {/* Text content (right column) */}
-              <div>
-                <h3 className="font-serif text-xl font-semibold text-foreground mb-4">
-                  {section.title}
-                </h3>
-                {section.content && (
-                  <div className="text-muted-foreground leading-relaxed whitespace-pre-line">
-                    {section.content}
-                  </div>
-                )}
-              </div>
-            </div>
+            )}
           </section>
         ))}
       </div>
