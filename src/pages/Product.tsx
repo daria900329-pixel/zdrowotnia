@@ -23,10 +23,10 @@ const Product = () => {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
-  const [activeSectionImage, setActiveSectionImage] = useState<string | null>(null);
+  const [activeSection, setActiveSection] = useState<ActiveSection | null>(null);
 
   const handleActiveSectionChange = useCallback((section: ActiveSection | null) => {
-    setActiveSectionImage(section?.image_url ?? null);
+    setActiveSection(section);
   }, []);
 
   useEffect(() => {
@@ -108,29 +108,20 @@ const Product = () => {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Left Column: Product Gallery + Section Images (sticky) */}
-            <div className="relative lg:sticky lg:top-24 space-y-6">
+            {/* Left Column: Product Gallery (sticky) */}
+            <div className="relative lg:sticky lg:top-24">
               <ProductGallery
                 productId={product.id}
                 productName={product.name}
                 fallbackImage={product.image_url}
+                overlayImageUrl={activeSection?.image_url ?? null}
+                overlayAlt={activeSection ? `Sekcja: ${activeSection.title}` : undefined}
               />
               
               {product.badge && (
                 <span className="absolute top-6 left-6 z-10 bg-gradient-to-r from-accent to-primary text-accent-foreground text-sm font-semibold px-4 py-2 rounded-full shadow-soft">
                   {product.badge}
                 </span>
-              )}
-
-              {/* Section image appears here when scrolling */}
-              {activeSectionImage && (
-                <div className="rounded-2xl overflow-hidden border border-border/50 shadow-soft animate-fade-in">
-                  <img
-                    src={activeSectionImage}
-                    alt="Zdjęcie sekcji"
-                    className="w-full aspect-[4/3] object-cover"
-                  />
-                </div>
               )}
             </div>
 
