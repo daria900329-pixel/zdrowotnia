@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ProductVariantSelect } from "@/components/ProductVariantSelect";
 import { ProductGallery } from "@/components/ProductGallery";
-import { ProductDescription } from "@/components/ProductDescription";
+import { ProductDescription, ActiveSection } from "@/components/ProductDescription";
 import { ArrowLeft, Loader2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -23,6 +23,11 @@ const Product = () => {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+  const [activeSectionImage, setActiveSectionImage] = useState<string | null>(null);
+
+  const handleActiveSectionChange = useCallback((section: ActiveSection | null) => {
+    setActiveSectionImage(section?.image_url ?? null);
+  }, []);
 
   useEffect(() => {
     async function fetchProduct() {
@@ -103,8 +108,8 @@ const Product = () => {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Product Gallery */}
-            <div className="relative lg:sticky lg:top-24">
+            {/* Left Column: Product Gallery + Section Images (sticky) */}
+            <div className="relative lg:sticky lg:top-24 space-y-6">
               <ProductGallery
                 productId={product.id}
                 productName={product.name}
@@ -116,9 +121,20 @@ const Product = () => {
                   {product.badge}
                 </span>
               )}
+
+              {/* Section image appears here when scrolling */}
+              {activeSectionImage && (
+                <div className="rounded-2xl overflow-hidden border border-border/50 shadow-soft animate-fade-in">
+                  <img
+                    src={activeSectionImage}
+                    alt="Zdjęcie sekcji"
+                    className="w-full aspect-[4/3] object-cover"
+                  />
+                </div>
+              )}
             </div>
 
-            {/* Product Info */}
+            {/* Right Column: Product Info + Description */}
             <div className="space-y-8">
               <div>
                 <span className="inline-flex items-center gap-2 text-accent font-medium mb-3 bg-accent/10 px-3 py-1 rounded-full text-sm">
@@ -143,14 +159,15 @@ const Product = () => {
                   imageUrl={product.image_url}
                 />
               </div>
-            </div>
 
-            {/* Detailed description & menu sections (spans both columns) */}
-            <div className="lg:col-span-2 pt-10 lg:pt-14">
-              <ProductDescription
-                productId={product.id}
-                fallbackDescription={product.long_description}
-              />
+              {/* Detailed description & menu sections */}
+              <div className="pt-6">
+                <ProductDescription
+                  productId={product.id}
+                  fallbackDescription={product.long_description}
+                  onActiveSectionChange={handleActiveSectionChange}
+                />
+              </div>
             </div>
           </div>
         </div>
