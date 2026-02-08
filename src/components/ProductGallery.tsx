@@ -20,9 +20,17 @@ interface ProductGalleryProps {
   productId: string;
   productName: string;
   fallbackImage?: string | null;
+  overlayImageUrl?: string | null;
+  overlayAlt?: string;
 }
 
-export function ProductGallery({ productId, productName, fallbackImage }: ProductGalleryProps) {
+export function ProductGallery({
+  productId,
+  productName,
+  fallbackImage,
+  overlayImageUrl,
+  overlayAlt,
+}: ProductGalleryProps) {
   const [images, setImages] = useState<ProductImage[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -38,7 +46,7 @@ export function ProductGallery({ productId, productName, fallbackImage }: Produc
       if (!error && data && data.length > 0) {
         setImages(data);
         // Find primary image index
-        const primaryIndex = data.findIndex(img => img.is_primary);
+        const primaryIndex = data.findIndex((img) => img.is_primary);
         if (primaryIndex !== -1) {
           setSelectedIndex(primaryIndex);
         }
@@ -52,16 +60,23 @@ export function ProductGallery({ productId, productName, fallbackImage }: Produc
   // If no gallery images, show fallback
   if (!loading && images.length === 0) {
     return (
-      <div className="aspect-[3/4] rounded-3xl overflow-hidden shadow-hover">
+      <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-hover">
         {fallbackImage ? (
-          <img
-            src={fallbackImage}
-            alt={productName}
-            className="w-full h-full object-cover"
-          />
+          <img src={fallbackImage} alt={productName} className="w-full h-full object-cover" />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-muted text-muted-foreground">
             Brak zdjęcia
+          </div>
+        )}
+
+        {overlayImageUrl && (
+          <div key={overlayImageUrl} className="absolute inset-0">
+            <img
+              src={overlayImageUrl}
+              alt={overlayAlt ?? "Zdjęcie sekcji"}
+              loading="lazy"
+              className="w-full h-full object-cover animate-fade-in"
+            />
           </div>
         )}
       </div>
@@ -69,20 +84,29 @@ export function ProductGallery({ productId, productName, fallbackImage }: Produc
   }
 
   if (loading) {
-    return (
-      <div className="aspect-[3/4] rounded-3xl overflow-hidden shadow-hover bg-muted animate-pulse" />
-    );
+    return <div className="aspect-[3/4] rounded-3xl overflow-hidden shadow-hover bg-muted animate-pulse" />;
   }
 
   return (
     <div className="space-y-4">
       {/* Main Image */}
-      <div className="aspect-[3/4] rounded-3xl overflow-hidden shadow-hover">
+      <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-hover">
         <img
           src={images[selectedIndex]?.image_url}
           alt={`${productName} - zdjęcie ${selectedIndex + 1}`}
           className="w-full h-full object-cover"
         />
+
+        {overlayImageUrl && (
+          <div key={overlayImageUrl} className="absolute inset-0">
+            <img
+              src={overlayImageUrl}
+              alt={overlayAlt ?? "Zdjęcie sekcji"}
+              loading="lazy"
+              className="w-full h-full object-cover animate-fade-in"
+            />
+          </div>
+        )}
       </div>
 
       {/* Thumbnails Carousel */}

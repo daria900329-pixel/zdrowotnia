@@ -192,8 +192,15 @@ export function ProductDescription({ productId, fallbackDescription, onActiveSec
   useEffect(() => {
     if (activeSection && menuSections.some((s) => s.id === activeSection)) return;
     const first = menuSections[0];
-    if (first) setActiveSection(first.id);
-  }, [menuSections, activeSection]);
+    if (!first) return;
+
+    setActiveSection(first.id);
+    onActiveSectionChange?.({
+      id: first.id,
+      title: first.title,
+      image_url: first.image_url,
+    });
+  }, [menuSections, activeSection, onActiveSectionChange]);
 
   useEffect(() => {
     if (menuSections.length === 0) return;
