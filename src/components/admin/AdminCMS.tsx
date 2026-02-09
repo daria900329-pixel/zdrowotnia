@@ -7,7 +7,26 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Loader2, Save, Plus, Trash2, Eye, EyeOff, Image, Video, GripVertical } from "lucide-react";
+import { Loader2, Save, Plus, Trash2, Eye, EyeOff, Image, Video, GripVertical, Clock, Users, Leaf, Award, Heart, Sparkles, Home, MapPin, Star, ShieldCheck, Flame, Droplets, Sun, Wheat, TreePine, type LucideIcon } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
+const ICON_OPTIONS: { value: string; label: string; icon: LucideIcon }[] = [
+  { value: "Clock", label: "Zegar", icon: Clock },
+  { value: "Users", label: "Ludzie", icon: Users },
+  { value: "Leaf", label: "Liść", icon: Leaf },
+  { value: "Award", label: "Nagroda", icon: Award },
+  { value: "Heart", label: "Serce", icon: Heart },
+  { value: "Sparkles", label: "Iskry", icon: Sparkles },
+  { value: "Home", label: "Dom", icon: Home },
+  { value: "MapPin", label: "Lokalizacja", icon: MapPin },
+  { value: "Star", label: "Gwiazdka", icon: Star },
+  { value: "ShieldCheck", label: "Tarcza", icon: ShieldCheck },
+  { value: "Flame", label: "Ogień", icon: Flame },
+  { value: "Droplets", label: "Krople", icon: Droplets },
+  { value: "Sun", label: "Słońce", icon: Sun },
+  { value: "Wheat", label: "Zboże", icon: Wheat },
+  { value: "TreePine", label: "Drzewo", icon: TreePine },
+];
 
 interface SectionContent {
   [key: string]: string | undefined;
@@ -16,7 +35,7 @@ interface SectionContent {
 interface ContentSection {
   key: string;
   label: string;
-  fields: { name: string; label: string; type: "input" | "textarea" }[];
+  fields: { name: string; label: string; type: "input" | "textarea" | "icon" }[];
 }
 
 interface GalleryItem {
@@ -66,12 +85,16 @@ const sections: ContentSection[] = [
       // Statystyki
       { name: "stat1_value", label: "Statystyka 1 - Wartość", type: "input" },
       { name: "stat1_label", label: "Statystyka 1 - Etykieta", type: "input" },
+      { name: "stat1_icon", label: "Statystyka 1 - Ikona", type: "icon" },
       { name: "stat2_value", label: "Statystyka 2 - Wartość", type: "input" },
       { name: "stat2_label", label: "Statystyka 2 - Etykieta", type: "input" },
+      { name: "stat2_icon", label: "Statystyka 2 - Ikona", type: "icon" },
       { name: "stat3_value", label: "Statystyka 3 - Wartość", type: "input" },
       { name: "stat3_label", label: "Statystyka 3 - Etykieta", type: "input" },
+      { name: "stat3_icon", label: "Statystyka 3 - Ikona", type: "icon" },
       { name: "stat4_value", label: "Statystyka 4 - Wartość", type: "input" },
       { name: "stat4_label", label: "Statystyka 4 - Etykieta", type: "input" },
+      { name: "stat4_icon", label: "Statystyka 4 - Ikona", type: "icon" },
       // Wartości
       { name: "value1_title", label: "Wartość 1 - Tytuł", type: "input" },
       { name: "value1_desc", label: "Wartość 1 - Opis", type: "textarea" },
@@ -326,7 +349,33 @@ export function AdminCMS() {
               {section.fields.map((field) => (
                 <div key={field.name} className="space-y-2">
                   <Label>{field.label}</Label>
-                  {field.type === "input" ? (
+                  {field.type === "icon" ? (
+                    <Select
+                      value={contents[section.key]?.[field.name] || ""}
+                      onValueChange={(val) => updateField(section.key, field.name, val)}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Wybierz ikonę">
+                          {(() => {
+                            const selected = ICON_OPTIONS.find(o => o.value === contents[section.key]?.[field.name]);
+                            if (!selected) return "Wybierz ikonę";
+                            const IconComp = selected.icon;
+                            return <span className="flex items-center gap-2"><IconComp className="w-4 h-4" /> {selected.label}</span>;
+                          })()}
+                        </SelectValue>
+                      </SelectTrigger>
+                      <SelectContent>
+                        {ICON_OPTIONS.map((opt) => {
+                          const IconComp = opt.icon;
+                          return (
+                            <SelectItem key={opt.value} value={opt.value}>
+                              <span className="flex items-center gap-2"><IconComp className="w-4 h-4" /> {opt.label}</span>
+                            </SelectItem>
+                          );
+                        })}
+                      </SelectContent>
+                    </Select>
+                  ) : field.type === "input" ? (
                     <Input
                       value={contents[section.key]?.[field.name] || ""}
                       onChange={(e) => updateField(section.key, field.name, e.target.value)}
@@ -340,7 +389,7 @@ export function AdminCMS() {
                   )}
                 </div>
               ))}
-              
+
               <Button
                 onClick={() => handleSave(section.key)}
                 disabled={saving === section.key}
