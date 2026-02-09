@@ -128,59 +128,39 @@ export function ProductDescription({ productId, fallbackDescription, onActiveSec
   const displaySections = useMemo<DisplaySection[]>(() => {
     if (parsedSections.length === 0 && dbSections.length === 0) return [];
 
-    const byOrder = new Map<number, DbSection>();
-    for (const s of dbSections) {
-      const order = typeof s.display_order === "number" ? s.display_order : 0;
-      byOrder.set(order, s);
-    }
+    const result: DisplaySection[] = [];
 
-    // Prefer sections parsed from the "Opis szczegółowy" field (fallbackDescription)
-    // and overlay images/overrides from the database.
-    const base = parsedSections.length > 0 ? parsedSections : null;
-
-    if (base) {
-      const merged: DisplaySection[] = base.map((p, idx) => {
-        const db = byOrder.get(idx);
-        const title = isNonEmptyString(db?.title) ? db!.title : p.title;
-        const content = isNonEmptyString(db?.content) ? db!.content : p.content;
-
-        return {
-          id: db?.id ?? `parsed-${idx}`,
-          title,
-          content: content.trim().length ? content : null,
-          image_url: db?.image_url ?? null,
-          display_order: idx,
-          show_in_menu: boolDefaultTrue(db?.show_in_menu),
-        };
+    // 1. Always show parsed sections (from long_description) first, as-is
+    for (let idx = 0; idx < parsedSections.length; idx++) {
+      const p = parsedSections[idx];
+      result.push({
+        id: `parsed-${idx}`,
+        title: p.title,
+        content: p.content.trim().length ? p.content : null,
+        image_url: null,
+        display_order: idx,
+        show_in_menu: false, // parsed intro sections don't go in nav menu
       });
-
-      // Append any extra DB sections that don't exist in the parsed description
-      const extras = dbSections
-        .filter((s) => (s.display_order ?? 0) >= base.length)
-        .sort((a, b) => (a.display_order ?? 0) - (b.display_order ?? 0))
-        .map((s, i) => ({
-          id: s.id,
-          title: s.title,
-          content: s.content,
-          image_url: s.image_url,
-          display_order: base.length + i,
-          show_in_menu: boolDefaultTrue(s.show_in_menu),
-        }));
-
-      return [...merged, ...extras];
     }
 
-    return dbSections
+    // 2. Then append ALL DB sections (these are the navigable menu sections)
+    const sortedDb = dbSections
       .slice()
-      .sort((a, b) => (a.display_order ?? 0) - (b.display_order ?? 0))
-      .map((s, idx) => ({
+      .sort((a, b) => (a.display_order ?? 0) - (b.display_order ?? 0));
+
+    for (let i = 0; i < sortedDb.length; i++) {
+      const s = sortedDb[i];
+      result.push({
         id: s.id,
         title: s.title,
         content: s.content,
         image_url: s.image_url,
-        display_order: typeof s.display_order === "number" ? s.display_order : idx,
+        display_order: parsedSections.length + i,
         show_in_menu: boolDefaultTrue(s.show_in_menu),
-      }));
+      });
+    }
+
+    return result;
   }, [dbSections, parsedSections]);
 
   const menuSections = useMemo(
