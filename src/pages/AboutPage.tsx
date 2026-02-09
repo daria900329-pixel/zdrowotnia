@@ -45,10 +45,26 @@ const AboutPage = () => {
 
   // Story
   const storyTitle = content.story_title || "Nasza Droga do Zdrowotni";
-  const storyParagraph1 = content.story_paragraph1 || "Króliki hodujemy sami, chleb pieczyemy na zakwasie.";
-  const storyParagraph2 = content.story_paragraph2 || "Wszystko zaczęło się od prostej potrzeby — chcieliśmy wiedzieć, co jemy.";
-  const storyParagraph3 = content.story_paragraph3 || "Dziś nasza kuchnia to prawdziwa manufaktura.";
   const storyHighlight = content.story_highlight || "✨ Wierzymy, że dobre jedzenie łączy ludzi. Zapraszamy Cię do naszego stołu!";
+  
+  // Dynamically collect all story paragraphs (story_paragraph1, story_paragraph2, ...)
+  const storyParagraphs: string[] = [];
+  const defaultParagraphs = [
+    "Króliki hodujemy sami, chleb pieczyemy na zakwasie.",
+    "Wszystko zaczęło się od prostej potrzeby — chcieliśmy wiedzieć, co jemy.",
+    "Dziś nasza kuchnia to prawdziwa manufaktura.",
+  ];
+  for (let i = 1; i <= 20; i++) {
+    const val = content[`story_paragraph${i}`];
+    if (val) {
+      storyParagraphs.push(val);
+    } else if (i <= defaultParagraphs.length && Object.keys(content).filter(k => k.startsWith("story_paragraph")).length === 0) {
+      storyParagraphs.push(defaultParagraphs[i - 1]);
+    }
+  }
+  if (storyParagraphs.length === 0) {
+    defaultParagraphs.forEach(p => storyParagraphs.push(p));
+  }
 
   // Stats
   const stats = [
@@ -146,9 +162,9 @@ const AboutPage = () => {
                 {storyTitle}
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>{storyParagraph1}</p>
-                <p>{storyParagraph2}</p>
-                <p>{storyParagraph3}</p>
+                {storyParagraphs.map((paragraph, idx) => (
+                  <p key={idx}>{paragraph}</p>
+                ))}
                 <p className="text-foreground font-medium bg-secondary/50 p-4 rounded-xl border-l-4 border-primary">
                   {storyHighlight}
                 </p>
