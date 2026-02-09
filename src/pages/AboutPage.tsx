@@ -1,4 +1,5 @@
 import { Heart, Sparkles, Home, Users, Leaf, Clock, Award, MapPin, Loader2, Star, ShieldCheck, Flame, Droplets, Sun, Wheat, TreePine, type LucideIcon } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -257,13 +258,19 @@ const AboutPage = () => {
             <p className="text-muted-foreground leading-relaxed mb-8">
               {locationDescription}
             </p>
-            <a
-              href="/#kontakt"
+            <Link
+              to="/#kontakt"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-medium hover:bg-primary/90 transition-colors"
+              onClick={() => {
+                // After navigation, scroll to the contact section
+                setTimeout(() => {
+                  document.getElementById("kontakt")?.scrollIntoView({ behavior: "smooth" });
+                }, 100);
+              }}
             >
               <Heart className="w-4 h-4" />
               {locationCta}
-            </a>
+            </Link>
           </div>
         </div>
       </section>
