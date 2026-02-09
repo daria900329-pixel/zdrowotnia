@@ -193,6 +193,7 @@ const aboutSubSections: AboutSubSection[] = [
 ];
 
 export function AdminCMS() {
+  console.log("[AdminCMS] v2 loaded — sub-tabs version");
   const { toast } = useToast();
   const [contents, setContents] = useState<Record<string, SectionContent>>({});
   const [loading, setLoading] = useState(true);
