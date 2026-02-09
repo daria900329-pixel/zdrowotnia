@@ -1,5 +1,7 @@
 import { Heart, Sparkles, Home, Users, Leaf, Clock, Award, MapPin, Loader2, Star, ShieldCheck, Flame, Droplets, Sun, Wheat, TreePine, type LucideIcon } from "lucide-react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -38,6 +40,19 @@ const defaultStatIcons = ["Clock", "Users", "Leaf", "Award"];
 
 const AboutPage = () => {
   const { content, loading } = useSiteContent("about_page");
+  const [heroImageUrl, setHeroImageUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    supabase
+      .from("about_gallery")
+      .select("image_url")
+      .eq("is_hero", true)
+      .eq("is_active", true)
+      .maybeSingle()
+      .then(({ data }) => {
+        if (data?.image_url) setHeroImageUrl(data.image_url);
+      });
+  }, []);
 
   // Hero
   const heroTitle = content.hero_title || "Witaj w naszym domu!";
@@ -115,17 +130,30 @@ const AboutPage = () => {
       />
       <Header />
       
-      {/* Hero Section */}
-      <section className="pt-40 pb-16 bg-gradient-to-b from-secondary/30 to-background relative overflow-hidden">
-        <div className="absolute top-20 right-10 w-96 h-96 bg-honey/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+      {/* Hero Section with Image */}
+      <section className="relative min-h-[60vh] flex items-end pt-20 overflow-hidden">
+        {heroImageUrl ? (
+          <>
+            <img
+              src={heroImageUrl}
+              alt="O nas"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+          </>
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background">
+            <div className="absolute top-20 right-10 w-96 h-96 bg-honey/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-10 left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+          </div>
+        )}
         
-        <div className="container mx-auto px-6 relative">
+        <div className="container mx-auto px-6 relative pb-12">
           <div className="max-w-3xl mx-auto text-center">
-            <span className="inline-flex items-center gap-2 text-accent font-medium mb-4 bg-accent/10 px-4 py-2 rounded-full text-sm">
+            <span className="inline-flex items-center gap-2 text-accent font-medium mb-4 bg-accent/10 px-4 py-2 rounded-full text-sm backdrop-blur-sm">
               <Heart className="w-4 h-4" /> {heroBadge}
             </span>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-6">
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-6 drop-shadow-sm">
               {heroTitle}
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
