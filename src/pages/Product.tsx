@@ -109,7 +109,7 @@ const Product = () => {
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left Column: Product Gallery (sticky) */}
-            <div className="relative">
+            <div className="relative lg:sticky lg:top-32 lg:self-start">
               <ProductGallery
                 productId={product.id}
                 productName={product.name}
