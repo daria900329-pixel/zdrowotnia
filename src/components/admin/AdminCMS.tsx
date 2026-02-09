@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Loader2, Save, Plus, Trash2, Eye, EyeOff, Image, Video, GripVertical, Clock, Users, Leaf, Award, Heart, Sparkles, Home, MapPin, Star, ShieldCheck, Flame, Droplets, Sun, Wheat, TreePine, type LucideIcon } from "lucide-react";
+import { Loader2, Save, Plus, Trash2, Eye, EyeOff, Image, Video, GripVertical, Clock, Users, Leaf, Award, Heart, Sparkles, Home, MapPin, Star, ShieldCheck, Flame, Droplets, Sun, Wheat, TreePine, ImageIcon, type LucideIcon } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const ICON_OPTIONS: { value: string; label: string; icon: LucideIcon }[] = [
@@ -44,6 +44,7 @@ interface GalleryItem {
   caption: string | null;
   display_order: number;
   is_active: boolean;
+  is_hero: boolean;
   media_type: "image" | "video";
 }
 
@@ -345,6 +346,14 @@ export function AdminCMS() {
     setGalleryItems(newItems.map((item, idx) => ({ ...item, display_order: idx })));
   };
 
+  const setHeroImage = async (id: string) => {
+    // Unset all others, set this one
+    await supabase.from("about_gallery").update({ is_hero: false }).neq("id", id);
+    await supabase.from("about_gallery").update({ is_hero: true }).eq("id", id);
+    setGalleryItems(prev => prev.map(item => ({ ...item, is_hero: item.id === id })));
+    toast({ title: "Zdjęcie hero ustawione" });
+  };
+
   // Get story paragraphs from content
   const getStoryParagraphs = () => {
     const paragraphs: { key: string; index: number }[] = [];
@@ -477,6 +486,16 @@ export function AdminCMS() {
                 </span>
               </div>
               <Input placeholder="Podpis (opcjonalny)" value={item.caption || ""} onChange={(e) => updateCaption(item.id, e.target.value)} className="flex-1" />
+              {item.media_type === "image" && (
+                <Button
+                  variant={item.is_hero ? "default" : "ghost"}
+                  size="icon"
+                  title={item.is_hero ? "Zdjęcie hero (aktywne)" : "Ustaw jako zdjęcie hero"}
+                  onClick={() => setHeroImage(item.id)}
+                >
+                  <Star className={`w-4 h-4 ${item.is_hero ? "fill-current" : ""}`} />
+                </Button>
+              )}
               <Button variant="ghost" size="icon" onClick={() => toggleActive(item.id, !item.is_active)}>
                 {item.is_active ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
               </Button>
