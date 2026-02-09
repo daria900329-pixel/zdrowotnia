@@ -69,66 +69,6 @@ const sections: ContentSection[] = [
     ],
   },
   {
-    key: "about_page",
-    label: "O nas (strona)",
-    fields: [
-      // Hero sekcja
-      { name: "hero_title", label: "Hero - Tytuł", type: "input" },
-      { name: "hero_badge", label: "Hero - Odznaka", type: "input" },
-      { name: "hero_paragraph1", label: "Hero - Opis", type: "textarea" },
-      // Historia sekcja
-      { name: "story_title", label: "Historia - Tytuł", type: "input" },
-      { name: "story_paragraph1", label: "Historia - Akapit 1", type: "textarea" },
-      { name: "story_paragraph2", label: "Historia - Akapit 2", type: "textarea" },
-      { name: "story_paragraph3", label: "Historia - Akapit 3", type: "textarea" },
-      { name: "story_highlight", label: "Historia - Wyróżnienie", type: "textarea" },
-      // Statystyki
-      { name: "stat1_value", label: "Statystyka 1 - Wartość", type: "input" },
-      { name: "stat1_label", label: "Statystyka 1 - Etykieta", type: "input" },
-      { name: "stat1_icon", label: "Statystyka 1 - Ikona", type: "icon" },
-      { name: "stat2_value", label: "Statystyka 2 - Wartość", type: "input" },
-      { name: "stat2_label", label: "Statystyka 2 - Etykieta", type: "input" },
-      { name: "stat2_icon", label: "Statystyka 2 - Ikona", type: "icon" },
-      { name: "stat3_value", label: "Statystyka 3 - Wartość", type: "input" },
-      { name: "stat3_label", label: "Statystyka 3 - Etykieta", type: "input" },
-      { name: "stat3_icon", label: "Statystyka 3 - Ikona", type: "icon" },
-      { name: "stat4_value", label: "Statystyka 4 - Wartość", type: "input" },
-      { name: "stat4_label", label: "Statystyka 4 - Etykieta", type: "input" },
-      { name: "stat4_icon", label: "Statystyka 4 - Ikona", type: "icon" },
-      // Wartości
-      { name: "value1_title", label: "Wartość 1 - Tytuł", type: "input" },
-      { name: "value1_desc", label: "Wartość 1 - Opis", type: "textarea" },
-      { name: "value2_title", label: "Wartość 2 - Tytuł", type: "input" },
-      { name: "value2_desc", label: "Wartość 2 - Opis", type: "textarea" },
-      { name: "value3_title", label: "Wartość 3 - Tytuł", type: "input" },
-      { name: "value3_desc", label: "Wartość 3 - Opis", type: "textarea" },
-      { name: "value4_title", label: "Wartość 4 - Tytuł", type: "input" },
-      { name: "value4_desc", label: "Wartość 4 - Opis", type: "textarea" },
-      // Oś czasu
-      { name: "timeline_title", label: "Oś czasu - Tytuł", type: "input" },
-      { name: "timeline_subtitle", label: "Oś czasu - Podtytuł", type: "textarea" },
-      { name: "timeline1_year", label: "Oś 1 - Rok", type: "input" },
-      { name: "timeline1_title", label: "Oś 1 - Tytuł", type: "input" },
-      { name: "timeline1_desc", label: "Oś 1 - Opis", type: "textarea" },
-      { name: "timeline2_year", label: "Oś 2 - Rok", type: "input" },
-      { name: "timeline2_title", label: "Oś 2 - Tytuł", type: "input" },
-      { name: "timeline2_desc", label: "Oś 2 - Opis", type: "textarea" },
-      { name: "timeline3_year", label: "Oś 3 - Rok", type: "input" },
-      { name: "timeline3_title", label: "Oś 3 - Tytuł", type: "input" },
-      { name: "timeline3_desc", label: "Oś 3 - Opis", type: "textarea" },
-      { name: "timeline4_year", label: "Oś 4 - Rok", type: "input" },
-      { name: "timeline4_title", label: "Oś 4 - Tytuł", type: "input" },
-      { name: "timeline4_desc", label: "Oś 4 - Opis", type: "textarea" },
-      // Lokalizacja
-      { name: "location_title", label: "Lokalizacja - Tytuł", type: "input" },
-      { name: "location_description", label: "Lokalizacja - Opis", type: "textarea" },
-      { name: "location_cta", label: "Lokalizacja - Przycisk", type: "input" },
-      // Galeria
-      { name: "gallery_title", label: "Galeria - Tytuł", type: "input" },
-      { name: "gallery_subtitle", label: "Galeria - Podtytuł", type: "textarea" },
-    ],
-  },
-  {
     key: "products",
     label: "Produkty",
     fields: [
@@ -153,6 +93,105 @@ const sections: ContentSection[] = [
     key: "footer",
     label: "Stopka",
     fields: [{ name: "tagline", label: "Tekst", type: "textarea" }],
+  },
+];
+
+// Sub-sections for the about_page - all save to the same "about_page" section_key
+interface AboutSubSection {
+  id: string;
+  label: string;
+  fields: { name: string; label: string; type: "input" | "textarea" | "icon" }[];
+}
+
+const aboutSubSections: AboutSubSection[] = [
+  {
+    id: "hero",
+    label: "Nagłówek",
+    fields: [
+      { name: "hero_title", label: "Tytuł", type: "input" },
+      { name: "hero_badge", label: "Odznaka", type: "input" },
+      { name: "hero_paragraph1", label: "Opis", type: "textarea" },
+    ],
+  },
+  {
+    id: "stats",
+    label: "Statystyki",
+    fields: [
+      { name: "stat1_value", label: "Statystyka 1 - Wartość (np. 6+)", type: "input" },
+      { name: "stat1_label", label: "Statystyka 1 - Etykieta (np. Lat Doświadczenia)", type: "input" },
+      { name: "stat1_icon", label: "Statystyka 1 - Ikona", type: "icon" },
+      { name: "stat2_value", label: "Statystyka 2 - Wartość", type: "input" },
+      { name: "stat2_label", label: "Statystyka 2 - Etykieta", type: "input" },
+      { name: "stat2_icon", label: "Statystyka 2 - Ikona", type: "icon" },
+      { name: "stat3_value", label: "Statystyka 3 - Wartość", type: "input" },
+      { name: "stat3_label", label: "Statystyka 3 - Etykieta", type: "input" },
+      { name: "stat3_icon", label: "Statystyka 3 - Ikona", type: "icon" },
+      { name: "stat4_value", label: "Statystyka 4 - Wartość", type: "input" },
+      { name: "stat4_label", label: "Statystyka 4 - Etykieta", type: "input" },
+      { name: "stat4_icon", label: "Statystyka 4 - Ikona", type: "icon" },
+    ],
+  },
+  {
+    id: "story",
+    label: "Historia",
+    fields: [
+      { name: "story_title", label: "Tytuł", type: "input" },
+      { name: "story_paragraph1", label: "Akapit 1", type: "textarea" },
+      { name: "story_paragraph2", label: "Akapit 2", type: "textarea" },
+      { name: "story_paragraph3", label: "Akapit 3", type: "textarea" },
+      { name: "story_highlight", label: "Wyróżnienie", type: "textarea" },
+    ],
+  },
+  {
+    id: "values",
+    label: "Wartości",
+    fields: [
+      { name: "value1_title", label: "Wartość 1 - Tytuł", type: "input" },
+      { name: "value1_desc", label: "Wartość 1 - Opis", type: "textarea" },
+      { name: "value2_title", label: "Wartość 2 - Tytuł", type: "input" },
+      { name: "value2_desc", label: "Wartość 2 - Opis", type: "textarea" },
+      { name: "value3_title", label: "Wartość 3 - Tytuł", type: "input" },
+      { name: "value3_desc", label: "Wartość 3 - Opis", type: "textarea" },
+      { name: "value4_title", label: "Wartość 4 - Tytuł", type: "input" },
+      { name: "value4_desc", label: "Wartość 4 - Opis", type: "textarea" },
+    ],
+  },
+  {
+    id: "timeline",
+    label: "Oś czasu",
+    fields: [
+      { name: "timeline_title", label: "Tytuł", type: "input" },
+      { name: "timeline_subtitle", label: "Podtytuł", type: "textarea" },
+      { name: "timeline1_year", label: "Oś 1 - Rok", type: "input" },
+      { name: "timeline1_title", label: "Oś 1 - Tytuł", type: "input" },
+      { name: "timeline1_desc", label: "Oś 1 - Opis", type: "textarea" },
+      { name: "timeline2_year", label: "Oś 2 - Rok", type: "input" },
+      { name: "timeline2_title", label: "Oś 2 - Tytuł", type: "input" },
+      { name: "timeline2_desc", label: "Oś 2 - Opis", type: "textarea" },
+      { name: "timeline3_year", label: "Oś 3 - Rok", type: "input" },
+      { name: "timeline3_title", label: "Oś 3 - Tytuł", type: "input" },
+      { name: "timeline3_desc", label: "Oś 3 - Opis", type: "textarea" },
+      { name: "timeline4_year", label: "Oś 4 - Rok", type: "input" },
+      { name: "timeline4_title", label: "Oś 4 - Tytuł", type: "input" },
+      { name: "timeline4_desc", label: "Oś 4 - Opis", type: "textarea" },
+    ],
+  },
+  {
+    id: "location",
+    label: "Lokalizacja",
+    fields: [
+      { name: "location_title", label: "Tytuł", type: "input" },
+      { name: "location_description", label: "Opis", type: "textarea" },
+      { name: "location_cta", label: "Przycisk", type: "input" },
+    ],
+  },
+  {
+    id: "gallery",
+    label: "Galeria",
+    fields: [
+      { name: "gallery_title", label: "Tytuł", type: "input" },
+      { name: "gallery_subtitle", label: "Podtytuł", type: "textarea" },
+    ],
   },
 ];
 
@@ -329,6 +368,104 @@ export function AdminCMS() {
     );
   }
 
+  const renderField = (field: { name: string; label: string; type: "input" | "textarea" | "icon" }, sectionKey: string) => (
+    <div key={field.name} className="space-y-2">
+      <Label>{field.label}</Label>
+      {field.type === "icon" ? (
+        <Select
+          value={contents[sectionKey]?.[field.name] || ""}
+          onValueChange={(val) => updateField(sectionKey, field.name, val)}
+        >
+          <SelectTrigger>
+            <SelectValue placeholder="Wybierz ikonę">
+              {(() => {
+                const selected = ICON_OPTIONS.find(o => o.value === contents[sectionKey]?.[field.name]);
+                if (!selected) return "Wybierz ikonę";
+                const IconComp = selected.icon;
+                return <span className="flex items-center gap-2"><IconComp className="w-4 h-4" /> {selected.label}</span>;
+              })()}
+            </SelectValue>
+          </SelectTrigger>
+          <SelectContent>
+            {ICON_OPTIONS.map((opt) => {
+              const IconComp = opt.icon;
+              return (
+                <SelectItem key={opt.value} value={opt.value}>
+                  <span className="flex items-center gap-2"><IconComp className="w-4 h-4" /> {opt.label}</span>
+                </SelectItem>
+              );
+            })}
+          </SelectContent>
+        </Select>
+      ) : field.type === "input" ? (
+        <Input
+          value={contents[sectionKey]?.[field.name] || ""}
+          onChange={(e) => updateField(sectionKey, field.name, e.target.value)}
+        />
+      ) : (
+        <Textarea
+          value={contents[sectionKey]?.[field.name] || ""}
+          onChange={(e) => updateField(sectionKey, field.name, e.target.value)}
+          rows={3}
+        />
+      )}
+    </div>
+  );
+
+  const renderGalleryManager = () => (
+    <div className="mt-4">
+      <h3 className="font-semibold text-lg mb-4">Zdjęcia i filmy w galerii</h3>
+      <div className="grid grid-cols-2 gap-4 mb-6">
+        <div className="border-2 border-dashed border-border rounded-lg p-4 text-center hover:border-primary/50 transition-colors">
+          <input type="file" accept="image/*" onChange={(e) => handleFileUpload(e, "image")} className="hidden" id="cms-image-upload" disabled={uploading} />
+          <Label htmlFor="cms-image-upload" className="cursor-pointer flex flex-col items-center gap-2">
+            {uploading ? <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" /> : <Image className="w-6 h-6 text-muted-foreground" />}
+            <span className="text-sm text-muted-foreground">Dodaj zdjęcie</span>
+          </Label>
+        </div>
+        <div className="border-2 border-dashed border-border rounded-lg p-4 text-center hover:border-primary/50 transition-colors">
+          <input type="file" accept="video/*" onChange={(e) => handleFileUpload(e, "video")} className="hidden" id="cms-video-upload" disabled={uploading} />
+          <Label htmlFor="cms-video-upload" className="cursor-pointer flex flex-col items-center gap-2">
+            {uploading ? <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" /> : <Video className="w-6 h-6 text-muted-foreground" />}
+            <span className="text-sm text-muted-foreground">Dodaj film</span>
+          </Label>
+        </div>
+      </div>
+      {galleryLoading ? (
+        <div className="flex justify-center py-8"><Loader2 className="w-6 h-6 animate-spin text-primary" /></div>
+      ) : galleryItems.length === 0 ? (
+        <p className="text-center text-muted-foreground py-8">Brak elementów w galerii.</p>
+      ) : (
+        <div className="space-y-3">
+          {galleryItems.map((item, index) => (
+            <div key={item.id} className={`flex items-center gap-3 p-3 rounded-lg border ${item.is_active ? "bg-card" : "bg-muted/50 opacity-60"}`}>
+              <Button variant="ghost" size="icon" className="h-5 w-5" onClick={() => moveItem(item.id, "up")} disabled={index === 0}>
+                <GripVertical className="w-3 h-3" />
+              </Button>
+              <div className="relative w-16 h-16 flex-shrink-0">
+                {item.media_type === "video" ? (
+                  <div className="w-full h-full bg-muted rounded flex items-center justify-center"><Video className="w-6 h-6 text-muted-foreground" /></div>
+                ) : (
+                  <img src={item.image_url} alt="" className="w-full h-full object-cover rounded" />
+                )}
+                <span className={`absolute top-0.5 left-0.5 text-[10px] px-1 py-0.5 rounded ${item.media_type === "video" ? "bg-blue-500 text-white" : "bg-green-500 text-white"}`}>
+                  {item.media_type === "video" ? "Film" : "Foto"}
+                </span>
+              </div>
+              <Input placeholder="Podpis (opcjonalny)" value={item.caption || ""} onChange={(e) => updateCaption(item.id, e.target.value)} className="flex-1" />
+              <Button variant="ghost" size="icon" onClick={() => toggleActive(item.id, !item.is_active)}>
+                {item.is_active ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
+              </Button>
+              <Button variant="ghost" size="icon" className="text-destructive" onClick={() => deleteGalleryItem(item.id, item.image_url)}>
+                <Trash2 className="w-4 h-4" />
+              </Button>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+
   return (
     <Card>
       <CardHeader>
@@ -336,165 +473,52 @@ export function AdminCMS() {
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="hero">
-          <TabsList className="grid grid-cols-6 mb-6">
+          <TabsList className="flex flex-wrap gap-1 mb-6">
             {sections.map((section) => (
               <TabsTrigger key={section.key} value={section.key} className="text-xs md:text-sm">
                 {section.label}
               </TabsTrigger>
             ))}
+            <TabsTrigger value="about_page" className="text-xs md:text-sm">
+              O nas (strona)
+            </TabsTrigger>
           </TabsList>
 
           {sections.map((section) => (
             <TabsContent key={section.key} value={section.key} className="space-y-4">
-              {section.fields.map((field) => (
-                <div key={field.name} className="space-y-2">
-                  <Label>{field.label}</Label>
-                  {field.type === "icon" ? (
-                    <Select
-                      value={contents[section.key]?.[field.name] || ""}
-                      onValueChange={(val) => updateField(section.key, field.name, val)}
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Wybierz ikonę">
-                          {(() => {
-                            const selected = ICON_OPTIONS.find(o => o.value === contents[section.key]?.[field.name]);
-                            if (!selected) return "Wybierz ikonę";
-                            const IconComp = selected.icon;
-                            return <span className="flex items-center gap-2"><IconComp className="w-4 h-4" /> {selected.label}</span>;
-                          })()}
-                        </SelectValue>
-                      </SelectTrigger>
-                      <SelectContent>
-                        {ICON_OPTIONS.map((opt) => {
-                          const IconComp = opt.icon;
-                          return (
-                            <SelectItem key={opt.value} value={opt.value}>
-                              <span className="flex items-center gap-2"><IconComp className="w-4 h-4" /> {opt.label}</span>
-                            </SelectItem>
-                          );
-                        })}
-                      </SelectContent>
-                    </Select>
-                  ) : field.type === "input" ? (
-                    <Input
-                      value={contents[section.key]?.[field.name] || ""}
-                      onChange={(e) => updateField(section.key, field.name, e.target.value)}
-                    />
-                  ) : (
-                    <Textarea
-                      value={contents[section.key]?.[field.name] || ""}
-                      onChange={(e) => updateField(section.key, field.name, e.target.value)}
-                      rows={3}
-                    />
-                  )}
-                </div>
-              ))}
-
-              <Button
-                onClick={() => handleSave(section.key)}
-                disabled={saving === section.key}
-              >
-                {saving === section.key ? (
-                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                ) : (
-                  <Save className="w-4 h-4 mr-2" />
-                )}
+              {section.fields.map((field) => renderField(field, section.key))}
+              <Button onClick={() => handleSave(section.key)} disabled={saving === section.key}>
+                {saving === section.key ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Save className="w-4 h-4 mr-2" />}
                 Zapisz {section.label}
               </Button>
-
-              {/* Gallery management for about_page section */}
-              {section.key === "about_page" && (
-                <div className="mt-8 pt-8 border-t">
-                  <h3 className="font-semibold text-lg mb-4">Zdjęcia i filmy w galerii</h3>
-                  
-                  {/* Upload buttons */}
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="border-2 border-dashed border-border rounded-lg p-4 text-center hover:border-primary/50 transition-colors">
-                      <input
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => handleFileUpload(e, "image")}
-                        className="hidden"
-                        id="cms-image-upload"
-                        disabled={uploading}
-                      />
-                      <Label htmlFor="cms-image-upload" className="cursor-pointer flex flex-col items-center gap-2">
-                        {uploading ? <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" /> : <Image className="w-6 h-6 text-muted-foreground" />}
-                        <span className="text-sm text-muted-foreground">Dodaj zdjęcie</span>
-                      </Label>
-                    </div>
-                    <div className="border-2 border-dashed border-border rounded-lg p-4 text-center hover:border-primary/50 transition-colors">
-                      <input
-                        type="file"
-                        accept="video/*"
-                        onChange={(e) => handleFileUpload(e, "video")}
-                        className="hidden"
-                        id="cms-video-upload"
-                        disabled={uploading}
-                      />
-                      <Label htmlFor="cms-video-upload" className="cursor-pointer flex flex-col items-center gap-2">
-                        {uploading ? <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" /> : <Video className="w-6 h-6 text-muted-foreground" />}
-                        <span className="text-sm text-muted-foreground">Dodaj film</span>
-                      </Label>
-                    </div>
-                  </div>
-
-                  {/* Gallery items list */}
-                  {galleryLoading ? (
-                    <div className="flex justify-center py-8">
-                      <Loader2 className="w-6 h-6 animate-spin text-primary" />
-                    </div>
-                  ) : galleryItems.length === 0 ? (
-                    <p className="text-center text-muted-foreground py-8">
-                      Brak elementów w galerii. Dodaj zdjęcie lub film powyżej.
-                    </p>
-                  ) : (
-                    <div className="space-y-3">
-                      {galleryItems.map((item, index) => (
-                        <div
-                          key={item.id}
-                          className={`flex items-center gap-3 p-3 rounded-lg border ${item.is_active ? "bg-card" : "bg-muted/50 opacity-60"}`}
-                        >
-                          <div className="flex flex-col">
-                            <Button variant="ghost" size="icon" className="h-5 w-5" onClick={() => moveItem(item.id, "up")} disabled={index === 0}>
-                              <GripVertical className="w-3 h-3" />
-                            </Button>
-                          </div>
-
-                          <div className="relative w-16 h-16 flex-shrink-0">
-                            {item.media_type === "video" ? (
-                              <div className="w-full h-full bg-muted rounded flex items-center justify-center">
-                                <Video className="w-6 h-6 text-muted-foreground" />
-                              </div>
-                            ) : (
-                              <img src={item.image_url} alt="" className="w-full h-full object-cover rounded" />
-                            )}
-                            <span className={`absolute top-0.5 left-0.5 text-[10px] px-1 py-0.5 rounded ${item.media_type === "video" ? "bg-blue-500 text-white" : "bg-green-500 text-white"}`}>
-                              {item.media_type === "video" ? "Film" : "Foto"}
-                            </span>
-                          </div>
-
-                          <Input
-                            placeholder="Podpis (opcjonalny)"
-                            value={item.caption || ""}
-                            onChange={(e) => updateCaption(item.id, e.target.value)}
-                            className="flex-1"
-                          />
-
-                          <Button variant="ghost" size="icon" onClick={() => toggleActive(item.id, !item.is_active)}>
-                            {item.is_active ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
-                          </Button>
-                          <Button variant="ghost" size="icon" className="text-destructive" onClick={() => deleteGalleryItem(item.id, item.image_url)}>
-                            <Trash2 className="w-4 h-4" />
-                          </Button>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
             </TabsContent>
           ))}
+
+          {/* About Page with sub-tabs */}
+          <TabsContent value="about_page" className="space-y-4">
+            <Tabs defaultValue="stats">
+              <TabsList className="flex flex-wrap gap-1 mb-4">
+                {aboutSubSections.map((sub) => (
+                  <TabsTrigger key={sub.id} value={sub.id} className="text-xs">
+                    {sub.label}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+
+              {aboutSubSections.map((sub) => (
+                <TabsContent key={sub.id} value={sub.id} className="space-y-4">
+                  {sub.fields.map((field) => renderField(field, "about_page"))}
+                  
+                  <Button onClick={() => handleSave("about_page")} disabled={saving === "about_page"}>
+                    {saving === "about_page" ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Save className="w-4 h-4 mr-2" />}
+                    Zapisz
+                  </Button>
+
+                  {sub.id === "gallery" && renderGalleryManager()}
+                </TabsContent>
+              ))}
+            </Tabs>
+          </TabsContent>
         </Tabs>
       </CardContent>
     </Card>
