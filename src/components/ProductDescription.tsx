@@ -49,7 +49,7 @@ function parseMenuSections(text: string): ParsedSection[] {
 
   const hasMenu = /\[menu\]/i.test(trimmed);
   if (!hasMenu) {
-    return [{ title: "Opis szczegółowy", content: trimmed }];
+    return [{ title: "", content: trimmed }];
   }
 
   const lines = trimmed.split("\n");
@@ -278,9 +278,11 @@ export function ProductDescription({ productId, fallbackDescription, onActiveSec
             ref={(el) => (sectionRefs.current[section.id] = el)}
             className="scroll-mt-48"
           >
-            <h3 className="font-serif text-xl font-semibold text-foreground mb-4">
-              {section.title}
-            </h3>
+            {section.title && (
+              <h3 className="font-serif text-xl font-semibold text-foreground mb-4">
+                {section.title}
+              </h3>
+            )}
             {section.content && (
               <div className="text-muted-foreground leading-relaxed whitespace-pre-line">
                 {section.content}
