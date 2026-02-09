@@ -96,7 +96,6 @@ const sections: ContentSection[] = [
   },
 ];
 
-// Sub-sections for the about_page - all save to the same "about_page" section_key
 interface AboutSubSection {
   id: string;
   label: string;
@@ -193,13 +192,12 @@ const aboutSubSections: AboutSubSection[] = [
 ];
 
 export function AdminCMS() {
-  console.log("[AdminCMS] v2 loaded — sub-tabs version");
+  console.log("[AdminCMS] v3 loaded with sub-tabs and dynamic paragraphs");
   const { toast } = useToast();
   const [contents, setContents] = useState<Record<string, SectionContent>>({});
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState<string | null>(null);
   
-  // Gallery state
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
   const [galleryLoading, setGalleryLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
@@ -247,16 +245,9 @@ export function AdminCMS() {
       .eq("section_key", sectionKey);
 
     if (error) {
-      toast({
-        title: "Błąd",
-        description: "Nie udało się zapisać zmian",
-        variant: "destructive",
-      });
+      toast({ title: "Błąd", description: "Nie udało się zapisać zmian", variant: "destructive" });
     } else {
-      toast({
-        title: "Zapisano",
-        description: "Zmiany zostały zapisane",
-      });
+      toast({ title: "Zapisano", description: "Zmiany zostały zapisane" });
     }
     setSaving(null);
   };
@@ -264,14 +255,10 @@ export function AdminCMS() {
   const updateField = (sectionKey: string, fieldName: string, value: string) => {
     setContents((prev) => ({
       ...prev,
-      [sectionKey]: {
-        ...prev[sectionKey],
-        [fieldName]: value,
-      },
+      [sectionKey]: { ...prev[sectionKey], [fieldName]: value },
     }));
   };
 
-  // Gallery functions
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>, type: "image" | "video") => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -354,6 +341,43 @@ export function AdminCMS() {
       await supabase.from("about_gallery").update({ display_order: i }).eq("id", newItems[i].id);
     }
     setGalleryItems(newItems.map((item, idx) => ({ ...item, display_order: idx })));
+  };
+
+  // Get story paragraphs from content
+  const getStoryParagraphs = () => {
+    const paragraphs: { key: string; index: number }[] = [];
+    for (let i = 1; i <= 20; i++) {
+      if (contents["about_page"]?.[`story_paragraph${i}`] !== undefined) {
+        paragraphs.push({ key: `story_paragraph${i}`, index: i });
+      }
+    }
+    if (paragraphs.length === 0) {
+      paragraphs.push({ key: "story_paragraph1", index: 1 });
+      paragraphs.push({ key: "story_paragraph2", index: 2 });
+      paragraphs.push({ key: "story_paragraph3", index: 3 });
+    }
+    return paragraphs;
+  };
+
+  const addParagraph = () => {
+    const paragraphs = getStoryParagraphs();
+    const nextIndex = Math.max(...paragraphs.map(p => p.index)) + 1;
+    updateField("about_page", `story_paragraph${nextIndex}`, "");
+  };
+
+  const removeParagraph = (removeKey: string, removeIndex: number) => {
+    const updated = { ...contents["about_page"] };
+    delete updated[removeKey];
+    const remaining: string[] = [];
+    for (let i = 1; i <= 20; i++) {
+      const val = i === removeIndex ? undefined : updated[`story_paragraph${i}`];
+      if (val !== undefined) remaining.push(val);
+      delete updated[`story_paragraph${i}`];
+    }
+    remaining.forEach((val, i) => {
+      updated[`story_paragraph${i + 1}`] = val;
+    });
+    setContents(prev => ({ ...prev, about_page: updated }));
   };
 
   if (loading) {
@@ -464,6 +488,8 @@ export function AdminCMS() {
     </div>
   );
 
+  const storyParagraphs = getStoryParagraphs();
+
   return (
     <Card>
       <CardHeader>
@@ -492,7 +518,6 @@ export function AdminCMS() {
             </TabsContent>
           ))}
 
-          {/* About Page with sub-tabs */}
           <TabsContent value="about_page" className="space-y-4">
             <Tabs defaultValue="stats">
               <TabsList className="flex flex-wrap gap-1 mb-4">
@@ -507,74 +532,36 @@ export function AdminCMS() {
                 <TabsContent key={sub.id} value={sub.id} className="space-y-4">
                   {sub.fields.map((field) => renderField(field, "about_page"))}
 
-                  {/* Dynamic paragraphs for story section */}
-                  {sub.id === "story" && (() => {
-                    const paragraphs: { key: string; index: number }[] = [];
-                    for (let i = 1; i <= 20; i++) {
-                      if (contents["about_page"]?.[`story_paragraph${i}`] !== undefined) {
-                        paragraphs.push({ key: `story_paragraph${i}`, index: i });
-                      }
-                    }
-                    if (paragraphs.length === 0) {
-                      // Show defaults as editable
-                      paragraphs.push({ key: "story_paragraph1", index: 1 });
-                      paragraphs.push({ key: "story_paragraph2", index: 2 });
-                      paragraphs.push({ key: "story_paragraph3", index: 3 });
-                    }
-                    const nextIndex = paragraphs.length > 0 ? Math.max(...paragraphs.map(p => p.index)) + 1 : 1;
+                  {sub.id === "story" && (
+                    <div className="space-y-3">
+                      <Label className="text-base font-semibold">Akapity</Label>
+                      {storyParagraphs.map((p, idx) => (
+                        <div key={p.key} className="flex gap-2 items-start">
+                          <span className="text-xs text-muted-foreground mt-3 w-6 flex-shrink-0">{idx + 1}.</span>
+                          <Textarea
+                            value={contents["about_page"]?.[p.key] || ""}
+                            onChange={(e) => updateField("about_page", p.key, e.target.value)}
+                            rows={3}
+                            className="flex-1"
+                          />
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="text-destructive flex-shrink-0 mt-1"
+                            onClick={() => removeParagraph(p.key, p.index)}
+                            disabled={storyParagraphs.length <= 1}
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </Button>
+                        </div>
+                      ))}
+                      <Button variant="outline" size="sm" onClick={addParagraph}>
+                        <Plus className="w-4 h-4 mr-2" />
+                        Dodaj akapit
+                      </Button>
+                    </div>
+                  )}
 
-                    return (
-                      <div className="space-y-3">
-                        <Label className="text-base font-semibold">Akapity</Label>
-                        {paragraphs.map((p, idx) => (
-                          <div key={p.key} className="flex gap-2 items-start">
-                            <span className="text-xs text-muted-foreground mt-3 w-6 flex-shrink-0">{idx + 1}.</span>
-                            <Textarea
-                              value={contents["about_page"]?.[p.key] || ""}
-                              onChange={(e) => updateField("about_page", p.key, e.target.value)}
-                              rows={2}
-                              className="flex-1"
-                            />
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              className="text-destructive flex-shrink-0 mt-1"
-                              onClick={() => {
-                                // Remove this paragraph and shift remaining ones down
-                                const updated = { ...contents["about_page"] };
-                                delete updated[p.key];
-                                // Re-index remaining paragraphs
-                                const remaining: string[] = [];
-                                for (let i = 1; i <= 20; i++) {
-                                  const val = i === p.index ? undefined : updated[`story_paragraph${i}`];
-                                  if (val !== undefined) remaining.push(val);
-                                  delete updated[`story_paragraph${i}`];
-                                }
-                                remaining.forEach((val, i) => {
-                                  updated[`story_paragraph${i + 1}`] = val;
-                                });
-                                setContents(prev => ({ ...prev, about_page: updated }));
-                              }}
-                              disabled={paragraphs.length <= 1}
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </Button>
-                          </div>
-                        ))}
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => {
-                            updateField("about_page", `story_paragraph${nextIndex}`, "");
-                          }}
-                        >
-                          <Plus className="w-4 h-4 mr-2" />
-                          Dodaj akapit
-                        </Button>
-                      </div>
-                    );
-                  })()}
-                  
                   <Button onClick={() => handleSave("about_page")} disabled={saving === "about_page"}>
                     {saving === "about_page" ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Save className="w-4 h-4 mr-2" />}
                     Zapisz
