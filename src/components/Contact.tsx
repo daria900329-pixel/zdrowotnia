@@ -21,6 +21,8 @@ const Contact = () => {
   const phone = content.phone || "+48 123 456 789";
   const email = content.email || "kontakt@rodzinnesmaki.pl";
   const address = content.address || "Odbiór osobisty po wcześniejszym umówieniu";
+  const orderTitle = content.order_title || "💡 Jak zamówić?";
+  const orderDescription = content.order_description || "Dodaj produkty do koszyka i przejdź do płatności. Po opłaceniu zamówienia skontaktujemy się, aby ustalić szczegóły dostawy lub odbioru osobistego.";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -98,11 +100,10 @@ const Contact = () => {
 
               <div className="bg-card p-6 rounded-2xl shadow-soft border border-primary/20">
                 <h3 className="font-serif text-lg font-semibold text-foreground mb-2">
-                  💡 Jak zamówić?
+                  {orderTitle}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Dodaj produkty do koszyka i przejdź do płatności. 
-                  Po opłaceniu zamówienia skontaktujemy się, aby ustalić szczegóły dostawy lub odbioru osobistego.
+                  {orderDescription}
                 </p>
               </div>
             </div>
