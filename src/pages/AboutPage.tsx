@@ -3,6 +3,7 @@ import { useSiteContent } from "@/hooks/useSiteContent";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AboutGallery from "@/components/AboutGallery";
+import { SEO } from "@/components/SEO";
 
 const defaultValues = [
   {
@@ -86,6 +87,11 @@ const AboutPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="O nas"
+        description="Poznaj historię Zdrowotni — rodzinnej manufaktury naturalnego jedzenia z Mazur. Dowiedz się, jak powstają nasze produkty."
+        canonical="/o-nas"
+      />
       <Header />
       
       {/* Hero Section */}

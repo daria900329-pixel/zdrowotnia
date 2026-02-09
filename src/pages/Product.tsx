@@ -8,6 +8,7 @@ import { ProductGallery } from "@/components/ProductGallery";
 import { ProductDescription, ActiveSection } from "@/components/ProductDescription";
 import { ArrowLeft, Loader2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SEO, productJsonLd } from "@/components/SEO";
 
 interface Product {
   id: string;
@@ -93,6 +94,14 @@ const Product = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title={product.name}
+        description={product.description || `${product.name} — naturalny produkt od Zdrowotni`}
+        canonical={`/product/${product.id}`}
+        ogType="product"
+        ogImage={product.image_url || undefined}
+        jsonLd={productJsonLd(product)}
+      />
       <Header />
       <main className="section-padding">
         <div className="container mx-auto">
