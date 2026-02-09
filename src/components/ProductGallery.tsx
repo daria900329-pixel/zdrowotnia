@@ -60,7 +60,7 @@ export function ProductGallery({
   // If no gallery images, show fallback
   if (!loading && images.length === 0) {
     return (
-      <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-hover bg-secondary/30">
+      <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-hover bg-secondary/30">
         {fallbackImage ? (
           <img src={fallbackImage} alt={productName} className="w-full h-full object-contain object-center" />
         ) : (
@@ -84,13 +84,13 @@ export function ProductGallery({
   }
 
   if (loading) {
-    return <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-hover bg-secondary/30 animate-pulse" />;
+    return <div className="aspect-[3/4] rounded-3xl overflow-hidden shadow-hover bg-secondary/30 animate-pulse" />;
   }
 
   return (
     <div className="space-y-4">
       {/* Main Image */}
-        <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-hover bg-secondary/30">
+        <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-hover bg-secondary/30">
         <img
           src={images[selectedIndex]?.image_url}
           alt={`${productName} - zdjęcie ${selectedIndex + 1}`}
