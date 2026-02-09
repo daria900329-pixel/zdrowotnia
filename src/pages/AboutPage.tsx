@@ -1,9 +1,13 @@
-import { Heart, Sparkles, Home, Users, Leaf, Clock, Award, MapPin, Loader2 } from "lucide-react";
+import { Heart, Sparkles, Home, Users, Leaf, Clock, Award, MapPin, Loader2, Star, ShieldCheck, Flame, Droplets, Sun, Wheat, TreePine, type LucideIcon } from "lucide-react";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AboutGallery from "@/components/AboutGallery";
 import { SEO } from "@/components/SEO";
+
+const ICON_MAP: Record<string, LucideIcon> = {
+  Clock, Users, Leaf, Award, Heart, Sparkles, Home, MapPin, Star, ShieldCheck, Flame, Droplets, Sun, Wheat, TreePine,
+};
 
 const defaultValues = [
   {
@@ -29,7 +33,7 @@ const defaultValues = [
 ];
 
 const valueIcons = [Sparkles, Heart, Home, Users];
-const statIcons = [Clock, Users, Leaf, Award];
+const defaultStatIcons = ["Clock", "Users", "Leaf", "Award"];
 
 const AboutPage = () => {
   const { content, loading } = useSiteContent("about_page");
@@ -48,10 +52,10 @@ const AboutPage = () => {
 
   // Stats
   const stats = [
-    { value: content.stat1_value || "6+", label: content.stat1_label || "Lat Doświadczenia", icon: statIcons[0] },
-    { value: content.stat2_value || "1000+", label: content.stat2_label || "Zadowolonych Klientów", icon: statIcons[1] },
-    { value: content.stat3_value || "100%", label: content.stat3_label || "Naturalne Składniki", icon: statIcons[2] },
-    { value: content.stat4_value || "3+", label: content.stat4_label || "Lata Naszego Zakwasu", icon: statIcons[3] },
+    { value: content.stat1_value || "6+", label: content.stat1_label || "Lat Doświadczenia", icon: ICON_MAP[content.stat1_icon || defaultStatIcons[0]] || Clock },
+    { value: content.stat2_value || "1000+", label: content.stat2_label || "Zadowolonych Klientów", icon: ICON_MAP[content.stat2_icon || defaultStatIcons[1]] || Users },
+    { value: content.stat3_value || "100%", label: content.stat3_label || "Naturalne Składniki", icon: ICON_MAP[content.stat3_icon || defaultStatIcons[2]] || Leaf },
+    { value: content.stat4_value || "3+", label: content.stat4_label || "Lata Naszego Zakwasu", icon: ICON_MAP[content.stat4_icon || defaultStatIcons[3]] || Award },
   ];
 
   // Values
