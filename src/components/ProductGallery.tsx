@@ -62,7 +62,7 @@ export function ProductGallery({
     return (
       <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-hover bg-secondary/30">
         {fallbackImage ? (
-          <img src={fallbackImage} alt={productName} className="w-full h-full object-contain object-center" />
+          <img src={fallbackImage} alt={productName} className="w-full h-full object-cover object-center" />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-muted text-muted-foreground">
             Brak zdjęcia
@@ -94,7 +94,7 @@ export function ProductGallery({
         <img
           src={images[selectedIndex]?.image_url}
           alt={`${productName} - zdjęcie ${selectedIndex + 1}`}
-          className="w-full h-full object-contain object-center"
+          className="w-full h-full object-cover object-center"
         />
 
         {overlayImageUrl && (
