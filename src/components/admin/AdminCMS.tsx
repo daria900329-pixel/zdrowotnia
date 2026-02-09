@@ -87,6 +87,8 @@ const sections: ContentSection[] = [
       { name: "phone", label: "Telefon", type: "input" },
       { name: "email", label: "Email", type: "input" },
       { name: "address", label: "Adres", type: "input" },
+      { name: "order_title", label: "Jak zamówić — Tytuł", type: "input" },
+      { name: "order_description", label: "Jak zamówić — Opis", type: "textarea" },
     ],
   },
   {
