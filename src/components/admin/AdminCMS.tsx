@@ -136,9 +136,6 @@ const aboutSubSections: AboutSubSection[] = [
     label: "Historia",
     fields: [
       { name: "story_title", label: "Tytuł", type: "input" },
-      { name: "story_paragraph1", label: "Akapit 1", type: "textarea" },
-      { name: "story_paragraph2", label: "Akapit 2", type: "textarea" },
-      { name: "story_paragraph3", label: "Akapit 3", type: "textarea" },
       { name: "story_highlight", label: "Wyróżnienie", type: "textarea" },
     ],
   },
@@ -508,6 +505,74 @@ export function AdminCMS() {
               {aboutSubSections.map((sub) => (
                 <TabsContent key={sub.id} value={sub.id} className="space-y-4">
                   {sub.fields.map((field) => renderField(field, "about_page"))}
+
+                  {/* Dynamic paragraphs for story section */}
+                  {sub.id === "story" && (() => {
+                    const paragraphs: { key: string; index: number }[] = [];
+                    for (let i = 1; i <= 20; i++) {
+                      if (contents["about_page"]?.[`story_paragraph${i}`] !== undefined) {
+                        paragraphs.push({ key: `story_paragraph${i}`, index: i });
+                      }
+                    }
+                    if (paragraphs.length === 0) {
+                      // Show defaults as editable
+                      paragraphs.push({ key: "story_paragraph1", index: 1 });
+                      paragraphs.push({ key: "story_paragraph2", index: 2 });
+                      paragraphs.push({ key: "story_paragraph3", index: 3 });
+                    }
+                    const nextIndex = paragraphs.length > 0 ? Math.max(...paragraphs.map(p => p.index)) + 1 : 1;
+
+                    return (
+                      <div className="space-y-3">
+                        <Label className="text-base font-semibold">Akapity</Label>
+                        {paragraphs.map((p, idx) => (
+                          <div key={p.key} className="flex gap-2 items-start">
+                            <span className="text-xs text-muted-foreground mt-3 w-6 flex-shrink-0">{idx + 1}.</span>
+                            <Textarea
+                              value={contents["about_page"]?.[p.key] || ""}
+                              onChange={(e) => updateField("about_page", p.key, e.target.value)}
+                              rows={2}
+                              className="flex-1"
+                            />
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="text-destructive flex-shrink-0 mt-1"
+                              onClick={() => {
+                                // Remove this paragraph and shift remaining ones down
+                                const updated = { ...contents["about_page"] };
+                                delete updated[p.key];
+                                // Re-index remaining paragraphs
+                                const remaining: string[] = [];
+                                for (let i = 1; i <= 20; i++) {
+                                  const val = i === p.index ? undefined : updated[`story_paragraph${i}`];
+                                  if (val !== undefined) remaining.push(val);
+                                  delete updated[`story_paragraph${i}`];
+                                }
+                                remaining.forEach((val, i) => {
+                                  updated[`story_paragraph${i + 1}`] = val;
+                                });
+                                setContents(prev => ({ ...prev, about_page: updated }));
+                              }}
+                              disabled={paragraphs.length <= 1}
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </Button>
+                          </div>
+                        ))}
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => {
+                            updateField("about_page", `story_paragraph${nextIndex}`, "");
+                          }}
+                        >
+                          <Plus className="w-4 h-4 mr-2" />
+                          Dodaj akapit
+                        </Button>
+                      </div>
+                    );
+                  })()}
                   
                   <Button onClick={() => handleSave("about_page")} disabled={saving === "about_page"}>
                     {saving === "about_page" ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Save className="w-4 h-4 mr-2" />}
