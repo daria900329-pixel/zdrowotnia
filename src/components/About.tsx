@@ -4,31 +4,24 @@ import { Button } from "@/components/ui/button";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import { ScrollReveal, ScrollRevealGroup } from "@/components/ScrollReveal";
 
-const features = [
-  {
-    icon: Sparkles,
-    title: "100% Naturalne",
-    description: "Bez sztucznych dodatków — tak jak u babci.",
-  },
-  {
-    icon: Heart,
-    title: "Robione z Miłością",
-    description: "Każdy słoik to kawałek naszego serca.",
-  },
-  {
-    icon: Home,
-    title: "Rodzinna Tradycja",
-    description: "Przepisy przekazywane z pokolenia na pokolenie.",
-  },
-  {
-    icon: Users,
-    title: "Dla Twojej Rodziny",
-    description: "Produkty, które sami dajemy naszym dzieciom.",
-  },
+const defaultFeatures = [
+  { icon: Sparkles, title: "100% Naturalne", description: "Bez sztucznych dodatków — tak jak u babci." },
+  { icon: Heart, title: "Robione z Miłością", description: "Każdy słoik to kawałek naszego serca." },
+  { icon: Home, title: "Rodzinna Tradycja", description: "Przepisy przekazywane z pokolenia na pokolenie." },
+  { icon: Users, title: "Dla Twojej Rodziny", description: "Produkty, które sami dajemy naszym dzieciom." },
 ];
+const featureIcons = [Sparkles, Heart, Home, Users];
 
 const About = () => {
   const { content, loading } = useSiteContent("about");
+  const { content: pageContent } = useSiteContent("about_page");
+
+  const features = [
+    { icon: featureIcons[0], title: pageContent.value1_title || defaultFeatures[0].title, description: pageContent.value1_desc || defaultFeatures[0].description },
+    { icon: featureIcons[1], title: pageContent.value2_title || defaultFeatures[1].title, description: pageContent.value2_desc || defaultFeatures[1].description },
+    { icon: featureIcons[2], title: pageContent.value3_title || defaultFeatures[2].title, description: pageContent.value3_desc || defaultFeatures[2].description },
+    { icon: featureIcons[3], title: pageContent.value4_title || defaultFeatures[3].title, description: pageContent.value4_desc || defaultFeatures[3].description },
+  ];
 
   const title = content.title || "Witaj w naszym domu! 🏡";
   const badge = content.badge || "Nasza Historia";
