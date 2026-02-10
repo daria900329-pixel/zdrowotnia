@@ -131,15 +131,15 @@ const AboutPage = () => {
       <Header />
       
       {/* Hero Section with Image */}
-      <section className="relative min-h-[60vh] flex items-end pt-20 overflow-hidden">
+      <section className="relative min-h-[75vh] flex items-end pt-20 overflow-hidden">
         {heroImageUrl ? (
           <>
             <img
               src={heroImageUrl}
               alt="O nas"
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover object-top"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
           </>
         ) : (
           <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background">
@@ -148,7 +148,7 @@ const AboutPage = () => {
           </div>
         )}
         
-        <div className="container mx-auto px-6 relative pb-12">
+        <div className="container mx-auto px-6 relative pb-8">
           <div className="max-w-3xl mx-auto text-center">
             <span className="inline-flex items-center gap-2 text-accent font-medium mb-4 bg-accent/10 px-4 py-2 rounded-full text-sm backdrop-blur-sm">
               <Heart className="w-4 h-4" /> {heroBadge}
