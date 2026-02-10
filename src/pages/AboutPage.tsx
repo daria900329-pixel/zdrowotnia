@@ -134,7 +134,7 @@ const AboutPage = () => {
       {heroImageUrl ? (
         <>
           {/* Mobile: image above text */}
-          <div className="md:hidden pt-20">
+          <div className="md:hidden pt-24">
             <img
               src={heroImageUrl}
               alt="O nas"
