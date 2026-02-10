@@ -233,7 +233,7 @@ const Hero = () => {
         isVisible ? "opacity-100" : "opacity-0"
       )}>
         <a href="#produkty" className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
-          <span className="text-sm font-medium">Zapraszamy niżej</span>
+          <span className="text-sm font-medium">Chodźmy dalej</span>
           <ArrowDown className="w-5 h-5" />
         </a>
       </div>
