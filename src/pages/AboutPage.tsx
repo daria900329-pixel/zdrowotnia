@@ -131,13 +131,14 @@ const AboutPage = () => {
       <Header />
       
       {/* Hero Section with Image */}
-      <section className="relative min-h-[75vh] flex items-end pt-20 overflow-hidden">
+      <section className="relative min-h-[85vh] md:min-h-[75vh] flex items-end pt-20 overflow-hidden">
         {heroImageUrl ? (
           <>
             <img
               src={heroImageUrl}
               alt="O nas"
-              className="absolute inset-0 w-full h-full object-cover object-top"
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ objectPosition: 'center 15%' }}
             />
             <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background/80 to-transparent" />
           </>
