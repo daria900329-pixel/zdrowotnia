@@ -138,7 +138,7 @@ const AboutPage = () => {
             <img
               src={heroImageUrl}
               alt="O nas"
-              className="w-full max-h-[50vh] object-cover object-top"
+              className="w-full object-contain"
             />
             <div className="container mx-auto px-6 py-8 text-center">
               <span className="inline-flex items-center gap-2 text-accent font-medium mb-4 bg-accent/10 px-4 py-2 rounded-full text-sm">
@@ -152,13 +152,12 @@ const AboutPage = () => {
               </p>
             </div>
           </div>
-          {/* Desktop: image as background */}
-          <section className="hidden md:flex relative min-h-[75vh] items-end pt-20 overflow-hidden">
+          {/* Desktop: image as background, limited height */}
+          <section className="hidden md:flex relative min-h-[60vh] max-h-[70vh] items-end pt-20 overflow-hidden">
             <img
               src={heroImageUrl}
               alt="O nas"
-              className="absolute inset-0 w-full h-full object-cover"
-              style={{ objectPosition: 'center 15%' }}
+              className="absolute inset-0 w-full h-full object-cover object-top"
             />
             <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background/80 to-transparent" />
             <div className="container mx-auto px-6 relative pb-8">
