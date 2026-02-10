@@ -153,7 +153,7 @@ const AboutPage = () => {
             </div>
           </div>
           {/* Desktop: side-by-side layout */}
-          <section className="hidden md:block pt-40 pb-16 relative overflow-hidden">
+          <section className="hidden md:block pt-48 pb-16 relative overflow-hidden">
             <div className="absolute top-20 right-10 w-96 h-96 bg-honey/5 rounded-full blur-3xl" />
             <div className="container mx-auto px-6">
               <div className="grid md:grid-cols-2 gap-12 items-center">
