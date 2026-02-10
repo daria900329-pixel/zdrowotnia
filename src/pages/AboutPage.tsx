@@ -156,25 +156,23 @@ const AboutPage = () => {
           <section className="hidden md:block pt-48 pb-16 relative overflow-hidden">
             <div className="absolute top-20 right-10 w-96 h-96 bg-honey/5 rounded-full blur-3xl" />
             <div className="container mx-auto px-6">
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="text-center md:text-left">
-                  <span className="inline-flex items-center gap-2 text-accent font-medium mb-4 bg-accent/10 px-4 py-2 rounded-full text-sm">
-                    <Heart className="w-4 h-4" /> {heroBadge}
-                  </span>
-                  <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-6">
-                    {heroTitle}
-                  </h1>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    {heroParagraph}
-                  </p>
-                </div>
-                <div className="flex justify-center">
-                  <img
-                    src={heroImageUrl}
-                    alt="O nas"
-                    className="rounded-2xl shadow-card max-h-[500px] object-cover"
-                  />
-                </div>
+              <div className="max-w-3xl mx-auto text-center mb-12">
+                <span className="inline-flex items-center gap-2 text-accent font-medium mb-4 bg-accent/10 px-4 py-2 rounded-full text-sm">
+                  <Heart className="w-4 h-4" /> {heroBadge}
+                </span>
+                <h1 className="font-serif text-5xl lg:text-6xl font-semibold text-foreground mb-6">
+                  {heroTitle}
+                </h1>
+                <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                  {heroParagraph}
+                </p>
+              </div>
+              <div className="flex justify-center">
+                <img
+                  src={heroImageUrl}
+                  alt="O nas"
+                  className="rounded-2xl shadow-card max-h-[400px] object-cover"
+                />
               </div>
             </div>
           </section>
