@@ -139,7 +139,7 @@ const AboutPage = () => {
               alt="O nas"
               className="absolute inset-0 w-full h-full object-cover object-top"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background/80 to-transparent" />
           </>
         ) : (
           <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background">
