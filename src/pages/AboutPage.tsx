@@ -131,9 +131,29 @@ const AboutPage = () => {
       <Header />
       
       {/* Hero Section with Image */}
-      <section className="relative min-h-[85vh] md:min-h-[75vh] flex items-end pt-20 overflow-hidden">
-        {heroImageUrl ? (
-          <>
+      {heroImageUrl ? (
+        <>
+          {/* Mobile: image above text */}
+          <div className="md:hidden pt-20">
+            <img
+              src={heroImageUrl}
+              alt="O nas"
+              className="w-full max-h-[50vh] object-cover object-top"
+            />
+            <div className="container mx-auto px-6 py-8 text-center">
+              <span className="inline-flex items-center gap-2 text-accent font-medium mb-4 bg-accent/10 px-4 py-2 rounded-full text-sm">
+                <Heart className="w-4 h-4" /> {heroBadge}
+              </span>
+              <h1 className="font-serif text-4xl font-semibold text-foreground mb-4">
+                {heroTitle}
+              </h1>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                {heroParagraph}
+              </p>
+            </div>
+          </div>
+          {/* Desktop: image as background */}
+          <section className="hidden md:flex relative min-h-[75vh] items-end pt-20 overflow-hidden">
             <img
               src={heroImageUrl}
               alt="O nas"
@@ -141,28 +161,40 @@ const AboutPage = () => {
               style={{ objectPosition: 'center 15%' }}
             />
             <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background/80 to-transparent" />
-          </>
-        ) : (
-          <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background">
-            <div className="absolute top-20 right-10 w-96 h-96 bg-honey/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-10 left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+            <div className="container mx-auto px-6 relative pb-8">
+              <div className="max-w-3xl mx-auto text-center">
+                <span className="inline-flex items-center gap-2 text-accent font-medium mb-4 bg-accent/10 px-4 py-2 rounded-full text-sm backdrop-blur-sm">
+                  <Heart className="w-4 h-4" /> {heroBadge}
+                </span>
+                <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-6 drop-shadow-sm">
+                  {heroTitle}
+                </h1>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  {heroParagraph}
+                </p>
+              </div>
+            </div>
+          </section>
+        </>
+      ) : (
+        <section className="pt-40 pb-16 bg-gradient-to-b from-secondary/30 to-background relative overflow-hidden">
+          <div className="absolute top-20 right-10 w-96 h-96 bg-honey/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-10 left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+          <div className="container mx-auto px-6 relative">
+            <div className="max-w-3xl mx-auto text-center">
+              <span className="inline-flex items-center gap-2 text-accent font-medium mb-4 bg-accent/10 px-4 py-2 rounded-full text-sm">
+                <Heart className="w-4 h-4" /> {heroBadge}
+              </span>
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-6">
+                {heroTitle}
+              </h1>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                {heroParagraph}
+              </p>
+            </div>
           </div>
-        )}
-        
-        <div className="container mx-auto px-6 relative pb-8">
-          <div className="max-w-3xl mx-auto text-center">
-            <span className="inline-flex items-center gap-2 text-accent font-medium mb-4 bg-accent/10 px-4 py-2 rounded-full text-sm backdrop-blur-sm">
-              <Heart className="w-4 h-4" /> {heroBadge}
-            </span>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-6 drop-shadow-sm">
-              {heroTitle}
-            </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              {heroParagraph}
-            </p>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Stats Section */}
       <section className="py-12 bg-primary/5">
