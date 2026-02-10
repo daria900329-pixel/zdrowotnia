@@ -152,25 +152,29 @@ const AboutPage = () => {
               </p>
             </div>
           </div>
-          {/* Desktop: image as background, limited height */}
-          <section className="hidden md:flex relative min-h-[60vh] max-h-[70vh] items-end pt-20 overflow-hidden">
-            <img
-              src={heroImageUrl}
-              alt="O nas"
-              className="absolute inset-0 w-full h-full object-cover object-top"
-            />
-            <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background/80 to-transparent" />
-            <div className="container mx-auto px-6 relative pb-8">
-              <div className="max-w-3xl mx-auto text-center">
-                <span className="inline-flex items-center gap-2 text-accent font-medium mb-4 bg-accent/10 px-4 py-2 rounded-full text-sm backdrop-blur-sm">
-                  <Heart className="w-4 h-4" /> {heroBadge}
-                </span>
-                <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-6 drop-shadow-sm">
-                  {heroTitle}
-                </h1>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  {heroParagraph}
-                </p>
+          {/* Desktop: side-by-side layout */}
+          <section className="hidden md:block pt-32 pb-16 relative overflow-hidden">
+            <div className="absolute top-20 right-10 w-96 h-96 bg-honey/5 rounded-full blur-3xl" />
+            <div className="container mx-auto px-6">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div className="text-center md:text-left">
+                  <span className="inline-flex items-center gap-2 text-accent font-medium mb-4 bg-accent/10 px-4 py-2 rounded-full text-sm">
+                    <Heart className="w-4 h-4" /> {heroBadge}
+                  </span>
+                  <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-6">
+                    {heroTitle}
+                  </h1>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    {heroParagraph}
+                  </p>
+                </div>
+                <div className="flex justify-center">
+                  <img
+                    src={heroImageUrl}
+                    alt="O nas"
+                    className="rounded-2xl shadow-card max-h-[500px] object-cover"
+                  />
+                </div>
               </div>
             </div>
           </section>
