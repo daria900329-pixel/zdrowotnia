@@ -41,7 +41,7 @@ export function AdminProductSections({ productId }: AdminProductSectionsProps) {
       .order("display_order", { ascending: true });
 
     if (error) {
-      console.error("Error fetching sections:", error);
+      if (import.meta.env.DEV) console.error("Error fetching sections:", error);
       toast.error("Błąd wczytywania sekcji");
     } else {
       setSections(data || []);
@@ -67,7 +67,7 @@ export function AdminProductSections({ productId }: AdminProductSectionsProps) {
       .single();
 
     if (error) {
-      console.error("Error adding section:", error);
+      if (import.meta.env.DEV) console.error("Error adding section:", error);
       toast.error("Błąd dodawania sekcji");
     } else if (data) {
       setSections([...sections, data]);
@@ -83,7 +83,7 @@ export function AdminProductSections({ productId }: AdminProductSectionsProps) {
       .eq("id", id);
 
     if (error) {
-      console.error("Error updating section:", error);
+      if (import.meta.env.DEV) console.error("Error updating section:", error);
       toast.error("Błąd zapisywania");
     } else {
       setSections(sections.map(s => s.id === id ? { ...s, ...updates } : s));
@@ -100,7 +100,7 @@ export function AdminProductSections({ productId }: AdminProductSectionsProps) {
       .eq("id", id);
 
     if (error) {
-      console.error("Error deleting section:", error);
+      if (import.meta.env.DEV) console.error("Error deleting section:", error);
       toast.error("Błąd usuwania sekcji");
     } else {
       setSections(sections.filter(s => s.id !== id));
@@ -133,7 +133,7 @@ export function AdminProductSections({ productId }: AdminProductSectionsProps) {
       .upload(filePath, file);
 
     if (uploadError) {
-      console.error("Upload error:", uploadError);
+      if (import.meta.env.DEV) console.error("Upload error:", uploadError);
       toast.error("Błąd przesyłania zdjęcia");
       setUploadingId(null);
       return;

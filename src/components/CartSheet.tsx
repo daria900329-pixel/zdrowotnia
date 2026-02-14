@@ -39,7 +39,7 @@ export function CartSheet() {
         window.location.href = data.url;
       }
     } catch (error) {
-      console.error("Checkout error:", error);
+      if (import.meta.env.DEV) console.error("Checkout error:", error);
       toast({
         title: "Błąd płatności",
         description: "Nie udało się rozpocząć płatności. Spróbuj ponownie.",
