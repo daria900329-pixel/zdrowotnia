@@ -1,5 +1,5 @@
-import { Heart, Sparkles, Home, Users, Leaf, Clock, Award, MapPin, Loader2, Star, ShieldCheck, Flame, Droplets, Sun, Wheat, TreePine, type LucideIcon } from "lucide-react";
-import { useState, useEffect } from "react";
+import { Heart, Sparkles, Home, Users, Leaf, Clock, Award, MapPin, Loader2, Star, ShieldCheck, Flame, Droplets, Sun, Wheat, TreePine, Volume2, Pause, type LucideIcon } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useSiteContent } from "@/hooks/useSiteContent";
@@ -62,6 +62,9 @@ const AboutPage = () => {
   // Story
   const storyTitle = content.story_title || "Nasza Droga do Zdrowotni";
   const storyHighlight = content.story_highlight || "✨ Wierzymy, że dobre jedzenie łączy ludzi. Zapraszamy Cię do naszego stołu!";
+  const storyHighlightAudio = content.story_highlight_audio || "";
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   
   // Dynamically collect all story paragraphs (story_paragraph1, story_paragraph2, ...)
   const storyParagraphs: string[] = [];
@@ -231,9 +234,32 @@ const AboutPage = () => {
                 {storyParagraphs.map((paragraph, idx) => (
                   <p key={idx}>{paragraph}</p>
                 ))}
-                <p className="text-foreground font-medium bg-secondary/50 p-4 rounded-xl border-l-4 border-primary">
-                  {storyHighlight}
-                </p>
+                <div className="relative group">
+                  <p
+                    className={`text-foreground font-medium bg-secondary/50 p-4 rounded-xl border-l-4 border-primary transition-colors ${storyHighlightAudio ? "cursor-pointer hover:bg-secondary/70" : ""}`}
+                    onClick={() => {
+                      if (!storyHighlightAudio) return;
+                      if (isPlaying) {
+                        audioRef.current?.pause();
+                        setIsPlaying(false);
+                      } else {
+                        if (!audioRef.current) {
+                          audioRef.current = new Audio(storyHighlightAudio);
+                          audioRef.current.onended = () => setIsPlaying(false);
+                        }
+                        audioRef.current.play();
+                        setIsPlaying(true);
+                      }
+                    }}
+                  >
+                    {storyHighlightAudio && (
+                      <span className="inline-flex items-center gap-1 mr-2 text-primary">
+                        {isPlaying ? <Pause className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                      </span>
+                    )}
+                    {storyHighlight}
+                  </p>
+                </div>
               </div>
             </div>
 

@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Loader2, Save, Plus, Trash2, Eye, EyeOff, Image, Video, GripVertical, Clock, Users, Leaf, Award, Heart, Sparkles, Home, MapPin, Star, ShieldCheck, Flame, Droplets, Sun, Wheat, TreePine, ImageIcon, type LucideIcon } from "lucide-react";
+import { Loader2, Save, Plus, Trash2, Eye, EyeOff, Image, Video, GripVertical, Clock, Users, Leaf, Award, Heart, Sparkles, Home, MapPin, Star, ShieldCheck, Flame, Droplets, Sun, Wheat, TreePine, ImageIcon, Volume2, X, type LucideIcon } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const ICON_OPTIONS: { value: string; label: string; icon: LucideIcon }[] = [
@@ -553,8 +553,75 @@ export function AdminCMS() {
                 <TabsContent key={sub.id} value={sub.id} className="space-y-4">
                   {sub.fields.map((field) => renderField(field, "about_page"))}
 
-                  {sub.id === "story" && (
+                   {sub.id === "story" && (
                     <div className="space-y-3">
+                      {/* Audio upload for story highlight */}
+                      <div className="space-y-2 p-4 rounded-lg border border-border bg-secondary/20">
+                        <Label className="text-base font-semibold flex items-center gap-2">
+                          <Volume2 className="w-4 h-4" /> Nagranie audio (wyróżnienie)
+                        </Label>
+                        <p className="text-xs text-muted-foreground">Nagranie odtwarzane po najechaniu kursorem na wyróżniony akapit na stronie O nas.</p>
+                        {contents["about_page"]?.story_highlight_audio ? (
+                          <div className="flex items-center gap-3">
+                            <audio controls src={contents["about_page"].story_highlight_audio} className="flex-1 h-10" />
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="text-destructive flex-shrink-0"
+                              onClick={() => {
+                                const audioUrl = contents["about_page"]?.story_highlight_audio;
+                                if (audioUrl) {
+                                  const path = audioUrl.split("/product-images/")[1];
+                                  if (path) supabase.storage.from("product-images").remove([path]);
+                                }
+                                updateField("about_page", "story_highlight_audio", "");
+                              }}
+                            >
+                              <X className="w-4 h-4" />
+                            </Button>
+                          </div>
+                        ) : (
+                          <div className="border-2 border-dashed border-border rounded-lg p-4 text-center hover:border-primary/50 transition-colors">
+                            <input
+                              type="file"
+                              accept="audio/*"
+                              className="hidden"
+                              id="cms-audio-upload"
+                              disabled={uploading}
+                              onChange={async (e) => {
+                                const file = e.target.files?.[0];
+                                if (!file) return;
+                                if (!file.type.startsWith("audio/")) {
+                                  toast({ title: "Błąd", description: "Wybierz plik audio", variant: "destructive" });
+                                  return;
+                                }
+                                if (file.size > 10 * 1024 * 1024) {
+                                  toast({ title: "Błąd", description: "Plik za duży (max 10MB)", variant: "destructive" });
+                                  return;
+                                }
+                                setUploading(true);
+                                const fileExt = file.name.split(".").pop();
+                                const fileName = `about-audio/${Date.now()}.${fileExt}`;
+                                const { error: uploadError } = await supabase.storage.from("product-images").upload(fileName, file);
+                                if (uploadError) {
+                                  toast({ title: "Błąd", description: "Nie udało się przesłać pliku", variant: "destructive" });
+                                } else {
+                                  const { data: urlData } = supabase.storage.from("product-images").getPublicUrl(fileName);
+                                  updateField("about_page", "story_highlight_audio", urlData.publicUrl);
+                                  toast({ title: "Sukces", description: "Nagranie dodane — pamiętaj, aby zapisać!" });
+                                }
+                                setUploading(false);
+                                e.target.value = "";
+                              }}
+                            />
+                            <Label htmlFor="cms-audio-upload" className="cursor-pointer flex flex-col items-center gap-2">
+                              {uploading ? <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" /> : <Volume2 className="w-6 h-6 text-muted-foreground" />}
+                              <span className="text-sm text-muted-foreground">Wgraj nagranie audio (MP3, WAV, max 10MB)</span>
+                            </Label>
+                          </div>
+                        )}
+                      </div>
+
                       <Label className="text-base font-semibold">Akapity</Label>
                       {storyParagraphs.map((p, idx) => (
                         <div key={p.key} className="flex gap-2 items-start">
