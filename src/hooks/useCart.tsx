@@ -56,7 +56,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       .eq("user_id", user.id);
 
     if (error) {
-      console.error("Error fetching cart:", error);
+      if (import.meta.env.DEV) console.error("Error fetching cart:", error);
     } else if (data) {
       const cartItems: CartItem[] = data.map((item: any) => ({
         id: item.id,

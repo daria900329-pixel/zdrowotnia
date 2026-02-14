@@ -70,7 +70,7 @@ const Products = () => {
         .order("display_order", { ascending: true });
 
       if (error) {
-        console.error("Error fetching products:", error);
+        if (import.meta.env.DEV) console.error("Error fetching products:", error);
         setUseFallback(true);
       } else if (!data || data.length === 0) {
         setUseFallback(true);

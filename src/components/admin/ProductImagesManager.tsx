@@ -177,7 +177,7 @@ export function ProductImagesManager({ productId, productName }: ProductImagesMa
         throw new Error("No image returned");
       }
     } catch (error) {
-      console.error("Remove background error:", error);
+      if (import.meta.env.DEV) console.error("Remove background error:", error);
       toast({
         title: "Błąd",
         description: error instanceof Error ? error.message : "Nie udało się usunąć tła",
@@ -219,7 +219,7 @@ export function ProductImagesManager({ productId, productName }: ProductImagesMa
         throw new Error("No image returned");
       }
     } catch (error) {
-      console.error("Custom edit error:", error);
+      if (import.meta.env.DEV) console.error("Custom edit error:", error);
       toast({
         title: "Błąd",
         description: error instanceof Error ? error.message : "Nie udało się zmodyfikować zdjęcia",

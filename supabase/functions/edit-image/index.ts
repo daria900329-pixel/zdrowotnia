@@ -95,12 +95,39 @@ serve(async (req) => {
       );
     }
 
-    // Validate prompt length if provided
-    if (prompt && typeof prompt === 'string' && prompt.length > 1000) {
-      return new Response(
-        JSON.stringify({ error: "Prompt is too long (max 1000 characters)" }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
+    // Validate and sanitize prompt
+    if (prompt && typeof prompt === 'string') {
+      if (prompt.length > 1000) {
+        return new Response(
+          JSON.stringify({ error: "Prompt is too long (max 1000 characters)" }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+
+      // Block common prompt injection patterns
+      const suspiciousPatterns = [
+        /ignore\s+(all\s+)?previous/i,
+        /ignore\s+(all\s+)?above/i,
+        /disregard\s+(all\s+)?previous/i,
+        /system\s*:/i,
+        /\bsystem\s+prompt\b/i,
+        /\bjailbreak\b/i,
+        /\byou\s+are\s+now\b/i,
+        /\bact\s+as\b/i,
+        /\bpretend\s+to\s+be\b/i,
+        /\bforget\s+(all\s+)?instructions\b/i,
+        /\bdo\s+not\s+follow\b/i,
+      ];
+
+      for (const pattern of suspiciousPatterns) {
+        if (pattern.test(prompt)) {
+          console.warn(`[edit-image] Suspicious prompt blocked from admin ${userId}`);
+          return new Response(
+            JSON.stringify({ error: "Prompt contains disallowed content" }),
+            { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+          );
+        }
+      }
     }
 
     const editPrompt = prompt || "Remove the background from this product image and replace it with a clean white background. Keep only the product itself with crisp edges.";

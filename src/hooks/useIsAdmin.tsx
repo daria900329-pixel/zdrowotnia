@@ -24,13 +24,13 @@ export function useIsAdmin() {
           .maybeSingle();
 
         if (error) {
-          console.error("Error checking admin status:", error);
+          if (import.meta.env.DEV) console.error("Error checking admin status:", error);
           setIsAdmin(false);
         } else {
           setIsAdmin(!!data);
         }
       } catch (err) {
-        console.error("Error checking admin:", err);
+        if (import.meta.env.DEV) console.error("Error checking admin:", err);
         setIsAdmin(false);
       } finally {
         setLoading(false);
