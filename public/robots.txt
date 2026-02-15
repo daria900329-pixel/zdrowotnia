@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://zdrowotnia.lovable.app/sitemap.xml
+Sitemap: https://vaksltjcwwujurfafloz.supabase.co/functions/v1/sitemap

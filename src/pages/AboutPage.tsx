@@ -6,7 +6,7 @@ import { useSiteContent } from "@/hooks/useSiteContent";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AboutGallery from "@/components/AboutGallery";
-import { SEO } from "@/components/SEO";
+import { SEO, breadcrumbJsonLd } from "@/components/SEO";
 
 const ICON_MAP: Record<string, LucideIcon> = {
   Clock, Users, Leaf, Award, Heart, Sparkles, Home, MapPin, Star, ShieldCheck, Flame, Droplets, Sun, Wheat, TreePine,
@@ -130,6 +130,10 @@ const AboutPage = () => {
         title="O nas"
         description="Poznaj historię Zdrowotni — rodzinnej manufaktury naturalnego jedzenia z Mazur. Dowiedz się, jak powstają nasze produkty."
         canonical="/o-nas"
+        jsonLd={breadcrumbJsonLd([
+          { name: "Strona główna", url: "/" },
+          { name: "O nas", url: "/o-nas" },
+        ])}
       />
       <Header />
       

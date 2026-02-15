@@ -40,6 +40,7 @@ export function SEO({
       <meta property="og:image" content={ogImage} />
       {fullCanonical && <meta property="og:url" content={fullCanonical} />}
 
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       {description && <meta name="twitter:description" content={description} />}
       <meta name="twitter:image" content={ogImage} />
@@ -76,17 +77,47 @@ export function productJsonLd(product: {
   description?: string | null;
   image?: string | null;
   id: string;
+  price?: number | null;
+  currency?: string;
 }) {
-  return {
+  const result: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
     description: product.description || `${product.name} — naturalny produkt od Zdrowotni`,
     image: product.image || DEFAULT_OG_IMAGE,
-    url: `https://zdrowotnia.lovable.app/product/${product.id}`,
+    url: `${BASE_URL}/product/${product.id}`,
     brand: {
       "@type": "Brand",
       name: "Zdrowotnia",
     },
+  };
+
+  if (product.price != null) {
+    result.offers = {
+      "@type": "Offer",
+      price: product.price.toFixed(2),
+      priceCurrency: product.currency || "PLN",
+      availability: "https://schema.org/InStock",
+      seller: {
+        "@type": "Organization",
+        name: "Zdrowotnia",
+      },
+    };
+  }
+
+  return result;
+}
+
+export function breadcrumbJsonLd(items: { name: string; url: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: `${BASE_URL}${item.url}`,
+    })),
   };
 }
