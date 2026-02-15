@@ -8,7 +8,7 @@ import { ProductGallery } from "@/components/ProductGallery";
 import { ProductDescription, ActiveSection } from "@/components/ProductDescription";
 import { ArrowLeft, Loader2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SEO, productJsonLd } from "@/components/SEO";
+import { SEO, productJsonLd, breadcrumbJsonLd } from "@/components/SEO";
 
 interface Product {
   id: string;
@@ -22,6 +22,7 @@ interface Product {
 const Product = () => {
   const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
+  const [lowestPrice, setLowestPrice] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const [activeSection, setActiveSection] = useState<ActiveSection | null>(null);
@@ -52,6 +53,17 @@ const Product = () => {
         setNotFound(true);
       } else {
         setProduct(data);
+        // Fetch lowest variant price
+        const { data: variants } = await supabase
+          .from("product_variants")
+          .select("price, promo_price")
+          .eq("product_id", data.id)
+          .eq("is_active", true)
+          .order("price", { ascending: true })
+          .limit(1);
+        if (variants && variants.length > 0) {
+          setLowestPrice(variants[0].promo_price ?? variants[0].price);
+        }
       }
       setLoading(false);
     }
@@ -100,7 +112,14 @@ const Product = () => {
         canonical={`/product/${product.id}`}
         ogType="product"
         ogImage={product.image_url || undefined}
-        jsonLd={productJsonLd(product)}
+        jsonLd={[
+          productJsonLd({ ...product, image: product.image_url, price: lowestPrice }),
+          breadcrumbJsonLd([
+            { name: "Strona główna", url: "/" },
+            { name: "Produkty", url: "/#produkty" },
+            { name: product.name, url: `/product/${product.id}` },
+          ]),
+        ]}
       />
       <Header />
       <main className="section-padding">
