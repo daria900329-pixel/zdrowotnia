@@ -24,6 +24,7 @@ const ProductCard = ({ id, name, description, image, badge }: ProductCardProps) 
         <img
           src={displayImage}
           alt={name}
+          loading="lazy"
           className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500"
         />
         {badge && (
