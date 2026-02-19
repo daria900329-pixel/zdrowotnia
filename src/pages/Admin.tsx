@@ -11,12 +11,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Loader2, Plus, Trash2, Edit, Save, X, LogOut, Upload, Package, FileText } from "lucide-react";
+import { Loader2, Plus, Trash2, Edit, Save, X, LogOut, Upload, Package, FileText, BookOpen } from "lucide-react";
 import { AdminCMS } from "@/components/admin/AdminCMS";
 import { AdminOrders } from "@/components/admin/AdminOrders";
 import { ProductVariantsInline } from "@/components/admin/ProductVariantsInline";
 import { ProductImagesManager } from "@/components/admin/ProductImagesManager";
 import { AdminProductSections } from "@/components/admin/AdminProductSections";
+import { AdminBlog } from "@/components/admin/AdminBlog";
 
 interface Product {
   id: string;
@@ -276,10 +277,11 @@ const Admin = () => {
         </div>
 
         <Tabs defaultValue="products" className="space-y-6">
-          <TabsList className="grid grid-cols-3 w-full">
-            <TabsTrigger value="products"><Package className="w-4 h-4 mr-2" />Produkty</TabsTrigger>
-            <TabsTrigger value="content"><FileText className="w-4 h-4 mr-2" />Treści</TabsTrigger>
-            <TabsTrigger value="orders"><Package className="w-4 h-4 mr-2" />Zamówienia</TabsTrigger>
+          <TabsList className="grid grid-cols-4 w-full">
+            <TabsTrigger value="products"><Package className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Produkty</span></TabsTrigger>
+            <TabsTrigger value="content"><FileText className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Treści</span></TabsTrigger>
+            <TabsTrigger value="blog"><BookOpen className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Blog</span></TabsTrigger>
+            <TabsTrigger value="orders"><Package className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Zamówienia</span></TabsTrigger>
           </TabsList>
 
           <TabsContent value="products">
@@ -698,6 +700,10 @@ const Admin = () => {
 
           <TabsContent value="content">
             <AdminCMS />
+          </TabsContent>
+
+          <TabsContent value="blog">
+            <AdminBlog />
           </TabsContent>
 
           <TabsContent value="orders">

@@ -16,34 +16,35 @@ const ProductCard = ({ id, name, description, image, badge }: ProductCardProps) 
   const primaryImage = useProductPrimaryImage(id, image);
   const displayImage = primaryImage || image;
   return (
-    <div className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-hover transition-all duration-300 hover:-translate-y-2 border border-border/30">
+    <div className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-hover transition-all duration-300 hover:-translate-y-1 sm:hover:-translate-y-2 border border-border/30 flex flex-col">
       <Link 
         to={isFallback ? "#" : `/product/${id}`}
-        className="block relative aspect-square overflow-hidden bg-white flex items-center justify-center"
+        className="block relative overflow-hidden bg-white"
+        style={{ aspectRatio: "4/3" }}
       >
         <img
           src={displayImage}
           alt={name}
           loading="lazy"
-          className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
         />
         {badge && (
-          <span className="absolute top-4 left-4 bg-gradient-to-r from-accent to-primary text-accent-foreground text-xs font-semibold px-3 py-1.5 rounded-full shadow-soft">
+          <span className="absolute top-3 left-3 bg-gradient-to-r from-accent to-primary text-accent-foreground text-xs font-semibold px-2.5 py-1 rounded-full shadow-soft">
             {badge}
           </span>
         )}
-        <div className="absolute top-4 right-4 w-10 h-10 bg-background/80 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer hover:bg-background hover:scale-110">
-          <Heart className="w-5 h-5 text-accent" />
+        <div className="absolute top-3 right-3 w-9 h-9 bg-background/80 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer hover:bg-background hover:scale-110">
+          <Heart className="w-4 h-4 text-accent" />
         </div>
       </Link>
       
-      <div className="p-6">
+      <div className="p-4 sm:p-6 flex flex-col flex-1">
         <Link to={isFallback ? "#" : `/product/${id}`}>
-          <h3 className="font-serif text-xl font-semibold text-foreground mb-2 hover:text-primary transition-colors">
+          <h3 className="font-serif text-lg sm:text-xl font-semibold text-foreground mb-2 hover:text-primary transition-colors leading-snug">
             {name}
           </h3>
         </Link>
-        <p className="text-muted-foreground text-sm mb-4 leading-relaxed line-clamp-2">
+        <p className="text-muted-foreground text-sm mb-4 leading-relaxed line-clamp-2 flex-1">
           {description}
         </p>
         
