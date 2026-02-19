@@ -79,7 +79,7 @@ const MyOrders = () => {
     return (
       <div className="min-h-screen">
         <Header />
-        <main className="pt-36 pb-20 flex flex-col items-center gap-6 text-center px-6">
+        <main className="pt-28 sm:pt-36 pb-20 flex flex-col items-center gap-6 text-center px-6">
           <ShoppingBag className="w-16 h-16 text-muted-foreground" />
           <h1 className="font-serif text-3xl text-foreground">Moje zamówienia</h1>
           <p className="text-muted-foreground">Zaloguj się, by zobaczyć historię zamówień.</p>
@@ -100,7 +100,7 @@ const MyOrders = () => {
         noindex
       />
       <Header />
-      <main className="pt-36 pb-20 container mx-auto px-6 max-w-4xl">
+      <main className="pt-28 sm:pt-36 pb-20 container mx-auto px-6 max-w-4xl">
         <div className="mb-10">
           <h1 className="font-serif text-4xl text-foreground mb-2">Moje zamówienia</h1>
           <p className="text-muted-foreground">Historia Twoich zakupów</p>
