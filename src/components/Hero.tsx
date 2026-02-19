@@ -80,7 +80,7 @@ const Hero = () => {
 
   return (
     <section ref={heroRef} className="relative min-h-screen flex items-center pt-20">
-      {/* Background Image with parallax-like fade in */}
+      {/* Background Image */}
       <div
         ref={frameRef}
         className={cn(
@@ -99,16 +99,14 @@ const Hero = () => {
           className="min-w-full min-h-full object-cover"
           style={imageStyle}
         />
-        <div className="absolute inset-0 bg-gradient-to-l from-background/90 via-transparent to-transparent" />
+        {/* Mobile: bottom-up gradient; Desktop: right-side gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent md:bg-gradient-to-l md:from-background/90 md:via-transparent md:to-transparent" />
         {isAdjusting && (
-          <div
-            className="absolute inset-0 ring-2 ring-primary/20"
-            aria-hidden="true"
-          />
+          <div className="absolute inset-0 ring-2 ring-primary/20" aria-hidden="true" />
         )}
       </div>
 
-      {/* Decorative elements */}
+      {/* Decorative star */}
       <div className={cn(
         "absolute top-32 left-20 text-honey/30 hidden lg:block transition-all duration-1000 delay-500",
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"
@@ -118,10 +116,11 @@ const Hero = () => {
         </svg>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10 flex justify-end">
+      {/* Content: full-width on mobile, right-aligned card on desktop */}
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 flex items-end md:items-center md:justify-end pb-20 md:pb-0 min-h-[80vh] md:min-h-0">
         <div className={cn(
-          "max-w-md lg:max-w-lg bg-background/85 backdrop-blur-sm p-6 lg:p-8 rounded-3xl shadow-warm transition-all duration-700",
-          isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
+          "w-full md:max-w-md lg:max-w-lg md:bg-background/85 md:backdrop-blur-sm md:p-8 md:rounded-3xl md:shadow-warm transition-all duration-700",
+          isVisible ? "opacity-100 translate-y-0 md:translate-x-0" : "opacity-0 translate-y-8 md:translate-x-12"
         )}>
           <span 
             className={cn(
@@ -134,7 +133,7 @@ const Hero = () => {
           
           <h1 
             className={cn(
-              "font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-4 drop-shadow-sm transition-all duration-700 delay-200",
+              "font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-4 drop-shadow-sm transition-all duration-700 delay-200",
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             )}
           >
@@ -170,7 +169,7 @@ const Hero = () => {
       </div>
 
       {/* Manual image positioning */}
-      <div className="absolute top-24 right-6 z-20 flex flex-col items-end gap-2">
+      <div className="absolute top-24 right-4 sm:right-6 z-20 flex flex-col items-end gap-2">
         <div className="flex items-center gap-2">
           <button
             type="button"
@@ -197,14 +196,12 @@ const Hero = () => {
               <span className="text-xs text-muted-foreground w-16">Pozycja:</span>
               <input
                 aria-label="Pozycja zdjęcia"
-                type="range"
-                min={-50}
-                max={50}
+                type="range" min={-50} max={50}
                 value={Math.round(translateX)}
                 onChange={(e) => setTranslateX(Number(e.target.value))}
-                className="w-32"
+                className="w-28 sm:w-32"
               />
-              <span className="text-xs tabular-nums text-muted-foreground w-12 text-right">
+              <span className="text-xs tabular-nums text-muted-foreground w-10 text-right">
                 {Math.round(translateX)}%
               </span>
             </div>
@@ -212,14 +209,12 @@ const Hero = () => {
               <span className="text-xs text-muted-foreground w-16">Zoom:</span>
               <input
                 aria-label="Skala zdjęcia"
-                type="range"
-                min={100}
-                max={250}
+                type="range" min={100} max={250}
                 value={Math.round(scale)}
                 onChange={(e) => setScale(Number(e.target.value))}
-                className="w-32"
+                className="w-28 sm:w-32"
               />
-              <span className="text-xs tabular-nums text-muted-foreground w-12 text-right">
+              <span className="text-xs tabular-nums text-muted-foreground w-10 text-right">
                 {Math.round(scale)}%
               </span>
             </div>

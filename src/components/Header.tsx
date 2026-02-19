@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, User, LogOut } from "lucide-react";
+import { Menu, X, User, LogOut, Package } from "lucide-react";
 import { CartSheet } from "./CartSheet";
 import { useAuth } from "@/hooks/useAuth";
 import { ThemeToggle } from "./ThemeToggle";
@@ -16,6 +16,7 @@ const Header = () => {
 
   const navLinks = [
     { label: "Produkty", href: "/#produkty" },
+    { label: "Blog", href: "/blog" },
     { label: "O nas", href: "/o-nas" },
     { label: "Kontakt", href: "/#kontakt" },
   ];
@@ -68,6 +69,12 @@ const Header = () => {
             
             {user ? (
               <div className="flex items-center gap-2">
+                <Button variant="ghost" size="sm" asChild>
+                  <a href="/moje-zamowienia" className="flex items-center gap-1.5">
+                    <Package className="w-4 h-4" />
+                    <span className="hidden lg:inline">Zamówienia</span>
+                  </a>
+                </Button>
                 <Button variant="ghost" size="icon" onClick={signOut}>
                   <LogOut className="w-5 h-5" />
                 </Button>
@@ -126,10 +133,18 @@ const Header = () => {
                 </a>
               ))}
               {user ? (
-                <Button variant="outline" onClick={signOut}>
-                  <LogOut className="w-4 h-4 mr-2" />
-                  Wyloguj
-                </Button>
+                <div className="flex flex-col gap-2">
+                  <Button variant="outline" asChild>
+                    <a href="/moje-zamowienia" onClick={() => setIsMenuOpen(false)}>
+                      <Package className="w-4 h-4 mr-2" />
+                      Moje zamówienia
+                    </a>
+                  </Button>
+                  <Button variant="ghost" onClick={signOut}>
+                    <LogOut className="w-4 h-4 mr-2" />
+                    Wyloguj
+                  </Button>
+                </div>
               ) : (
                 <Button variant="default" asChild>
                   <a href="/auth">
