@@ -708,6 +708,10 @@ const Admin = () => {
             <AdminBlog />
           </TabsContent>
 
+          <TabsContent value="emails">
+            <AdminEmailTemplates />
+          </TabsContent>
+
           <TabsContent value="orders">
             <AdminOrders />
           </TabsContent>
