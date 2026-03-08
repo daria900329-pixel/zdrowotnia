@@ -10,6 +10,13 @@ const defaultSamples: Record<string, string> = {
   "{{order_total}}": "89,00 zł",
   "{{order_date}}": new Date().toLocaleDateString("pl-PL"),
   "{{order_items}}": `<div style="padding:12px 0;"><p style="color:#5c4a3a;margin:4px 0;"><strong>Ocet jabłkowy</strong> – Mały (250 ml) × 2 — 38,00 zł</p><p style="color:#5c4a3a;margin:4px 0;"><strong>Kombucha</strong> – Duży (500 ml) × 1 — 51,00 zł</p></div>`,
+  "{{tracking_url}}": "https://tracking.example.com/ABC123",
+  "{{promo_title}}": "Wiosenna Promocja!",
+  "{{promo_description}}": "Z okazji wiosny przygotowaliśmy dla Ciebie specjalną zniżkę na wszystkie produkty fermentowane.",
+  "{{promo_code}}": "WIOSNA25",
+  "{{promo_discount}}": "-25% na wszystko",
+  "{{promo_url}}": "https://zdrowotnia.lovable.app",
+  "{{promo_expiry}}": "31 marca 2026",
 };
 
 export function EmailPreview({ html, sampleVariables }: EmailPreviewProps) {
