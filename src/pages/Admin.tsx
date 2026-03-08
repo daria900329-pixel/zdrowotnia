@@ -18,6 +18,7 @@ import { ProductVariantsInline } from "@/components/admin/ProductVariantsInline"
 import { ProductImagesManager } from "@/components/admin/ProductImagesManager";
 import { AdminProductSections } from "@/components/admin/AdminProductSections";
 import { AdminBlog } from "@/components/admin/AdminBlog";
+import { AdminEmailTemplates } from "@/components/admin/AdminEmailTemplates";
 
 interface Product {
   id: string;
