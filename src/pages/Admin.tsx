@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Loader2, Plus, Trash2, Edit, Save, X, LogOut, Upload, Package, FileText, BookOpen } from "lucide-react";
+import { Loader2, Plus, Trash2, Edit, Save, X, LogOut, Upload, Package, FileText, BookOpen, Mail } from "lucide-react";
 import { AdminCMS } from "@/components/admin/AdminCMS";
 import { AdminOrders } from "@/components/admin/AdminOrders";
 import { ProductVariantsInline } from "@/components/admin/ProductVariantsInline";
