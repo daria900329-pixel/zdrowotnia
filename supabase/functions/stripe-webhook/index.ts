@@ -86,6 +86,63 @@ serve(async (req) => {
               .delete()
               .eq("user_id", userId);
           }
+
+          // Send order confirmation email
+          try {
+            const customerEmail = session.customer_details?.email;
+            if (customerEmail) {
+              // Fetch order items
+              const { data: orderItems } = await supabase
+                .from("order_items")
+                .select("product_name, variant_name, quantity, price")
+                .eq("order_id", orderId);
+
+              const { data: order } = await supabase
+                .from("orders")
+                .select("total_amount, created_at")
+                .eq("id", orderId)
+                .single();
+
+              const formatPrice = (amount: number) =>
+                new Intl.NumberFormat("pl-PL", { style: "currency", currency: "PLN" }).format(amount);
+
+              const itemsHtml = (orderItems || [])
+                .map((item) =>
+                  `<p style="color: #5c4a3a; margin: 4px 0;"><strong>${item.product_name}</strong> – ${item.variant_name} × ${item.quantity} — ${formatPrice(item.price * item.quantity)}</p>`
+                )
+                .join("");
+
+              const orderDate = order
+                ? new Date(order.created_at).toLocaleDateString("pl-PL")
+                : new Date().toLocaleDateString("pl-PL");
+
+              const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+              const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
+
+              await fetch(`${supabaseUrl}/functions/v1/send-email`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${supabaseAnonKey}`,
+                },
+                body: JSON.stringify({
+                  template_key: "order_confirmation",
+                  to: customerEmail,
+                  variables: {
+                    "{{customer_email}}": customerEmail,
+                    "{{order_id}}": orderId,
+                    "{{order_id_short}}": orderId.substring(0, 6).toUpperCase(),
+                    "{{order_total}}": formatPrice(order?.total_amount || 0),
+                    "{{order_items}}": `<div style="padding: 12px 0;">${itemsHtml}</div>`,
+                    "{{order_date}}": orderDate,
+                  },
+                }),
+              });
+            }
+          } catch (emailErr) {
+            console.error("Failed to send order confirmation email:", emailErr);
+            // Don't fail the webhook because of email errors
+          }
         }
         break;
       }
