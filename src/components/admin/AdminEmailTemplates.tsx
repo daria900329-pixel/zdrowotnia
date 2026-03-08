@@ -86,7 +86,9 @@ const TEMPLATE_PRESETS: { key: string; label: string; description: string; varia
 
 const templateKeyLabels: Record<string, string> = {
   order_confirmation: "Potwierdzenie zamówienia",
-  shipping_notification: "Powiadomienie o wysyłce",
+  order_ready: "Zamówienie gotowe do wysyłki",
+  shipping_notification: "Zamówienie wysłane",
+  promotion: "Akcja promocyjna",
 };
 
 export function AdminEmailTemplates() {
