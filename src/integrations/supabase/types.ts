@@ -134,6 +134,42 @@ export type Database = {
           },
         ]
       }
+      email_templates: {
+        Row: {
+          available_variables: string[] | null
+          created_at: string
+          description: string | null
+          html_content: string
+          id: string
+          is_active: boolean | null
+          subject: string
+          template_key: string
+          updated_at: string
+        }
+        Insert: {
+          available_variables?: string[] | null
+          created_at?: string
+          description?: string | null
+          html_content?: string
+          id?: string
+          is_active?: boolean | null
+          subject?: string
+          template_key: string
+          updated_at?: string
+        }
+        Update: {
+          available_variables?: string[] | null
+          created_at?: string
+          description?: string | null
+          html_content?: string
+          id?: string
+          is_active?: boolean | null
+          subject?: string
+          template_key?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       order_items: {
         Row: {
           created_at: string
