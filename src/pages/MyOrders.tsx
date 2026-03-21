@@ -37,7 +37,7 @@ const formatPrice = (amount: number) =>
   new Intl.NumberFormat("pl-PL", { style: "currency", currency: "PLN" }).format(amount);
 
 const formatDate = (dateStr: string) =>
-  new Intl.DateTimeFormat("pl-PL", { day: "numeric", month: "long", year: "numeric" }).format(new Date(dateStr));
+  new Intl.DateTimeFormat("pl-PL", { day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit" }).format(new Date(dateStr));
 
 const MyOrders = () => {
   const { user } = useAuth();
