@@ -60,9 +60,9 @@ export function ProductGallery({
   // If no gallery images, show fallback
   if (!loading && images.length === 0) {
     return (
-      <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-hover bg-secondary/30">
+      <div className="relative aspect-square rounded-3xl overflow-hidden shadow-hover bg-gradient-to-br from-secondary/60 via-secondary/30 to-background">
         {fallbackImage ? (
-          <img src={fallbackImage} alt={productName} className="w-full h-full object-cover object-center" />
+          <img src={fallbackImage} alt={productName} className="w-full h-full object-contain p-6 md:p-10" />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-muted text-muted-foreground">
             Brak zdjęcia
