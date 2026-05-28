@@ -82,9 +82,15 @@ export function ProductGallery({
       </div>
     );
   }
+
+  if (loading) {
+    return <div className="aspect-square rounded-3xl overflow-hidden shadow-hover bg-secondary/30 animate-pulse" />;
+  }
+
+  return (
     <div className="space-y-4">
       {/* Main Image */}
-        <div className="relative aspect-square rounded-3xl overflow-hidden shadow-hover bg-gradient-to-br from-secondary/60 via-secondary/30 to-background">
+      <div className="relative aspect-square rounded-3xl overflow-hidden shadow-hover bg-gradient-to-br from-secondary/60 via-secondary/30 to-background">
         <img
           src={images[selectedIndex]?.image_url}
           alt={`${productName} - zdjęcie ${selectedIndex + 1}`}
@@ -103,10 +109,6 @@ export function ProductGallery({
         )}
       </div>
 
-            />
-          </div>
-        )}
-      </div>
 
       {/* Thumbnails Carousel */}
       {images.length > 1 && (
