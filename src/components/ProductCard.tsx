@@ -19,14 +19,14 @@ const ProductCard = ({ id, name, description, image, badge }: ProductCardProps) 
     <div className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-hover transition-all duration-300 hover:-translate-y-1 sm:hover:-translate-y-2 border border-border/30 flex flex-col">
       <Link 
         to={isFallback ? "#" : `/product/${id}`}
-        className="block relative overflow-hidden bg-white"
-        style={{ aspectRatio: "4/3" }}
+        className="block relative overflow-hidden bg-gradient-to-br from-secondary/60 via-secondary/30 to-background"
+        style={{ aspectRatio: "1/1" }}
       >
         <img
           src={displayImage}
           alt={name}
           loading="lazy"
-          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-contain p-4 sm:p-6 group-hover:scale-105 transition-transform duration-500"
         />
         {badge && (
           <span className="absolute top-3 left-3 bg-gradient-to-r from-accent to-primary text-accent-foreground text-xs font-semibold px-2.5 py-1 rounded-full shadow-soft">
