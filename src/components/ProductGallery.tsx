@@ -125,7 +125,7 @@ export function ProductGallery({
                 <button
                   onClick={() => setSelectedIndex(index)}
                   className={cn(
-                    "w-full aspect-square rounded-lg overflow-hidden border-2 transition-all",
+                    "w-full aspect-square rounded-lg overflow-hidden border-2 transition-all bg-gradient-to-br from-secondary/60 via-secondary/30 to-background",
                     selectedIndex === index
                       ? "border-primary ring-2 ring-primary/20"
                       : "border-transparent hover:border-primary/50"
@@ -134,7 +134,7 @@ export function ProductGallery({
                   <img
                     src={image.image_url}
                     alt={`${productName} - miniatura ${index + 1}`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain p-1.5"
                   />
                 </button>
               </CarouselItem>
