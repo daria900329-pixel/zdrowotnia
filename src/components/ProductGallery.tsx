@@ -82,19 +82,13 @@ export function ProductGallery({
       </div>
     );
   }
-
-  if (loading) {
-    return <div className="aspect-[3/4] rounded-3xl overflow-hidden shadow-hover bg-secondary/30 animate-pulse" />;
-  }
-
-  return (
     <div className="space-y-4">
       {/* Main Image */}
-        <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-hover bg-secondary/30">
+        <div className="relative aspect-square rounded-3xl overflow-hidden shadow-hover bg-gradient-to-br from-secondary/60 via-secondary/30 to-background">
         <img
           src={images[selectedIndex]?.image_url}
           alt={`${productName} - zdjęcie ${selectedIndex + 1}`}
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-contain p-6 md:p-10"
         />
 
         {overlayImageUrl && (
@@ -104,6 +98,11 @@ export function ProductGallery({
               alt={overlayAlt ?? "Zdjęcie sekcji"}
               loading="lazy"
               className="w-full h-full object-cover animate-fade-in"
+            />
+          </div>
+        )}
+      </div>
+
             />
           </div>
         )}
