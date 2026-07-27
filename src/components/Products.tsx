@@ -98,7 +98,7 @@ const Products = () => {
           <span className="inline-flex items-center gap-2 text-accent font-medium mb-3 bg-accent/10 px-3 py-1 rounded-full text-sm">
             <Sparkles className="w-4 h-4" /> {badge}
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-4">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground mb-4 break-words hyphens-auto" lang="pl">
             {title}
           </h2>
           <p className="text-muted-foreground">
