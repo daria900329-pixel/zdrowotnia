@@ -108,6 +108,11 @@ const Product = () => {
   }
 
   return (
+  if (product.id === QUAIL_PRODUCT_ID) {
+    return <QuailEggLanding product={product} />;
+  }
+
+  return (
     <div className="min-h-screen">
       <SEO
         title={product.name}
