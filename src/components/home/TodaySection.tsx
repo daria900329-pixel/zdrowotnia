@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { useHomeProducts } from "./useHomeProducts";
-import { formatPrice } from "./homeData";
 import quailsPhoto from "@/assets/quail/quails.jpg";
 
 const TodaySection = () => {
-  const { products, prices, loading } = useHomeProducts();
+  const { products, loading } = useHomeProducts();
   const items = products.slice(0, 5);
 
   return (

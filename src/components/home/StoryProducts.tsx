@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Loader2 } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { useHomeProducts } from "./useHomeProducts";
-import { PRODUCT_STORIES, defaultStory, formatPrice } from "./homeData";
+import { PRODUCT_STORIES, defaultStory } from "./homeData";
 import quailsPhoto from "@/assets/quail/quails.jpg";
 
 const StoryProducts = () => {
-  const { products, prices, loading } = useHomeProducts();
+  const { products, loading } = useHomeProducts();
 
   return (
     <section id="produkty" className="bg-secondary/40 py-20 md:py-32">
@@ -35,7 +35,6 @@ const StoryProducts = () => {
             const image = story.image ?? product.image_url ?? quailsPhoto;
             const reversed = index % 2 === 1;
             const large = story.scale !== "small";
-            const price = prices[product.id];
 
             return (
               <article key={product.id} className="grid lg:grid-cols-12 items-center gap-y-8">
