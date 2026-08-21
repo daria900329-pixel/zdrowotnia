@@ -1,0 +1,1 @@
+insert into public.site_content (section_key, content) values ('page_texts_quail', '{"13rgma51n4re9p":"TEST NADPISANIA"}'::jsonb) on conflict (section_key) do update set content = excluded.content;
