@@ -97,6 +97,7 @@ const MyOrders = () => {
       <SEO
         title="Moje zamówienia"
         description="Historia Twoich zamówień w Zdrowotni"
+        canonical="/moje-zamowienia"
         noindex
       />
       <Header />
