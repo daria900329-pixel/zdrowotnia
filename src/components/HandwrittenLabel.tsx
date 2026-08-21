@@ -35,14 +35,14 @@ export const HandwrittenLabel = ({ text, className }: HandwrittenLabelProps) => 
   // "Zmiana nastroju jednym kliknięciem" for desktop
   return (
     <svg
-      className={cn("h-5", className)}
-      viewBox="0 0 230 20"
+      className={cn("h-6 w-[300px] overflow-visible", className)}
+      viewBox="0 0 300 24"
       fill="currentColor"
       aria-label="Zmiana nastroju jednym kliknięciem"
     >
       <text
-        x="115"
-        y="15"
+        x="150"
+        y="18"
         textAnchor="middle"
         className="font-handwritten"
         style={{ fontSize: "14px" }}
