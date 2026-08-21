@@ -319,7 +319,7 @@ export function AboutLanding() {
             </ScrollReveal>
             <ScrollReveal variant="fade-left">
               <img
-                src={bread}
+                src={breadCut}
                 alt="Chleb na żywym zakwasie"
                 className="w-full aspect-[4/5] object-cover rounded-sm"
                 loading="lazy"
