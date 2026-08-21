@@ -160,7 +160,7 @@ function sectionsForFile(file, fallbackLabel) {
     markers.push({ index: m.index, label: prettyLabel(m[1]) });
   }
 
-  const base = fallbackLabel || prettyLabel(path.basename(file).replace(/\.(tsx|ts)$/, ""));
+  const base = fallbackLabel || "Listy i wypunktowania";
   const buckets = [];
   const bucketFor = (index) => {
     let label = base;
