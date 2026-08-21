@@ -40,11 +40,7 @@ const TodaySection = () => {
                   <h3 className="font-serif text-lg text-foreground leading-snug mb-1">
                     {product.name}
                   </h3>
-                  {prices[product.id] !== undefined && (
-                    <p className="text-sm text-muted-foreground">
-                      od {formatPrice(prices[product.id])}
-                    </p>
-                  )}
+
                 </Link>
               </ScrollReveal>
             ))}
