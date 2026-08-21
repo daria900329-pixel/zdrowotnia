@@ -650,7 +650,7 @@ export function AboutLanding() {
         />
 
         {/* Górna półka — jasny overlay na górnej połowie zdjęcia */}
-        <div className="relative flex-1 flex items-center justify-center bg-background/95 py-20 md:py-28">
+        <div className="relative flex-1 flex items-center justify-center bg-background/95 pt-24 md:pt-32 py-20 md:py-28">
           <div className="container mx-auto px-6 text-center">
             <ScrollReveal variant="fade-up">
               <h2 className="font-serif text-3xl md:text-5xl text-foreground leading-tight mb-10">
