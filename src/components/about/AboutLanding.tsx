@@ -99,6 +99,9 @@ export function AboutLanding() {
       });
   }, []);
 
+  const stripLabel = (t: string) =>
+    t.replace(/^\s*(Ona|On|One)\s*[—–-]\s*/i, "").replace(/^./, (c) => c.toUpperCase());
+
   const storyTitle = clean(content.story_title || "Nasza droga do Zdrowotni");
   const storyHighlight = clean(content.story_highlight || "Wierzymy, że dobre jedzenie łączy ludzi. Zapraszamy Cię do naszego stołu!");
 
