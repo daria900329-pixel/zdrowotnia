@@ -1,14 +1,14 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
-import heroTable from "@/assets/home/hero-table.jpg";
+import handsEggs from "@/assets/home/hands-eggs.jpg";
 
 const FinalStatement = () => {
   return (
     <section className="relative">
       <img
-        src={heroTable}
-        alt="Stół Zdrowotni z chlebem, jajkami, ziołami i kombuchą"
+        src={handsEggs}
+        alt="Dłonie zbierające jaja przepiórcze w Zdrowotni"
         loading="lazy"
-        className="w-full h-[70vh] md:h-[85vh] object-cover"
+        className="w-full h-[70vh] md:h-[85vh] object-cover object-center"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/10" />
 
