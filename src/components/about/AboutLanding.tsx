@@ -99,13 +99,32 @@ export function AboutLanding() {
   }, []);
 
   const storyTitle = clean(content.story_title || "Nasza droga do Zdrowotni");
-  const storyHighlight = clean(content.story_highlight || "");
-  const storyParagraphs: string[] = [];
-  for (let i = 1; i <= 20; i++) {
-    const val = content[`story_paragraph${i}`];
-    if (val && clean(val)) storyParagraphs.push(clean(val));
-  }
-  if (storyParagraphs.length === 0) storyParagraphs.push(...DEFAULT_STORY);
+  const storyHighlight = clean(content.story_highlight || "Wierzymy, że dobre jedzenie łączy ludzi. Zapraszamy Cię do naszego stołu!");
+
+  const p1 = clean(content.story_paragraph1 || "Ona — dietetyk kliniczny z potrzebą karmienia bliskich tak, żeby jedzenie naprawdę służyło zdrowiu i regeneracji.");
+  const p2 = clean(content.story_paragraph2 || "On — człowiek ziemi, z sercem do rolnictwa i hodowli zwierząt, DJ, który puszcza muzykę naszym zwierzakom, a nie tylko na eventach.");
+
+  const p3 = clean(content.story_paragraph3 || "One — gromada naszych szkrabów, małych i dużych, blisko i daleko, ale najukochańszych na świecie. Nasze dzieci dorastają wśród zapachu chleba na zakwasie, dźwięków fermentującej kombuchy i zwierząt, które traktujemy z troską i uważnością.");
+  const [oneIntro, afterOne] = p3.split("Nasze dzieci").map((s) => s.trim());
+  const childrenQuote = afterOne ? `Nasze dzieci ${afterOne}` : "";
+
+  const p4 = clean(content.story_paragraph4 || "I a propos zwierząt. Dbamy o nie od pierwszych minut życia. Kurki inkubujemy sami w domu (tak, w domu), potem doglądamy ich w odchowalniku, więc od samego początku mamy realny wpływ na to, czym są karmione. Dzięki temu ich jaja są naturalnie bogate w omega-3, a żółtko to prawdziwe wsparcie dla naszego mózgu — bez kapsułek i obietnic z etykiety.");
+  const p4Highlight = "Dbamy o nie od pierwszych minut życia.";
+  const [p4BeforeHighlight, p4AfterHighlight] = p4.split(p4Highlight).map((s) => s.trim());
+
+  const p5 = clean(content.story_paragraph5 || "Tak samo króliki. Królicze mamy jedzą lepiej niż wielu z nas. I dokładnie to widać w jakości mięsa. Chleb pieczemy na żywym zakwasie, który ma już ponad 10 lat. Dodajemy do niego mnóstwo dobroci - siemię lniane (nasz polski superfood), pestki dyni, słonecznik i sól kłodawska, bez antyzbrylaczy czy innych dodatków.");
+  const [rabbitText, afterBread] = p5.split("Chleb pieczemy").map((s) => s.trim());
+  const breadText = afterBread ? `Chleb pieczemy ${afterBread}` : "";
+
+  const p6 = clean(content.story_paragraph6 || "Nasz przydomowy sad co roku obdarza nas obficie jabłkami, które nie znają oprysków. To z nich powstaje nasz ocet — żywy, naturalnie fermentowany, z matką octową. Kombucha i ocet… po prostu się rozkręciły — fermentacja zrobiła swoje, a my uznaliśmy, że szkoda byłoby się tym nie podzielić.");
+  const p6Highlight = "fermentacja zrobiła swoje";
+  const [p6BeforeHighlight, p6AfterHighlight] = p6.split(p6Highlight).map((s) => s.trim());
+
+  const p7 = clean(content.story_paragraph7 || "Nasze produkty powstają dokładnie tak, jak robiły to nasze babcie: bez pośpiechu, bez kombinowania, z sercem i z najlepszych składników. Robimy jedzenie, które sami chcemy mieć na stole.");
+  const [p7First, p7Rest] = p7.split("Robimy").map((s) => s.trim());
+  const p7RestSentence = p7Rest ? `Robimy ${p7Rest}` : "";
+
+  const p8 = clean(content.story_paragraph8 || "I jeśli pytasz: „gdzie trafisz lepiej?” — my naprawdę nie znamy lepszego miejsca.");
 
 
   const scrollTo = (id: string) => {
