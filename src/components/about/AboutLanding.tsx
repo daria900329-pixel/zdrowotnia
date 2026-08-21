@@ -403,8 +403,12 @@ export function AboutLanding() {
               <div className="grid md:grid-cols-[40%_55%] gap-x-24 gap-y-12">
                 {/* Lewa — osobisty dopisek */}
                 <div>
-                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                    {p8}
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
+                    {p8Prefix}
+                    {p8Prefix ? " —" : ""}
+                  </p>
+                  <p className="font-serif text-[20px] md:text-[22px] text-foreground leading-snug border-b border-primary/50 pb-1 inline-block">
+                    {p8Suffix}
                   </p>
                 </div>
 
