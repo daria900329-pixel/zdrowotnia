@@ -73,12 +73,12 @@ export const AdminPageTexts = () => {
   }, [search, sections]);
 
   const changedCount = useMemo(
-    () => Object.values(overrides).filter((v) => v && v.trim() !== "").length,
+    () => Object.keys(overrides).length,
     [overrides]
   );
 
   const changedInSection = (ids: string[]) =>
-    ids.filter((id) => (overrides[id] ?? "").trim() !== "").length;
+    ids.filter((id) => Object.prototype.hasOwnProperty.call(overrides, id)).length;
 
   const save = async () => {
     setSaving(true);
@@ -187,8 +187,8 @@ export const AdminPageTexts = () => {
                     </AccordionTrigger>
                     <AccordionContent className="space-y-5 pt-2">
                       {section.texts.map((entry) => {
-                        const value = overrides[entry.id] ?? "";
-                        const isChanged = value.trim() !== "";
+                        const value = overrides[entry.id] ?? entry.text;
+                        const isChanged = Object.prototype.hasOwnProperty.call(overrides, entry.id);
                         return (
                           <div key={entry.id} className="space-y-1.5">
                             <div className="flex items-start justify-between gap-3">
@@ -215,14 +215,19 @@ export const AdminPageTexts = () => {
                             </div>
                             <Textarea
                               value={value}
-                              placeholder={entry.text}
                               rows={entry.text.length > 120 ? 4 : entry.text.length > 60 ? 2 : 1}
-                              onChange={(e) =>
-                                setOverrides((prev) => ({
-                                  ...prev,
-                                  [entry.id]: e.target.value,
-                                }))
-                              }
+                              onChange={(e) => {
+                                const nextValue = e.target.value;
+                                setOverrides((prev) => {
+                                  const next = { ...prev };
+                                  if (nextValue === entry.text) {
+                                    delete next[entry.id];
+                                  } else {
+                                    next[entry.id] = nextValue;
+                                  }
+                                  return next;
+                                });
+                              }}
                             />
                           </div>
                         );
