@@ -382,12 +382,17 @@ export function AboutLanding() {
                     {t("TAK TO ROBIMY")}
                   </p>
                   <p className="font-serif text-[26px] md:text-[30px] lg:text-[34px] text-foreground leading-[1.15] mb-6">
-                    {p7First}
+                    {p7First.split(":").slice(0, 1).join(":")}
+                    {p7First.includes(":") ? ":" : ""}
+                  </p>
+                  <p className="text-base md:text-[17px] leading-[1.6] text-muted-foreground mb-6">
+                    {p7First.includes(":") ? p7First.split(":").slice(1).join(":").trim() : ""}
                   </p>
                   <p className="text-base md:text-[17px] leading-[1.6] text-muted-foreground">
                     {p7RestSentence}
                   </p>
                 </div>
+
 
               </div>
 
