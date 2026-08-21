@@ -19,6 +19,7 @@ import kombuchaBrew from "@/assets/kombucha/step-brew.jpg";
 import vinegarApples from "@/assets/vinegar/apples.jpg";
 import vinegarFerment from "@/assets/vinegar/step-ferment.jpg";
 import rabbits from "@/assets/about/rabbits.jpg";
+import quailsCare from "@/assets/about/przepiorki-opieka.jpg";
 import heroProducts from "@/assets/hero-products.jpg";
 import breadAsset from "@/assets/product-bread.jpg.asset.json";
 import { img } from "@/lib/pageImages";
@@ -301,7 +302,7 @@ export function AboutLanding() {
             <div className="grid lg:grid-cols-[1fr_1.15fr] gap-12 lg:gap-16 items-start mb-16 md:mb-20">
               <ScrollReveal variant="fade-right">
                 <img
-                  src={img(quails)}
+                  src={img(quailsCare)}
                   alt="Nasze przepiórki w gospodarstwie"
                   className="w-full aspect-[4/5] object-cover rounded-sm"
                   loading="lazy"
