@@ -366,15 +366,14 @@ export function AboutLanding() {
                 className="w-full aspect-[16/9] md:aspect-[21/9] object-cover rounded-sm mb-10 md:mb-12"
                 loading="lazy"
               />
-              <div className="max-w-3xl">
+              <div className="max-w-5xl">
                 <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
                   <DashedText text={p6BeforeHighlight} />
                 </p>
-                <p className="font-serif text-3xl md:text-4xl text-foreground leading-snug mb-4">
-                  {p6Highlight}{p6AfterHighlight.startsWith(",") ? "," : ""}
-                </p>
-                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                  <DashedText text={p6AfterHighlight.replace(/^,\s*/, "")} />
+                <p className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground leading-snug">
+                  {p6Highlight}
+                  {p6AfterHighlight.startsWith(",") ? "" : ","}{" "}
+                  {p6AfterHighlight.replace(/^,\s*/, "")}
                 </p>
               </div>
             </div>
@@ -382,18 +381,15 @@ export function AboutLanding() {
 
           {/* Final history */}
           <ScrollReveal variant="fade-up">
-            <div className="my-20 md:my-28 max-w-3xl">
-              <p className="font-serif text-2xl md:text-3xl text-foreground leading-snug mb-4">
-                {p7First}
-              </p>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-10">
-                {p7RestSentence}
+            <div className="my-20 md:my-28 max-w-5xl">
+              <p className="font-serif text-2xl md:text-3xl lg:text-4xl text-foreground leading-snug mb-6">
+                {p7First} {p7RestSentence}
               </p>
               <div className="w-16 h-px bg-primary/40 mb-10" />
-              <p className="font-serif text-3xl md:text-4xl text-foreground leading-snug mb-10">
+              <p className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground leading-tight mb-10">
                 {p8}
               </p>
-              <p className="font-serif text-3xl md:text-5xl text-foreground leading-tight">
+              <p className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground leading-tight">
                 {storyHighlight}
               </p>
             </div>
