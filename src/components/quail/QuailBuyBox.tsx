@@ -17,12 +17,13 @@ interface QuailBuyBoxProps {
   productId: string;
   productName: string;
   imageUrl: string | null;
+  note?: string;
 }
 
 const formatPrice = (amount: number) =>
   new Intl.NumberFormat("pl-PL", { style: "currency", currency: "PLN" }).format(amount);
 
-export function QuailBuyBox({ productId, productName, imageUrl }: QuailBuyBoxProps) {
+export function QuailBuyBox({ productId, productName, imageUrl, note }: QuailBuyBoxProps) {
   const [variants, setVariants] = useState<Variant[]>([]);
   const [selected, setSelected] = useState<Variant | null>(null);
   const [quantity, setQuantity] = useState(1);
@@ -156,7 +157,7 @@ export function QuailBuyBox({ productId, productName, imageUrl }: QuailBuyBoxPro
       </div>
 
       <p className="text-sm text-muted-foreground italic font-handwritten text-base">
-        Świeże. Lokalne. Od naszych przepiórek.
+        {note ?? "Świeże. Lokalne. Od naszych przepiórek."}
       </p>
     </div>
   );

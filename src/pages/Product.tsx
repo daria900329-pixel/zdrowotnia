@@ -10,8 +10,10 @@ import { ArrowLeft, Loader2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SEO, productJsonLd, breadcrumbJsonLd } from "@/components/SEO";
 import { QuailEggLanding } from "@/components/quail/QuailEggLanding";
+import { VinegarLanding } from "@/components/vinegar/VinegarLanding";
 
 const QUAIL_PRODUCT_ID = "c04e492a-fe9f-461f-bc06-a5bb0539b58f";
+const VINEGAR_PRODUCT_ID = "ed5cb95d-4e3a-478c-8134-534838d09823";
 
 interface Product {
   id: string;
@@ -109,6 +111,10 @@ const Product = () => {
 
   if (product.id === QUAIL_PRODUCT_ID) {
     return <QuailEggLanding product={product} />;
+  }
+
+  if (product.id === VINEGAR_PRODUCT_ID) {
+    return <VinegarLanding product={product} />;
   }
 
   return (
