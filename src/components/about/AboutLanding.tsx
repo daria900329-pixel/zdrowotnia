@@ -71,7 +71,7 @@ const DashedText = ({ text, className }: { text: string; className?: string }) =
   let match: RegExpExecArray | null;
   while ((match = regex.exec(text)) !== null) {
     nodes.push(text.slice(lastIndex, match.index));
-    nodes.push(<span key={match.index} className="relative -top-[0.05em]">—</span>);
+    nodes.push(<span key={match.index}>—</span>);
     lastIndex = match.index + match[0].length;
   }
   nodes.push(text.slice(lastIndex));
@@ -221,7 +221,7 @@ export function AboutLanding() {
               <ul className="space-y-4">
                 {THINKING.map((line) => (
                   <li key={line} className="flex gap-4 text-lg text-muted-foreground leading-relaxed">
-                    <span className="text-primary mt-1">—</span>
+                    <span className="text-primary leading-relaxed">—</span>
                     <span>{t(line)}</span>
                   </li>
                 ))}
