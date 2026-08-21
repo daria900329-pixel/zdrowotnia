@@ -6,7 +6,9 @@ import { usePageText } from "@/hooks/usePageText";
 import { Link } from "react-router-dom";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { Button } from "@/components/ui/button";
 import AboutGallery from "@/components/AboutGallery";
+
 
 import heroTable from "@/assets/home/hero-table.jpg";
 import handsEggs from "@/assets/home/hands-eggs.jpg";
