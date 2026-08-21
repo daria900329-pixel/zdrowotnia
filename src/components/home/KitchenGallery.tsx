@@ -1,7 +1,8 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
 import quails from "@/assets/quail/quails.jpg";
 import eggInHand from "@/assets/quail/egg-in-hand.jpg";
-import breadCut from "@/assets/product-bread.jpg";
+import breadCutAsset from "@/assets/product-bread.jpg.asset.json";
+const breadCut = breadCutAsset.url;
 import feedMix from "@/assets/quail/feed-mix.jpg";
 import freshEggs from "@/assets/quail/fresh-eggs.jpg";
 import kombucha from "@/assets/home/kombucha-editorial.jpg";
