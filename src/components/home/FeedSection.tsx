@@ -46,9 +46,9 @@ const FeedSection = () => {
             <ScrollReveal key={s.label} delay={i * 100}>
               <div className="h-px w-10 bg-primary/50 mb-6" />
               <h3 className="text-[0.7rem] tracking-[0.25em] uppercase text-foreground mb-4">
-                {s.label}
+                {t(s.label)}
               </h3>
-              <p className="text-muted-foreground leading-relaxed">{s.text}</p>
+              <p className="text-muted-foreground leading-relaxed">{t(s.text)}</p>
             </ScrollReveal>
           ))}
         </div>

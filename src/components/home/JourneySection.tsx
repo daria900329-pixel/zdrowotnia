@@ -42,7 +42,7 @@ const JourneySection = () => {
                 }`}
               />
               <p className="text-[0.62rem] tracking-[0.22em] uppercase text-foreground/80">
-                {s.label}
+                {t(s.label)}
               </p>
             </ScrollReveal>
           ))}

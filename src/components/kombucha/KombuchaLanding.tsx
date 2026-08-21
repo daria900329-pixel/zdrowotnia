@@ -261,7 +261,7 @@ export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
                         i === PROCESS.length - 1 ? "text-primary" : "text-foreground/80"
                       }`}
                     >
-                      {step}
+                      {t(step)}
                     </span>
                     {i < PROCESS.length - 1 && (
                       <span className="text-primary/60 text-xl">→</span>
@@ -411,9 +411,9 @@ export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
               {FOR_WHOM.map((item, i) => (
                 <ScrollReveal key={item.label} delay={i * 100}>
                   <p className="text-[0.65rem] tracking-[0.25em] uppercase text-foreground mb-4">
-                    {item.label}
+                    {t(item.label)}
                   </p>
-                  <p className="text-muted-foreground leading-relaxed">{item.text}</p>
+                  <p className="text-muted-foreground leading-relaxed">{t(item.text)}</p>
                 </ScrollReveal>
               ))}
             </div>
@@ -538,9 +538,9 @@ export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
                       className="w-full aspect-[4/5] object-cover mb-5"
                     />
                     <p className="text-[0.65rem] tracking-[0.25em] uppercase text-foreground mb-2">
-                      {w.label}
+                      {t(w.label)}
                     </p>
-                    <p className="text-sm text-muted-foreground">{w.text}</p>
+                    <p className="text-sm text-muted-foreground">{t(w.text)}</p>
                   </div>
                 </ScrollReveal>
               ))}
@@ -570,7 +570,7 @@ export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
                     className="w-full aspect-[3/4] object-cover mb-4"
                   />
                   <p className="text-[0.6rem] tracking-[0.2em] uppercase text-muted-foreground">
-                    {s.label}
+                    {t(s.label)}
                   </p>
                 </ScrollReveal>
               ))}

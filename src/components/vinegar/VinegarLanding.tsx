@@ -214,9 +214,9 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
                   <ScrollReveal key={d.label} delay={i * 80}>
                     <div>
                       <h3 className="text-[0.7rem] tracking-[0.3em] uppercase text-foreground mb-3">
-                        {d.label}
+                        {t(d.label)}
                       </h3>
-                      <p className="text-lg text-muted-foreground leading-relaxed">{d.text}</p>
+                      <p className="text-lg text-muted-foreground leading-relaxed">{t(d.text)}</p>
                     </div>
                   </ScrollReveal>
                 ))}
@@ -320,9 +320,9 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
                     />
                     <figcaption>
                       <h3 className="text-[0.65rem] tracking-[0.25em] uppercase text-foreground mb-2">
-                        {u.label}
+                        {t(u.label)}
                       </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{u.text}</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{t(u.text)}</p>
                     </figcaption>
                   </figure>
                 </ScrollReveal>
@@ -379,7 +379,7 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
                 {PROCESS.map((step, i) => (
                   <li key={step} className="flex items-center gap-4 sm:gap-6">
                     <span className="font-serif text-lg sm:text-xl text-foreground border border-primary/40 rounded-full px-6 py-3">
-                      {step}
+                      {t(step)}
                     </span>
                     {i < PROCESS.length - 1 && (
                       <span className="text-primary hidden sm:inline">→</span>
@@ -495,7 +495,7 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
                       className="w-full aspect-[3/4] object-cover mb-3"
                     />
                     <figcaption className="text-[0.65rem] tracking-[0.25em] uppercase text-muted-foreground">
-                      {s.label}
+                      {t(s.label)}
                     </figcaption>
                   </figure>
                 </ScrollReveal>
@@ -523,7 +523,7 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
                       className="w-full aspect-[4/5] object-cover mb-4"
                     />
                     <figcaption className="text-[0.65rem] tracking-[0.25em] uppercase text-foreground">
-                      {p.label}
+                      {t(p.label)}
                     </figcaption>
                   </figure>
                 </ScrollReveal>

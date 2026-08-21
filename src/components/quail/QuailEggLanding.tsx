@@ -272,9 +272,9 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
                     }}
                   >
                     <h3 className="text-[0.68rem] tracking-[0.22em] uppercase text-foreground mb-2">
-                      {n.label}
+                      {t(n.label)}
                     </h3>
-                    <p className="text-[0.8rem] text-muted-foreground leading-relaxed">{n.text}</p>
+                    <p className="text-[0.8rem] text-muted-foreground leading-relaxed">{t(n.text)}</p>
                   </div>
                 ))}
               </div>
@@ -296,9 +296,9 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
                 {[...NUTRIENTS_LEFT, ...NUTRIENTS_RIGHT].map((n, i) => (
                   <ScrollReveal key={n.label} delay={i * 60}>
                     <h3 className="text-[0.7rem] tracking-[0.25em] uppercase text-foreground mb-2">
-                      {n.label}
+                      {t(n.label)}
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{n.text}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{t(n.text)}</p>
                   </ScrollReveal>
                 ))}
               </div>
@@ -428,7 +428,7 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
                   className="w-full aspect-[3/4] object-cover mb-3"
                 />
                 <p className="text-[0.65rem] sm:text-xs tracking-[0.2em] uppercase text-muted-foreground">
-                  {item.label}
+                  {t(item.label)}
                 </p>
               </ScrollReveal>
             ))}
@@ -454,9 +454,9 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
                 <ScrollReveal key={a.label} delay={i * 80}>
                   <div className="py-8 grid sm:grid-cols-[220px_1fr] gap-3 sm:gap-10 items-baseline">
                     <h3 className="text-xs tracking-[0.25em] uppercase text-foreground">
-                      {a.label}
+                      {t(a.label)}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed">{a.text}</p>
+                    <p className="text-muted-foreground leading-relaxed">{t(a.text)}</p>
                   </div>
                 </ScrollReveal>
               ))}
@@ -502,9 +502,9 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
                 <ScrollReveal key={p.label} delay={i * 80}>
                   <div className="border-t border-border pt-6">
                     <h3 className="text-xs tracking-[0.25em] uppercase text-foreground mb-4">
-                      {p.label}
+                      {t(p.label)}
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{p.text}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{t(p.text)}</p>
                   </div>
                 </ScrollReveal>
               ))}
@@ -554,7 +554,7 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
                     className="w-full aspect-[3/4] object-cover mb-3"
                   />
                   <p className="text-[0.65rem] sm:text-xs tracking-[0.2em] uppercase text-muted-foreground">
-                    {item.label}
+                    {t(item.label)}
                   </p>
                 </ScrollReveal>
               ))}
@@ -605,7 +605,7 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
                     <span className="text-[0.65rem] tracking-[0.25em] uppercase text-primary">
                       0{i + 1}
                     </span>
-                    <p className="text-sm text-foreground mt-1">{step.label}</p>
+                    <p className="text-sm text-foreground mt-1">{t(step.label)}</p>
                   </div>
                 </ScrollReveal>
               ))}
