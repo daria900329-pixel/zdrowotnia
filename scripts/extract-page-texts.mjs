@@ -105,14 +105,38 @@ function isSectionMarker(raw) {
   return /^\d+\./.test(c) || upper > 0.7;
 }
 
+function constBlocks(src) {
+  const blocks = [];
+  for (const m of src.matchAll(/^const ([A-Za-z_0-9]+)(?::[^=]+)? = [\[{]([\s\S]*?)^[\]}];?$/gm)) {
+    const start = m.index;
+    const end = m.index + m[0].length;
+    // gdzie ta stała jest użyta w JSX — tam należy jej treść
+    const usage = new RegExp(`\\b${m[1]}\\b`, "g");
+    let usedAt = null;
+    for (const um of src.matchAll(usage)) {
+      if (um.index > end) {
+        usedAt = um.index;
+        break;
+      }
+    }
+    blocks.push({ start, end, usedAt: usedAt ?? start });
+  }
+  return blocks;
+}
+
 function collectMatches(src) {
   const out = [];
+  const blocks = constBlocks(src);
+  const remap = (index) => {
+    const b = blocks.find((x) => index >= x.start && index <= x.end);
+    return b ? b.usedAt : index;
+  };
   const push = (index, value) => {
     const v = value.replace(/\s+/g, " ").trim();
     if (!v || v.length < 2) return;
     if (/^[\p{P}\p{S}\s]+$/u.test(v)) return;
     if (/^(https?:|\/|#|data:)/.test(v)) return;
-    out.push({ index, value: v });
+    out.push({ index: remap(index), value: v });
   };
 
   for (const m of src.matchAll(CALL)) push(m.index, JSON.parse(m[1]));
