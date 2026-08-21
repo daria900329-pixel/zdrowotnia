@@ -8,7 +8,8 @@ import { ScrollReveal, ScrollRevealGroup } from "@/components/ScrollReveal";
 // Fallback static products (used when DB is empty)
 import kombuchaImg from "@/assets/product-kombucha.jpg";
 import vinegarImg from "@/assets/product-vinegar.jpg";
-import breadImg from "@/assets/product-bread.jpg";
+import breadAsset from "@/assets/product-bread.jpg.asset.json";
+const breadImg = breadAsset.url;
 import rabbitImg from "@/assets/product-rabbit.jpg";
 
 const fallbackProducts = [
