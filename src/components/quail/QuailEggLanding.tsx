@@ -194,66 +194,124 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
         <section className="section-padding bg-secondary/40">
           <div className="max-w-6xl mx-auto">
             <ScrollReveal>
-              <div className="text-center max-w-2xl mx-auto mb-16 md:mb-24">
+              <div className="text-center max-w-2xl mx-auto mb-10 md:mb-4">
                 <Eyebrow>Skład</Eyebrow>
-                <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-foreground mb-6 break-words">
+                <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.25rem] text-foreground mb-4 break-words">
                   Co mieści się w tak małym jajku?
                 </h2>
-                <p className="text-muted-foreground text-lg">
+                <p className="text-muted-foreground text-base">
                   Natura potrafi zamknąć zaskakująco dużo w kilkunastu gramach.
                 </p>
               </div>
             </ScrollReveal>
 
-            <div className="grid lg:grid-cols-[1fr_auto_1fr] gap-10 lg:gap-8 items-center">
-              <div className="space-y-10 lg:text-right">
-                {NUTRIENTS_LEFT.map((n, i) => (
-                  <ScrollReveal key={n.label} delay={i * 90} variant="fade-right">
-                    <div className="lg:flex lg:items-start lg:justify-end lg:gap-5">
-                      <div className="max-w-xs lg:ml-auto">
-                        <h3 className="text-[0.7rem] tracking-[0.25em] uppercase text-foreground mb-2">
-                          {n.label}
-                        </h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{n.text}</p>
-                      </div>
-                      <span className="hidden lg:block h-px w-10 bg-primary/40 mt-3 shrink-0" />
-                    </div>
-                  </ScrollReveal>
-                ))}
-              </div>
+            {/* --- desktop: infografika z liniami odchodzącymi od jajka --- */}
+            <ScrollReveal>
+              <div className="hidden lg:block relative w-full aspect-[16/10] max-w-5xl mx-auto">
+                {/* linie */}
+                <svg
+                  className="absolute inset-0 w-full h-full pointer-events-none"
+                  viewBox="0 0 100 62"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  {[
+                    "M 27 12 L 44 24",
+                    "M 25 30 L 42 31",
+                    "M 27 47 L 44 38",
+                    "M 73 12 L 56 24",
+                    "M 75 30 L 58 31",
+                    "M 73 47 L 56 38",
+                    "M 50 58 L 50 44",
+                  ].map((d) => (
+                    <path
+                      key={d}
+                      d={d}
+                      className="stroke-primary/40"
+                      strokeWidth="0.18"
+                      fill="none"
+                      vectorEffect="non-scaling-stroke"
+                    />
+                  ))}
+                </svg>
 
-              <ScrollReveal variant="zoom-in" className="order-first lg:order-none">
+                {/* jajko */}
                 <img
                   src={eggOpen}
                   alt="Rozbite jajko przepiórcze z widocznym żółtkiem"
                   loading="lazy"
-                  className="w-56 sm:w-72 lg:w-[22rem] mx-auto drop-shadow-[0_25px_45px_rgba(80,60,30,0.18)]"
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[34%] drop-shadow-[0_25px_45px_rgba(80,60,30,0.18)]"
+                />
+
+                {/* etykiety lewe */}
+                {NUTRIENTS_LEFT.map((n, i) => (
+                  <div
+                    key={n.label}
+                    className="absolute w-[26%] text-right"
+                    style={{ right: "74%", top: `${[10, 39, 66][i]}%` }}
+                  >
+                    <h3 className="text-[0.68rem] tracking-[0.22em] uppercase text-foreground mb-2">
+                      {n.label}
+                    </h3>
+                    <p className="text-[0.8rem] text-muted-foreground leading-relaxed">{n.text}</p>
+                  </div>
+                ))}
+
+                {/* etykiety prawe */}
+                {NUTRIENTS_RIGHT.slice(0, 3).map((n, i) => (
+                  <div
+                    key={n.label}
+                    className="absolute w-[26%] text-left"
+                    style={{ left: "74%", top: `${[10, 39, 66][i]}%` }}
+                  >
+                    <h3 className="text-[0.68rem] tracking-[0.22em] uppercase text-foreground mb-2">
+                      {n.label}
+                    </h3>
+                    <p className="text-[0.8rem] text-muted-foreground leading-relaxed">{n.text}</p>
+                  </div>
+                ))}
+
+                {/* etykieta dolna */}
+                <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[34%] text-center">
+                  <h3 className="text-[0.68rem] tracking-[0.22em] uppercase text-foreground mb-2">
+                    {NUTRIENTS_RIGHT[3].label}
+                  </h3>
+                  <p className="text-[0.8rem] text-muted-foreground leading-relaxed">
+                    {NUTRIENTS_RIGHT[3].text}
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* --- mobile / tablet --- */}
+            <div className="lg:hidden">
+              <ScrollReveal variant="zoom-in">
+                <img
+                  src={eggOpen}
+                  alt="Rozbite jajko przepiórcze z widocznym żółtkiem"
+                  loading="lazy"
+                  className="w-56 sm:w-72 mx-auto mb-12 drop-shadow-[0_25px_45px_rgba(80,60,30,0.18)]"
                 />
               </ScrollReveal>
-
-              <div className="space-y-10">
-                {NUTRIENTS_RIGHT.map((n, i) => (
-                  <ScrollReveal key={n.label} delay={i * 90} variant="fade-left">
-                    <div className="lg:flex lg:items-start lg:gap-5">
-                      <span className="hidden lg:block h-px w-10 bg-primary/40 mt-3 shrink-0" />
-                      <div className="max-w-xs">
-                        <h3 className="text-[0.7rem] tracking-[0.25em] uppercase text-foreground mb-2">
-                          {n.label}
-                        </h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{n.text}</p>
-                      </div>
-                    </div>
+              <div className="grid sm:grid-cols-2 gap-x-10 gap-y-8">
+                {[...NUTRIENTS_LEFT, ...NUTRIENTS_RIGHT].map((n, i) => (
+                  <ScrollReveal key={n.label} delay={i * 60}>
+                    <h3 className="text-[0.7rem] tracking-[0.25em] uppercase text-foreground mb-2">
+                      {n.label}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{n.text}</p>
                   </ScrollReveal>
                 ))}
               </div>
             </div>
 
-            <p className="text-xs text-muted-foreground/80 max-w-2xl mx-auto text-center mt-16 md:mt-24 leading-relaxed">
+            <p className="text-xs text-muted-foreground/80 max-w-2xl mx-auto text-center mt-14 md:mt-16 leading-relaxed">
               Jajo to nie pojedynczy wyizolowany składnik. To naturalna matryca białek, tłuszczów,
               witamin i składników mineralnych.
             </p>
           </div>
         </section>
+
 
         {/* ============ 3. NIE TYLKO MAKRO ============ */}
         <section className="grid lg:grid-cols-2 items-stretch">
