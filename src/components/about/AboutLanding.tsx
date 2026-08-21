@@ -157,35 +157,39 @@ export function AboutLanding() {
   return (
     <main className="bg-background">
       {/* 1. HERO */}
-      <section className="relative min-h-[85vh] flex items-end overflow-hidden">
-        <img
-          src={img(togetherImage || heroTable)}
-          alt="Daria i Marcin — twórcy Zdrowotni"
-          className="absolute top-40 left-0 right-0 bottom-0 w-full h-full object-cover object-top"
-          loading="eager"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/55 to-transparent" />
-        <div className="container mx-auto px-6 relative pb-16 pt-40">
-          <ScrollReveal variant="fade-up">
-            <div className="max-w-3xl">
-              <Eyebrow>{t("O nas")}</Eyebrow>
-              <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-[1.05] text-foreground mb-8 break-words hyphens-auto">
-                {t("Zdrowotnia nie zaczęła się od biznesplanu.")}
-              </h1>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                {t("Zaczęła się od prostego pytania: czy da się robić jedzenie tak, żeby naprawdę wiedzieć, skąd pochodzi i co do niego trafia?")}
-              </p>
-              <button
-                onClick={() => scrollTo("blizej")}
-                className="mt-10 inline-flex items-center gap-3 text-xs tracking-[0.3em] uppercase text-foreground border-b border-primary/60 pb-2 hover:text-primary transition-colors"
-              >
-                {t("Poznaj nas bliżej")}
-                <ArrowDown className="w-4 h-4" />
-              </button>
-            </div>
-          </ScrollReveal>
+      <section className="pt-32 md:pt-40 pb-16 md:pb-24">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+            <ScrollReveal variant="fade-up">
+              <div>
+                <Eyebrow>{t("O nas")}</Eyebrow>
+                <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-foreground mb-8 break-words hyphens-auto">
+                  {t("Zdrowotnia nie zaczęła się od biznesplanu.")}
+                </h1>
+                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                  {t("Zaczęła się od prostego pytania: czy da się robić jedzenie tak, żeby naprawdę wiedzieć, skąd pochodzi i co do niego trafia?")}
+                </p>
+                <button
+                  onClick={() => scrollTo("blizej")}
+                  className="mt-10 inline-flex items-center gap-3 text-xs tracking-[0.3em] uppercase text-foreground border-b border-primary/60 pb-2 hover:text-primary transition-colors"
+                >
+                  {t("Poznaj nas bliżej")}
+                  <ArrowDown className="w-4 h-4" />
+                </button>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal variant="fade-up">
+              <img
+                src={img(togetherImage || heroTable)}
+                alt="Daria i Marcin — twórcy Zdrowotni"
+                className="w-full aspect-[4/5] md:aspect-[4/5] object-cover object-top rounded-sm shadow-card"
+                loading="eager"
+              />
+            </ScrollReveal>
+          </div>
         </div>
       </section>
+
 
       {/* 2. NIE JESTEŚMY RODZINNĄ FIRMĄ Z TRZECH POKOLEŃ */}
       <section id="blizej" className="py-28 md:py-40">
