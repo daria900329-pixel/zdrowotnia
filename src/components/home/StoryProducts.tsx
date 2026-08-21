@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Loader2 } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { useHomeProducts } from "./useHomeProducts";
-import { PRODUCT_STORIES, defaultStory, formatPrice } from "./homeData";
+import { PRODUCT_STORIES, defaultStory } from "./homeData";
 import quailsPhoto from "@/assets/quail/quails.jpg";
 
 const StoryProducts = () => {
-  const { products, prices, loading } = useHomeProducts();
+  const { products, loading } = useHomeProducts();
 
   return (
     <section id="produkty" className="bg-secondary/40 py-20 md:py-32">
@@ -35,7 +35,6 @@ const StoryProducts = () => {
             const image = story.image ?? product.image_url ?? quailsPhoto;
             const reversed = index % 2 === 1;
             const large = story.scale !== "small";
-            const price = prices[product.id];
 
             return (
               <article key={product.id} className="grid lg:grid-cols-12 items-center gap-y-8">
@@ -75,21 +74,16 @@ const StoryProducts = () => {
                       {story.tags.join(" · ")}
                     </p>
 
-                    <div className="h-px w-14 bg-primary/40 mb-6" />
-
-                    {price !== undefined && (
-                      <p className="text-sm text-muted-foreground mb-6">
-                        od <span className="text-foreground">{formatPrice(price)}</span>
-                      </p>
-                    )}
+                    <div className="h-px w-14 bg-primary/40 mb-8" />
 
                     <Link
                       to={`/product/${product.id}`}
-                      className="inline-flex items-center text-[0.7rem] tracking-[0.25em] uppercase text-foreground border-b border-primary/60 hover:border-foreground pb-1 transition-colors"
+                      className="inline-flex items-center justify-center bg-foreground text-background text-[0.7rem] tracking-[0.25em] uppercase px-9 py-4 hover:bg-earth transition-colors"
                     >
                       {story.cta}
-                      <ArrowRight className="w-3.5 h-3.5 ml-2" />
+                      <ArrowRight className="w-3.5 h-3.5 ml-3" />
                     </Link>
+
 
                     {story.edu && (
                       <Link

@@ -1,6 +1,3 @@
-import breadCut from "@/assets/home/bread-cut.jpg";
-import kombuchaEditorial from "@/assets/home/kombucha-editorial.jpg";
-import vinegarEditorial from "@/assets/home/vinegar-editorial.jpg";
 import freshEggs from "@/assets/quail/fresh-eggs.jpg";
 
 export interface HomeProduct {
@@ -44,7 +41,6 @@ export const PRODUCT_STORIES: Record<string, ProductStory> = {
     tags: ["żytni zakwas", "długa fermentacja", "małe wypieki"],
     cta: "Poznaj nasz chleb",
     edu: "Co zmienia długi proces fermentacji?",
-    image: breadCut,
     scale: "large",
   },
   // Kombucha z zielonej herbaty
@@ -55,7 +51,6 @@ export const PRODUCT_STORIES: Record<string, ProductStory> = {
     tags: ["fermentowana powoli", "bez sztucznych aromatów", "małe partie"],
     cta: "Zobacz kombuchę",
     edu: "Co właściwie dzieje się podczas fermentacji?",
-    image: kombuchaEditorial,
   },
   // Kombucha z opuncją
   "59baca9b-5095-4a5e-bcf5-ddaf744a17e3": {
@@ -72,7 +67,6 @@ export const PRODUCT_STORIES: Record<string, ProductStory> = {
     lead: "Naturalnie fermentowany ocet jabłkowy, niepasteryzowany, z żywą matką octową.",
     tags: ["niepasteryzowany", "z naszych jabłek", "żywa matka octowa"],
     cta: "Poznaj go",
-    image: vinegarEditorial,
   },
 };
 

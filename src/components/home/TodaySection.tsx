@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { useHomeProducts } from "./useHomeProducts";
-import { formatPrice } from "./homeData";
 import quailsPhoto from "@/assets/quail/quails.jpg";
 
 const TodaySection = () => {
-  const { products, prices, loading } = useHomeProducts();
+  const { products, loading } = useHomeProducts();
   const items = products.slice(0, 5);
 
   return (
@@ -40,11 +39,7 @@ const TodaySection = () => {
                   <h3 className="font-serif text-lg text-foreground leading-snug mb-1">
                     {product.name}
                   </h3>
-                  {prices[product.id] !== undefined && (
-                    <p className="text-sm text-muted-foreground">
-                      od {formatPrice(prices[product.id])}
-                    </p>
-                  )}
+
                 </Link>
               </ScrollReveal>
             ))}
