@@ -88,7 +88,7 @@ const TodaySection = () => {
             const lastTwo = words.slice(-2).join(" ");
             const rest = words.slice(0, -2).join(" ");
             return (
-              <p className="font-serif text-2xl md:text-3xl lg:text-[2.25rem] text-foreground leading-snug">
+              <p className="font-serif text-2xl md:text-3xl lg:text-[2.25rem] text-foreground leading-snug text-balance">
                 {rest} <span className="whitespace-nowrap">{lastTwo}</span>
               </p>
             );
