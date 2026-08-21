@@ -178,7 +178,7 @@ const Product = () => {
 
               {/* Variants & Add to Cart */}
               <div className="bg-card rounded-2xl p-6 border border-border/50 shadow-soft">
-                <h3 className="font-medium text-foreground mb-4">Wybierz wariant</h3>
+                <h2 className="font-medium text-foreground mb-4">Wybierz wariant</h2>
                 <ProductVariantSelect
                   productId={product.id}
                   productName={product.name}

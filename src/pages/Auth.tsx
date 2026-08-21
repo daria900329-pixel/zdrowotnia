@@ -9,6 +9,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { lovable } from "@/integrations/lovable";
 import { z } from "zod";
 import { Loader2 } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 const emailSchema = z.string().email("Nieprawidłowy adres email");
 const passwordSchema = z.string().min(6, "Hasło musi mieć minimum 6 znaków");
@@ -118,6 +119,12 @@ const Auth = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#f8f7f5] px-4">
+      <SEO
+        title="Logowanie i rejestracja"
+        description="Zaloguj się lub załóż konto w sklepie Zdrowotnia, aby składać zamówienia i śledzić ich status."
+        canonical="/auth"
+        noindex
+      />
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <CardTitle className="font-serif text-2xl">

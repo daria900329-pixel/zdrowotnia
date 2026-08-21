@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Home, Package } from "lucide-react";
 import { useCart } from "@/hooks/useCart";
+import { SEO } from "@/components/SEO";
 
 const CheckoutSuccess = () => {
   const { clearCart } = useCart();
@@ -14,6 +15,12 @@ const CheckoutSuccess = () => {
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
+      <SEO
+        title="Zamówienie przyjęte"
+        description="Dziękujemy za zamówienie w Zdrowotni. Potwierdzenie płatności i szczegóły dostawy wyślemy mailem."
+        canonical="/checkout/success"
+        noindex
+      />
       <div className="max-w-md w-full text-center space-y-6">
         <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto">
           <CheckCircle className="w-10 h-10 text-primary" />

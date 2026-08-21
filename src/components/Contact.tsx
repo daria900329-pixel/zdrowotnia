@@ -6,10 +6,12 @@ import { Phone, Mail, MapPin, Send, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const { toast } = useToast();
   const { content, loading } = useSiteContent("contact");
+  const [sending, setSending] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,13 +26,30 @@ const Contact = () => {
   const orderTitle = content.order_title || "💡 Jak zamówić?";
   const orderDescription = content.order_description || "Dodaj produkty do koszyka i przejdź do płatności. Po opłaceniu zamówienia skontaktujemy się, aby ustalić szczegóły dostawy lub odbioru osobistego.";
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Wiadomość wysłana!",
-      description: "Dziękujemy za kontakt. Odpowiemy najszybciej jak to możliwe.",
-    });
-    setFormData({ name: "", email: "", message: "" });
+    setSending(true);
+    try {
+      const { error } = await supabase.functions.invoke("send-contact-message", {
+        body: formData,
+      });
+      if (error) throw error;
+
+      toast({
+        title: "Wiadomość wysłana!",
+        description: "Dziękujemy za kontakt. Odpowiemy najszybciej jak to możliwe.",
+      });
+      setFormData({ name: "", email: "", message: "" });
+    } catch (err) {
+      if (import.meta.env.DEV) console.error("Contact form error:", err);
+      toast({
+        title: "Nie udało się wysłać wiadomości",
+        description: `Napisz do nas bezpośrednio na ${email} lub zadzwoń: ${phone}.`,
+        variant: "destructive",
+      });
+    } finally {
+      setSending(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -160,9 +179,13 @@ const Contact = () => {
                   />
                 </div>
 
-                <Button type="submit" variant="default" size="lg" className="w-full">
-                  <Send className="w-4 h-4 mr-2" />
-                  Wyślij wiadomość
+                <Button type="submit" variant="default" size="lg" className="w-full" disabled={sending}>
+                  {sending ? (
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  ) : (
+                    <Send className="w-4 h-4 mr-2" />
+                  )}
+                  {sending ? "Wysyłanie…" : "Wyślij wiadomość"}
                 </Button>
               </div>
             </form>

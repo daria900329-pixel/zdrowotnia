@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { SEO, breadcrumbJsonLd } from "@/components/SEO";
+import { SEO, breadcrumbJsonLd, articleJsonLd } from "@/components/SEO";
 import { Loader2, ArrowLeft, Clock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -92,7 +92,16 @@ const BlogPost = () => {
         canonical={`/blog/${post.slug}`}
         ogImage={post.cover_image_url ?? undefined}
         ogType="article"
-        jsonLd={crumbs}
+        jsonLd={[
+          articleJsonLd({
+            title: post.title,
+            slug: post.slug,
+            excerpt: post.excerpt,
+            image: post.cover_image_url,
+            datePublished: post.created_at,
+          }),
+          crumbs,
+        ]}
       />
       <Header />
 

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { SEO } from "@/components/SEO";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
@@ -256,6 +257,12 @@ const Admin = () => {
 
   return (
     <div className="min-h-screen bg-[#f8f7f5] py-8 px-4">
+      <SEO
+        title="Panel administracyjny"
+        description="Wewnętrzny panel zarządzania sklepem Zdrowotnia."
+        canonical="/admin"
+        noindex
+      />
       <div className="container mx-auto max-w-4xl">
         <div className="flex justify-between items-center mb-8">
           <div>
