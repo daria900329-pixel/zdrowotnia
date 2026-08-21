@@ -58,17 +58,27 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <SEO
-        description="Zdrowotnia to rodzinna manufaktura naturalnego jedzenia. Kombucha, ocet owocowy, chleb na zakwasie i mięso z własnej hodowli. 100% naturalnie."
+        title="Prawdziwe jedzenie z rodzinnego gospodarstwa"
+        description="Zdrowotnia — jaja przepiórcze, chleb na zakwasie, kombucha i ocet jabłkowy z rodzinnego gospodarstwa. Wiemy, czym karmimy i jak powstaje nasze jedzenie."
         canonical="/"
         jsonLd={[localBusinessJsonLd, faqJsonLd]}
       />
       <Header />
       <main>
-        <Hero />
-        <Products />
-        <About />
+        <HomeHero />
+        <Philosophy />
+        <StoryProducts />
+        <TodaySection />
+        <FeedSection />
+        <JourneySection />
+        <FromDaria />
+        <NotPerfect />
+        <KitchenGallery />
+        <ShopGrid />
+        <FinalStatement />
         <Contact />
       </main>
+
       <Footer />
     </div>
   );
