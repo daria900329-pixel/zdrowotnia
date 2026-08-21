@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Loader2, Play, X } from "lucide-react";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { useAlbum } from "@/hooks/usePageAlbums";
 
 interface GalleryItem {
   id: string;
@@ -16,6 +17,7 @@ const AboutGallery = () => {
   const [loading, setLoading] = useState(true);
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
   const { content } = useSiteContent("about_page");
+  const extra = useAlbum("about-gallery");
 
   const galleryTitle = content.gallery_title || "Nasza Codzienność";
   const gallerySubtitle = content.gallery_subtitle || "Zajrzyj za kulisy naszej pracy";
@@ -47,7 +49,18 @@ const AboutGallery = () => {
     );
   }
 
-  if (items.length === 0) {
+  const allItems: GalleryItem[] = [
+    ...items,
+    ...extra.map((url, i) => ({
+      id: `album-${i}-${url}`,
+      image_url: url,
+      caption: null,
+      display_order: 1000 + i,
+      media_type: "image" as const,
+    })),
+  ];
+
+  if (allItems.length === 0) {
     return null;
   }
 
@@ -65,7 +78,7 @@ const AboutGallery = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {items.map((item) => (
+            {allItems.map((item) => (
               <div
                 key={item.id}
                 className="relative group cursor-pointer overflow-hidden rounded-xl aspect-square"

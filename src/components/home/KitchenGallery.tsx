@@ -11,6 +11,7 @@ import kitchenCorner from "@/assets/home/kitchen-corner.jpg";
 import eatSoft from "@/assets/quail/eat-soft.jpg";
 import heroTable from "@/assets/hero-products.jpg";
 import { img } from "@/lib/pageImages";
+import { useAlbum } from "@/hooks/usePageAlbums";
 
 const SHOTS = [
   { img: quails, alt: "Nasze przepiórki", cls: "aspect-[4/5]" },
@@ -25,6 +26,16 @@ const SHOTS = [
 ];
 
 const KitchenGallery = () => {
+  const extra = useAlbum("home-kitchen");
+  const shots = [
+    ...SHOTS,
+    ...extra.map((url, i) => ({
+      img: url,
+      alt: "Zdrowotnia od kuchni",
+      cls: ["aspect-[4/5]", "aspect-square mt-8", "aspect-[5/4]"][i % 3],
+    })),
+  ];
+
   return (
     <section className="bg-secondary/40 py-20 md:py-32">
       <div className="px-6 md:px-10 lg:px-16">
@@ -38,8 +49,8 @@ const KitchenGallery = () => {
         </ScrollReveal>
 
         <div className="columns-2 md:columns-3 gap-4 sm:gap-6 [column-fill:_balance]">
-          {SHOTS.map((s, i) => (
-            <ScrollReveal key={s.alt} delay={(i % 3) * 90} className="mb-4 sm:mb-6 break-inside-avoid">
+          {shots.map((s, i) => (
+            <ScrollReveal key={`${s.img}-${i}`} delay={(i % 3) * 90} className="mb-4 sm:mb-6 break-inside-avoid">
               <img
                 src={img(s.img)}
                 alt={s.alt}
