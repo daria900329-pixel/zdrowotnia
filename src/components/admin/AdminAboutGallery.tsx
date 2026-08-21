@@ -22,6 +22,7 @@ export function AdminAboutGallery() {
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
   const [uploadType, setUploadType] = useState<"image" | "video">("image");
+  const [uploadProgress, setUploadProgress] = useState<{ done: number; total: number } | null>(null);
 
   useEffect(() => {
     fetchItems();
@@ -40,90 +41,79 @@ export function AdminAboutGallery() {
   };
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>, type: "image" | "video") => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+    const files = Array.from(e.target.files ?? []);
+    if (files.length === 0) return;
 
-    // Validate file type
-    if (type === "image" && !file.type.startsWith("image/")) {
-      toast({
-        title: "Błąd",
-        description: "Wybierz plik graficzny",
-        variant: "destructive",
-      });
-      return;
-    }
-    if (type === "video" && !file.type.startsWith("video/")) {
-      toast({
-        title: "Błąd",
-        description: "Wybierz plik wideo",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    // Check file size (50MB max for videos, 10MB for images)
     const maxSize = type === "video" ? 50 * 1024 * 1024 : 10 * 1024 * 1024;
-    if (file.size > maxSize) {
+    const valid = files.filter(
+      (f) => f.type.startsWith(type === "video" ? "video/" : "image/") && f.size <= maxSize
+    );
+    const skipped = files.length - valid.length;
+
+    if (valid.length === 0) {
       toast({
         title: "Błąd",
-        description: `Plik jest za duży (max ${type === "video" ? "50MB" : "10MB"})`,
+        description: `Wybierz pliki ${type === "video" ? "wideo (max 50MB)" : "graficzne (max 10MB)"}`,
         variant: "destructive",
       });
+      e.target.value = "";
       return;
     }
 
     setUploading(true);
+    setUploadProgress({ done: 0, total: valid.length });
 
-    const fileExt = file.name.split(".").pop();
-    const fileName = `about-gallery/${Date.now()}.${fileExt}`;
+    let maxOrder = items.length > 0 ? Math.max(...items.map((item) => item.display_order)) : -1;
+    let succeeded = 0;
+    let failed = 0;
 
-    const { error: uploadError } = await supabase.storage
-      .from("product-images")
-      .upload(fileName, file);
+    for (let i = 0; i < valid.length; i++) {
+      const file = valid[i];
+      const fileExt = file.name.split(".").pop();
+      const fileName = `about-gallery/${Date.now()}-${i}-${Math.random().toString(36).slice(2, 8)}.${fileExt}`;
 
-    if (uploadError) {
-      toast({
-        title: "Błąd",
-        description: "Nie udało się przesłać pliku",
-        variant: "destructive",
-      });
-      setUploading(false);
-      return;
+      const { error: uploadError } = await supabase.storage
+        .from("product-images")
+        .upload(fileName, file);
+
+      if (uploadError) {
+        failed++;
+      } else {
+        const { data: urlData } = supabase.storage.from("product-images").getPublicUrl(fileName);
+        maxOrder += 1;
+        const { error: insertError } = await supabase.from("about_gallery").insert({
+          image_url: urlData.publicUrl,
+          display_order: maxOrder,
+          media_type: type,
+        });
+        if (insertError) failed++;
+        else succeeded++;
+      }
+
+      setUploadProgress({ done: i + 1, total: valid.length });
     }
 
-    const { data: urlData } = supabase.storage
-      .from("product-images")
-      .getPublicUrl(fileName);
-
-    const maxOrder = items.length > 0 
-      ? Math.max(...items.map(item => item.display_order)) 
-      : -1;
-
-    const { error: insertError } = await supabase
-      .from("about_gallery")
-      .insert({
-        image_url: urlData.publicUrl,
-        display_order: maxOrder + 1,
-        media_type: type,
-      });
-
-    if (insertError) {
-      toast({
-        title: "Błąd",
-        description: "Nie udało się dodać do galerii",
-        variant: "destructive",
-      });
-    } else {
+    if (succeeded > 0) {
       toast({
         title: "Sukces",
-        description: type === "video" ? "Film został dodany" : "Zdjęcie zostało dodane",
+        description: `Dodano ${succeeded} ${type === "video" ? "filmów" : "zdjęć"}${
+          failed ? `, nie udało się: ${failed}` : ""
+        }${skipped ? `, pominięto niepoprawne: ${skipped}` : ""}`,
       });
       fetchItems();
+    } else {
+      toast({
+        title: "Błąd",
+        description: "Nie udało się przesłać plików",
+        variant: "destructive",
+      });
     }
 
     setUploading(false);
+    setUploadProgress(null);
     e.target.value = "";
   };
+
 
   const updateCaption = async (id: string, caption: string) => {
     const { error } = await supabase
@@ -227,7 +217,11 @@ export function AdminAboutGallery() {
             <input
               type="file"
               accept="image/*"
-              onChange={(e) => handleFileUpload(e, "image")}
+              multiple
+              onChange={(e) => {
+                setUploadType("image");
+                handleFileUpload(e, "image");
+              }}
               className="hidden"
               id="gallery-image-upload"
               disabled={uploading}
@@ -242,9 +236,11 @@ export function AdminAboutGallery() {
                 <Image className="w-8 h-8 text-muted-foreground" />
               )}
               <span className="text-sm text-muted-foreground">
-                {uploading && uploadType === "image" ? "Przesyłanie..." : "Dodaj zdjęcie"}
+                {uploading && uploadType === "image"
+                  ? `Przesyłanie ${uploadProgress?.done ?? 0}/${uploadProgress?.total ?? 0}...`
+                  : "Dodaj zdjęcia"}
               </span>
-              <span className="text-xs text-muted-foreground/70">max 10MB</span>
+              <span className="text-xs text-muted-foreground/70">możesz wybrać wiele plików · max 10MB każdy</span>
             </Label>
           </div>
 
@@ -253,6 +249,7 @@ export function AdminAboutGallery() {
             <input
               type="file"
               accept="video/*"
+              multiple
               onChange={(e) => {
                 setUploadType("video");
                 handleFileUpload(e, "video");
@@ -271,9 +268,11 @@ export function AdminAboutGallery() {
                 <Video className="w-8 h-8 text-muted-foreground" />
               )}
               <span className="text-sm text-muted-foreground">
-                {uploading && uploadType === "video" ? "Przesyłanie..." : "Dodaj film"}
+                {uploading && uploadType === "video"
+                  ? `Przesyłanie ${uploadProgress?.done ?? 0}/${uploadProgress?.total ?? 0}...`
+                  : "Dodaj filmy"}
               </span>
-              <span className="text-xs text-muted-foreground/70">max 50MB</span>
+              <span className="text-xs text-muted-foreground/70">możesz wybrać wiele plików · max 50MB każdy</span>
             </Label>
           </div>
         </div>
