@@ -12,8 +12,10 @@ import { SEO, productJsonLd, breadcrumbJsonLd } from "@/components/SEO";
 import { QuailEggLanding } from "@/components/quail/QuailEggLanding";
 import { VinegarLanding } from "@/components/vinegar/VinegarLanding";
 import { KombuchaLanding } from "@/components/kombucha/KombuchaLanding";
+import { BreadLanding } from "@/components/bread/BreadLanding";
 
 const QUAIL_PRODUCT_ID = "c04e492a-fe9f-461f-bc06-a5bb0539b58f";
+const BREAD_PRODUCT_ID = "bee5ca9b-4bc6-4241-8222-6d49b7c1b44e";
 const VINEGAR_PRODUCT_ID = "ed5cb95d-4e3a-478c-8134-534838d09823";
 const KOMBUCHA_PRODUCT_IDS = [
   "59baca9b-5095-4a5e-bcf5-ddaf744a17e3",
@@ -120,6 +122,10 @@ const Product = () => {
 
   if (product.id === VINEGAR_PRODUCT_ID) {
     return <VinegarLanding product={product} />;
+  }
+
+  if (product.id === BREAD_PRODUCT_ID) {
+    return <BreadLanding product={product} />;
   }
 
   if (KOMBUCHA_PRODUCT_IDS.includes(product.id)) {

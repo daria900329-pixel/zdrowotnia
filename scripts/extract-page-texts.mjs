@@ -11,6 +11,7 @@ const PAGES = [
   { key: "home", label: "Strona główna", dirs: ["src/components/home"] },
   { key: "quail", label: "Jaja przepiórcze", dirs: ["src/components/quail"] },
   { key: "vinegar", label: "Ocet jabłkowy", dirs: ["src/components/vinegar"] },
+  { key: "bread", label: "Chleb żytni", dirs: ["src/components/bread"] },
   { key: "kombucha", label: "Kombucha", dirs: ["src/components/kombucha"] },
   { key: "about", label: "O nas", dirs: ["src/components/about"] },
 ];
