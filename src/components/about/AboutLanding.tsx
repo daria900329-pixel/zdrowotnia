@@ -355,14 +355,14 @@ export function AboutLanding() {
                 loading="lazy"
               />
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-4xl mb-4">
-                {p6BeforeHighlight}
+                <DashedText text={p6BeforeHighlight} />
               </p>
               <p className="font-serif text-3xl md:text-4xl text-foreground leading-snug max-w-4xl mb-4">
                 {p6Highlight}
                 {p6AfterHighlight.startsWith(",") ? "," : ""}
               </p>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-4xl">
-                {p6AfterHighlight.replace(/^,\s*/, "")}
+                <DashedText text={p6AfterHighlight.replace(/^,\s*/, "")} />
               </p>
             </div>
           </ScrollReveal>
