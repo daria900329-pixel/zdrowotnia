@@ -107,7 +107,6 @@ const Product = () => {
     );
   }
 
-  return (
   if (product.id === QUAIL_PRODUCT_ID) {
     return <QuailEggLanding product={product} />;
   }
