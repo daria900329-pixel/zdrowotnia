@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useSiteContent } from "@/hooks/useSiteContent";
 import { t } from "@/lib/pageText";
 import { usePageText } from "@/hooks/usePageText";
 import { Link } from "react-router-dom";
@@ -6,7 +9,6 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import AboutGallery from "@/components/AboutGallery";
 
 import heroTable from "@/assets/home/hero-table.jpg";
-import daria from "@/assets/home/daria.jpg";
 import handsEggs from "@/assets/home/hands-eggs.jpg";
 import kitchenCorner from "@/assets/home/kitchen-corner.jpg";
 import quails from "@/assets/quail/quails.jpg";
@@ -26,13 +28,6 @@ const THINKING = [
   "Że dobry produkt nie potrzebuje dwudziestu składników.",
   "Że fermentacji nie trzeba poganiać.",
   "Że jedzenie może być proste i naprawdę dobre.",
-];
-
-const WORK = [
-  { img: feedMix, label: "Karmienie" },
-  { img: kombuchaBrew, label: "Przygotowanie" },
-  { img: packing, label: "Pakowanie" },
-  { img: kitchenCorner, label: "Kuchnia" },
 ];
 
 const STATEMENTS = [
