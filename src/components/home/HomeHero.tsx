@@ -11,7 +11,9 @@ const HomeHero = () => {
         height={1280}
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/10 md:from-background/95 md:via-background/45 md:to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent md:from-background/90 md:via-background/25 md:to-transparent" />
+      <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-background/70 via-background/10 to-transparent" />
+
 
       <div className="relative z-10 w-full px-6 md:px-10 lg:px-16 pb-16 md:pb-24 pt-40">
         <div className="max-w-3xl">
