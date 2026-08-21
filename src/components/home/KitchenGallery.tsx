@@ -1,13 +1,13 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
 import quails from "@/assets/quail/quails.jpg";
 import eggInHand from "@/assets/quail/egg-in-hand.jpg";
-import breadCut from "@/assets/home/bread-cut.jpg";
+import breadCut from "@/assets/product-bread.jpg";
 import feedMix from "@/assets/quail/feed-mix.jpg";
 import freshEggs from "@/assets/quail/fresh-eggs.jpg";
 import kombucha from "@/assets/home/kombucha-editorial.jpg";
 import kitchenCorner from "@/assets/home/kitchen-corner.jpg";
 import eatSoft from "@/assets/quail/eat-soft.jpg";
-import heroTable from "@/assets/home/hero-table.jpg";
+import heroTable from "@/assets/hero-products.jpg";
 
 const SHOTS = [
   { img: quails, alt: "Nasze przepiórki", cls: "aspect-[4/5]" },
