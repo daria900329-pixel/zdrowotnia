@@ -83,7 +83,7 @@ export function AboutLanding() {
           alt="Stół w kuchni Zdrowotni z jajkami, chlebem i ziołami"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/55 to-transparent" />
         <div className="container mx-auto px-6 relative pb-16 pt-40">
           <ScrollReveal variant="fade-up">
             <div className="max-w-3xl">
