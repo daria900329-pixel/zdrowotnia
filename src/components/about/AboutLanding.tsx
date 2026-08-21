@@ -229,7 +229,7 @@ export function AboutLanding() {
       <section id="nasza-droga" className="py-24 md:py-32 bg-secondary/30">
         <div className="container mx-auto px-6">
           {/* Header */}
-          <div className="max-w-4xl mb-16 md:mb-24">
+          <div className="max-w-4xl mb-16 md:mb-24 pt-16 md:pt-24">
             <Eyebrow>My</Eyebrow>
             <h2 className="font-serif text-4xl md:text-6xl text-foreground leading-tight">
               {storyTitle}
