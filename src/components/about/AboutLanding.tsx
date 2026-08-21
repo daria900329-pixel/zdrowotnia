@@ -326,7 +326,7 @@ export function AboutLanding() {
               />
             </ScrollReveal>
             <ScrollReveal variant="fade-left">
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{rabbitText}</p>
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed"><DashedText text={rabbitText} /></p>
             </ScrollReveal>
           </div>
 
