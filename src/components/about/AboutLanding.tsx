@@ -67,6 +67,18 @@ const DEFAULT_STORY = [
   "One — gromada naszych szkrabów, małych i dużych, ale najukochańszych na świecie.",
 ];
 
+// Czyści tekst z emotek i podwójnych spacji / łamań linii
+const clean = (s: string) =>
+  s
+    .replace(
+      /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}\u{2B00}-\u{2BFF}\u{2190}-\u{21FF}\u{2700}-\u{27BF}]/gu,
+      ""
+    )
+    .replace(/[ \t]+/g, " ")
+    .replace(/\s*\n\s*/g, " ")
+    .trim();
+
+
 export function AboutLanding() {
   usePageText("about");
   const { content } = useSiteContent("about_page");
