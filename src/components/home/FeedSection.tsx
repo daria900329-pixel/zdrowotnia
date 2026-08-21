@@ -25,7 +25,7 @@ const FeedSection = () => {
         src={img(quailsPhoto)}
         alt="Przepiórki w naszym rodzinnym chowie"
         loading="lazy"
-        className="w-full h-[45vh] md:h-[70vh] object-cover"
+        className="w-full h-auto max-h-[80vh] object-contain object-center md:h-[70vh] md:object-cover"
       />
 
       <div className="px-6 md:px-10 lg:px-16 py-20 md:py-28">
