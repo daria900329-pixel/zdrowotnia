@@ -116,9 +116,10 @@ export function AboutLanding() {
       {/* 1. HERO */}
       <section className="relative min-h-[85vh] flex items-end overflow-hidden">
         <img
-          src={heroTable}
-          alt="Stół w kuchni Zdrowotni z jajkami, chlebem i ziołami"
-          className="absolute inset-0 w-full h-full object-cover"
+          src={togetherImage || heroTable}
+          alt="Daria i Marcin — twórcy Zdrowotni"
+          className="absolute inset-0 w-full h-full object-cover object-top"
+          loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/55 to-transparent" />
         <div className="container mx-auto px-6 relative pb-16 pt-40">
