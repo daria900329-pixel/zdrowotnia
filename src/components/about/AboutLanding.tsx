@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useSiteContent } from "@/hooks/useSiteContent";
 import { t } from "@/lib/pageText";
 import { usePageText } from "@/hooks/usePageText";
 import { Link } from "react-router-dom";
@@ -6,12 +9,10 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import AboutGallery from "@/components/AboutGallery";
 
 import heroTable from "@/assets/home/hero-table.jpg";
-import daria from "@/assets/home/daria.jpg";
 import handsEggs from "@/assets/home/hands-eggs.jpg";
 import kitchenCorner from "@/assets/home/kitchen-corner.jpg";
 import quails from "@/assets/quail/quails.jpg";
 import feedMix from "@/assets/quail/feed-mix.jpg";
-import packing from "@/assets/quail/packing.jpg";
 import freshEggs from "@/assets/quail/fresh-eggs.jpg";
 import kombuchaBrew from "@/assets/kombucha/step-brew.jpg";
 import vinegarApples from "@/assets/vinegar/apples.jpg";
@@ -26,13 +27,6 @@ const THINKING = [
   "Że dobry produkt nie potrzebuje dwudziestu składników.",
   "Że fermentacji nie trzeba poganiać.",
   "Że jedzenie może być proste i naprawdę dobre.",
-];
-
-const WORK = [
-  { img: feedMix, label: "Karmienie" },
-  { img: kombuchaBrew, label: "Przygotowanie" },
-  { img: packing, label: "Pakowanie" },
-  { img: kitchenCorner, label: "Kuchnia" },
 ];
 
 const STATEMENTS = [
@@ -67,12 +61,42 @@ const Eyebrow = ({ children }: { children: React.ReactNode }) => (
   </p>
 );
 
+const DEFAULT_STORY = [
+  "Ona — dietetyk kliniczny z potrzebą karmienia bliskich tak, żeby jedzenie naprawdę służyło zdrowiu i regeneracji.",
+  "On — człowiek ziemi, z sercem do rolnictwa i hodowli zwierząt.",
+  "One — gromada naszych szkrabów, małych i dużych, ale najukochańszych na świecie.",
+];
+
 export function AboutLanding() {
   usePageText("about");
+  const { content } = useSiteContent("about_page");
+  const [togetherImage, setTogetherImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    supabase
+      .from("about_gallery")
+      .select("image_url")
+      .eq("is_hero", true)
+      .eq("is_active", true)
+      .maybeSingle()
+      .then(({ data }) => {
+        if (data?.image_url) setTogetherImage(data.image_url);
+      });
+  }, []);
+
+  const storyTitle = content.story_title || "Nasza droga do Zdrowotni";
+  const storyHighlight = content.story_highlight || "";
+  const storyParagraphs: string[] = [];
+  for (let i = 1; i <= 20; i++) {
+    const val = content[`story_paragraph${i}`];
+    if (val) storyParagraphs.push(val);
+  }
+  if (storyParagraphs.length === 0) storyParagraphs.push(...DEFAULT_STORY);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
+
 
   return (
     <main className="bg-background">
@@ -165,70 +189,40 @@ export function AboutLanding() {
         </div>
       </section>
 
-      {/* 4. JA — DARIA */}
-      <section className="py-24 md:py-32">
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <ScrollReveal variant="fade-right">
-              <img
-                src={daria}
-                alt="Daria w kuchni Zdrowotni"
-                className="w-full aspect-[4/5] object-cover rounded-sm shadow-card"
-                loading="lazy"
-              />
-            </ScrollReveal>
-            <ScrollReveal variant="fade-left">
-              <Eyebrow>{t("dietetyk kliniczny")}</Eyebrow>
-              <h2 className="font-serif text-4xl md:text-6xl text-foreground mb-8">{t("Daria")}</h2>
-              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
-                <p>{t("Dietetyka nauczyła mnie patrzeć na jedzenie nie tylko jak na smak, ale też jak na coś, co realnie wpływa na człowieka.")}</p>
-                <p>{t("Przez lata interesowało mnie nie tylko „co jeść”, ale też skąd ten produkt pochodzi, jak został przygotowany i co wydarzyło się wcześniej.")}</p>
-                <p className="text-foreground font-serif text-xl md:text-2xl leading-snug pt-2">
-                  {t("Zdrowotnia jest dla mnie naturalnym przedłużeniem tego myślenia.")}
-                </p>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. MY */}
+      {/* 4. NASZA DROGA DO ZDROWOTNI */}
       <section className="py-24 md:py-32 bg-secondary/30">
         <div className="container mx-auto px-6">
-          <ScrollReveal variant="fade-up">
-            <div className="max-w-3xl">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <ScrollReveal variant="fade-right">
+              <div className="lg:sticky lg:top-32">
+                <img
+                  src={togetherImage || heroTable}
+                  alt="Daria i Marcin — twórcy Zdrowotni"
+                  className="w-full aspect-[4/5] object-cover rounded-sm shadow-card"
+                  loading="lazy"
+                />
+              </div>
+            </ScrollReveal>
+            <ScrollReveal variant="fade-left">
               <Eyebrow>{t("My")}</Eyebrow>
-              <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-8">
-                {t("Razem robimy to po swojemu.")}
+              <h2 className="font-serif text-4xl md:text-6xl text-foreground mb-10">
+                {storyTitle}
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                {t("Jedno z nas częściej pyta „co będzie lepsze dla człowieka?”. Drugie „jak zrobić to dobrze w praktyce?”.")}
-              </p>
-              <p className="font-serif text-xl md:text-2xl text-foreground leading-snug">
-                {t("I gdzieś pomiędzy tymi pytaniami powstaje Zdrowotnia.")}
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-16">
-            {WORK.map((item, i) => (
-              <ScrollReveal key={item.label} variant="fade-up" delay={i * 100}>
-                <figure>
-                  <img
-                    src={item.img}
-                    alt={item.label}
-                    className={`w-full object-cover rounded-sm ${i % 2 === 0 ? "aspect-[3/4]" : "aspect-square"}`}
-                    loading="lazy"
-                  />
-                  <figcaption className="mt-3 text-xs tracking-[0.2em] uppercase text-muted-foreground">
-                    {t(item.label)}
-                  </figcaption>
-                </figure>
-              </ScrollReveal>
-            ))}
+              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed whitespace-pre-line">
+                {storyParagraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+              {storyHighlight && (
+                <p className="font-serif text-xl md:text-2xl text-foreground leading-snug mt-10">
+                  {storyHighlight}
+                </p>
+              )}
+            </ScrollReveal>
           </div>
         </div>
       </section>
+
 
       {/* 6. DOBRE JEDZENIE */}
       <section className="py-24 md:py-32">
