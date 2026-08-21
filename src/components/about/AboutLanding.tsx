@@ -96,14 +96,15 @@ export function AboutLanding() {
       });
   }, []);
 
-  const storyTitle = content.story_title || "Nasza droga do Zdrowotni";
-  const storyHighlight = content.story_highlight || "";
+  const storyTitle = clean(content.story_title || "Nasza droga do Zdrowotni");
+  const storyHighlight = clean(content.story_highlight || "");
   const storyParagraphs: string[] = [];
   for (let i = 1; i <= 20; i++) {
     const val = content[`story_paragraph${i}`];
-    if (val) storyParagraphs.push(val);
+    if (val && clean(val)) storyParagraphs.push(clean(val));
   }
   if (storyParagraphs.length === 0) storyParagraphs.push(...DEFAULT_STORY);
+
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
