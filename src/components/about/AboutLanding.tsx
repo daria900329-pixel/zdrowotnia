@@ -336,12 +336,15 @@ export function AboutLanding() {
                 className="w-full aspect-[16/9] md:aspect-[21/9] object-cover rounded-sm mb-12 md:mb-16"
                 loading="lazy"
               />
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-4xl">
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-4xl mb-4">
                 {p6BeforeHighlight}
-                <span className="block font-serif text-3xl md:text-4xl text-foreground leading-snug my-6">
-                  {p6Highlight}
-                </span>
-                {p6AfterHighlight}
+              </p>
+              <p className="font-serif text-3xl md:text-4xl text-foreground leading-snug max-w-4xl mb-4">
+                {p6Highlight}
+                {p6AfterHighlight.startsWith(",") ? "," : ""}
+              </p>
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-4xl">
+                {p6AfterHighlight.replace(/^,\s*/, "")}
               </p>
             </div>
           </ScrollReveal>
