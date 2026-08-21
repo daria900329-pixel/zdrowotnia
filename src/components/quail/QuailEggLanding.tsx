@@ -227,8 +227,8 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
                     <path
                       key={d}
                       d={d}
-                      className="stroke-primary/40"
-                      strokeWidth="0.18"
+                      className="stroke-primary/80"
+                      strokeWidth="1.25"
                       fill="none"
                       vectorEffect="non-scaling-stroke"
                     />
