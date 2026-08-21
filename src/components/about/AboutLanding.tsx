@@ -423,9 +423,9 @@ export function AboutLanding() {
       {/* 7. ZDROWOTNIA TO NIE FABRYKA */}
       <section className="relative py-32 md:py-48 overflow-hidden">
         <img
-          src={img(quails)}
-          alt="Nasze przepiórki w gospodarstwie"
-          className="absolute inset-0 w-full h-full object-cover"
+          src={img(quailPortrait.url)}
+          alt="Nasza przepiórka"
+          className="absolute inset-0 w-full h-full object-cover object-[center_35%]"
           loading="lazy"
         />
         <div className="absolute inset-0 bg-foreground/60" />
