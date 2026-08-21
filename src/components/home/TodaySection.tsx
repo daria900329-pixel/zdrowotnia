@@ -84,12 +84,11 @@ const TodaySection = () => {
         <div className="mt-20 md:mt-28 text-center max-w-3xl mx-auto">
           {(() => {
             const text = t("Dobre jedzenie czasem wymaga chwili. Nie poganiamy go.");
-            const words = text.split(" ");
-            const lastTwo = words.slice(-2).join(" ");
-            const rest = words.slice(0, -2).join(" ");
+            const [firstSentence, secondSentence] = text.split(". ");
             return (
-              <p className="font-serif text-2xl md:text-3xl lg:text-[2.25rem] text-foreground leading-snug text-balance">
-                {rest} <span className="whitespace-nowrap">{lastTwo}</span>
+              <p className="font-serif text-2xl md:text-3xl lg:text-[2.25rem] text-foreground leading-snug">
+                {firstSentence}.
+                <span className="whitespace-nowrap"> {secondSentence}</span>
               </p>
             );
           })()}
