@@ -1,5 +1,6 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
 import feedMix from "@/assets/quail/feed-mix.jpg";
+import quails from "@/assets/quail/quails.jpg";
 import freshEggs from "@/assets/quail/fresh-eggs.jpg";
 import breadCut from "@/assets/product-bread.jpg";
 import packing from "@/assets/quail/packing.jpg";
@@ -7,6 +8,7 @@ import delivery from "@/assets/quail/delivery.jpg";
 
 const STEPS = [
   { img: feedMix, label: "Karmimy" },
+  { img: quails, label: "Opiekujemy się" },
   { img: freshEggs, label: "Zbieramy" },
   { img: breadCut, label: "Pieczemy i fermentujemy" },
   { img: packing, label: "Pakujemy" },
