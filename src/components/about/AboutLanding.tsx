@@ -218,16 +218,16 @@ export function AboutLanding() {
             </ScrollReveal>
             <ScrollReveal variant="fade-left">
               <Eyebrow>{t("My")}</Eyebrow>
-              <h2 className="font-serif text-4xl md:text-6xl text-foreground mb-10">
+              <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-10">
                 {storyTitle}
               </h2>
-              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed whitespace-pre-line">
+              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                 {storyParagraphs.map((p, i) => (
                   <p key={i}>{p}</p>
                 ))}
               </div>
               {storyHighlight && (
-                <p className="font-serif text-xl md:text-2xl text-foreground leading-snug mt-10">
+                <p className="font-serif text-3xl md:text-4xl text-foreground leading-snug mt-12">
                   {storyHighlight}
                 </p>
               )}
