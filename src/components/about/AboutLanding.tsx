@@ -289,92 +289,102 @@ export function AboutLanding() {
             </ScrollReveal>
           </div>
 
-          {/* Animals */}
-          <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20 items-start my-24 md:my-32">
-            <ScrollReveal variant="fade-right">
-              <img
-                src={quails}
-                alt="Nasze przepiórki w gospodarstwie"
-                className="w-full aspect-[4/5] object-cover rounded-sm"
-                loading="lazy"
-              />
-            </ScrollReveal>
-            <ScrollReveal variant="fade-left">
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                <DashedText text={p4BeforeHighlight} />
-                <span className="block font-serif text-2xl md:text-3xl text-foreground leading-snug my-6">
-                  {p4Highlight}
-                </span>
-                <DashedText text={p4AfterHighlight} />
-              </p>
-            </ScrollReveal>
-          </div>
-
-          {/* Rabbits */}
-          <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20 items-start my-24 md:my-32">
-            <ScrollReveal variant="fade-right">
-              <img
-                src={rabbits}
-                alt="Nasze króliki"
-                className="w-full aspect-[4/5] object-cover rounded-sm"
-                loading="lazy"
-              />
-            </ScrollReveal>
-            <ScrollReveal variant="fade-left">
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed"><DashedText text={rabbitText} /></p>
-            </ScrollReveal>
+          {/* Animals: one cohesive section */}
+          <div className="my-20 md:my-28">
+            <div className="grid lg:grid-cols-[1fr_1.15fr] gap-12 lg:gap-16 items-start mb-16 md:mb-20">
+              <ScrollReveal variant="fade-right">
+                <img
+                  src={quails}
+                  alt="Nasze przepiórki w gospodarstwie"
+                  className="w-full aspect-[4/5] object-cover rounded-sm"
+                  loading="lazy"
+                />
+              </ScrollReveal>
+              <ScrollReveal variant="fade-left">
+                <div className="lg:pt-8">
+                  <Eyebrow>{p4BeforeHighlight}</Eyebrow>
+                  <h3 className="font-serif text-3xl md:text-4xl text-foreground leading-tight mb-8">
+                    {p4Highlight}
+                  </h3>
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl">
+                    <DashedText text={p4AfterHighlight} />
+                  </p>
+                </div>
+              </ScrollReveal>
+            </div>
+            <div className="grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-16 items-start">
+              <ScrollReveal variant="fade-right">
+                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl lg:pt-8">
+                  <DashedText text={rabbitText} />
+                </p>
+              </ScrollReveal>
+              <ScrollReveal variant="fade-left">
+                <img
+                  src={rabbits}
+                  alt="Nasze króliki"
+                  className="w-full aspect-[4/5] object-cover rounded-sm"
+                  loading="lazy"
+                />
+              </ScrollReveal>
+            </div>
           </div>
 
           {/* Bread */}
-          <div className="grid lg:grid-cols-[2fr_1fr] gap-12 lg:gap-20 items-start my-24 md:my-32">
+          <div className="grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 items-start my-20 md:my-28">
             <ScrollReveal variant="fade-right">
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed"><DashedText text={breadText} /></p>
-            </ScrollReveal>
-            <ScrollReveal variant="fade-left">
               <img
-                src={breadCut}
+                src={bread}
                 alt="Chleb na żywym zakwasie"
                 className="w-full aspect-[4/5] object-cover rounded-sm"
                 loading="lazy"
               />
             </ScrollReveal>
+            <ScrollReveal variant="fade-left">
+              <div className="lg:pt-8 max-w-xl">
+                <Eyebrow>{t("Z naszego stołu")}</Eyebrow>
+                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                  <DashedText text={breadText} />
+                </p>
+              </div>
+            </ScrollReveal>
           </div>
 
           {/* Orchard / fermentation */}
           <ScrollReveal variant="fade-up">
-            <div className="my-24 md:my-32">
+            <div className="my-20 md:my-28">
               <img
                 src={vinegarFerment}
                 alt="Jabłka podczas naturalnej fermentacji"
-                className="w-full aspect-[16/9] md:aspect-[21/9] object-cover rounded-sm mb-12 md:mb-16"
+                className="w-full aspect-[16/9] md:aspect-[21/9] object-cover rounded-sm mb-10 md:mb-12"
                 loading="lazy"
               />
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-4xl mb-4">
-                <DashedText text={p6BeforeHighlight} />
-              </p>
-              <p className="font-serif text-3xl md:text-4xl text-foreground leading-snug max-w-4xl mb-4">
-                {p6Highlight}
-                {p6AfterHighlight.startsWith(",") ? "," : ""}
-              </p>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-4xl">
-                <DashedText text={p6AfterHighlight.replace(/^,\s*/, "")} />
-              </p>
+              <div className="max-w-3xl">
+                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
+                  <DashedText text={p6BeforeHighlight} />
+                </p>
+                <p className="font-serif text-3xl md:text-4xl text-foreground leading-snug mb-4">
+                  {p6Highlight}{p6AfterHighlight.startsWith(",") ? "," : ""}
+                </p>
+                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                  <DashedText text={p6AfterHighlight.replace(/^,\s*/, "")} />
+                </p>
+              </div>
             </div>
           </ScrollReveal>
 
           {/* Final history */}
           <ScrollReveal variant="fade-up">
-            <div className="my-24 md:my-32 max-w-4xl">
-              <p className="font-serif text-2xl md:text-4xl text-foreground leading-snug mb-8">
+            <div className="my-20 md:my-28 max-w-3xl">
+              <p className="font-serif text-2xl md:text-3xl text-foreground leading-snug mb-4">
                 {p7First}
               </p>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-10">
                 {p7RestSentence}
               </p>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-20">
+              <div className="w-16 h-px bg-primary/40 mb-10" />
+              <p className="font-serif text-3xl md:text-4xl text-foreground leading-snug mb-10">
                 {p8}
               </p>
-              <div className="w-16 h-px bg-primary/40 mb-10" />
               <p className="font-serif text-3xl md:text-5xl text-foreground leading-tight">
                 {storyHighlight}
               </p>
