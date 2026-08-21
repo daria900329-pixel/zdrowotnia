@@ -82,9 +82,17 @@ const TodaySection = () => {
 
         {/* FINAŁ SEKCJI */}
         <div className="mt-20 md:mt-28 text-center max-w-3xl mx-auto">
-          <p className="font-serif text-2xl md:text-3xl lg:text-[2.25rem] text-foreground leading-snug">
-            {t("Dobre jedzenie czasem wymaga chwili. Nie poganiamy go.")}
-          </p>
+          {(() => {
+            const text = t("Dobre jedzenie czasem wymaga chwili. Nie poganiamy go.");
+            const words = text.split(" ");
+            const lastTwo = words.slice(-2).join(" ");
+            const rest = words.slice(0, -2).join(" ");
+            return (
+              <p className="font-serif text-2xl md:text-3xl lg:text-[2.25rem] text-foreground leading-snug">
+                {rest} <span className="whitespace-nowrap">{lastTwo}</span>
+              </p>
+            );
+          })()}
         </div>
       </div>
     </section>
