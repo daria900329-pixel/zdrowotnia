@@ -84,6 +84,7 @@ const Eyebrow = ({ children }: { children: React.ReactNode }) => (
 );
 
 export function VinegarLanding({ product }: { product: VinegarProduct }) {
+  usePageText("vinegar");
   const heroImage = product.image_url ?? heroVinegar;
 
   const scrollToBuy = () => {

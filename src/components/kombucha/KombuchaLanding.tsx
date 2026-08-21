@@ -93,6 +93,7 @@ const Eyebrow = ({ children }: { children: React.ReactNode }) => (
 );
 
 export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
+  usePageText("kombucha");
   const heroImage = product.image_url ?? heroKombucha;
   const [variants, setVariants] = useState<{ value: number; unit: string; price: number }[]>([]);
 

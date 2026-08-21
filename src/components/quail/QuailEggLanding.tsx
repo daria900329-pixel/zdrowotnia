@@ -134,6 +134,7 @@ const Eyebrow = ({ children }: { children: React.ReactNode }) => (
 );
 
 export function QuailEggLanding({ product }: { product: QuailProduct }) {
+  usePageText("quail");
   const heroImage = product.image_url ?? freshEggs;
 
   return (
