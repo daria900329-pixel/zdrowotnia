@@ -359,97 +359,72 @@ export function AboutLanding() {
             </ScrollReveal>
           </div>
 
-          {/* Orchard / fermentation */}
+          {/* Final history — editorial two-column spread */}
           <ScrollReveal variant="fade-up">
-            <div className="my-20 md:my-28">
-              <img
-                src={img(vinegarFerment)}
-                alt="Jabłka podczas naturalnej fermentacji"
-                className="w-full aspect-[16/9] md:aspect-[21/9] object-cover rounded-sm mb-10 md:mb-12"
-                loading="lazy"
-              />
-              <div className="max-w-5xl">
-                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
-                  <DashedText text={p6BeforeHighlight} />
-                </p>
-                <p className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground leading-snug">
-                  {p6Highlight}
-                  {p6AfterHighlight.startsWith(",") ? "" : ","}{" "}
-                  {p6AfterHighlight.replace(/^,\s*/, "")}
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
+            <div className="my-20 md:my-28 max-w-[1150px] mx-auto">
+              {/* GÓRNY RZĄD */}
+              <div className="grid md:grid-cols-[55%_38%] gap-x-24 gap-y-12">
+                {/* Lewa — fermentacja */}
+                <div>
+                  <p className="text-base md:text-[17px] leading-[1.6] text-muted-foreground mb-8">
+                    <DashedText text={p6BeforeHighlight} />
+                  </p>
+                  <p className="font-serif text-[30px] md:text-[36px] lg:text-[40px] text-foreground leading-[1.15]">
+                    {p6Highlight}
+                    {p6AfterHighlight.startsWith(",") ? "" : ","}{" "}
+                    {p6AfterHighlight.replace(/^,\s*/, "")}
+                  </p>
+                </div>
 
-          {/* Final history — editorial rhythm */}
-          <ScrollReveal variant="fade-up">
-            <div className="my-20 md:my-28 max-w-5xl">
-              {/* BLOK 1 — FERMENTACJA */}
-              <div className="max-w-[700px]">
-                <p className="text-base md:text-[17px] leading-[1.6] text-muted-foreground mb-8">
-                  <DashedText text={p6BeforeHighlight} />
-                </p>
-                <p className="font-serif text-[30px] md:text-[36px] lg:text-[40px] text-foreground leading-[1.15] max-w-[750px]">
-                  {p6Highlight}
-                  {p6AfterHighlight.startsWith(",") ? "" : ","}{" "}
-                  {p6AfterHighlight.replace(/^,\s*/, "")}
-                </p>
+                {/* Prawa — tak to robimy */}
+                <div className="md:pt-[100px]">
+                  <p className="text-[0.65rem] sm:text-xs tracking-[0.35em] uppercase text-muted-foreground mb-5">
+                    {t("TAK TO ROBIMY")}
+                  </p>
+                  <p className="font-serif text-[26px] md:text-[30px] lg:text-[34px] text-foreground leading-[1.15] mb-6">
+                    {p7First}
+                  </p>
+                  <p className="text-base md:text-[17px] leading-[1.6] text-muted-foreground">
+                    {p7RestSentence}
+                  </p>
+                </div>
               </div>
 
               <div className="my-24 md:my-32" />
 
-              {/* BLOK 2 — NASZA FILOZOFIA */}
-              <div className="max-w-[620px]">
-                <p className="text-[0.65rem] sm:text-xs tracking-[0.35em] uppercase text-muted-foreground mb-5">
-                  {t("TAK TO ROBIMY")}
-                </p>
-                <p className="font-serif text-[26px] md:text-[30px] lg:text-[34px] text-foreground leading-[1.15] mb-6">
-                  {p7First.split(":").slice(0, 1).join(":")}
-                  {p7First.includes(":") ? ":" : ""}
-                </p>
-                <p className="text-base md:text-[17px] leading-[1.6] text-muted-foreground">
-                  {p7First.includes(":") ? p7First.split(":").slice(1).join(":").trim() : ""}{" "}
-                  {p7RestSentence}
-                </p>
-              </div>
+              {/* DOLNY RZĄD */}
+              <div className="grid md:grid-cols-[40%_55%] gap-x-24 gap-y-12">
+                {/* Lewa — osobisty dopisek */}
+                <div>
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                    {p8}
+                  </p>
+                </div>
 
-              <div className="my-16 md:my-20" />
-
-              {/* BLOK 3 — OSOBISTY DOPISEK */}
-              <div className="max-w-[500px]">
-                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-3">
-                  {p8.split(" — ").slice(0, 1).join(" — ")}
-                  {p8.includes(" — ") ? " —" : ""}
-                </p>
-                <p className="font-serif text-xl md:text-2xl text-foreground leading-snug">
-                  {p8.includes(" — ") ? p8.split(" — ").slice(1).join(" — ") : p8}
-                </p>
-              </div>
-
-              <div className="my-24 md:my-32" />
-
-              {/* BLOK 4 — FINAŁ */}
-              <div className="max-w-[620px]">
-                <div className="w-16 h-px bg-primary/60 mb-10" />
-                <p className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground leading-tight mb-6">
-                  {storyHighlight.split(".").slice(0, 1).join(".")}
-                  {storyHighlight.includes(".") ? "." : ""}
-                </p>
-                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-10">
-                  {storyHighlight.includes(".")
-                    ? clean(storyHighlight.split(".").slice(1).join(".").replace(/!$/, "").replace(/\.$/, ""))
-                    : clean(storyHighlight.replace(/!$/, ""))}
-                  .
-                </p>
-                <Link to="/sklep">
-                  <Button variant="outline" size="lg">
-                    {t("Zobacz nasze produkty")}
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
-                </Link>
+                {/* Prawa — finał */}
+                <div>
+                  <div className="w-16 h-px bg-primary/60 mb-10" />
+                  <p className="font-serif text-3xl md:text-4xl lg:text-[42px] text-foreground leading-tight mb-6">
+                    {storyHighlight.split(".").slice(0, 1).join(".")}
+                    {storyHighlight.includes(".") ? "." : ""}
+                  </p>
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-10">
+                    {storyHighlight.includes(".")
+                      ? clean(storyHighlight.split(".").slice(1).join(".").replace(/!$/, "").replace(/\.$/, ""))
+                      : clean(storyHighlight.replace(/!$/, ""))}
+                    .
+                  </p>
+                  <Link to="/sklep">
+                    <Button variant="outline" size="lg">
+                      {t("Zobacz nasze produkty")}
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
           </ScrollReveal>
+
 
         </div>
       </section>
