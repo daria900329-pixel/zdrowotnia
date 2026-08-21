@@ -9,6 +9,7 @@ import { Loader2, Save, RotateCcw, Upload } from "lucide-react";
 import { PAGE_IMAGE_REGISTRY } from "@/lib/pageImageRegistry";
 import { PAGE_IMAGES_SECTION_KEY } from "@/lib/pageImages";
 import { invalidatePageImagesCache } from "@/hooks/usePageImages";
+import { AdminPageAlbums } from "@/components/admin/AdminPageAlbums";
 
 const PAGE_KEYS = Object.keys(PAGE_IMAGE_REGISTRY);
 const MAX_SIZE = 5 * 1024 * 1024;
@@ -117,12 +118,19 @@ export const AdminPageImages = () => {
   return (
     <Tabs value={page} onValueChange={setPage}>
       <TabsList className="flex flex-wrap h-auto">
+        <TabsTrigger value="__albums" className="text-xs md:text-sm">
+          Albumy (dodaj zdjęcia)
+        </TabsTrigger>
         {PAGE_KEYS.map((key) => (
           <TabsTrigger key={key} value={key} className="text-xs md:text-sm">
             {PAGE_IMAGE_REGISTRY[key].label}
           </TabsTrigger>
         ))}
       </TabsList>
+
+      <TabsContent value="__albums" className="space-y-4">
+        <AdminPageAlbums />
+      </TabsContent>
 
       {PAGE_KEYS.map((key) => (
         <TabsContent key={key} value={key} className="space-y-4">
