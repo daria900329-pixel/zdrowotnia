@@ -14,6 +14,7 @@ import FinalStatement from "@/components/home/FinalStatement";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { SEO, localBusinessJsonLd } from "@/components/SEO";
+import { usePageImages } from "@/hooks/usePageImages";
 
 
 const faqJsonLd = {
@@ -57,6 +58,7 @@ const faqJsonLd = {
 
 const Index = () => {
   usePageText("home");
+  usePageImages();
   return (
     <div className="min-h-screen">
       <SEO

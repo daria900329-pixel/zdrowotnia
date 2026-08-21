@@ -22,6 +22,7 @@ import rabbits from "@/assets/about/rabbits.jpg";
 import heroProducts from "@/assets/hero-products.jpg";
 import breadAsset from "@/assets/product-bread.jpg.asset.json";
 import { img } from "@/lib/pageImages";
+import { usePageImages } from "@/hooks/usePageImages";
 
 const bread = breadAsset.url;
 
@@ -99,6 +100,7 @@ const clean = (s: string) =>
 
 export function AboutLanding() {
   usePageText("about");
+  usePageImages();
   const { content } = useSiteContent("about_page");
   const [togetherImage, setTogetherImage] = useState<string | null>(null);
 

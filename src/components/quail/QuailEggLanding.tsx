@@ -30,6 +30,7 @@ import freshEggs from "@/assets/quail/fresh-eggs.jpg";
 import packing from "@/assets/quail/packing.jpg";
 import delivery from "@/assets/quail/delivery.jpg";
 import { img } from "@/lib/pageImages";
+import { usePageImages } from "@/hooks/usePageImages";
 
 interface QuailProduct {
   id: string;
@@ -136,6 +137,7 @@ const Eyebrow = ({ children }: { children: React.ReactNode }) => (
 
 export function QuailEggLanding({ product }: { product: QuailProduct }) {
   usePageText("quail");
+  usePageImages();
   const heroImage = product.image_url ?? freshEggs;
 
   return (

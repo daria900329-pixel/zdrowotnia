@@ -29,6 +29,7 @@ import pairSalad from "@/assets/vinegar/pair-salad.jpg";
 import pairVeg from "@/assets/vinegar/pair-veg.jpg";
 import tryShot from "@/assets/vinegar/try.jpg";
 import { img } from "@/lib/pageImages";
+import { usePageImages } from "@/hooks/usePageImages";
 
 interface VinegarProduct {
   id: string;
@@ -86,6 +87,7 @@ const Eyebrow = ({ children }: { children: React.ReactNode }) => (
 
 export function VinegarLanding({ product }: { product: VinegarProduct }) {
   usePageText("vinegar");
+  usePageImages();
   const heroImage = product.image_url ?? heroVinegar;
 
   const scrollToBuy = () => {

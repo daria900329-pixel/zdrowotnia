@@ -30,6 +30,7 @@ import whenEvening from "@/assets/kombucha/when-evening.jpg";
 import whenJust from "@/assets/kombucha/when-just.jpg";
 import finalShot from "@/assets/kombucha/final.jpg";
 import { img } from "@/lib/pageImages";
+import { usePageImages } from "@/hooks/usePageImages";
 
 interface KombuchaProduct {
   id: string;
@@ -95,6 +96,7 @@ const Eyebrow = ({ children }: { children: React.ReactNode }) => (
 
 export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
   usePageText("kombucha");
+  usePageImages();
   const heroImage = product.image_url ?? heroKombucha;
   const [variants, setVariants] = useState<{ value: number; unit: string; price: number }[]>([]);
 
