@@ -67,6 +67,18 @@ const DEFAULT_STORY = [
   "One — gromada naszych szkrabów, małych i dużych, ale najukochańszych na świecie.",
 ];
 
+// Czyści tekst z emotek i podwójnych spacji / łamań linii
+const clean = (s: string) =>
+  s
+    .replace(
+      /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}\u{2B00}-\u{2BFF}\u{2190}-\u{21FF}\u{2700}-\u{27BF}]/gu,
+      ""
+    )
+    .replace(/[ \t]+/g, " ")
+    .replace(/\s*\n\s*/g, " ")
+    .trim();
+
+
 export function AboutLanding() {
   usePageText("about");
   const { content } = useSiteContent("about_page");
@@ -84,14 +96,15 @@ export function AboutLanding() {
       });
   }, []);
 
-  const storyTitle = content.story_title || "Nasza droga do Zdrowotni";
-  const storyHighlight = content.story_highlight || "";
+  const storyTitle = clean(content.story_title || "Nasza droga do Zdrowotni");
+  const storyHighlight = clean(content.story_highlight || "");
   const storyParagraphs: string[] = [];
   for (let i = 1; i <= 20; i++) {
     const val = content[`story_paragraph${i}`];
-    if (val) storyParagraphs.push(val);
+    if (val && clean(val)) storyParagraphs.push(clean(val));
   }
   if (storyParagraphs.length === 0) storyParagraphs.push(...DEFAULT_STORY);
+
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -205,16 +218,16 @@ export function AboutLanding() {
             </ScrollReveal>
             <ScrollReveal variant="fade-left">
               <Eyebrow>{t("My")}</Eyebrow>
-              <h2 className="font-serif text-4xl md:text-6xl text-foreground mb-10">
+              <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-10">
                 {storyTitle}
               </h2>
-              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed whitespace-pre-line">
+              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                 {storyParagraphs.map((p, i) => (
                   <p key={i}>{p}</p>
                 ))}
               </div>
               {storyHighlight && (
-                <p className="font-serif text-xl md:text-2xl text-foreground leading-snug mt-10">
+                <p className="font-serif text-3xl md:text-4xl text-foreground leading-snug mt-12">
                   {storyHighlight}
                 </p>
               )}
