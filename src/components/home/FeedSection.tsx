@@ -21,12 +21,12 @@ const STATEMENTS = [
 const FeedSection = () => {
   return (
     <section className="bg-earth/5">
-      <div className="bg-earth/10">
+      <div className="w-full h-[55vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
         <img
           src={img(quailsPhoto)}
           alt="Przepiórki w naszym rodzinnym chowie"
           loading="lazy"
-          className="w-full h-auto max-h-[85vh] object-contain object-center mx-auto"
+          className="w-full h-full object-cover object-center"
         />
       </div>
 
