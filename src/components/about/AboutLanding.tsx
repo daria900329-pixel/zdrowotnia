@@ -165,70 +165,40 @@ export function AboutLanding() {
         </div>
       </section>
 
-      {/* 4. JA — DARIA */}
-      <section className="py-24 md:py-32">
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <ScrollReveal variant="fade-right">
-              <img
-                src={daria}
-                alt="Daria w kuchni Zdrowotni"
-                className="w-full aspect-[4/5] object-cover rounded-sm shadow-card"
-                loading="lazy"
-              />
-            </ScrollReveal>
-            <ScrollReveal variant="fade-left">
-              <Eyebrow>{t("dietetyk kliniczny")}</Eyebrow>
-              <h2 className="font-serif text-4xl md:text-6xl text-foreground mb-8">{t("Daria")}</h2>
-              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
-                <p>{t("Dietetyka nauczyła mnie patrzeć na jedzenie nie tylko jak na smak, ale też jak na coś, co realnie wpływa na człowieka.")}</p>
-                <p>{t("Przez lata interesowało mnie nie tylko „co jeść”, ale też skąd ten produkt pochodzi, jak został przygotowany i co wydarzyło się wcześniej.")}</p>
-                <p className="text-foreground font-serif text-xl md:text-2xl leading-snug pt-2">
-                  {t("Zdrowotnia jest dla mnie naturalnym przedłużeniem tego myślenia.")}
-                </p>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. MY */}
+      {/* 4. NASZA DROGA DO ZDROWOTNI */}
       <section className="py-24 md:py-32 bg-secondary/30">
         <div className="container mx-auto px-6">
-          <ScrollReveal variant="fade-up">
-            <div className="max-w-3xl">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <ScrollReveal variant="fade-right">
+              <div className="lg:sticky lg:top-32">
+                <img
+                  src={togetherImage || heroTable}
+                  alt="Daria i Marcin — twórcy Zdrowotni"
+                  className="w-full aspect-[4/5] object-cover rounded-sm shadow-card"
+                  loading="lazy"
+                />
+              </div>
+            </ScrollReveal>
+            <ScrollReveal variant="fade-left">
               <Eyebrow>{t("My")}</Eyebrow>
-              <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-8">
-                {t("Razem robimy to po swojemu.")}
+              <h2 className="font-serif text-4xl md:text-6xl text-foreground mb-10">
+                {storyTitle}
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                {t("Jedno z nas częściej pyta „co będzie lepsze dla człowieka?”. Drugie „jak zrobić to dobrze w praktyce?”.")}
-              </p>
-              <p className="font-serif text-xl md:text-2xl text-foreground leading-snug">
-                {t("I gdzieś pomiędzy tymi pytaniami powstaje Zdrowotnia.")}
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-16">
-            {WORK.map((item, i) => (
-              <ScrollReveal key={item.label} variant="fade-up" delay={i * 100}>
-                <figure>
-                  <img
-                    src={item.img}
-                    alt={item.label}
-                    className={`w-full object-cover rounded-sm ${i % 2 === 0 ? "aspect-[3/4]" : "aspect-square"}`}
-                    loading="lazy"
-                  />
-                  <figcaption className="mt-3 text-xs tracking-[0.2em] uppercase text-muted-foreground">
-                    {t(item.label)}
-                  </figcaption>
-                </figure>
-              </ScrollReveal>
-            ))}
+              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed whitespace-pre-line">
+                {storyParagraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+              {storyHighlight && (
+                <p className="font-serif text-xl md:text-2xl text-foreground leading-snug mt-10">
+                  {storyHighlight}
+                </p>
+              )}
+            </ScrollReveal>
           </div>
         </div>
       </section>
+
 
       {/* 6. DOBRE JEDZENIE */}
       <section className="py-24 md:py-32">
