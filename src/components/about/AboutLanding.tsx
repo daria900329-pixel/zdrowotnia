@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import { t } from "@/lib/pageText";
@@ -63,6 +63,20 @@ const Eyebrow = ({ children }: { children: React.ReactNode }) => (
     {children}
   </p>
 );
+
+const DashedText = ({ text, className }: { text: string; className?: string }) => {
+  const nodes: ReactNode[] = [];
+  const regex = /(?<=\s|^)([—–-])(?=\s|$)/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  while ((match = regex.exec(text)) !== null) {
+    nodes.push(text.slice(lastIndex, match.index));
+    nodes.push(<span key={match.index} className="relative -top-[0.05em]">—</span>);
+    lastIndex = match.index + match[0].length;
+  }
+  nodes.push(text.slice(lastIndex));
+  return <span className={className}>{nodes}</span>;
+};
 
 const DEFAULT_STORY = [
   "Ona — dietetyk kliniczny z potrzebą karmienia bliskich tak, żeby jedzenie naprawdę służyło zdrowiu i regeneracji.",
@@ -292,11 +306,11 @@ export function AboutLanding() {
             </ScrollReveal>
             <ScrollReveal variant="fade-left">
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                {p4BeforeHighlight}
+                <DashedText text={p4BeforeHighlight} />
                 <span className="block font-serif text-2xl md:text-3xl text-foreground leading-snug my-6">
                   {p4Highlight}
                 </span>
-                {p4AfterHighlight}
+                <DashedText text={p4AfterHighlight} />
               </p>
             </ScrollReveal>
           </div>
@@ -312,14 +326,14 @@ export function AboutLanding() {
               />
             </ScrollReveal>
             <ScrollReveal variant="fade-left">
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{rabbitText}</p>
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed"><DashedText text={rabbitText} /></p>
             </ScrollReveal>
           </div>
 
           {/* Bread */}
           <div className="grid lg:grid-cols-[2fr_1fr] gap-12 lg:gap-20 items-start my-24 md:my-32">
             <ScrollReveal variant="fade-right">
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{breadText}</p>
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed"><DashedText text={breadText} /></p>
             </ScrollReveal>
             <ScrollReveal variant="fade-left">
               <img
@@ -341,14 +355,14 @@ export function AboutLanding() {
                 loading="lazy"
               />
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-4xl mb-4">
-                {p6BeforeHighlight}
+                <DashedText text={p6BeforeHighlight} />
               </p>
               <p className="font-serif text-3xl md:text-4xl text-foreground leading-snug max-w-4xl mb-4">
                 {p6Highlight}
                 {p6AfterHighlight.startsWith(",") ? "," : ""}
               </p>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-4xl">
-                {p6AfterHighlight.replace(/^,\s*/, "")}
+                <DashedText text={p6AfterHighlight.replace(/^,\s*/, "")} />
               </p>
             </div>
           </ScrollReveal>
