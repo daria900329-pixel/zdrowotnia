@@ -204,6 +204,7 @@ export function AdminCMS() {
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
   const [galleryLoading, setGalleryLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState<{ done: number; total: number } | null>(null);
 
   useEffect(() => {
     fetchAllContent();
@@ -263,55 +264,71 @@ export function AdminCMS() {
   };
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>, type: "image" | "video") => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    if (type === "image" && !file.type.startsWith("image/")) {
-      toast({ title: "Błąd", description: "Wybierz plik graficzny", variant: "destructive" });
-      return;
-    }
-    if (type === "video" && !file.type.startsWith("video/")) {
-      toast({ title: "Błąd", description: "Wybierz plik wideo", variant: "destructive" });
-      return;
-    }
+    const files = Array.from(e.target.files ?? []);
+    if (files.length === 0) return;
 
     const maxSize = type === "video" ? 50 * 1024 * 1024 : 10 * 1024 * 1024;
-    if (file.size > maxSize) {
-      toast({ title: "Błąd", description: `Plik za duży (max ${type === "video" ? "50MB" : "10MB"})`, variant: "destructive" });
+    const valid = files.filter(
+      (f) => f.type.startsWith(type === "video" ? "video/" : "image/") && f.size <= maxSize
+    );
+    const skipped = files.length - valid.length;
+
+    if (valid.length === 0) {
+      toast({
+        title: "Błąd",
+        description: `Wybierz pliki ${type === "video" ? "wideo (max 50MB)" : "graficzne (max 10MB)"}`,
+        variant: "destructive",
+      });
+      e.target.value = "";
       return;
     }
 
     setUploading(true);
-    const fileExt = file.name.split(".").pop();
-    const fileName = `about-gallery/${Date.now()}.${fileExt}`;
+    setUploadProgress({ done: 0, total: valid.length });
 
-    const { error: uploadError } = await supabase.storage.from("product-images").upload(fileName, file);
+    let maxOrder = galleryItems.length > 0 ? Math.max(...galleryItems.map(item => item.display_order)) : -1;
+    let succeeded = 0;
+    let failed = 0;
 
-    if (uploadError) {
-      toast({ title: "Błąd", description: "Nie udało się przesłać pliku", variant: "destructive" });
-      setUploading(false);
-      return;
+    for (let i = 0; i < valid.length; i++) {
+      const file = valid[i];
+      const fileExt = file.name.split(".").pop();
+      const fileName = `about-gallery/${Date.now()}-${i}-${Math.random().toString(36).slice(2, 8)}.${fileExt}`;
+
+      const { error: uploadError } = await supabase.storage.from("product-images").upload(fileName, file);
+
+      if (uploadError) {
+        failed++;
+      } else {
+        const { data: urlData } = supabase.storage.from("product-images").getPublicUrl(fileName);
+        maxOrder += 1;
+        const { error: insertError } = await supabase.from("about_gallery").insert({
+          image_url: urlData.publicUrl,
+          display_order: maxOrder,
+          media_type: type,
+        });
+        if (insertError) failed++;
+        else succeeded++;
+      }
+
+      setUploadProgress({ done: i + 1, total: valid.length });
     }
 
-    const { data: urlData } = supabase.storage.from("product-images").getPublicUrl(fileName);
-    const maxOrder = galleryItems.length > 0 ? Math.max(...galleryItems.map(item => item.display_order)) : -1;
-
-    const { error: insertError } = await supabase.from("about_gallery").insert({
-      image_url: urlData.publicUrl,
-      display_order: maxOrder + 1,
-      media_type: type,
-    });
-
-    if (insertError) {
-      toast({ title: "Błąd", description: "Nie udało się dodać do galerii", variant: "destructive" });
-    } else {
-      toast({ title: "Sukces", description: type === "video" ? "Film dodany" : "Zdjęcie dodane" });
+    if (succeeded > 0) {
+      toast({
+        title: "Sukces",
+        description: `Dodano ${succeeded} ${type === "video" ? "filmów" : "zdjęć"}${failed ? `, błędy: ${failed}` : ""}${skipped ? `, pominięto: ${skipped}` : ""}`,
+      });
       fetchGalleryItems();
+    } else {
+      toast({ title: "Błąd", description: "Nie udało się przesłać plików", variant: "destructive" });
     }
 
     setUploading(false);
+    setUploadProgress(null);
     e.target.value = "";
   };
+
 
   const updateCaption = async (id: string, caption: string) => {
     await supabase.from("about_gallery").update({ caption }).eq("id", id);
@@ -450,17 +467,17 @@ export function AdminCMS() {
       <h3 className="font-semibold text-lg mb-4">Zdjęcia i filmy w galerii</h3>
       <div className="grid grid-cols-2 gap-4 mb-6">
         <div className="border-2 border-dashed border-border rounded-lg p-4 text-center hover:border-primary/50 transition-colors">
-          <input type="file" accept="image/*" onChange={(e) => handleFileUpload(e, "image")} className="hidden" id="cms-image-upload" disabled={uploading} />
+          <input type="file" accept="image/*" multiple onChange={(e) => handleFileUpload(e, "image")} className="hidden" id="cms-image-upload" disabled={uploading} />
           <Label htmlFor="cms-image-upload" className="cursor-pointer flex flex-col items-center gap-2">
             {uploading ? <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" /> : <Image className="w-6 h-6 text-muted-foreground" />}
-            <span className="text-sm text-muted-foreground">Dodaj zdjęcie</span>
+            <span className="text-sm text-muted-foreground">{uploading && uploadProgress ? `Przesyłanie ${uploadProgress.done}/${uploadProgress.total}...` : "Dodaj zdjęcia (możesz wybrać wiele)"}</span>
           </Label>
         </div>
         <div className="border-2 border-dashed border-border rounded-lg p-4 text-center hover:border-primary/50 transition-colors">
-          <input type="file" accept="video/*" onChange={(e) => handleFileUpload(e, "video")} className="hidden" id="cms-video-upload" disabled={uploading} />
+          <input type="file" accept="video/*" multiple onChange={(e) => handleFileUpload(e, "video")} className="hidden" id="cms-video-upload" disabled={uploading} />
           <Label htmlFor="cms-video-upload" className="cursor-pointer flex flex-col items-center gap-2">
             {uploading ? <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" /> : <Video className="w-6 h-6 text-muted-foreground" />}
-            <span className="text-sm text-muted-foreground">Dodaj film</span>
+            <span className="text-sm text-muted-foreground">{uploading && uploadProgress ? `Przesyłanie ${uploadProgress.done}/${uploadProgress.total}...` : "Dodaj filmy (możesz wybrać wiele)"}</span>
           </Label>
         </div>
       </div>
