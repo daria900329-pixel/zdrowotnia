@@ -21,7 +21,7 @@ const STATEMENTS = [
 const FeedSection = () => {
   return (
     <section className="bg-earth/5">
-      <div className="w-full h-[55vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
+      <div className="relative left-1/2 w-screen max-w-none -translate-x-1/2 h-[55vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
         <img
           src={img(quailsPhoto)}
           alt="Przepiórki w naszym rodzinnym chowie"
