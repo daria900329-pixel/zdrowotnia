@@ -118,7 +118,7 @@ export function AboutLanding() {
         <img
           src={togetherImage || heroTable}
           alt="Daria i Marcin — twórcy Zdrowotni"
-          className="absolute inset-0 w-full h-full object-cover object-[center_25%]"
+          className="absolute top-40 left-0 right-0 bottom-0 w-full h-full object-cover object-top"
           loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/55 to-transparent" />
