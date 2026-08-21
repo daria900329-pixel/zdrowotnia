@@ -16,6 +16,8 @@ import feedMix from "@/assets/quail/feed-mix.jpg";
 import freshEggs from "@/assets/quail/fresh-eggs.jpg";
 import kombuchaBrew from "@/assets/kombucha/step-brew.jpg";
 import vinegarApples from "@/assets/vinegar/apples.jpg";
+import vinegarFerment from "@/assets/vinegar/step-ferment.jpg";
+import rabbits from "@/assets/about/rabbits.jpg";
 import heroProducts from "@/assets/hero-products.jpg";
 import breadAsset from "@/assets/product-bread.jpg.asset.json";
 
