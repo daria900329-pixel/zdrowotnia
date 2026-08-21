@@ -204,6 +204,7 @@ export function AdminCMS() {
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
   const [galleryLoading, setGalleryLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState<{ done: number; total: number } | null>(null);
 
   useEffect(() => {
     fetchAllContent();
@@ -466,17 +467,17 @@ export function AdminCMS() {
       <h3 className="font-semibold text-lg mb-4">Zdjęcia i filmy w galerii</h3>
       <div className="grid grid-cols-2 gap-4 mb-6">
         <div className="border-2 border-dashed border-border rounded-lg p-4 text-center hover:border-primary/50 transition-colors">
-          <input type="file" accept="image/*" onChange={(e) => handleFileUpload(e, "image")} className="hidden" id="cms-image-upload" disabled={uploading} />
+          <input type="file" accept="image/*" multiple onChange={(e) => handleFileUpload(e, "image")} className="hidden" id="cms-image-upload" disabled={uploading} />
           <Label htmlFor="cms-image-upload" className="cursor-pointer flex flex-col items-center gap-2">
             {uploading ? <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" /> : <Image className="w-6 h-6 text-muted-foreground" />}
-            <span className="text-sm text-muted-foreground">Dodaj zdjęcie</span>
+            <span className="text-sm text-muted-foreground">{uploading && uploadProgress ? `Przesyłanie ${uploadProgress.done}/${uploadProgress.total}...` : "Dodaj zdjęcia (możesz wybrać wiele)"}</span>
           </Label>
         </div>
         <div className="border-2 border-dashed border-border rounded-lg p-4 text-center hover:border-primary/50 transition-colors">
-          <input type="file" accept="video/*" onChange={(e) => handleFileUpload(e, "video")} className="hidden" id="cms-video-upload" disabled={uploading} />
+          <input type="file" accept="video/*" multiple onChange={(e) => handleFileUpload(e, "video")} className="hidden" id="cms-video-upload" disabled={uploading} />
           <Label htmlFor="cms-video-upload" className="cursor-pointer flex flex-col items-center gap-2">
             {uploading ? <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" /> : <Video className="w-6 h-6 text-muted-foreground" />}
-            <span className="text-sm text-muted-foreground">Dodaj film</span>
+            <span className="text-sm text-muted-foreground">{uploading && uploadProgress ? `Przesyłanie ${uploadProgress.done}/${uploadProgress.total}...` : "Dodaj filmy (możesz wybrać wiele)"}</span>
           </Label>
         </div>
       </div>
