@@ -17,7 +17,7 @@ const ShopGrid = () => {
             Do koszyka
           </p>
           <h2 className="font-serif text-[2rem] leading-[1.08] sm:text-4xl lg:text-[3rem] text-foreground break-words">
-            Co dziś zabierzesz ze Zdrowotni?
+            Z naszej Zdrowotni na Twój stół
           </h2>
         </ScrollReveal>
 
