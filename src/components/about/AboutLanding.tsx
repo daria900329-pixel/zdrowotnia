@@ -364,7 +364,7 @@ export function AboutLanding() {
           <ScrollReveal variant="fade-up">
             <div className="my-20 md:my-28 max-w-[1150px] mx-auto">
               {/* GÓRNY RZĄD */}
-              <div className="grid md:grid-cols-[50%_45%] gap-x-24 gap-y-12">
+              <div className="grid md:grid-cols-[49%_48%] gap-x-24 gap-y-12">
                 {/* Lewa — fermentacja */}
                 <div>
                   <p className="text-base md:text-[17px] leading-[1.6] text-muted-foreground mb-8">
