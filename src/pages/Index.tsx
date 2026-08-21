@@ -1,10 +1,19 @@
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Products from "@/components/Products";
-import About from "@/components/About";
+import HomeHero from "@/components/home/HomeHero";
+import Philosophy from "@/components/home/Philosophy";
+import StoryProducts from "@/components/home/StoryProducts";
+import TodaySection from "@/components/home/TodaySection";
+import FeedSection from "@/components/home/FeedSection";
+import JourneySection from "@/components/home/JourneySection";
+import FromDaria from "@/components/home/FromDaria";
+import NotPerfect from "@/components/home/NotPerfect";
+import KitchenGallery from "@/components/home/KitchenGallery";
+import ShopGrid from "@/components/home/ShopGrid";
+import FinalStatement from "@/components/home/FinalStatement";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { SEO, localBusinessJsonLd } from "@/components/SEO";
+
 
 const faqJsonLd = {
   "@context": "https://schema.org",
