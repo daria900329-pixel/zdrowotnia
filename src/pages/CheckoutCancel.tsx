@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { XCircle, Home, ShoppingCart } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 const CheckoutCancel = () => {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
+      <SEO
+        title="Płatność anulowana"
+        description="Płatność została anulowana. Twój koszyk czeka — możesz dokończyć zamówienie w dowolnej chwili."
+        canonical="/checkout/cancel"
+        noindex
+      />
       <div className="max-w-md w-full text-center space-y-6">
         <div className="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center mx-auto">
           <XCircle className="w-10 h-10 text-accent" />
