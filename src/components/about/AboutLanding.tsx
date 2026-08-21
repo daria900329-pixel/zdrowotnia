@@ -652,14 +652,14 @@ export function AboutLanding() {
         {/* Separator między półkami */}
         <div className="relative h-px bg-background/20" />
 
-        {/* Dolna półka — ciemny overlay na dolnej połowie zdjęcia */}
-        <div className="relative flex-1 flex items-center justify-center bg-foreground/85 py-20 md:py-28">
+        {/* Dolna półka — ciemny, ale przeźroczysty overlay, grafika widoczna spod spodu */}
+        <div className="relative flex-1 flex items-center justify-center bg-gradient-to-b from-foreground/55 via-foreground/65 to-foreground/75 py-20 md:py-28">
           <div className="container mx-auto px-6 text-center">
             <ScrollReveal variant="fade-up">
               <h2 className="font-serif text-4xl md:text-6xl text-background mb-10">
                 {t("To jest nasza Zdrowotnia.")}
               </h2>
-              <div className="space-y-1 text-lg text-background/90 mb-4">
+              <div className="space-y-1 text-lg text-background/95 mb-4">
                 <p>{t("Nie idealna.")}</p>
                 <p>{t("Nie przemysłowa.")}</p>
                 <p>{t("Nie z historią wymyśloną na potrzeby marketingu.")}</p>
