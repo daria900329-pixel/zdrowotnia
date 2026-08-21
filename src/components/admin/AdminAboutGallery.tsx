@@ -22,6 +22,7 @@ export function AdminAboutGallery() {
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
   const [uploadType, setUploadType] = useState<"image" | "video">("image");
+  const [uploadProgress, setUploadProgress] = useState<{ done: number; total: number } | null>(null);
 
   useEffect(() => {
     fetchItems();
@@ -216,7 +217,11 @@ export function AdminAboutGallery() {
             <input
               type="file"
               accept="image/*"
-              onChange={(e) => handleFileUpload(e, "image")}
+              multiple
+              onChange={(e) => {
+                setUploadType("image");
+                handleFileUpload(e, "image");
+              }}
               className="hidden"
               id="gallery-image-upload"
               disabled={uploading}
@@ -231,9 +236,11 @@ export function AdminAboutGallery() {
                 <Image className="w-8 h-8 text-muted-foreground" />
               )}
               <span className="text-sm text-muted-foreground">
-                {uploading && uploadType === "image" ? "Przesyłanie..." : "Dodaj zdjęcie"}
+                {uploading && uploadType === "image"
+                  ? `Przesyłanie ${uploadProgress?.done ?? 0}/${uploadProgress?.total ?? 0}...`
+                  : "Dodaj zdjęcia"}
               </span>
-              <span className="text-xs text-muted-foreground/70">max 10MB</span>
+              <span className="text-xs text-muted-foreground/70">możesz wybrać wiele plików · max 10MB każdy</span>
             </Label>
           </div>
 
@@ -242,6 +249,7 @@ export function AdminAboutGallery() {
             <input
               type="file"
               accept="video/*"
+              multiple
               onChange={(e) => {
                 setUploadType("video");
                 handleFileUpload(e, "video");
@@ -260,9 +268,11 @@ export function AdminAboutGallery() {
                 <Video className="w-8 h-8 text-muted-foreground" />
               )}
               <span className="text-sm text-muted-foreground">
-                {uploading && uploadType === "video" ? "Przesyłanie..." : "Dodaj film"}
+                {uploading && uploadType === "video"
+                  ? `Przesyłanie ${uploadProgress?.done ?? 0}/${uploadProgress?.total ?? 0}...`
+                  : "Dodaj filmy"}
               </span>
-              <span className="text-xs text-muted-foreground/70">max 50MB</span>
+              <span className="text-xs text-muted-foreground/70">możesz wybrać wiele plików · max 50MB każdy</span>
             </Label>
           </div>
         </div>
