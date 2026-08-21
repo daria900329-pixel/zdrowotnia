@@ -11,6 +11,7 @@ import AboutGallery from "@/components/AboutGallery";
 import heroTable from "@/assets/home/hero-table.jpg";
 import handsEggs from "@/assets/home/hands-eggs.jpg";
 import kitchenCorner from "@/assets/home/kitchen-corner.jpg";
+import breadCut from "@/assets/home/bread-cut.jpg";
 import quails from "@/assets/quail/quails.jpg";
 import feedMix from "@/assets/quail/feed-mix.jpg";
 import freshEggs from "@/assets/quail/fresh-eggs.jpg";
