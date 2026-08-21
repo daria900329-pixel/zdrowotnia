@@ -640,18 +640,17 @@ export function AboutLanding() {
         </div>
       </section>
 
-      {/* 13 + 14. EMOCJONALNY FINAŁ NA JEDNYM ZDJĘCIU */}
-      <section className="relative min-h-[90vh] md:min-h-screen overflow-hidden flex flex-col">
+      {/* 13 + 14. EMOCJONALNY FINAŁ NA JEDNYM ZDJĘCIU — DWIE PÓŁKI */}
+      <section className="relative min-h-[110vh] md:min-h-screen overflow-hidden flex flex-col">
         <img
           src={img(heroProducts)}
           alt="Chleb na zakwasie z domowymi przetworami"
           className="absolute inset-0 w-full h-full object-cover"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/55 to-foreground/80" />
 
-        {/* Górny blok — rozjaśniona połowa */}
-        <div className="relative flex-1 flex items-center justify-center py-24 md:py-32">
+        {/* Górna półka — jasny overlay na górnej połowie zdjęcia */}
+        <div className="relative flex-1 flex items-center justify-center bg-background/95 py-20 md:py-28">
           <div className="container mx-auto px-6 text-center">
             <ScrollReveal variant="fade-up">
               <h2 className="font-serif text-3xl md:text-5xl text-foreground leading-tight mb-10">
@@ -669,14 +668,17 @@ export function AboutLanding() {
           </div>
         </div>
 
-        {/* Dolny blok — przyciemniona połowa */}
-        <div className="relative flex-1 flex items-center justify-center py-24 md:py-32">
+        {/* Separator między półkami */}
+        <div className="relative h-px bg-background/30" />
+
+        {/* Dolna półka — ciemny overlay na dolnej połowie zdjęcia */}
+        <div className="relative flex-1 flex items-center justify-center bg-foreground/85 py-20 md:py-28">
           <div className="container mx-auto px-6 text-center">
             <ScrollReveal variant="fade-up">
               <h2 className="font-serif text-4xl md:text-6xl text-background mb-10">
                 {t("To jest nasza Zdrowotnia.")}
               </h2>
-              <div className="space-y-1 text-lg text-background/80 mb-4">
+              <div className="space-y-1 text-lg text-background/90 mb-4">
                 <p>{t("Nie idealna.")}</p>
                 <p>{t("Nie przemysłowa.")}</p>
                 <p>{t("Nie z historią wymyśloną na potrzeby marketingu.")}</p>
@@ -703,6 +705,7 @@ export function AboutLanding() {
           </div>
         </div>
       </section>
+
 
     </main>
   );
