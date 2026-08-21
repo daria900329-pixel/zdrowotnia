@@ -1048,6 +1048,187 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
       }
     ]
   },
+  "bread": {
+    "label": "Chleb żytni",
+    "texts": [
+      {
+        "id": "14l4sur1ipfmzf",
+        "text": "A najlepiej?"
+      },
+      {
+        "id": "mexiehqde5r5",
+        "text": "Bez polepszaczy. Bez gotowych mieszanek piekarniczych. Bez zbędnych dodatków."
+      },
+      {
+        "id": "10phdvplblpx5",
+        "text": "Chleb ma karmić. Nie tylko zajmować miejsce na talerzu."
+      },
+      {
+        "id": "1lnjtr5dxhzqn",
+        "text": "Chleb żytni"
+      },
+      {
+        "id": "1uz3usp4xxvmj",
+        "text": "Chleb żytni na starym zakwasie"
+      },
+      {
+        "id": "na478zvfxcdb",
+        "text": "Co właściwie daje zakwas?"
+      },
+      {
+        "id": "4tee2xf3cxt",
+        "text": "Dlatego dokładnie taki pieczemy dla Was."
+      },
+      {
+        "id": "w92pak1ea0i0y",
+        "text": "Długa fermentacja częściowo rozkłada związki obecne w ziarnie i zmienia strukturę ciasta."
+      },
+      {
+        "id": "1shnxne1lurq60",
+        "text": "Dobrego chleba nie trzeba poprawiać. Trzeba mu pozwolić powstać."
+      },
+      {
+        "id": "vocz9k1mw2ja6",
+        "text": "Fermentacja pomaga ograniczać zawartość kwasu fitynowego, który może utrudniać wykorzystanie niektórych składników mineralnych."
+      },
+      {
+        "id": "1tql8bc1m12tdw",
+        "text": "Jest chleb i jest chleb."
+      },
+      {
+        "id": "14p65861lqs89k",
+        "text": "Jeszcze lekko ciepły. Gruba kromka. Dobre masło. I właściwie można na tym skończyć."
+      },
+      {
+        "id": "1a90770rotqos",
+        "text": "Lekki jak piórko bochenek może wyglądać okazale, ale wielkość chleba nie mówi nic o tym, ile naprawdę jest w środku."
+      },
+      {
+        "id": "1rd18hy1ok753o",
+        "text": "Łatwiejszy do strawienia"
+      },
+      {
+        "id": "193tbav1foo8sn",
+        "text": "mąka orkiszowa typ 750"
+      },
+      {
+        "id": "fsx75vs0pa91",
+        "text": "mąka żytnia 2000 i 750 · siemię lniane · pestki dyni · słonecznik · sól kłodawska"
+      },
+      {
+        "id": "1ypiwb787dgpt",
+        "text": "mąka żytnia typ 2000"
+      },
+      {
+        "id": "1vb2ucvpooa51",
+        "text": "na starym zakwasie"
+      },
+      {
+        "id": "w7gkf915zd8ah",
+        "text": "Nasz chleb jest ciężki, wilgotny i konkretny. Jedna kromka wygląda jak kromka i zachowuje się jak posiłek."
+      },
+      {
+        "id": "1qgewvb1tz92n1",
+        "text": "Nasz zakwas żytni ma już ponad 10 lat. Jest żywy, regularnie dokarmiany i to właśnie on odpowiada za charakterystyczny smak, zapach i strukturę naszego chleba."
+      },
+      {
+        "id": "3j3le91tk5f17",
+        "text": "Nie potrzebujemy drożdży ani polepszaczy. Mąka, woda, zakwas i czas robią swoją robotę."
+      },
+      {
+        "id": "16j5z7q1ykfk7w",
+        "text": "Nie próbujemy zrobić największego bochenka z najmniejszej ilości mąki."
+      },
+      {
+        "id": "5i8um96yglpn",
+        "text": "Pasuje do jajek, twarogu, pasztetu, domowych past, zupy albo po prostu do wszystkiego, do czego potrzebujesz porządnej kromki chleba."
+      },
+      {
+        "id": "lprxt54yopex",
+        "text": "pestki dyni"
+      },
+      {
+        "id": "ghgaf615a7bq6",
+        "text": "Pestki dyni są źródłem m.in. magnezu, cynku i nienasyconych kwasów tłuszczowych."
+      },
+      {
+        "id": "dse7sg1xbr6cc",
+        "text": "Ponad 10 lat historii"
+      },
+      {
+        "id": "bt1cjb163c3o1",
+        "text": "Produkty"
+      },
+      {
+        "id": "xja2aas8ltei",
+        "text": "siemię lniane"
+      },
+      {
+        "id": "snshs3u32he1",
+        "text": "Siemię lniane dostarcza błonnika i kwasu alfa-linolenowego (ALA) z rodziny omega-3."
+      },
+      {
+        "id": "rsmralhnyln1",
+        "text": "Siemię lniane, pestki dyni i słonecznik nie znalazły się tutaj dla wyglądu. Dodają chlebu smaku, struktury i wartości odżywczej."
+      },
+      {
+        "id": "j4karbtezht",
+        "text": "Skład, który można przeczytać jednym tchem."
+      },
+      {
+        "id": "1qh8o0113gsmep",
+        "text": "słonecznik"
+      },
+      {
+        "id": "1glp8eaw0dupq",
+        "text": "Słonecznik wnosi witaminę E, zdrowe tłuszcze i charakterystyczny lekko orzechowy smak."
+      },
+      {
+        "id": "dq9z5y1ky8p2a",
+        "text": "sól kłodawska"
+      },
+      {
+        "id": "1ya32azu62ajd",
+        "text": "Syci naprawdę"
+      },
+      {
+        "id": "yzexx0r75q24",
+        "text": "Sypiemy hojnie."
+      },
+      {
+        "id": "1ro3dc3hawe1f",
+        "text": "Taki chleb sami chcemy mieć na stole."
+      },
+      {
+        "id": "fpzynk1x4ijgu",
+        "text": "Więcej z tego, co daje ziarno"
+      },
+      {
+        "id": "1rpi3y95bokoz",
+        "text": "Wolimy zrobić chleb, którym naprawdę można się najeść."
+      },
+      {
+        "id": "18vdx5z4uw5uh",
+        "text": "Wszystko zaczyna się od zakwasu."
+      },
+      {
+        "id": "19m80ctcahmvr",
+        "text": "Z naszego stołu"
+      },
+      {
+        "id": "i4qmld1dvyc75",
+        "text": "Zakwas nie jest tylko sposobem na wyrośnięcie chleba. Fermentacja zmienia mąkę jeszcze zanim chleb trafi do pieca."
+      },
+      {
+        "id": "173rxewhhoc2q",
+        "text": "Żyto, pełnoziarnista mąka i solidna porcja ziaren dostarczają błonnika i sprawiają, że to jest konkretna kromka chleba, a nie napompowana bułka, po której za chwilę znowu szukasz czegoś do jedzenia."
+      },
+      {
+        "id": "1oticqq1tcn08",
+        "text": "Żyto, żywy zakwas, ziarna i sól. Tyle wystarczy, żeby powstał naprawdę dobry chleb."
+      }
+    ]
+  },
   "kombucha": {
     "label": "Kombucha",
     "texts": [
@@ -1557,18 +1738,6 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
         "text": "DAJEMY CZAS"
       },
       {
-        "id": "qmbqwq1bxsbwg",
-        "text": "Daria"
-      },
-      {
-        "id": "594li59bc20p",
-        "text": "dietetyk kliniczny"
-      },
-      {
-        "id": "ec7gd410hgyq8",
-        "text": "Dietetyka nauczyła mnie patrzeć na jedzenie nie tylko jak na smak, ale też jak na coś, co realnie wpływa na człowieka."
-      },
-      {
         "id": "1qu4ltetynw9q",
         "text": "Dla dzieci."
       },
@@ -1601,10 +1770,6 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
         "text": "Fermentacja, zakwas i naturalne procesy nie lubią pośpiechu."
       },
       {
-        "id": "4asa3q1nvzt5q",
-        "text": "I gdzieś pomiędzy tymi pytaniami powstaje Zdrowotnia."
-      },
-      {
         "id": "yten451161e0f",
         "text": "I nie będziemy udawać, że jesteśmy."
       },
@@ -1629,16 +1794,8 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
         "text": "Jak przygotowujemy."
       },
       {
-        "id": "1430xc7oojwwj",
-        "text": "Jedno z nas częściej pyta „co będzie lepsze dla człowieka?”. Drugie „jak zrobić to dobrze w praktyce?”."
-      },
-      {
         "id": "180di3jtu7pgl",
         "text": "Jeśli czegoś nie wiemy – wolimy to powiedzieć niż wymyślić ładną historię."
-      },
-      {
-        "id": "n2p2ii1o8rank",
-        "text": "Karmienie"
       },
       {
         "id": "1cdd64vk81nxb",
@@ -1649,20 +1806,12 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
         "text": "Kombuchę"
       },
       {
-        "id": "1s5k22uxtfxsm",
-        "text": "Kuchnia"
-      },
-      {
         "id": "1l6jf0p1k4fcw5",
         "text": "Małe partie."
       },
       {
         "id": "1qpxaybeciq4j",
         "text": "Małe stada."
-      },
-      {
-        "id": "l1w0j7h9irrz",
-        "text": "My"
       },
       {
         "id": "1refvxize2smw",
@@ -1725,8 +1874,16 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
         "text": "Ocet"
       },
       {
-        "id": "14o5wng1sqszaq",
-        "text": "Pakowanie"
+        "id": "1b08k2o1olnode",
+        "text": "On — człowiek ziemi, z sercem do rolnictwa i hodowli zwierząt."
+      },
+      {
+        "id": "1vof8t617k5bcs",
+        "text": "Ona — dietetyk kliniczny z potrzebą karmienia bliskich tak, żeby jedzenie naprawdę służyło zdrowiu i regeneracji."
+      },
+      {
+        "id": "193qogk1pxw9fm",
+        "text": "One — gromada naszych szkrabów, małych i dużych, ale najukochańszych na świecie."
       },
       {
         "id": "1h5izll61ksdz",
@@ -1747,18 +1904,6 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
       {
         "id": "1mfpyn55ijf33",
         "text": "przefermentować."
-      },
-      {
-        "id": "bmwlhd2btx1r",
-        "text": "Przez lata interesowało mnie nie tylko „co jeść”, ale też skąd ten produkt pochodzi, jak został przygotowany i co wydarzyło się wcześniej."
-      },
-      {
-        "id": "12pumojrosuc1",
-        "text": "Przygotowanie"
-      },
-      {
-        "id": "snozxk27msm6",
-        "text": "Razem robimy to po swojemu."
       },
       {
         "id": "maljp0f80zuo",
@@ -1789,6 +1934,10 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
         "text": "WIEMY, CZYM KARMIMY"
       },
       {
+        "id": "19m80ctcahmvr",
+        "text": "Z naszego stołu"
+      },
+      {
         "id": "kuln40yd3dvc",
         "text": "Z tego powstała Zdrowotnia."
       },
@@ -1807,10 +1956,6 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
       {
         "id": "cwhevzita8pp",
         "text": "Zamiast opowiadać legendę, wolimy pokazać, jak naprawdę robimy swoje produkty."
-      },
-      {
-        "id": "f635hi11aeuhs",
-        "text": "Zdrowotnia jest dla mnie naturalnym przedłużeniem tego myślenia."
       },
       {
         "id": "w0nik71y3glwn",

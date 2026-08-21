@@ -148,6 +148,12 @@ export const PAGE_IMAGE_REGISTRY: Record<string, PageImageGroup> = {
       { key: "vinegar/try.jpg", label: "vinegar try", src: a44, usedIn: ["VinegarLanding.tsx"] },
     ],
   },
+  bread: {
+    label: "Chleb żytni",
+    images: [
+      { key: "product-bread.jpg", label: "product bread", src: a6.url, usedIn: ["BreadLanding.tsx"] },
+    ],
+  },
   kombucha: {
     label: "Kombucha",
     images: [

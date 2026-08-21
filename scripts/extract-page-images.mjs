@@ -7,6 +7,7 @@ const PAGES = [
   { key: "about", label: "O nas", dirs: ["src/components/about"] },
   { key: "quail", label: "Jaja przepiórcze", dirs: ["src/components/quail"] },
   { key: "vinegar", label: "Ocet jabłkowy", dirs: ["src/components/vinegar"] },
+  { key: "bread", label: "Chleb żytni", dirs: ["src/components/bread"] },
   { key: "kombucha", label: "Kombucha", dirs: ["src/components/kombucha"] },
 ];
 
