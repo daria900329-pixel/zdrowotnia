@@ -89,20 +89,68 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
         ]
       },
       {
-        "id": "1ejqv4l1febnq3",
-        "label": "Dzisiaj w Zdrowotni",
+        "id": "13ytdd1i7o5lf",
+        "label": "Dzisiaj w Zdrowotni — Lewa kolumna",
         "texts": [
           {
-            "id": "1y58vjp1y62fbv",
-            "text": "dzisiaj dostępne"
+            "id": "21jngb1ibpwgr",
+            "text": "bez magazynu. i dobrze."
           },
           {
-            "id": "1al48f6zcwry",
-            "text": "Dzisiaj w Zdrowotni."
+            "id": "syreg5147toh3",
+            "text": "Nie wszystko czeka na półce."
           },
           {
-            "id": "o494hi6zepl0",
-            "text": "Nie jesteśmy magazynem. Nie wszystko mamy zawsze. I właśnie tak ma być."
+            "id": "cph8qbeapcqj",
+            "text": "Zdrowotnia działa trochę inaczej niż zwykły sklep. Nie produkujemy na zapas tylko po to, żeby wszystko przez cały czas miało zieloną kropkę «dostępne»."
+          },
+          {
+            "id": "151aiz6nutk1m",
+            "text": "Chleb pieczemy. Kombuchę i ocet fermentujemy. Jajka zbieramy. A część rzeczy powstaje wtedy, kiedy natura i czas mówią, że są gotowe."
+          },
+          {
+            "id": "1n9bfknp5sotf",
+            "text": "I właśnie dlatego nie zawsze wszystko mamy od ręki."
+          }
+        ]
+      },
+      {
+        "id": "1bt7v2ly7q3s3",
+        "label": "Dzisiaj w Zdrowotni — Prawa kolumna",
+        "texts": [
+          {
+            "id": "1on72xqoa8pe4",
+            "text": "Ty wybierasz"
+          },
+          {
+            "id": "x2y4n33ehy67",
+            "text": "Zamawiasz po prostu to, na co masz ochotę."
+          },
+          {
+            "id": "brovhnoun4kl",
+            "text": "My sprawdzamy"
+          },
+          {
+            "id": "y2rnjj15yn9cv",
+            "text": "Jeśli wszystko mamy — działamy. Jeśli czegoś akurat zabrakło, odezwiemy się do Ciebie."
+          },
+          {
+            "id": "1mrdrfwx3wbz4",
+            "text": "Ustalamy termin"
+          },
+          {
+            "id": "wqj4ih11j8byr",
+            "text": "Powiesz nam, czy chcesz poczekać, odebrać resztę wcześniej czy ustalić inny dogodny termin."
+          }
+        ]
+      },
+      {
+        "id": "wu7dmmf74y3w",
+        "label": "Dzisiaj w Zdrowotni — Finał sekcji",
+        "texts": [
+          {
+            "id": "ujs1mv1mw2hph",
+            "text": "Dobre jedzenie czasem wymaga chwili. Nie poganiamy go."
           }
         ]
       },
@@ -233,14 +281,6 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
         "label": "Galeria",
         "texts": [
           {
-            "id": "1svaket192xt65",
-            "text": "Zdrowotnia od kuchni."
-          },
-          {
-            "id": "1quqmbl1692yub",
-            "text": "Bez studia. Bez udawania. Tak to naprawdę wygląda."
-          },
-          {
             "id": "fyfud5rv7qmj",
             "text": "Nasze przepiórki"
           },
@@ -283,6 +323,14 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "qd88hh1qhwo6f",
             "text": "Nasz stół"
+          },
+          {
+            "id": "1svaket192xt65",
+            "text": "Zdrowotnia od kuchni."
+          },
+          {
+            "id": "1quqmbl1692yub",
+            "text": "Bez studia. Bez udawania. Tak to naprawdę wygląda."
           }
         ]
       },
@@ -2197,6 +2245,26 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
         ]
       },
       {
+        "id": "umt7qo1spl1wq",
+        "label": "Górny rząd",
+        "texts": [
+          {
+            "id": "1rz403819zq6tu",
+            "text": "TAK TO ROBIMY"
+          }
+        ]
+      },
+      {
+        "id": "5sn3xx13xl6qd",
+        "label": "Dolny rząd",
+        "texts": [
+          {
+            "id": "1x5nwix1jee27t",
+            "text": "Zobacz nasze produkty"
+          }
+        ]
+      },
+      {
         "id": "5i3f84173dh70",
         "label": "6. Dobre jedzenie",
         "texts": [
@@ -2419,8 +2487,8 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
         ]
       },
       {
-        "id": "13ok3zw1vf0go0",
-        "label": "13. Sekcja emocjonalna",
+        "id": "1gi7kn1l7wdpf",
+        "label": "13 + 14. Emocjonalny finał na jednym zdjęciu — dwie półki",
         "texts": [
           {
             "id": "1rft7tdrunxmb",
@@ -2441,13 +2509,7 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "d5vfq7e0exfb",
             "text": "I to jest wystarczający powód, żeby robić Zdrowotnię."
-          }
-        ]
-      },
-      {
-        "id": "q23zw11riqnzd",
-        "label": "14. Finał",
-        "texts": [
+          },
           {
             "id": "siri4e1d1m320",
             "text": "To jest nasza Zdrowotnia."
