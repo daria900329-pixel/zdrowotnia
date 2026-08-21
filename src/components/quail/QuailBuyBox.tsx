@@ -17,6 +17,7 @@ interface QuailBuyBoxProps {
   productId: string;
   productName: string;
   imageUrl: string | null;
+  note?: string;
 }
 
 const formatPrice = (amount: number) =>
