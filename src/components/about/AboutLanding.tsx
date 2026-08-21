@@ -11,11 +11,14 @@ import AboutGallery from "@/components/AboutGallery";
 import heroTable from "@/assets/home/hero-table.jpg";
 import handsEggs from "@/assets/home/hands-eggs.jpg";
 import kitchenCorner from "@/assets/home/kitchen-corner.jpg";
+import breadCut from "@/assets/home/bread-cut.jpg";
 import quails from "@/assets/quail/quails.jpg";
 import feedMix from "@/assets/quail/feed-mix.jpg";
 import freshEggs from "@/assets/quail/fresh-eggs.jpg";
 import kombuchaBrew from "@/assets/kombucha/step-brew.jpg";
 import vinegarApples from "@/assets/vinegar/apples.jpg";
+import vinegarFerment from "@/assets/vinegar/step-ferment.jpg";
+import rabbits from "@/assets/about/rabbits.jpg";
 import heroProducts from "@/assets/hero-products.jpg";
 import breadAsset from "@/assets/product-bread.jpg.asset.json";
 
@@ -97,13 +100,32 @@ export function AboutLanding() {
   }, []);
 
   const storyTitle = clean(content.story_title || "Nasza droga do Zdrowotni");
-  const storyHighlight = clean(content.story_highlight || "");
-  const storyParagraphs: string[] = [];
-  for (let i = 1; i <= 20; i++) {
-    const val = content[`story_paragraph${i}`];
-    if (val && clean(val)) storyParagraphs.push(clean(val));
-  }
-  if (storyParagraphs.length === 0) storyParagraphs.push(...DEFAULT_STORY);
+  const storyHighlight = clean(content.story_highlight || "Wierzymy, że dobre jedzenie łączy ludzi. Zapraszamy Cię do naszego stołu!");
+
+  const p1 = clean(content.story_paragraph1 || "Ona — dietetyk kliniczny z potrzebą karmienia bliskich tak, żeby jedzenie naprawdę służyło zdrowiu i regeneracji.");
+  const p2 = clean(content.story_paragraph2 || "On — człowiek ziemi, z sercem do rolnictwa i hodowli zwierząt, DJ, który puszcza muzykę naszym zwierzakom, a nie tylko na eventach.");
+
+  const p3 = clean(content.story_paragraph3 || "One — gromada naszych szkrabów, małych i dużych, blisko i daleko, ale najukochańszych na świecie. Nasze dzieci dorastają wśród zapachu chleba na zakwasie, dźwięków fermentującej kombuchy i zwierząt, które traktujemy z troską i uważnością.");
+  const [oneIntro, afterOne] = p3.split("Nasze dzieci").map((s) => s.trim());
+  const childrenQuote = afterOne ? `Nasze dzieci ${afterOne}` : "";
+
+  const p4 = clean(content.story_paragraph4 || "I a propos zwierząt. Dbamy o nie od pierwszych minut życia. Kurki inkubujemy sami w domu (tak, w domu), potem doglądamy ich w odchowalniku, więc od samego początku mamy realny wpływ na to, czym są karmione. Dzięki temu ich jaja są naturalnie bogate w omega-3, a żółtko to prawdziwe wsparcie dla naszego mózgu — bez kapsułek i obietnic z etykiety.");
+  const p4Highlight = "Dbamy o nie od pierwszych minut życia.";
+  const [p4BeforeHighlight, p4AfterHighlight] = p4.split(p4Highlight).map((s) => s.trim());
+
+  const p5 = clean(content.story_paragraph5 || "Tak samo króliki. Królicze mamy jedzą lepiej niż wielu z nas. I dokładnie to widać w jakości mięsa. Chleb pieczemy na żywym zakwasie, który ma już ponad 10 lat. Dodajemy do niego mnóstwo dobroci - siemię lniane (nasz polski superfood), pestki dyni, słonecznik i sól kłodawska, bez antyzbrylaczy czy innych dodatków.");
+  const [rabbitText, afterBread] = p5.split("Chleb pieczemy").map((s) => s.trim());
+  const breadText = afterBread ? `Chleb pieczemy ${afterBread}` : "";
+
+  const p6 = clean(content.story_paragraph6 || "Nasz przydomowy sad co roku obdarza nas obficie jabłkami, które nie znają oprysków. To z nich powstaje nasz ocet — żywy, naturalnie fermentowany, z matką octową. Kombucha i ocet… po prostu się rozkręciły — fermentacja zrobiła swoje, a my uznaliśmy, że szkoda byłoby się tym nie podzielić.");
+  const p6Highlight = "fermentacja zrobiła swoje";
+  const [p6BeforeHighlight, p6AfterHighlight] = p6.split(p6Highlight).map((s) => s.trim());
+
+  const p7 = clean(content.story_paragraph7 || "Nasze produkty powstają dokładnie tak, jak robiły to nasze babcie: bez pośpiechu, bez kombinowania, z sercem i z najlepszych składników. Robimy jedzenie, które sami chcemy mieć na stole.");
+  const [p7First, p7Rest] = p7.split("Robimy").map((s) => s.trim());
+  const p7RestSentence = p7Rest ? `Robimy ${p7Rest}` : "";
+
+  const p8 = clean(content.story_paragraph8 || "I jeśli pytasz: „gdzie trafisz lepiej?” — my naprawdę nie znamy lepszego miejsca.");
 
 
   const scrollTo = (id: string) => {
@@ -204,9 +226,18 @@ export function AboutLanding() {
       </section>
 
       {/* 4. NASZA DROGA DO ZDROWOTNI */}
-      <section className="py-24 md:py-32 bg-secondary/30">
+      <section id="nasza-droga" className="py-24 md:py-32 bg-secondary/30">
         <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+          {/* Header */}
+          <div className="max-w-4xl mb-16 md:mb-24 pt-16 md:pt-24">
+            <Eyebrow>My</Eyebrow>
+            <h2 className="font-serif text-4xl md:text-6xl text-foreground leading-tight">
+              {storyTitle}
+            </h2>
+          </div>
+
+          {/* Top: couple image + three short fragments */}
+          <div className="grid lg:grid-cols-[1.25fr_1fr] gap-12 lg:gap-20 items-start mb-24 md:mb-32">
             <ScrollReveal variant="fade-right">
               <div className="lg:sticky lg:top-32">
                 <img
@@ -218,22 +249,124 @@ export function AboutLanding() {
               </div>
             </ScrollReveal>
             <ScrollReveal variant="fade-left">
-              <Eyebrow>{t("My")}</Eyebrow>
-              <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-10">
-                {storyTitle}
-              </h2>
-              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
-                {storyParagraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
+              <div className="space-y-12 lg:pt-12">
+                <div className="flex gap-6 items-start">
+                  <span className="font-serif text-primary text-lg shrink-0 w-16">Ona</span>
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{p1}</p>
+                </div>
+                <div className="flex gap-6 items-start">
+                  <span className="font-serif text-primary text-lg shrink-0 w-16">On</span>
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{p2}</p>
+                </div>
+                <div className="flex gap-6 items-start">
+                  <span className="font-serif text-primary text-lg shrink-0 w-16">One</span>
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{oneIntro}</p>
+                </div>
               </div>
-              {storyHighlight && (
-                <p className="font-serif text-3xl md:text-4xl text-foreground leading-snug mt-12">
-                  {storyHighlight}
-                </p>
-              )}
             </ScrollReveal>
           </div>
+
+          {/* Full-width quote */}
+          <ScrollReveal variant="fade-up">
+            <div className="py-20 md:py-28 text-center max-w-5xl mx-auto">
+              <div className="w-px h-16 bg-primary/40 mx-auto mb-10" />
+              <p className="font-serif text-3xl md:text-5xl text-foreground leading-tight">
+                {childrenQuote}
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* Animals */}
+          <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20 items-start my-24 md:my-32">
+            <ScrollReveal variant="fade-right">
+              <img
+                src={quails}
+                alt="Nasze przepiórki w gospodarstwie"
+                className="w-full aspect-[4/5] object-cover rounded-sm"
+                loading="lazy"
+              />
+            </ScrollReveal>
+            <ScrollReveal variant="fade-left">
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                {p4BeforeHighlight}
+                <span className="block font-serif text-2xl md:text-3xl text-foreground leading-snug my-6">
+                  {p4Highlight}
+                </span>
+                {p4AfterHighlight}
+              </p>
+            </ScrollReveal>
+          </div>
+
+          {/* Rabbits */}
+          <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20 items-start my-24 md:my-32">
+            <ScrollReveal variant="fade-right">
+              <img
+                src={rabbits}
+                alt="Nasze króliki"
+                className="w-full aspect-[4/5] object-cover rounded-sm"
+                loading="lazy"
+              />
+            </ScrollReveal>
+            <ScrollReveal variant="fade-left">
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{rabbitText}</p>
+            </ScrollReveal>
+          </div>
+
+          {/* Bread */}
+          <div className="grid lg:grid-cols-[2fr_1fr] gap-12 lg:gap-20 items-start my-24 md:my-32">
+            <ScrollReveal variant="fade-right">
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{breadText}</p>
+            </ScrollReveal>
+            <ScrollReveal variant="fade-left">
+              <img
+                src={breadCut}
+                alt="Chleb na żywym zakwasie"
+                className="w-full aspect-[4/5] object-cover rounded-sm"
+                loading="lazy"
+              />
+            </ScrollReveal>
+          </div>
+
+          {/* Orchard / fermentation */}
+          <ScrollReveal variant="fade-up">
+            <div className="my-24 md:my-32">
+              <img
+                src={vinegarFerment}
+                alt="Jabłka podczas naturalnej fermentacji"
+                className="w-full aspect-[16/9] md:aspect-[21/9] object-cover rounded-sm mb-12 md:mb-16"
+                loading="lazy"
+              />
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-4xl mb-4">
+                {p6BeforeHighlight}
+              </p>
+              <p className="font-serif text-3xl md:text-4xl text-foreground leading-snug max-w-4xl mb-4">
+                {p6Highlight}
+                {p6AfterHighlight.startsWith(",") ? "," : ""}
+              </p>
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-4xl">
+                {p6AfterHighlight.replace(/^,\s*/, "")}
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* Final history */}
+          <ScrollReveal variant="fade-up">
+            <div className="my-24 md:my-32 max-w-4xl">
+              <p className="font-serif text-2xl md:text-4xl text-foreground leading-snug mb-8">
+                {p7First}
+              </p>
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
+                {p7RestSentence}
+              </p>
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-20">
+                {p8}
+              </p>
+              <div className="w-16 h-px bg-primary/40 mb-10" />
+              <p className="font-serif text-3xl md:text-5xl text-foreground leading-tight">
+                {storyHighlight}
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
