@@ -333,8 +333,8 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
     "preview": "/product/c04e492a-fe9f-461f-bc06-a5bb0539b58f",
     "sections": [
       {
-        "id": "116k99dr7ah8p",
-        "label": "QuailEggLanding",
+        "id": "1y2pglqzhhbqa",
+        "label": "Listy i wypunktowania",
         "texts": [
           {
             "id": "jeef01wontiv",
@@ -2083,8 +2083,8 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
     "preview": "/o-nas",
     "sections": [
       {
-        "id": "11x8jxywok5ae",
-        "label": "AboutLanding",
+        "id": "i6nx4pgcs6lj",
+        "label": "Listy i wypunktowania",
         "texts": [
           {
             "id": "1vof8t617k5bcs",
