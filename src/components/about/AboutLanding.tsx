@@ -221,7 +221,7 @@ export function AboutLanding() {
               <ul className="space-y-4">
                 {THINKING.map((line) => (
                   <li key={line} className="flex gap-4 text-lg text-muted-foreground leading-relaxed">
-                    <span className="text-primary mt-1">—</span>
+                    <span className="text-primary leading-relaxed">—</span>
                     <span>{t(line)}</span>
                   </li>
                 ))}
