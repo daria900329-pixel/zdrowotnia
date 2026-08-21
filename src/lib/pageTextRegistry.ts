@@ -1500,5 +1500,358 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
         "text": "Żywa."
       }
     ]
+  },
+  "about": {
+    "label": "O nas",
+    "texts": [
+      {
+        "id": "1urkhe011jrtbg",
+        "text": "A potem decyzja należy do Ciebie."
+      },
+      {
+        "id": "143ef78a81k6m",
+        "text": "Ale sposób, w jaki podchodzimy do jedzenia, nie jest przypadkowy."
+      },
+      {
+        "id": "whgffrj9z4q5",
+        "text": "Bo nie jesteśmy magazynem."
+      },
+      {
+        "id": "1mmiuqa8njbzm",
+        "text": "Bo zanim zapytamy, co dostajemy od zwierzęcia, najpierw pytamy, co sami mu dajemy."
+      },
+      {
+        "id": "1y9befrcfe2j",
+        "text": "Chcemy mieć wpływ na to, co jedzą nasze zwierzęta."
+      },
+      {
+        "id": "1rft7tdrunxmb",
+        "text": "Chcemy po prostu wiedzieć, co stawiamy na stole."
+      },
+      {
+        "id": "uj7l7a19ca5s4",
+        "text": "Chcemy pokazać Ci, jak to robimy."
+      },
+      {
+        "id": "11cw4n51rrt8ux",
+        "text": "Chleb"
+      },
+      {
+        "id": "1d9puzb1saaehz",
+        "text": "Co nas połączyło?"
+      },
+      {
+        "id": "mhjtbc1ro1dn4",
+        "text": "Codzienna kontrola."
+      },
+      {
+        "id": "1d3s9ah58vb45",
+        "text": "Czasem czegoś nie ma."
+      },
+      {
+        "id": "3fbzbq15buypq",
+        "text": "Czym karmimy."
+      },
+      {
+        "id": "ykodb6i0ef7k",
+        "text": "DAJEMY CZAS"
+      },
+      {
+        "id": "qmbqwq1bxsbwg",
+        "text": "Daria"
+      },
+      {
+        "id": "594li59bc20p",
+        "text": "dietetyk kliniczny"
+      },
+      {
+        "id": "ec7gd410hgyq8",
+        "text": "Dietetyka nauczyła mnie patrzeć na jedzenie nie tylko jak na smak, ale też jak na coś, co realnie wpływa na człowieka."
+      },
+      {
+        "id": "1qu4ltetynw9q",
+        "text": "Dla dzieci."
+      },
+      {
+        "id": "3dpl4a1deyioe",
+        "text": "Dla ludzi, którzy kupują od nas."
+      },
+      {
+        "id": "5008r91olxwj1",
+        "text": "Dla siebie."
+      },
+      {
+        "id": "nk5kar14c2e6j",
+        "text": "Dlaczego czasem coś wygląda inaczej."
+      },
+      {
+        "id": "pc0cyv1jzr3a9",
+        "text": "Dlatego w żywieniu naszych przepiórek stosujemy własną mieszankę bez pszenicy."
+      },
+      {
+        "id": "g18hk7tbfqhd",
+        "text": "Dobre jedzenie nie musi być skomplikowane."
+      },
+      {
+        "id": "c9j5p71asqm25",
+        "text": "Dużo pracy ręcznej."
+      },
+      {
+        "id": "yzvy7f12jwyhp",
+        "text": "Fermentacja, zakwas i naturalne procesy nie lubią pośpiechu."
+      },
+      {
+        "id": "4asa3q1nvzt5q",
+        "text": "I gdzieś pomiędzy tymi pytaniami powstaje Zdrowotnia."
+      },
+      {
+        "id": "yten451161e0f",
+        "text": "I nie będziemy udawać, że jesteśmy."
+      },
+      {
+        "id": "d5vfq7e0exfb",
+        "text": "I to jest wystarczający powód, żeby robić Zdrowotnię."
+      },
+      {
+        "id": "10nuorxuogipj",
+        "text": "I właśnie tak ma być."
+      },
+      {
+        "id": "skvgdlkijbiv",
+        "text": "Ile czekamy."
+      },
+      {
+        "id": "10wtcp21oo8jhw",
+        "text": "Jajka"
+      },
+      {
+        "id": "1gyhso21ygrez0",
+        "text": "Jak przygotowujemy."
+      },
+      {
+        "id": "1430xc7oojwwj",
+        "text": "Jedno z nas częściej pyta „co będzie lepsze dla człowieka?”. Drugie „jak zrobić to dobrze w praktyce?”."
+      },
+      {
+        "id": "180di3jtu7pgl",
+        "text": "Jeśli czegoś nie wiemy – wolimy to powiedzieć niż wymyślić ładną historię."
+      },
+      {
+        "id": "n2p2ii1o8rank",
+        "text": "Karmienie"
+      },
+      {
+        "id": "1cdd64vk81nxb",
+        "text": "Kolor, wielkość, osad czy struktura mogą się różnić."
+      },
+      {
+        "id": "1gmwmdn1p98ver",
+        "text": "Kombuchę"
+      },
+      {
+        "id": "1s5k22uxtfxsm",
+        "text": "Kuchnia"
+      },
+      {
+        "id": "1l6jf0p1k4fcw5",
+        "text": "Małe partie."
+      },
+      {
+        "id": "1qpxaybeciq4j",
+        "text": "Małe stada."
+      },
+      {
+        "id": "l1w0j7h9irrz",
+        "text": "My"
+      },
+      {
+        "id": "1refvxize2smw",
+        "text": "Nasze zasady są dość proste."
+      },
+      {
+        "id": "npz7os1wamsu",
+        "text": "Nie chcemy przekonywać Cię, że wszystko u nas jest „najzdrowsze”."
+      },
+      {
+        "id": "lr9wad1l1a43l",
+        "text": "Nie chcemy robić więcej. Chcemy robić lepiej."
+      },
+      {
+        "id": "5ubbtc1ykjuw8",
+        "text": "Nie chowamy tego, jak powstaje produkt."
+      },
+      {
+        "id": "my2bubufb9j",
+        "text": "Nie idealna."
+      },
+      {
+        "id": "1f4jc2ico2ft2",
+        "text": "Nie jesteśmy gospodarstwem z historią od 1927 roku."
+      },
+      {
+        "id": "1ajergszvbts0",
+        "text": "Nie przemysłowa."
+      },
+      {
+        "id": "5k5moktrsvsu",
+        "text": "Nie przyspieszamy procesu tylko po to, żeby szybciej sprzedać."
+      },
+      {
+        "id": "1o8w5os1jrvezi",
+        "text": "Nie sprzedajemy czegoś, czego sami nie chcielibyśmy zjeść."
+      },
+      {
+        "id": "1y8zprs1ndq27w",
+        "text": "NIE UDAJEMY IDEALNOŚCI"
+      },
+      {
+        "id": "1p6nhmpnu6c9n",
+        "text": "Nie udajemy, że natura produkuje identyczne rzeczy."
+      },
+      {
+        "id": "lcr5llaeyhq1",
+        "text": "Nie wszystko wygląda jak sesja produktowa. I bardzo dobrze."
+      },
+      {
+        "id": "1ai8tas1jfku1o",
+        "text": "Nie z historią wymyśloną na potrzeby marketingu."
+      },
+      {
+        "id": "1ft6yrg10louza",
+        "text": "O nas"
+      },
+      {
+        "id": "17dptsmqirdeg",
+        "text": "Ocet"
+      },
+      {
+        "id": "14o5wng1sqszaq",
+        "text": "Pakowanie"
+      },
+      {
+        "id": "1h5izll61ksdz",
+        "text": "Połączył nas sposób myślenia."
+      },
+      {
+        "id": "ozb23z1uv8m1t",
+        "text": "potrzebuje czasu."
+      },
+      {
+        "id": "1m1vmg31xn2iy7",
+        "text": "Poznaj nas bliżej"
+      },
+      {
+        "id": "suhlxunng4nu",
+        "text": "Poznaj nasze produkty"
+      },
+      {
+        "id": "1mfpyn55ijf33",
+        "text": "przefermentować."
+      },
+      {
+        "id": "bmwlhd2btx1r",
+        "text": "Przez lata interesowało mnie nie tylko „co jeść”, ale też skąd ten produkt pochodzi, jak został przygotowany i co wydarzyło się wcześniej."
+      },
+      {
+        "id": "12pumojrosuc1",
+        "text": "Przygotowanie"
+      },
+      {
+        "id": "snozxk27msm6",
+        "text": "Razem robimy to po swojemu."
+      },
+      {
+        "id": "maljp0f80zuo",
+        "text": "ROBIMY TO, CO SAMI CHCEMY JEŚĆ"
+      },
+      {
+        "id": "2hotg4io6c46",
+        "text": "Skala nie jest naszym celem. Jakość jest."
+      },
+      {
+        "id": "siri4e1d1m320",
+        "text": "To jest nasza Zdrowotnia."
+      },
+      {
+        "id": "15j0ix21946m62",
+        "text": "To najprostszy filtr jakości."
+      },
+      {
+        "id": "1ba6eku1otmkvq",
+        "text": "trzeba zebrać."
+      },
+      {
+        "id": "58ns73olpcft",
+        "text": "upiec."
+      },
+      {
+        "id": "df0317s2zf3f",
+        "text": "WIEMY, CZYM KARMIMY"
+      },
+      {
+        "id": "kuln40yd3dvc",
+        "text": "Z tego powstała Zdrowotnia."
+      },
+      {
+        "id": "4zq1h0kxi9yu",
+        "text": "Za to prawdziwa."
+      },
+      {
+        "id": "1sx2e93n6sihp",
+        "text": "Zaczęliśmy od tego, czym karmimy."
+      },
+      {
+        "id": "1arsrk81uusla6",
+        "text": "Zaczęła się od prostego pytania: czy da się robić jedzenie tak, żeby naprawdę wiedzieć, skąd pochodzi i co do niego trafia?"
+      },
+      {
+        "id": "cwhevzita8pp",
+        "text": "Zamiast opowiadać legendę, wolimy pokazać, jak naprawdę robimy swoje produkty."
+      },
+      {
+        "id": "f635hi11aeuhs",
+        "text": "Zdrowotnia jest dla mnie naturalnym przedłużeniem tego myślenia."
+      },
+      {
+        "id": "w0nik71y3glwn",
+        "text": "Zdrowotnia jest młoda."
+      },
+      {
+        "id": "ok21in12wkz6d",
+        "text": "Zdrowotnia nie zaczęła się od biznesplanu."
+      },
+      {
+        "id": "1svaket192xt65",
+        "text": "Zdrowotnia od kuchni."
+      },
+      {
+        "id": "nec1cm1yml0sw",
+        "text": "Zobacz, co dziś mamy"
+      },
+      {
+        "id": "1fxio311v075ux",
+        "text": "Że dobry produkt nie potrzebuje dwudziestu składników."
+      },
+      {
+        "id": "1t6r7hfo67xl3",
+        "text": "Że fermentacji nie trzeba poganiać."
+      },
+      {
+        "id": "17uk8os768zu8",
+        "text": "Że jedzenie może być proste i naprawdę dobre."
+      },
+      {
+        "id": "1vfr2tc1ihjkv2",
+        "text": "Że sposób karmienia zwierzęcia ma znaczenie."
+      },
+      {
+        "id": "1uztdj2bg9rca",
+        "text": "Że warto wiedzieć, co się je."
+      },
+      {
+        "id": "cebqf4mi2wee",
+        "text": "Żywienie"
+      }
+    ]
   }
 };
