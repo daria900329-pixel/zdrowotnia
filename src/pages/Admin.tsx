@@ -290,6 +290,8 @@ const Admin = () => {
             <TabsTrigger value="products"><Package className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Produkty</span></TabsTrigger>
             <TabsTrigger value="content"><FileText className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Treści</span></TabsTrigger>
             <TabsTrigger value="page_texts"><FileText className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Teksty stron</span></TabsTrigger>
+            <TabsTrigger value="page_images"><ImageIcon className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Zdjęcia stron</span></TabsTrigger>
+
             <TabsTrigger value="blog"><BookOpen className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Blog</span></TabsTrigger>
             <TabsTrigger value="emails"><Mail className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Maile</span></TabsTrigger>
             <TabsTrigger value="orders"><Package className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Zamówienia</span></TabsTrigger>
