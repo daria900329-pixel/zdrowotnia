@@ -64,6 +64,20 @@ const Eyebrow = ({ children }: { children: React.ReactNode }) => (
   </p>
 );
 
+const DashedText = ({ text, className }: { text: string; className?: string }) => {
+  const nodes: ReactNode[] = [];
+  const regex = /(?<=\s|^)([—–-])(?=\s|$)/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  while ((match = regex.exec(text)) !== null) {
+    nodes.push(text.slice(lastIndex, match.index));
+    nodes.push(<span key={match.index} className="relative -top-[0.05em]">—</span>);
+    lastIndex = match.index + match[0].length;
+  }
+  nodes.push(text.slice(lastIndex));
+  return <span className={className}>{nodes}</span>;
+};
+
 const DEFAULT_STORY = [
   "Ona — dietetyk kliniczny z potrzebą karmienia bliskich tak, żeby jedzenie naprawdę służyło zdrowiu i regeneracji.",
   "On — człowiek ziemi, z sercem do rolnictwa i hodowli zwierząt.",
