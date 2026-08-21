@@ -1,3 +1,5 @@
+import { t } from "@/lib/pageText";
+import { usePageText } from "@/hooks/usePageText";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SEO, productJsonLd, breadcrumbJsonLd } from "@/components/SEO";
@@ -132,6 +134,7 @@ const Eyebrow = ({ children }: { children: React.ReactNode }) => (
 );
 
 export function QuailEggLanding({ product }: { product: QuailProduct }) {
+  usePageText("quail");
   const heroImage = product.image_url ?? freshEggs;
 
   return (
@@ -162,25 +165,24 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
               className="inline-flex items-center text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5 mr-2" />
-              Produkty
+              {t("Produkty")}
             </Link>
           </div>
 
           <div className="grid lg:grid-cols-2 items-center">
             <div className="px-6 md:px-10 lg:px-16 order-2 lg:order-1 py-12 lg:py-20 max-w-2xl">
-              <Eyebrow>Zdrowotnia — z naszego chowu</Eyebrow>
+              <Eyebrow>{t("Zdrowotnia — z naszego chowu")}</Eyebrow>
               <h1 className="font-serif text-[2.6rem] leading-[1.02] sm:text-6xl lg:text-7xl xl:text-[5.2rem] text-foreground mb-8 break-words">
-                Małe jajko.
-                <span className="block text-primary">Ogromnie dużo dobrego.</span>
+                {t("Małe jajko.")}
+                <span className="block text-primary">{t("Ogromnie dużo dobrego.")}</span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl mb-8">
-                Jaja przepiórcze z naszego rodzinnego chowu, od ptaków karmionych autorską
-                mieszanką bez pszenicy.
+                {t("Jaja przepiórcze z naszego rodzinnego chowu, od ptaków karmionych autorską mieszanką bez pszenicy.")}
               </p>
               <p className="text-[0.7rem] sm:text-xs tracking-[0.2em] uppercase text-foreground/70 mb-10 leading-relaxed">
-                pełnowartościowe białko <span className="text-primary">·</span> żelazo{" "}
+                {t("pełnowartościowe białko")} <span className="text-primary">·</span> żelazo{" "}
                 <span className="text-primary">·</span> witaminy z grupy B{" "}
-                <span className="text-primary">·</span> naturalne składniki
+                <span className="text-primary">·</span> {t("naturalne składniki")}
               </p>
 
               <div className="h-px w-16 bg-primary/50 mb-10" />
@@ -207,12 +209,12 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
           <div className="max-w-6xl mx-auto">
             <ScrollReveal>
               <div className="text-center max-w-2xl mx-auto mb-10 md:mb-4">
-                <Eyebrow>Skład</Eyebrow>
+                <Eyebrow>{t("Skład")}</Eyebrow>
                 <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.25rem] text-foreground mb-4 break-words">
-                  Co mieści się w tak małym jajku?
+                  {t("Co mieści się w tak małym jajku?")}
                 </h2>
                 <p className="text-muted-foreground text-base">
-                  Natura potrafi zamknąć zaskakująco dużo w kilkunastu gramach.
+                  {t("Natura potrafi zamknąć zaskakująco dużo w kilkunastu gramach.")}
                 </p>
               </div>
             </ScrollReveal>
@@ -272,9 +274,9 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
                     }}
                   >
                     <h3 className="text-[0.68rem] tracking-[0.22em] uppercase text-foreground mb-2">
-                      {n.label}
+                      {t(n.label)}
                     </h3>
-                    <p className="text-[0.8rem] text-muted-foreground leading-relaxed">{n.text}</p>
+                    <p className="text-[0.8rem] text-muted-foreground leading-relaxed">{t(n.text)}</p>
                   </div>
                 ))}
               </div>
@@ -296,17 +298,16 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
                 {[...NUTRIENTS_LEFT, ...NUTRIENTS_RIGHT].map((n, i) => (
                   <ScrollReveal key={n.label} delay={i * 60}>
                     <h3 className="text-[0.7rem] tracking-[0.25em] uppercase text-foreground mb-2">
-                      {n.label}
+                      {t(n.label)}
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{n.text}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{t(n.text)}</p>
                   </ScrollReveal>
                 ))}
               </div>
             </div>
 
             <p className="text-xs text-muted-foreground/80 max-w-2xl mx-auto text-center mt-14 md:mt-16 leading-relaxed">
-              Jajo to nie pojedynczy wyizolowany składnik. To naturalna matryca białek, tłuszczów,
-              witamin i składników mineralnych.
+              {t("Jajo to nie pojedynczy wyizolowany składnik. To naturalna matryca białek, tłuszczów, witamin i składników mineralnych.")}
             </p>
           </div>
         </section>
@@ -316,15 +317,12 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
         <section className="grid lg:grid-cols-2 items-stretch">
           <div className="order-2 lg:order-1 px-6 md:px-10 lg:px-16 py-20 lg:py-32 flex items-center">
             <div className="max-w-xl">
-              <Eyebrow>Biologia</Eyebrow>
+              <Eyebrow>{t("Biologia")}</Eyebrow>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground mb-8 leading-tight">
-                Jajko to znacznie więcej niż białko i kalorie.
+                {t("Jajko to znacznie więcej niż białko i kalorie.")}
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Jajo powstaje po to, aby dostarczyć rozwijającemu się organizmowi kompletu
-                substancji potrzebnych do wzrostu. Dlatego poza podstawowymi składnikami
-                odżywczymi zawiera również naturalnie występujące białka, enzymy oraz inne związki
-                o aktywności biologicznej.
+                {t("Jajo powstaje po to, aby dostarczyć rozwijającemu się organizmowi kompletu substancji potrzebnych do wzrostu. Dlatego poza podstawowymi składnikami odżywczymi zawiera również naturalnie występujące białka, enzymy oraz inne związki o aktywności biologicznej.")}
               </p>
             </div>
           </div>
@@ -344,47 +342,43 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
           <div className="max-w-4xl mx-auto">
             <ScrollReveal>
               <p className="text-[0.65rem] sm:text-xs tracking-[0.35em] uppercase opacity-60 mb-6">
-                Badania
+                {t("Badania")}
               </p>
               <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl mb-6 leading-tight">
-                Jajko, którym zainteresowali się naukowcy.
+                {t("Jajko, którym zainteresowali się naukowcy.")}
               </h2>
               <p className="font-handwritten text-2xl opacity-80 mb-12">
-                I tu robi się naprawdę ciekawie.
+                {t("I tu robi się naprawdę ciekawie.")}
               </p>
             </ScrollReveal>
 
             <div className="space-y-6 text-lg leading-relaxed opacity-90 max-w-3xl">
               <p>
-                Bioaktywne składniki pochodzące z jaj przepiórczych były przedmiotem badań
-                dotyczących objawów alergicznego nieżytu nosa.
+                {t("Bioaktywne składniki pochodzące z jaj przepiórczych były przedmiotem badań dotyczących objawów alergicznego nieżytu nosa.")}
               </p>
               <p>
-                W badaniach klinicznych oceniano specjalnie przygotowane preparaty na bazie jaj
-                przepiórczych, w części badań łączone z cynkiem.
+                {t("W badaniach klinicznych oceniano specjalnie przygotowane preparaty na bazie jaj przepiórczych, w części badań łączone z cynkiem.")}
               </p>
               <p className="text-sm tracking-[0.15em] uppercase opacity-70 pt-4">
-                kichanie · świąd nosa · wodnisty katar · uczucie zatkania nosa · objawy ze strony oczu
+                {t("kichanie · świąd nosa · wodnisty katar · uczucie zatkania nosa · objawy ze strony oczu")}
               </p>
             </div>
 
             <div className="mt-16 border-t border-earth-foreground/25 pt-12 max-w-3xl">
               <p className="font-serif text-2xl sm:text-3xl mb-6">
-                To nie znaczy, że jajko jest lekiem.
+                {t("To nie znaczy, że jajko jest lekiem.")}
               </p>
               <p className="opacity-80 leading-relaxed mb-6">
-                Badania dotyczyły konkretnych preparatów i nie pozwalają powiedzieć, że zwykłe
-                spożywanie jaj przepiórczych leczy alergię.
+                {t("Badania dotyczyły konkretnych preparatów i nie pozwalają powiedzieć, że zwykłe spożywanie jaj przepiórczych leczy alergię.")}
               </p>
               <p className="opacity-80 leading-relaxed">
-                Pokazują jednak coś fascynującego: jajo przepiórcze jest czymś znacznie bardziej
-                biologicznie złożonym niż tylko źródłem kalorii i białka.
+                {t("Pokazują jednak coś fascynującego: jajo przepiórcze jest czymś znacznie bardziej biologicznie złożonym niż tylko źródłem kalorii i białka.")}
               </p>
               <a
                 href="#zrodla"
                 className="inline-block mt-10 text-xs tracking-[0.25em] uppercase border-b border-earth-foreground/40 pb-1 hover:border-earth-foreground transition-colors"
               >
-                Zobacz źródła naukowe ↓
+                {t("Zobacz źródła naukowe ↓")}
               </a>
             </div>
           </div>
@@ -403,22 +397,19 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
             </ScrollReveal>
             <ScrollReveal delay={100}>
               <div>
-                <Eyebrow>W dziecięcym menu</Eyebrow>
+                <Eyebrow>{t("W dziecięcym menu")}</Eyebrow>
                 <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground mb-8 leading-tight">
-                  Mały format. Wielkie możliwości w dziecięcym menu.
+                  {t("Mały format. Wielkie możliwości w dziecięcym menu.")}
                 </h2>
                 <div className="space-y-5 text-muted-foreground leading-relaxed">
                   <p>
-                    Dzieci nie potrzebują „superfoods". Potrzebują prawdziwego, odżywczego
-                    jedzenia.
+                    {t("Dzieci nie potrzebują „superfoods\". Potrzebują prawdziwego, odżywczego jedzenia.")}
                   </p>
                   <p>
-                    Jaja przepiórcze mogą być ciekawym elementem urozmaiconej diety dziecka —
-                    dostarczają m.in. pełnowartościowego białka, żelaza, fosforu, cynku, selenu i
-                    witamin.
+                    {t("Jaja przepiórcze mogą być ciekawym elementem urozmaiconej diety dziecka — dostarczają m.in. pełnowartościowego białka, żelaza, fosforu, cynku, selenu i witamin.")}
                   </p>
                   <p className="text-foreground">
-                    A ich maleńki format ma jeszcze jedną zaletę: dzieci zwyczajnie je uwielbiają.
+                    {t("A ich maleńki format ma jeszcze jedną zaletę: dzieci zwyczajnie je uwielbiają.")}
                   </p>
                 </div>
               </div>
@@ -439,15 +430,14 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
                   className="w-full aspect-[3/4] object-cover mb-3"
                 />
                 <p className="text-[0.65rem] sm:text-xs tracking-[0.2em] uppercase text-muted-foreground">
-                  {item.label}
+                  {t(item.label)}
                 </p>
               </ScrollReveal>
             ))}
           </div>
 
           <p className="max-w-3xl mx-auto text-sm text-muted-foreground/90 mt-14 border-l-2 border-primary/40 pl-5 leading-relaxed">
-            Przy rozpoznanej alergii na jaja wprowadzanie jaj innych gatunków należy omówić z
-            lekarzem lub dietetykiem.
+            {t("Przy rozpoznanej alergii na jaja wprowadzanie jaj innych gatunków należy omówić z lekarzem lub dietetykiem.")}
           </p>
         </section>
 
@@ -456,8 +446,8 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
           <div className="max-w-5xl mx-auto">
             <ScrollReveal>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground mb-16 leading-tight max-w-3xl">
-                Dla dzieci. Dla dorosłych. Dla seniorów.
-                <span className="block text-muted-foreground">Po prostu — dla człowieka.</span>
+                {t("Dla dzieci. Dla dorosłych. Dla seniorów.")}
+                <span className="block text-muted-foreground">{t("Po prostu — dla człowieka.")}</span>
               </h2>
             </ScrollReveal>
 
@@ -466,9 +456,9 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
                 <ScrollReveal key={a.label} delay={i * 80}>
                   <div className="py-8 grid sm:grid-cols-[220px_1fr] gap-3 sm:gap-10 items-baseline">
                     <h3 className="text-xs tracking-[0.25em] uppercase text-foreground">
-                      {a.label}
+                      {t(a.label)}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed">{a.text}</p>
+                    <p className="text-muted-foreground leading-relaxed">{t(a.text)}</p>
                   </div>
                 </ScrollReveal>
               ))}
@@ -477,11 +467,11 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
             <ScrollReveal>
               <div className="pt-16">
                 <h3 className="text-xs tracking-[0.25em] uppercase text-foreground mb-6">
-                  Każdy, kto chce jeść lepiej
+                  {t("Każdy, kto chce jeść lepiej")}
                 </h3>
                 <p className="font-serif text-2xl sm:text-4xl lg:text-[2.75rem] leading-snug text-foreground max-w-4xl">
-                  bo wartościowa dieta nie musi zaczynać się od suplementu.
-                  <span className="text-primary"> Może zacząć się od jedzenia.</span>
+                  {t("bo wartościowa dieta nie musi zaczynać się od suplementu.")}
+                  <span className="text-primary"> {t("Może zacząć się od jedzenia.")}</span>
                 </p>
               </div>
             </ScrollReveal>
@@ -500,10 +490,10 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
             <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 px-6 md:px-10 lg:px-16 pb-12 lg:pb-20">
               <p className="text-[0.65rem] sm:text-xs tracking-[0.35em] uppercase text-background/70 mb-4">
-                Ale dla nas liczy się nie tylko to, co jest w jajku
+                {t("Ale dla nas liczy się nie tylko to, co jest w jajku")}
               </p>
               <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-background max-w-3xl leading-tight">
-                Wiemy, skąd pochodzi każde nasze jajko.
+                {t("Wiemy, skąd pochodzi każde nasze jajko.")}
               </h2>
             </div>
           </div>
@@ -514,9 +504,9 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
                 <ScrollReveal key={p.label} delay={i * 80}>
                   <div className="border-t border-border pt-6">
                     <h3 className="text-xs tracking-[0.25em] uppercase text-foreground mb-4">
-                      {p.label}
+                      {t(p.label)}
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{p.text}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{t(p.text)}</p>
                   </div>
                 </ScrollReveal>
               ))}
@@ -537,12 +527,11 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
             </ScrollReveal>
             <ScrollReveal delay={120}>
               <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-foreground leading-[1.15] mb-12">
-                Nie chcieliśmy produkować więcej.
-                <span className="block text-primary">Chcieliśmy produkować lepiej.</span>
+                {t("Nie chcieliśmy produkować więcej.")}
+                <span className="block text-primary">{t("Chcieliśmy produkować lepiej.")}</span>
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-                Dlatego w Zdrowotni najpierw pytamy, czym nakarmimy zwierzę. Dopiero później — co
-                otrzymamy od niego dla siebie.
+                {t("Dlatego w Zdrowotni najpierw pytamy, czym nakarmimy zwierzę. Dopiero później — co otrzymamy od niego dla siebie.")}
               </p>
             </ScrollReveal>
           </div>
@@ -552,9 +541,9 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
         <section className="section-padding bg-secondary/40">
           <div className="max-w-6xl mx-auto">
             <ScrollReveal>
-              <Eyebrow>W kuchni</Eyebrow>
+              <Eyebrow>{t("W kuchni")}</Eyebrow>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground mb-14">
-                Jedno jajko. Mnóstwo pomysłów.
+                {t("Jedno jajko. Mnóstwo pomysłów.")}
               </h2>
             </ScrollReveal>
             <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
@@ -567,7 +556,7 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
                     className="w-full aspect-[3/4] object-cover mb-3"
                   />
                   <p className="text-[0.65rem] sm:text-xs tracking-[0.2em] uppercase text-muted-foreground">
-                    {item.label}
+                    {t(item.label)}
                   </p>
                 </ScrollReveal>
               ))}
@@ -587,10 +576,10 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
               />
               <div className="grid md:grid-cols-2 gap-8 items-end">
                 <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground">
-                  Małe naprawdę znaczy małe.
+                  {t("Małe naprawdę znaczy małe.")}
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Jedno jajko przepiórcze waży przeciętnie około 10–12 g.
+                  {t("Jedno jajko przepiórcze waży przeciętnie około 10–12 g.")}
                 </p>
               </div>
             </ScrollReveal>
@@ -602,7 +591,7 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
           <div className="max-w-6xl mx-auto">
             <ScrollReveal>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground mb-14">
-                Od naszej przepiórki do Twojego stołu
+                {t("Od naszej przepiórki do Twojego stołu")}
               </h2>
             </ScrollReveal>
             <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
@@ -618,7 +607,7 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
                     <span className="text-[0.65rem] tracking-[0.25em] uppercase text-primary">
                       0{i + 1}
                     </span>
-                    <p className="text-sm text-foreground mt-1">{step.label}</p>
+                    <p className="text-sm text-foreground mt-1">{t(step.label)}</p>
                   </div>
                 </ScrollReveal>
               ))}
@@ -632,33 +621,29 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
             <Accordion type="single" collapsible>
               <AccordionItem value="sources" className="border-t border-b border-border">
                 <AccordionTrigger className="text-xs sm:text-sm tracking-[0.25em] uppercase py-8 hover:no-underline">
-                  Na czym opieramy informacje?
+                  {t("Na czym opieramy informacje?")}
                 </AccordionTrigger>
                 <AccordionContent className="pb-10">
                   <div className="space-y-8 text-sm text-muted-foreground leading-relaxed">
                     <div>
                       <h3 className="text-xs tracking-[0.2em] uppercase text-foreground mb-2">
-                        Wartość odżywcza i skład jaj przepiórczych
+                        {t("Wartość odżywcza i skład jaj przepiórczych")}
                       </h3>
                       <p>
-                        Tabele składu i wartości odżywczej żywności (m.in. baza USDA FoodData
-                        Central, pozycja „Egg, quail, whole, fresh, raw") oraz opracowania
-                        przeglądowe dotyczące składu jaj ptaków hodowlanych.
+                        {t("Tabele składu i wartości odżywczej żywności (m.in. baza USDA FoodData Central, pozycja „Egg, quail, whole, fresh, raw\") oraz opracowania przeglądowe dotyczące składu jaj ptaków hodowlanych.")}
                       </p>
                     </div>
                     <div>
                       <h3 className="text-xs tracking-[0.2em] uppercase text-foreground mb-2">
-                        Bioaktywne białka jaj
+                        {t("Bioaktywne białka jaj")}
                       </h3>
                       <p>
-                        Prace przeglądowe dotyczące białek jaja i ich aktywności biologicznej, m.in.
-                        Kovacs-Nolan J., Phillips M., Mine Y., „Advances in the value of eggs and egg
-                        components for human health", Journal of Agricultural and Food Chemistry.
+                        {t("Prace przeglądowe dotyczące białek jaja i ich aktywności biologicznej, m.in. Kovacs-Nolan J., Phillips M., Mine Y., „Advances in the value of eggs and egg components for human health\", Journal of Agricultural and Food Chemistry.")}
                       </p>
                     </div>
                     <div>
                       <h3 className="text-xs tracking-[0.2em] uppercase text-foreground mb-2">
-                        Preparaty na bazie jaj przepiórczych a alergiczny nieżyt nosa
+                        {t("Preparaty na bazie jaj przepiórczych a alergiczny nieżyt nosa")}
                       </h3>
                       <p>
                         Badania kliniczne oceniające standaryzowane preparaty z jaj przepiórczych
@@ -669,8 +654,7 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
                       </p>
                     </div>
                     <p className="text-xs text-muted-foreground/80 pt-2">
-                      Informacje mają charakter edukacyjny i nie zastępują porady lekarza ani
-                      dietetyka.
+                      {t("Informacje mają charakter edukacyjny i nie zastępują porady lekarza ani dietetyka.")}
                     </p>
                   </div>
                 </AccordionContent>
@@ -692,11 +676,11 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
           <div className="px-6 md:px-10 lg:px-16 py-16 lg:py-24">
             <div className="max-w-xl">
               <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-foreground mb-6 leading-[1.05]">
-                Małe jajko.
-                <span className="block text-primary">Dobry wybór.</span>
+                {t("Małe jajko.")}
+                <span className="block text-primary">{t("Dobry wybór.")}</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-10">
-                Od naszych przepiórek. Dla Twojej rodziny.
+                {t("Od naszych przepiórek. Dla Twojej rodziny.")}
               </p>
 
               <QuailBuyBox
@@ -706,14 +690,14 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
               />
 
               <div className="mt-10 pt-8 border-t border-border text-sm text-muted-foreground space-y-1">
-                <p>Dostępne — pakowane po zamówieniu, prosto z gospodarstwa.</p>
-                <p>Dostawa lub odbiór osobisty zgodnie z ustaleniami przy zamówieniu.</p>
+                <p>{t("Dostępne — pakowane po zamówieniu, prosto z gospodarstwa.")}</p>
+                <p>{t("Dostawa lub odbiór osobisty zgodnie z ustaleniami przy zamówieniu.")}</p>
               </div>
 
               <div className="mt-12">
-                <p className="font-serif text-xl text-foreground">Zdrowotnia</p>
+                <p className="font-serif text-xl text-foreground">{t("Zdrowotnia")}</p>
                 <p className="font-handwritten text-lg text-muted-foreground">
-                  Naturalnie dla Ciebie.
+                  {t("Naturalnie dla Ciebie.")}
                 </p>
               </div>
             </div>

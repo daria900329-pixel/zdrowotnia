@@ -1,3 +1,4 @@
+import { t } from "@/lib/pageText";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import dariaPhoto from "@/assets/home/daria.jpg";
 
@@ -19,23 +20,21 @@ const FromDaria = () => {
         <div className="px-6 md:px-10 lg:px-16 py-20 lg:py-32">
           <ScrollReveal>
             <p className="text-[0.62rem] sm:text-xs tracking-[0.4em] uppercase text-muted-foreground mb-8">
-              Od Darii
+              {t("Od Darii")}
             </p>
             <p className="text-muted-foreground leading-relaxed mb-6 max-w-lg">
-              Zdrowotnia zaczęła się od prostego pytania:
+              {t("Zdrowotnia zaczęła się od prostego pytania:")}
             </p>
             <blockquote className="font-serif text-[1.6rem] leading-[1.2] sm:text-3xl lg:text-[2.4rem] text-foreground mb-10 max-w-xl break-words">
-              „A gdybyśmy po prostu zaczęli robić jedzenie tak, jak sami chcemy jeść?”
+              {t("„A gdybyśmy po prostu zaczęli robić jedzenie tak, jak sami chcemy jeść?”")}
             </blockquote>
             <p className="text-muted-foreground leading-relaxed mb-5 max-w-lg">
-              Bez wielkiej fabryki. Bez anonimowych dostawców. Bez udawania, że natura zawsze
-              wygląda idealnie.
+              {t("Bez wielkiej fabryki. Bez anonimowych dostawców. Bez udawania, że natura zawsze wygląda idealnie.")}
             </p>
             <p className="text-muted-foreground leading-relaxed mb-10 max-w-lg">
-              Za to z ogromną ciekawością tego, jak sposób chowu, karmienia i przygotowania wpływa
-              na to, co ostatecznie trafia na talerz.
+              {t("Za to z ogromną ciekawością tego, jak sposób chowu, karmienia i przygotowania wpływa na to, co ostatecznie trafia na talerz.")}
             </p>
-            <p className="font-handwritten text-2xl text-primary">Daria Ciesielska</p>
+            <p className="font-handwritten text-2xl text-primary">{t("Daria Ciesielska")}</p>
           </ScrollReveal>
         </div>
       </div>

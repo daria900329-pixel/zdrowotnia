@@ -1,3 +1,4 @@
+import { t } from "@/lib/pageText";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import handsEggs from "@/assets/home/hands-eggs.jpg";
 
@@ -16,23 +17,23 @@ const FinalStatement = () => {
         <div className="px-6 md:px-10 lg:px-16 pb-16 md:pb-24 w-full">
           <ScrollReveal className="max-w-3xl">
             <h2 className="font-serif text-[1.9rem] leading-[1.1] sm:text-4xl lg:text-[3.2rem] text-foreground mb-4 break-words">
-              Dobre jedzenie nie potrzebuje wielkiej historii.
+              {t("Dobre jedzenie nie potrzebuje wielkiej historii.")}
             </h2>
             <p className="font-serif text-[1.5rem] sm:text-3xl lg:text-[2.4rem] text-primary mb-10">
-              Potrzebuje dobrego początku.
+              {t("Potrzebuje dobrego początku.")}
             </p>
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-10">
-              Wybieraj naturalnie.
+              {t("Wybieraj naturalnie.")}
               <br />
-              Wybieraj świadomie.
+              {t("Wybieraj świadomie.")}
               <br />
-              Wybieraj Zdrowotnię. ♡
+              {t("Wybieraj Zdrowotnię. ♡")}
             </p>
             <a
               href="#sklep"
               className="inline-flex items-center justify-center bg-foreground text-background text-[0.7rem] tracking-[0.25em] uppercase px-9 py-4 hover:bg-earth transition-colors"
             >
-              Zobacz, co dziś mamy
+              {t("Zobacz, co dziś mamy")}
             </a>
           </ScrollReveal>
         </div>

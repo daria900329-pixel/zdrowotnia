@@ -1,3 +1,4 @@
+import { t } from "@/lib/pageText";
 import { Link } from "react-router-dom";
 import { ArrowRight, Loader2 } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -13,13 +14,13 @@ const StoryProducts = () => {
       <div className="px-6 md:px-10 lg:px-16">
         <ScrollReveal className="max-w-3xl">
           <p className="text-[0.62rem] sm:text-xs tracking-[0.4em] uppercase text-muted-foreground mb-8">
-            Nasza spiżarnia
+            {t("Nasza spiżarnia")}
           </p>
           <h2 className="font-serif text-[2.3rem] leading-[1.05] sm:text-5xl lg:text-[3.6rem] text-foreground mb-8 break-words">
-            Co dobrego mamy?
+            {t("Co dobrego mamy?")}
           </h2>
           <p className="font-serif text-xl sm:text-2xl lg:text-[1.75rem] leading-snug text-primary max-w-2xl">
-            To, co właśnie dojrzewa, rośnie, fermentuje, piecze się albo znosi.
+            {t("To, co właśnie dojrzewa, rośnie, fermentuje, piecze się albo znosi.")}
           </p>
         </ScrollReveal>
       </div>

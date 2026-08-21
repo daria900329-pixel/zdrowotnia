@@ -1,3 +1,4 @@
+import { t } from "@/lib/pageText";
 import { Link } from "react-router-dom";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { useHomeProducts } from "./useHomeProducts";
@@ -11,12 +12,12 @@ const TodaySection = () => {
     <section className="bg-background py-20 md:py-32">
       <div className="px-6 md:px-10 lg:px-16">
         <ScrollReveal className="max-w-2xl mb-14 md:mb-20">
-          <p className="font-handwritten text-xl text-primary mb-3">dzisiaj dostępne</p>
+          <p className="font-handwritten text-xl text-primary mb-3">{t("dzisiaj dostępne")}</p>
           <h2 className="font-serif text-[2rem] leading-[1.08] sm:text-4xl lg:text-[3rem] text-foreground mb-6 break-words">
-            Dzisiaj w Zdrowotni.
+            {t("Dzisiaj w Zdrowotni.")}
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            Nie jesteśmy magazynem. Nie wszystko mamy zawsze. I właśnie tak ma być.
+            {t("Nie jesteśmy magazynem. Nie wszystko mamy zawsze. I właśnie tak ma być.")}
           </p>
         </ScrollReveal>
 

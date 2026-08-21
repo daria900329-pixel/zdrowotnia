@@ -1,0 +1,1 @@
+delete from public.site_content where section_key = 'page_texts_quail';
