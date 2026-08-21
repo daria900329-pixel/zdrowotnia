@@ -115,6 +115,7 @@ const AboutGallery = () => {
           onClick={() => setSelectedItem(null)}
         >
           <button
+            aria-label="Zamknij podgląd"
             className="absolute top-4 right-4 text-white/70 hover:text-white z-10"
             onClick={() => setSelectedItem(null)}
           >

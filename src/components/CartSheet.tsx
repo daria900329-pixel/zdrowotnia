@@ -60,7 +60,7 @@ export function CartSheet() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon" className="relative">
+        <Button variant="outline" size="icon" className="relative" aria-label="Otwórz koszyk">
           <ShoppingCart className="w-5 h-5" />
           {itemCount > 0 && (
             <span className="absolute -top-2 -right-2 w-5 h-5 bg-primary text-primary-foreground text-xs rounded-full flex items-center justify-center font-semibold">
@@ -121,6 +121,7 @@ export function CartSheet() {
                   <div className="flex flex-col items-end gap-2">
                     <button
                       onClick={() => removeItem(item.id)}
+                      aria-label={`Usuń ${item.product_name} z koszyka`}
                       className="text-muted-foreground hover:text-destructive transition-colors"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -128,6 +129,7 @@ export function CartSheet() {
                     <div className="flex items-center gap-2 bg-background rounded-full px-2 py-1">
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                        aria-label={`Zmniejsz ilość: ${item.product_name}`}
                         className="p-1 hover:bg-secondary rounded-full"
                       >
                         <Minus className="w-4 h-4" />
@@ -135,6 +137,7 @@ export function CartSheet() {
                       <span className="w-6 text-center font-medium">{item.quantity}</span>
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                        aria-label={`Zwiększ ilość: ${item.product_name}`}
                         className="p-1 hover:bg-secondary rounded-full"
                       >
                         <Plus className="w-4 h-4" />
