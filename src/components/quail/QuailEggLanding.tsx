@@ -113,7 +113,19 @@ const JOURNEY = [
   { img: delivery, label: "Trafia do Ciebie" },
 ];
 
+// punkty zaczepienia promieni (układ 1600x1000, jajko w środku)
+const RADIAL_NUTRIENTS = [
+  { ...NUTRIENTS_LEFT[0], side: "left" as const, x: 545, y: 175 },
+  { ...NUTRIENTS_LEFT[1], side: "left" as const, x: 480, y: 500 },
+  { ...NUTRIENTS_LEFT[2], side: "left" as const, x: 545, y: 825 },
+  { ...NUTRIENTS_RIGHT[0], side: "right" as const, x: 1055, y: 130 },
+  { ...NUTRIENTS_RIGHT[1], side: "right" as const, x: 1120, y: 390 },
+  { ...NUTRIENTS_RIGHT[2], side: "right" as const, x: 1120, y: 630 },
+  { ...NUTRIENTS_RIGHT[3], side: "right" as const, x: 1055, y: 870 },
+];
+
 const Eyebrow = ({ children }: { children: React.ReactNode }) => (
+
   <p className="text-[0.65rem] sm:text-xs tracking-[0.35em] uppercase text-muted-foreground mb-6">
     {children}
   </p>
