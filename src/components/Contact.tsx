@@ -24,13 +24,30 @@ const Contact = () => {
   const orderTitle = content.order_title || "💡 Jak zamówić?";
   const orderDescription = content.order_description || "Dodaj produkty do koszyka i przejdź do płatności. Po opłaceniu zamówienia skontaktujemy się, aby ustalić szczegóły dostawy lub odbioru osobistego.";
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Wiadomość wysłana!",
-      description: "Dziękujemy za kontakt. Odpowiemy najszybciej jak to możliwe.",
-    });
-    setFormData({ name: "", email: "", message: "" });
+    setSending(true);
+    try {
+      const { error } = await supabase.functions.invoke("send-contact-message", {
+        body: formData,
+      });
+      if (error) throw error;
+
+      toast({
+        title: "Wiadomość wysłana!",
+        description: "Dziękujemy za kontakt. Odpowiemy najszybciej jak to możliwe.",
+      });
+      setFormData({ name: "", email: "", message: "" });
+    } catch (err) {
+      if (import.meta.env.DEV) console.error("Contact form error:", err);
+      toast({
+        title: "Nie udało się wysłać wiadomości",
+        description: `Napisz do nas bezpośrednio na ${email} lub zadzwoń: ${phone}.`,
+        variant: "destructive",
+      });
+    } finally {
+      setSending(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
