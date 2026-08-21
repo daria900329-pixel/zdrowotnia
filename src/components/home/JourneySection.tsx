@@ -28,7 +28,7 @@ const JourneySection = () => {
           </h2>
         </ScrollReveal>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-x-5 gap-y-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-5 gap-y-10">
           {STEPS.map((s, i) => (
             <ScrollReveal key={s.label} delay={i * 90}>
               <img
