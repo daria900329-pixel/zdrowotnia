@@ -333,7 +333,7 @@ export function AboutLanding() {
           {/* Bread */}
           <div className="grid lg:grid-cols-[2fr_1fr] gap-12 lg:gap-20 items-start my-24 md:my-32">
             <ScrollReveal variant="fade-right">
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{breadText}</p>
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed"><DashedText text={breadText} /></p>
             </ScrollReveal>
             <ScrollReveal variant="fade-left">
               <img
