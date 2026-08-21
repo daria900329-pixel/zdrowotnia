@@ -205,83 +205,61 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
               </div>
             </ScrollReveal>
 
-            {/* --- desktop: infografika z liniami odchodzącymi od jajka --- */}
+            {/* --- desktop: czysty układ z delikatnymi liniami prowadzącymi --- */}
             <ScrollReveal>
-              <div className="hidden lg:block relative w-full aspect-[16/10] max-w-5xl mx-auto">
-                {/* linie */}
-                <svg
-                  className="absolute inset-0 w-full h-full pointer-events-none"
-                  viewBox="0 0 100 62"
-                  preserveAspectRatio="none"
-                  aria-hidden="true"
-                >
-                  {[
-                    "M 27 12 L 44 24",
-                    "M 25 30 L 42 31",
-                    "M 27 47 L 44 38",
-                    "M 73 12 L 56 24",
-                    "M 75 30 L 58 31",
-                    "M 73 47 L 56 38",
-                    "M 50 58 L 50 44",
-                  ].map((d) => (
-                    <path
-                      key={d}
-                      d={d}
-                      className="stroke-primary/80"
-                      strokeWidth="1.25"
-                      fill="none"
-                      vectorEffect="non-scaling-stroke"
-                    />
+              <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] items-center gap-x-8 max-w-5xl mx-auto mt-4">
+                {/* lewa kolumna */}
+                <div className="flex flex-col gap-12">
+                  {NUTRIENTS_LEFT.map((n) => (
+                    <div key={n.label} className="flex items-center gap-4">
+                      <div className="flex-1 text-right">
+                        <h3 className="text-[0.68rem] tracking-[0.22em] uppercase text-foreground mb-2">
+                          {n.label}
+                        </h3>
+                        <p className="text-[0.82rem] text-muted-foreground leading-relaxed">
+                          {n.text}
+                        </p>
+                      </div>
+                      <div className="flex items-center shrink-0">
+                        <span className="block h-px w-10 bg-primary/45" />
+                        <span className="block w-1.5 h-1.5 rounded-full bg-primary/70" />
+                      </div>
+                    </div>
                   ))}
-                </svg>
+                </div>
 
                 {/* jajko */}
-                <img
-                  src={eggOpen}
-                  alt="Rozbite jajko przepiórcze z widocznym żółtkiem"
-                  loading="lazy"
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[34%] drop-shadow-[0_25px_45px_rgba(80,60,30,0.18)]"
-                />
+                <div className="w-[19rem] xl:w-[22rem] flex items-center justify-center">
+                  <img
+                    src={eggOpen}
+                    alt="Rozbite jajko przepiórcze z widocznym żółtkiem"
+                    loading="lazy"
+                    className="w-full drop-shadow-[0_25px_45px_rgba(80,60,30,0.18)]"
+                  />
+                </div>
 
-                {/* etykiety lewe */}
-                {NUTRIENTS_LEFT.map((n, i) => (
-                  <div
-                    key={n.label}
-                    className="absolute w-[26%] text-right"
-                    style={{ right: "74%", top: `${[10, 39, 66][i]}%` }}
-                  >
-                    <h3 className="text-[0.68rem] tracking-[0.22em] uppercase text-foreground mb-2">
-                      {n.label}
-                    </h3>
-                    <p className="text-[0.8rem] text-muted-foreground leading-relaxed">{n.text}</p>
-                  </div>
-                ))}
-
-                {/* etykiety prawe */}
-                {NUTRIENTS_RIGHT.slice(0, 3).map((n, i) => (
-                  <div
-                    key={n.label}
-                    className="absolute w-[26%] text-left"
-                    style={{ left: "74%", top: `${[10, 39, 66][i]}%` }}
-                  >
-                    <h3 className="text-[0.68rem] tracking-[0.22em] uppercase text-foreground mb-2">
-                      {n.label}
-                    </h3>
-                    <p className="text-[0.8rem] text-muted-foreground leading-relaxed">{n.text}</p>
-                  </div>
-                ))}
-
-                {/* etykieta dolna */}
-                <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[34%] text-center">
-                  <h3 className="text-[0.68rem] tracking-[0.22em] uppercase text-foreground mb-2">
-                    {NUTRIENTS_RIGHT[3].label}
-                  </h3>
-                  <p className="text-[0.8rem] text-muted-foreground leading-relaxed">
-                    {NUTRIENTS_RIGHT[3].text}
-                  </p>
+                {/* prawa kolumna */}
+                <div className="flex flex-col gap-10">
+                  {NUTRIENTS_RIGHT.map((n) => (
+                    <div key={n.label} className="flex items-center gap-4">
+                      <div className="flex items-center shrink-0">
+                        <span className="block w-1.5 h-1.5 rounded-full bg-primary/70" />
+                        <span className="block h-px w-10 bg-primary/45" />
+                      </div>
+                      <div className="flex-1 text-left">
+                        <h3 className="text-[0.68rem] tracking-[0.22em] uppercase text-foreground mb-2">
+                          {n.label}
+                        </h3>
+                        <p className="text-[0.82rem] text-muted-foreground leading-relaxed">
+                          {n.text}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </ScrollReveal>
+
 
             {/* --- mobile / tablet --- */}
             <div className="lg:hidden">
