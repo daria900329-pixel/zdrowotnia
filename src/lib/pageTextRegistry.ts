@@ -111,6 +111,22 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
         "label": "Wiemy, czym karmimy",
         "texts": [
           {
+            "id": "dnfm9n1hz09vv",
+            "text": "Wiemy, czym karmimy"
+          },
+          {
+            "id": "108f22e91juj6",
+            "text": "Zanim coś trafi na Twój stół,"
+          },
+          {
+            "id": "sqfne51oq0wxh",
+            "text": "najpierw trafia na nasz."
+          },
+          {
+            "id": "qg2uotguu9u5",
+            "text": "Dlatego interesuje nas nie tylko to, co otrzymujemy od zwierząt. Interesuje nas przede wszystkim to, co wcześniej dajemy im my."
+          },
+          {
             "id": "cj0tsr13vs4sz",
             "text": "Bez pszenicy"
           },
@@ -133,22 +149,6 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "18ure5j12u36b",
             "text": "Wiemy, co jedzą. Wiemy, gdzie żyją. Wiemy, skąd pochodzi nasze jedzenie."
-          },
-          {
-            "id": "dnfm9n1hz09vv",
-            "text": "Wiemy, czym karmimy"
-          },
-          {
-            "id": "108f22e91juj6",
-            "text": "Zanim coś trafi na Twój stół,"
-          },
-          {
-            "id": "sqfne51oq0wxh",
-            "text": "najpierw trafia na nasz."
-          },
-          {
-            "id": "qg2uotguu9u5",
-            "text": "Dlatego interesuje nas nie tylko to, co otrzymujemy od zwierząt. Interesuje nas przede wszystkim to, co wcześniej dajemy im my."
           }
         ]
       },
@@ -156,6 +156,14 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
         "id": "c2piox1kjdrgz",
         "label": "Od nas do Ciebie",
         "texts": [
+          {
+            "id": "1tcezo61j4ga7m",
+            "text": "Od nas do Ciebie"
+          },
+          {
+            "id": "vpwa001qjs902",
+            "text": "Znamy drogę naszego jedzenia."
+          },
           {
             "id": "1bswq99pdmbqh",
             "text": "Karmimy"
@@ -179,14 +187,6 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "ctouupc0hapj",
             "text": "Oddajemy Tobie"
-          },
-          {
-            "id": "1tcezo61j4ga7m",
-            "text": "Od nas do Ciebie"
-          },
-          {
-            "id": "vpwa001qjs902",
-            "text": "Znamy drogę naszego jedzenia."
           },
           {
             "id": "pgtx2q1h74qhc",
@@ -233,6 +233,14 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
         "label": "Galeria",
         "texts": [
           {
+            "id": "1svaket192xt65",
+            "text": "Zdrowotnia od kuchni."
+          },
+          {
+            "id": "1quqmbl1692yub",
+            "text": "Bez studia. Bez udawania. Tak to naprawdę wygląda."
+          },
+          {
             "id": "fyfud5rv7qmj",
             "text": "Nasze przepiórki"
           },
@@ -275,14 +283,6 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "qd88hh1qhwo6f",
             "text": "Nasz stół"
-          },
-          {
-            "id": "1svaket192xt65",
-            "text": "Zdrowotnia od kuchni."
-          },
-          {
-            "id": "1quqmbl1692yub",
-            "text": "Bez studia. Bez udawania. Tak to naprawdę wygląda."
           }
         ]
       },
@@ -391,110 +391,6 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "1plbps11cs4yrv",
             "text": "ważna m.in. dla prawidłowego widzenia, skóry i funkcjonowania układu odpornościowego"
-          },
-          {
-            "id": "wt5mclasa67f",
-            "text": "Dzieci"
-          },
-          {
-            "id": "1f3xfdilzffbc",
-            "text": "wartościowy element urozmaiconej diety w okresie wzrostu"
-          },
-          {
-            "id": "3vbp3m1wao9ca",
-            "text": "Aktywni"
-          },
-          {
-            "id": "nksz2s66o268",
-            "text": "pełnowartościowe białko i składniki odżywcze potrzebne w codziennej diecie"
-          },
-          {
-            "id": "nqwjcct52dpo",
-            "text": "Seniorzy"
-          },
-          {
-            "id": "1tnze07odlv6d",
-            "text": "niewielka objętość produktu, a jednocześnie wartościowe źródło składników odżywczych"
-          },
-          {
-            "id": "cj0tsr13vs4sz",
-            "text": "Bez pszenicy"
-          },
-          {
-            "id": "2gv4toh0ccaq",
-            "text": "Nasze przepiórki karmimy autorską mieszanką pasz bez pszenicy."
-          },
-          {
-            "id": "n639yz1p6lzwf",
-            "text": "Naturalne składniki"
-          },
-          {
-            "id": "1ku0ew91tkpnep",
-            "text": "Podstawą żywienia są starannie dobrane składniki, zioła i komponenty mineralne."
-          },
-          {
-            "id": "1g313db137rfmv",
-            "text": "Małe stada"
-          },
-          {
-            "id": "56ijx1rp81hp",
-            "text": "Nie jesteśmy przemysłową fermą. Możemy obserwować nasze ptaki i dbać o nie każdego dnia."
-          },
-          {
-            "id": "1xba5ev1yxu9vz",
-            "text": "Rodzinny chów"
-          },
-          {
-            "id": "pnlfrl181chrz",
-            "text": "To, co sprzedajemy Tobie, pochodzi z tego samego miejsca, z którego jedzenie trafia na nasz własny stół."
-          },
-          {
-            "id": "1wtwofc1z0wxpa",
-            "text": "Na miękko"
-          },
-          {
-            "id": "1189pwbx20l21",
-            "text": "Na twardo"
-          },
-          {
-            "id": "1f87pifl2i67v",
-            "text": "Do sałatki"
-          },
-          {
-            "id": "65te9r1uux7lf",
-            "text": "Do śniadaniówki"
-          },
-          {
-            "id": "1xtbwvy1t5k1pi",
-            "text": "Mała przekąska"
-          },
-          {
-            "id": "ia3xq2xg93c6",
-            "text": "Nasz chów"
-          },
-          {
-            "id": "6nviozbj5qrp",
-            "text": "Nasza mieszanka pasz"
-          },
-          {
-            "id": "u97blk1sgk2fu",
-            "text": "Świeże jajko"
-          },
-          {
-            "id": "5hvfjp11lo8lt",
-            "text": "Pakujemy"
-          },
-          {
-            "id": "7a160cs71jmk",
-            "text": "Trafia do Ciebie"
-          },
-          {
-            "id": "52pxm81lwngqc",
-            "text": "left"
-          },
-          {
-            "id": "xjidwl11gqurl",
-            "text": "right"
           }
         ]
       },
@@ -547,6 +443,14 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "11yit221x7cmf0",
             "text": "Natura potrafi zamknąć zaskakująco dużo w kilkunastu gramach."
+          },
+          {
+            "id": "52pxm81lwngqc",
+            "text": "left"
+          },
+          {
+            "id": "xjidwl11gqurl",
+            "text": "right"
           },
           {
             "id": "k0pc381h86ii0",
@@ -643,6 +547,14 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
             "text": "A ich maleńki format ma jeszcze jedną zaletę: dzieci zwyczajnie je uwielbiają."
           },
           {
+            "id": "65te9r1uux7lf",
+            "text": "Do śniadaniówki"
+          },
+          {
+            "id": "1f87pifl2i67v",
+            "text": "Do sałatki"
+          },
+          {
             "id": "1w1yy3q193no0a",
             "text": "Na ciepło"
           },
@@ -663,6 +575,30 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "sakgap16h57hj",
             "text": "Po prostu — dla człowieka."
+          },
+          {
+            "id": "wt5mclasa67f",
+            "text": "Dzieci"
+          },
+          {
+            "id": "1f3xfdilzffbc",
+            "text": "wartościowy element urozmaiconej diety w okresie wzrostu"
+          },
+          {
+            "id": "3vbp3m1wao9ca",
+            "text": "Aktywni"
+          },
+          {
+            "id": "nksz2s66o268",
+            "text": "pełnowartościowe białko i składniki odżywcze potrzebne w codziennej diecie"
+          },
+          {
+            "id": "nqwjcct52dpo",
+            "text": "Seniorzy"
+          },
+          {
+            "id": "1tnze07odlv6d",
+            "text": "niewielka objętość produktu, a jednocześnie wartościowe źródło składników odżywczych"
           },
           {
             "id": "1ul8u1919xzlkl",
@@ -689,6 +625,38 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "13qjqqe1mlmjby",
             "text": "Wiemy, skąd pochodzi każde nasze jajko."
+          },
+          {
+            "id": "cj0tsr13vs4sz",
+            "text": "Bez pszenicy"
+          },
+          {
+            "id": "2gv4toh0ccaq",
+            "text": "Nasze przepiórki karmimy autorską mieszanką pasz bez pszenicy."
+          },
+          {
+            "id": "n639yz1p6lzwf",
+            "text": "Naturalne składniki"
+          },
+          {
+            "id": "1ku0ew91tkpnep",
+            "text": "Podstawą żywienia są starannie dobrane składniki, zioła i komponenty mineralne."
+          },
+          {
+            "id": "1g313db137rfmv",
+            "text": "Małe stada"
+          },
+          {
+            "id": "56ijx1rp81hp",
+            "text": "Nie jesteśmy przemysłową fermą. Możemy obserwować nasze ptaki i dbać o nie każdego dnia."
+          },
+          {
+            "id": "1xba5ev1yxu9vz",
+            "text": "Rodzinny chów"
+          },
+          {
+            "id": "pnlfrl181chrz",
+            "text": "To, co sprzedajemy Tobie, pochodzi z tego samego miejsca, z którego jedzenie trafia na nasz własny stół."
           }
         ]
       },
@@ -721,6 +689,18 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "3yy3hh8a52jn",
             "text": "Jedno jajko. Mnóstwo pomysłów."
+          },
+          {
+            "id": "1wtwofc1z0wxpa",
+            "text": "Na miękko"
+          },
+          {
+            "id": "1189pwbx20l21",
+            "text": "Na twardo"
+          },
+          {
+            "id": "1xtbwvy1t5k1pi",
+            "text": "Mała przekąska"
           }
         ]
       },
@@ -745,6 +725,26 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "1mfl51n1rmfxd7",
             "text": "Od naszej przepiórki do Twojego stołu"
+          },
+          {
+            "id": "ia3xq2xg93c6",
+            "text": "Nasz chów"
+          },
+          {
+            "id": "6nviozbj5qrp",
+            "text": "Nasza mieszanka pasz"
+          },
+          {
+            "id": "u97blk1sgk2fu",
+            "text": "Świeże jajko"
+          },
+          {
+            "id": "5hvfjp11lo8lt",
+            "text": "Pakujemy"
+          },
+          {
+            "id": "7a160cs71jmk",
+            "text": "Trafia do Ciebie"
           }
         ]
       },
@@ -819,132 +819,6 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
     "preview": "/product/ed5cb95d-4e3a-478c-8134-534838d09823",
     "sections": [
       {
-        "id": "1prryrg1h1sv32",
-        "label": "VinegarLanding",
-        "texts": [
-          {
-            "id": "56n53k1vswjl2",
-            "text": "Jabłka"
-          },
-          {
-            "id": "1h0kz7crqjd68",
-            "text": "To od nich wszystko się zaczyna."
-          },
-          {
-            "id": "xlq0t44imt02",
-            "text": "Czas"
-          },
-          {
-            "id": "1c3qjil1m7pb8j",
-            "text": "Fermentacja nie lubi pośpiechu."
-          },
-          {
-            "id": "7sm4ivqlgc7z",
-            "text": "Naturalność"
-          },
-          {
-            "id": "1k33x4q4zvj5y",
-            "text": "Nie oczekujemy od produktu naturalnego, żeby wyglądał jak laboratoryjnie wyczyszczony."
-          },
-          {
-            "id": "1ql2r2z1q4ann5",
-            "text": "Do dressingów"
-          },
-          {
-            "id": "wdroox170s8zl",
-            "text": "oliwa + ocet + musztarda + zioła"
-          },
-          {
-            "id": "1zvjw61cj8ria",
-            "text": "Do marynat"
-          },
-          {
-            "id": "x60wimsy3izo",
-            "text": "do mięsa i warzyw"
-          },
-          {
-            "id": "1pi41c92psvod",
-            "text": "Do sosów"
-          },
-          {
-            "id": "13iih534oiskl",
-            "text": "dla przełamania smaku"
-          },
-          {
-            "id": "x5bklx1jlmrql",
-            "text": "Do domowej kuchni"
-          },
-          {
-            "id": "svizitedfvv",
-            "text": "tam, gdzie potrzebujesz kwasowości"
-          },
-          {
-            "id": "1hwurlcxzcy8c",
-            "text": "Do napojów"
-          },
-          {
-            "id": "1ux92v81f5jv8u",
-            "text": "jeśli ktoś lubi rozcieńczać ocet w wodzie"
-          },
-          {
-            "id": "8qjb1s15foqx2",
-            "text": "jabłka"
-          },
-          {
-            "id": "1dretkj8ou3lp",
-            "text": "cukry naturalnie obecne w owocach"
-          },
-          {
-            "id": "n2bl931achc3n",
-            "text": "fermentacja"
-          },
-          {
-            "id": "1krdvrq9bf1r4",
-            "text": "kwasy organiczne"
-          },
-          {
-            "id": "7tfks64aeu9k",
-            "text": "ocet"
-          },
-          {
-            "id": "12pumojrosuc1",
-            "text": "Przygotowanie"
-          },
-          {
-            "id": "1s3a3uf1e59hnn",
-            "text": "Fermentacja"
-          },
-          {
-            "id": "jla77v1lpu1v",
-            "text": "Dojrzewanie"
-          },
-          {
-            "id": "r5kw39djjsdj",
-            "text": "Butelkowanie"
-          },
-          {
-            "id": "1fz3ump1t931dj",
-            "text": "Twój stół"
-          },
-          {
-            "id": "18rjeukv7soo0",
-            "text": "Sałata + oliwa + ocet"
-          },
-          {
-            "id": "3srzt1lwvi69",
-            "text": "Pieczone warzywa + ocet"
-          },
-          {
-            "id": "19j4bqc4sbsr6",
-            "text": "Marynata do mięsa"
-          },
-          {
-            "id": "26z5bfhwa2ph",
-            "text": "Sos musztardowo-octowy"
-          }
-        ]
-      },
-      {
         "id": "12go65mqn17jo",
         "label": "1. Hero",
         "texts": [
@@ -1011,6 +885,30 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "1un2u6exsqge",
             "text": "Co sprawia, że taki ocet smakuje inaczej?"
+          },
+          {
+            "id": "56n53k1vswjl2",
+            "text": "Jabłka"
+          },
+          {
+            "id": "1h0kz7crqjd68",
+            "text": "To od nich wszystko się zaczyna."
+          },
+          {
+            "id": "xlq0t44imt02",
+            "text": "Czas"
+          },
+          {
+            "id": "1c3qjil1m7pb8j",
+            "text": "Fermentacja nie lubi pośpiechu."
+          },
+          {
+            "id": "7sm4ivqlgc7z",
+            "text": "Naturalność"
+          },
+          {
+            "id": "1k33x4q4zvj5y",
+            "text": "Nie oczekujemy od produktu naturalnego, żeby wyglądał jak laboratoryjnie wyczyszczony."
           },
           {
             "id": "etluian5n4vi",
@@ -1099,6 +997,46 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
             "text": "Mnóstwo zastosowań."
           },
           {
+            "id": "1ql2r2z1q4ann5",
+            "text": "Do dressingów"
+          },
+          {
+            "id": "wdroox170s8zl",
+            "text": "oliwa + ocet + musztarda + zioła"
+          },
+          {
+            "id": "1zvjw61cj8ria",
+            "text": "Do marynat"
+          },
+          {
+            "id": "x60wimsy3izo",
+            "text": "do mięsa i warzyw"
+          },
+          {
+            "id": "1pi41c92psvod",
+            "text": "Do sosów"
+          },
+          {
+            "id": "13iih534oiskl",
+            "text": "dla przełamania smaku"
+          },
+          {
+            "id": "x5bklx1jlmrql",
+            "text": "Do domowej kuchni"
+          },
+          {
+            "id": "svizitedfvv",
+            "text": "tam, gdzie potrzebujesz kwasowości"
+          },
+          {
+            "id": "1hwurlcxzcy8c",
+            "text": "Do napojów"
+          },
+          {
+            "id": "1ux92v81f5jv8u",
+            "text": "jeśli ktoś lubi rozcieńczać ocet w wodzie"
+          },
+          {
             "id": "4bzco2pyhsfk",
             "text": "Ocet zawsze rozcieńczaj przed piciem. Nie pij go nierozcieńczonego."
           }
@@ -1131,8 +1069,32 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
         "label": "8. Fermentacja",
         "texts": [
           {
+            "id": "1s3a3uf1e59hnn",
+            "text": "Fermentacja"
+          },
+          {
             "id": "xyz89u1emdwfc",
             "text": "Co właściwie dzieje się podczas fermentacji?"
+          },
+          {
+            "id": "8qjb1s15foqx2",
+            "text": "jabłka"
+          },
+          {
+            "id": "1dretkj8ou3lp",
+            "text": "cukry naturalnie obecne w owocach"
+          },
+          {
+            "id": "n2bl931achc3n",
+            "text": "fermentacja"
+          },
+          {
+            "id": "1krdvrq9bf1r4",
+            "text": "kwasy organiczne"
+          },
+          {
+            "id": "7tfks64aeu9k",
+            "text": "ocet"
           },
           {
             "id": "19nvjyz1g8m51x",
@@ -1241,6 +1203,22 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "q0ngek1uw23ci",
             "text": "Długi proces."
+          },
+          {
+            "id": "12pumojrosuc1",
+            "text": "Przygotowanie"
+          },
+          {
+            "id": "jla77v1lpu1v",
+            "text": "Dojrzewanie"
+          },
+          {
+            "id": "r5kw39djjsdj",
+            "text": "Butelkowanie"
+          },
+          {
+            "id": "1fz3ump1t931dj",
+            "text": "Twój stół"
           }
         ]
       },
@@ -1251,6 +1229,22 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "20ak5s10k8okm",
             "text": "Z czym go połączyć?"
+          },
+          {
+            "id": "18rjeukv7soo0",
+            "text": "Sałata + oliwa + ocet"
+          },
+          {
+            "id": "3srzt1lwvi69",
+            "text": "Pieczone warzywa + ocet"
+          },
+          {
+            "id": "19j4bqc4sbsr6",
+            "text": "Marynata do mięsa"
+          },
+          {
+            "id": "26z5bfhwa2ph",
+            "text": "Sos musztardowo-octowy"
           }
         ]
       },
@@ -1296,72 +1290,6 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
     "label": "Chleb żytni",
     "preview": "/product/bee5ca9b-4bc6-4241-8222-6d49b7c1b44e",
     "sections": [
-      {
-        "id": "1c6phlo1yzdudq",
-        "label": "BreadLanding",
-        "texts": [
-          {
-            "id": "1ypiwb787dgpt",
-            "text": "mąka żytnia typ 2000"
-          },
-          {
-            "id": "193tbav1foo8sn",
-            "text": "mąka orkiszowa typ 750"
-          },
-          {
-            "id": "xja2aas8ltei",
-            "text": "siemię lniane"
-          },
-          {
-            "id": "lprxt54yopex",
-            "text": "pestki dyni"
-          },
-          {
-            "id": "1qh8o0113gsmep",
-            "text": "słonecznik"
-          },
-          {
-            "id": "dq9z5y1ky8p2a",
-            "text": "sól kłodawska"
-          },
-          {
-            "id": "1rd18hy1ok753o",
-            "text": "Łatwiejszy do strawienia"
-          },
-          {
-            "id": "w92pak1ea0i0y",
-            "text": "Długa fermentacja częściowo rozkłada związki obecne w ziarnie i zmienia strukturę ciasta."
-          },
-          {
-            "id": "fpzynk1x4ijgu",
-            "text": "Więcej z tego, co daje ziarno"
-          },
-          {
-            "id": "vocz9k1mw2ja6",
-            "text": "Fermentacja pomaga ograniczać zawartość kwasu fitynowego, który może utrudniać wykorzystanie niektórych składników mineralnych."
-          },
-          {
-            "id": "1ya32azu62ajd",
-            "text": "Syci naprawdę"
-          },
-          {
-            "id": "173rxewhhoc2q",
-            "text": "Żyto, pełnoziarnista mąka i solidna porcja ziaren dostarczają błonnika i sprawiają, że to jest konkretna kromka chleba, a nie napompowana bułka, po której za chwilę znowu szukasz czegoś do jedzenia."
-          },
-          {
-            "id": "snshs3u32he1",
-            "text": "Siemię lniane dostarcza błonnika i kwasu alfa-linolenowego (ALA) z rodziny omega-3."
-          },
-          {
-            "id": "ghgaf615a7bq6",
-            "text": "Pestki dyni są źródłem m.in. magnezu, cynku i nienasyconych kwasów tłuszczowych."
-          },
-          {
-            "id": "1glp8eaw0dupq",
-            "text": "Słonecznik wnosi witaminę E, zdrowe tłuszcze i charakterystyczny lekko orzechowy smak."
-          }
-        ]
-      },
       {
         "id": "qj5aah1ln2s8r",
         "label": "Hero",
@@ -1427,6 +1355,30 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
             "text": "Skład, który można przeczytać jednym tchem."
           },
           {
+            "id": "1ypiwb787dgpt",
+            "text": "mąka żytnia typ 2000"
+          },
+          {
+            "id": "193tbav1foo8sn",
+            "text": "mąka orkiszowa typ 750"
+          },
+          {
+            "id": "xja2aas8ltei",
+            "text": "siemię lniane"
+          },
+          {
+            "id": "lprxt54yopex",
+            "text": "pestki dyni"
+          },
+          {
+            "id": "1qh8o0113gsmep",
+            "text": "słonecznik"
+          },
+          {
+            "id": "dq9z5y1ky8p2a",
+            "text": "sól kłodawska"
+          },
+          {
             "id": "mexiehqde5r5",
             "text": "Bez polepszaczy. Bez gotowych mieszanek piekarniczych. Bez zbędnych dodatków."
           }
@@ -1445,6 +1397,30 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
             "text": "Zakwas nie jest tylko sposobem na wyrośnięcie chleba. Fermentacja zmienia mąkę jeszcze zanim chleb trafi do pieca."
           },
           {
+            "id": "1rd18hy1ok753o",
+            "text": "Łatwiejszy do strawienia"
+          },
+          {
+            "id": "w92pak1ea0i0y",
+            "text": "Długa fermentacja częściowo rozkłada związki obecne w ziarnie i zmienia strukturę ciasta."
+          },
+          {
+            "id": "fpzynk1x4ijgu",
+            "text": "Więcej z tego, co daje ziarno"
+          },
+          {
+            "id": "vocz9k1mw2ja6",
+            "text": "Fermentacja pomaga ograniczać zawartość kwasu fitynowego, który może utrudniać wykorzystanie niektórych składników mineralnych."
+          },
+          {
+            "id": "1ya32azu62ajd",
+            "text": "Syci naprawdę"
+          },
+          {
+            "id": "173rxewhhoc2q",
+            "text": "Żyto, pełnoziarnista mąka i solidna porcja ziaren dostarczają błonnika i sprawiają, że to jest konkretna kromka chleba, a nie napompowana bułka, po której za chwilę znowu szukasz czegoś do jedzenia."
+          },
+          {
             "id": "10phdvplblpx5",
             "text": "Chleb ma karmić. Nie tylko zajmować miejsce na talerzu."
           }
@@ -1461,6 +1437,18 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "rsmralhnyln1",
             "text": "Siemię lniane, pestki dyni i słonecznik nie znalazły się tutaj dla wyglądu. Dodają chlebu smaku, struktury i wartości odżywczej."
+          },
+          {
+            "id": "snshs3u32he1",
+            "text": "Siemię lniane dostarcza błonnika i kwasu alfa-linolenowego (ALA) z rodziny omega-3."
+          },
+          {
+            "id": "ghgaf615a7bq6",
+            "text": "Pestki dyni są źródłem m.in. magnezu, cynku i nienasyconych kwasów tłuszczowych."
+          },
+          {
+            "id": "1glp8eaw0dupq",
+            "text": "Słonecznik wnosi witaminę E, zdrowe tłuszcze i charakterystyczny lekko orzechowy smak."
           }
         ]
       },
@@ -1533,132 +1521,6 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
     "preview": "/product/59baca9b-5095-4a5e-bcf5-ddaf744a17e3",
     "sections": [
       {
-        "id": "1ubo6lk1oy2yr2",
-        "label": "KombuchaLanding",
-        "texts": [
-          {
-            "id": "1aful2y19z90tg",
-            "text": "herbata"
-          },
-          {
-            "id": "1w7nnjm6ck5g6",
-            "text": "cukier"
-          },
-          {
-            "id": "1wbmdqu4xslss",
-            "text": "kultura fermentacyjna"
-          },
-          {
-            "id": "1wdsozc1hbebua",
-            "text": "czas"
-          },
-          {
-            "id": "d9qen75ag2vv",
-            "text": "kombucha"
-          },
-          {
-            "id": "1gutwbxrp2lnt",
-            "text": "herbaciana"
-          },
-          {
-            "id": "qpqxh61e3ezbm",
-            "text": "kwaśna"
-          },
-          {
-            "id": "exl0dt1ix2uz3",
-            "text": "orzeźwiająca"
-          },
-          {
-            "id": "15d9s9gcvufw6",
-            "text": "lekko musująca"
-          },
-          {
-            "id": "1r4ylh0e6g6fs",
-            "text": "Dla miłośników kwaśnych smaków"
-          },
-          {
-            "id": "lhfpz318uqdw9",
-            "text": "Jeżeli lubisz zakwas, kefir, kiszonki czy naturalne fermentacje — prawdopodobnie zrozumiecie się bardzo szybko."
-          },
-          {
-            "id": "1x433lo1dzmc7o",
-            "text": "Zamiast kolejnego słodkiego napoju"
-          },
-          {
-            "id": "garuupephphb",
-            "text": "Schłodzona kombucha może być ciekawym elementem codziennego menu."
-          },
-          {
-            "id": "fcoska1jft4bc",
-            "text": "Do posiłku lub osobno"
-          },
-          {
-            "id": "7scdei1jvk22o",
-            "text": "Nie potrzebuje specjalnej okazji ani „rytuału wellness”."
-          },
-          {
-            "id": "cebz2071ayqs",
-            "text": "Do obiadu"
-          },
-          {
-            "id": "e7zboz12zd1jf",
-            "text": "jako kwaśny, orzeźwiający napój"
-          },
-          {
-            "id": "834nay1r33mzs",
-            "text": "W ciepły dzień"
-          },
-          {
-            "id": "uvnthe1q9v858",
-            "text": "dobrze schłodzona"
-          },
-          {
-            "id": "1b1btx2yur78g",
-            "text": "Wieczorem przy stole"
-          },
-          {
-            "id": "1roqd6a1cclf0w",
-            "text": "zamiast słodkiego napoju"
-          },
-          {
-            "id": "7m2elvtg7mr1",
-            "text": "Po prostu"
-          },
-          {
-            "id": "1arilqav55xt0",
-            "text": "kiedy mamy na nią ochotę"
-          },
-          {
-            "id": "1ovrbwrvg1bd",
-            "text": "Parzymy"
-          },
-          {
-            "id": "1nz3c941hy9ucc",
-            "text": "Przygotowujemy nastaw"
-          },
-          {
-            "id": "3f6ijm1pju2tc",
-            "text": "Fermentujemy"
-          },
-          {
-            "id": "y1ej791xzetmj",
-            "text": "Obserwujemy"
-          },
-          {
-            "id": "aqxf8q1b2whj8",
-            "text": "Butelkujemy"
-          },
-          {
-            "id": "13gswhz457etn",
-            "text": "Schładzamy"
-          },
-          {
-            "id": "7a160cs71jmk",
-            "text": "Trafia do Ciebie"
-          }
-        ]
-      },
-      {
         "id": "10uiomw1l8oec8",
         "label": "1. Hero",
         "texts": [
@@ -1685,6 +1547,14 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "1m9kkx4x9jcjs",
             "text": "Fermentowany napar herbaciany o charakterystycznym, orzeźwiającym smaku."
+          },
+          {
+            "id": "1aful2y19z90tg",
+            "text": "herbata"
+          },
+          {
+            "id": "1wdsozc1hbebua",
+            "text": "czas"
           }
         ]
       },
@@ -1745,6 +1615,58 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "9qhiebw2wurd",
             "text": "Podczas procesu część cukrów zostaje wykorzystana przez mikroorganizmy, a smak napoju stopniowo się zmienia: ze słodkiego w kwaśny, złożony i lekko musujący."
+          },
+          {
+            "id": "1r4ylh0e6g6fs",
+            "text": "Dla miłośników kwaśnych smaków"
+          },
+          {
+            "id": "lhfpz318uqdw9",
+            "text": "Jeżeli lubisz zakwas, kefir, kiszonki czy naturalne fermentacje — prawdopodobnie zrozumiecie się bardzo szybko."
+          },
+          {
+            "id": "1x433lo1dzmc7o",
+            "text": "Zamiast kolejnego słodkiego napoju"
+          },
+          {
+            "id": "garuupephphb",
+            "text": "Schłodzona kombucha może być ciekawym elementem codziennego menu."
+          },
+          {
+            "id": "fcoska1jft4bc",
+            "text": "Do posiłku lub osobno"
+          },
+          {
+            "id": "7scdei1jvk22o",
+            "text": "Nie potrzebuje specjalnej okazji ani „rytuału wellness”."
+          },
+          {
+            "id": "1w7nnjm6ck5g6",
+            "text": "cukier"
+          },
+          {
+            "id": "1wbmdqu4xslss",
+            "text": "kultura fermentacyjna"
+          },
+          {
+            "id": "d9qen75ag2vv",
+            "text": "kombucha"
+          },
+          {
+            "id": "1gutwbxrp2lnt",
+            "text": "herbaciana"
+          },
+          {
+            "id": "qpqxh61e3ezbm",
+            "text": "kwaśna"
+          },
+          {
+            "id": "exl0dt1ix2uz3",
+            "text": "orzeźwiająca"
+          },
+          {
+            "id": "15d9s9gcvufw6",
+            "text": "lekko musująca"
           }
         ]
       },
@@ -1931,6 +1853,38 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "v8ut4d175lmjp",
             "text": "Kiedy ją pijemy?"
+          },
+          {
+            "id": "cebz2071ayqs",
+            "text": "Do obiadu"
+          },
+          {
+            "id": "e7zboz12zd1jf",
+            "text": "jako kwaśny, orzeźwiający napój"
+          },
+          {
+            "id": "834nay1r33mzs",
+            "text": "W ciepły dzień"
+          },
+          {
+            "id": "uvnthe1q9v858",
+            "text": "dobrze schłodzona"
+          },
+          {
+            "id": "1b1btx2yur78g",
+            "text": "Wieczorem przy stole"
+          },
+          {
+            "id": "1roqd6a1cclf0w",
+            "text": "zamiast słodkiego napoju"
+          },
+          {
+            "id": "7m2elvtg7mr1",
+            "text": "Po prostu"
+          },
+          {
+            "id": "1arilqav55xt0",
+            "text": "kiedy mamy na nią ochotę"
           }
         ]
       },
@@ -1949,6 +1903,34 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "prqxky1x43gcg",
             "text": "Czas."
+          },
+          {
+            "id": "1ovrbwrvg1bd",
+            "text": "Parzymy"
+          },
+          {
+            "id": "1nz3c941hy9ucc",
+            "text": "Przygotowujemy nastaw"
+          },
+          {
+            "id": "3f6ijm1pju2tc",
+            "text": "Fermentujemy"
+          },
+          {
+            "id": "y1ej791xzetmj",
+            "text": "Obserwujemy"
+          },
+          {
+            "id": "aqxf8q1b2whj8",
+            "text": "Butelkujemy"
+          },
+          {
+            "id": "13gswhz457etn",
+            "text": "Schładzamy"
+          },
+          {
+            "id": "7a160cs71jmk",
+            "text": "Trafia do Ciebie"
           }
         ]
       },
@@ -2105,142 +2087,6 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
         "label": "AboutLanding",
         "texts": [
           {
-            "id": "1uztdj2bg9rca",
-            "text": "Że warto wiedzieć, co się je."
-          },
-          {
-            "id": "1vfr2tc1ihjkv2",
-            "text": "Że sposób karmienia zwierzęcia ma znaczenie."
-          },
-          {
-            "id": "1fxio311v075ux",
-            "text": "Że dobry produkt nie potrzebuje dwudziestu składników."
-          },
-          {
-            "id": "1t6r7hfo67xl3",
-            "text": "Że fermentacji nie trzeba poganiać."
-          },
-          {
-            "id": "17uk8os768zu8",
-            "text": "Że jedzenie może być proste i naprawdę dobre."
-          },
-          {
-            "id": "df0317s2zf3f",
-            "text": "WIEMY, CZYM KARMIMY"
-          },
-          {
-            "id": "1y9befrcfe2j",
-            "text": "Chcemy mieć wpływ na to, co jedzą nasze zwierzęta."
-          },
-          {
-            "id": "ykodb6i0ef7k",
-            "text": "DAJEMY CZAS"
-          },
-          {
-            "id": "yzvy7f12jwyhp",
-            "text": "Fermentacja, zakwas i naturalne procesy nie lubią pośpiechu."
-          },
-          {
-            "id": "1y8zprs1ndq27w",
-            "text": "NIE UDAJEMY IDEALNOŚCI"
-          },
-          {
-            "id": "1cdd64vk81nxb",
-            "text": "Kolor, wielkość, osad czy struktura mogą się różnić."
-          },
-          {
-            "id": "maljp0f80zuo",
-            "text": "ROBIMY TO, CO SAMI CHCEMY JEŚĆ"
-          },
-          {
-            "id": "15j0ix21946m62",
-            "text": "To najprostszy filtr jakości."
-          },
-          {
-            "id": "1l6jf0p1k4fcw5",
-            "text": "Małe partie."
-          },
-          {
-            "id": "1qpxaybeciq4j",
-            "text": "Małe stada."
-          },
-          {
-            "id": "mhjtbc1ro1dn4",
-            "text": "Codzienna kontrola."
-          },
-          {
-            "id": "c9j5p71asqm25",
-            "text": "Dużo pracy ręcznej."
-          },
-          {
-            "id": "10wtcp21oo8jhw",
-            "text": "Jajka"
-          },
-          {
-            "id": "1ba6eku1otmkvq",
-            "text": "trzeba zebrać."
-          },
-          {
-            "id": "11cw4n51rrt8ux",
-            "text": "Chleb"
-          },
-          {
-            "id": "58ns73olpcft",
-            "text": "upiec."
-          },
-          {
-            "id": "1gmwmdn1p98ver",
-            "text": "Kombuchę"
-          },
-          {
-            "id": "1mfpyn55ijf33",
-            "text": "przefermentować."
-          },
-          {
-            "id": "17dptsmqirdeg",
-            "text": "Ocet"
-          },
-          {
-            "id": "ozb23z1uv8m1t",
-            "text": "potrzebuje czasu."
-          },
-          {
-            "id": "3fbzbq15buypq",
-            "text": "Czym karmimy."
-          },
-          {
-            "id": "1gyhso21ygrez0",
-            "text": "Jak przygotowujemy."
-          },
-          {
-            "id": "skvgdlkijbiv",
-            "text": "Ile czekamy."
-          },
-          {
-            "id": "nk5kar14c2e6j",
-            "text": "Dlaczego czasem coś wygląda inaczej."
-          },
-          {
-            "id": "1o8w5os1jrvezi",
-            "text": "Nie sprzedajemy czegoś, czego sami nie chcielibyśmy zjeść."
-          },
-          {
-            "id": "5k5moktrsvsu",
-            "text": "Nie przyspieszamy procesu tylko po to, żeby szybciej sprzedać."
-          },
-          {
-            "id": "1p6nhmpnu6c9n",
-            "text": "Nie udajemy, że natura produkuje identyczne rzeczy."
-          },
-          {
-            "id": "5ubbtc1ykjuw8",
-            "text": "Nie chowamy tego, jak powstaje produkt."
-          },
-          {
-            "id": "180di3jtu7pgl",
-            "text": "Jeśli czegoś nie wiemy – wolimy to powiedzieć niż wymyślić ładną historię."
-          },
-          {
             "id": "1vof8t617k5bcs",
             "text": "Ona — dietetyk kliniczny z potrzebą karmienia bliskich tak, żeby jedzenie naprawdę służyło zdrowiu i regeneracji."
           },
@@ -2315,6 +2161,26 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
             "text": "Połączył nas sposób myślenia."
           },
           {
+            "id": "1uztdj2bg9rca",
+            "text": "Że warto wiedzieć, co się je."
+          },
+          {
+            "id": "1vfr2tc1ihjkv2",
+            "text": "Że sposób karmienia zwierzęcia ma znaczenie."
+          },
+          {
+            "id": "1fxio311v075ux",
+            "text": "Że dobry produkt nie potrzebuje dwudziestu składników."
+          },
+          {
+            "id": "1t6r7hfo67xl3",
+            "text": "Że fermentacji nie trzeba poganiać."
+          },
+          {
+            "id": "17uk8os768zu8",
+            "text": "Że jedzenie może być proste i naprawdę dobre."
+          },
+          {
             "id": "kuln40yd3dvc",
             "text": "Z tego powstała Zdrowotnia."
           }
@@ -2337,6 +2203,38 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "g18hk7tbfqhd",
             "text": "Dobre jedzenie nie musi być skomplikowane."
+          },
+          {
+            "id": "df0317s2zf3f",
+            "text": "WIEMY, CZYM KARMIMY"
+          },
+          {
+            "id": "1y9befrcfe2j",
+            "text": "Chcemy mieć wpływ na to, co jedzą nasze zwierzęta."
+          },
+          {
+            "id": "ykodb6i0ef7k",
+            "text": "DAJEMY CZAS"
+          },
+          {
+            "id": "yzvy7f12jwyhp",
+            "text": "Fermentacja, zakwas i naturalne procesy nie lubią pośpiechu."
+          },
+          {
+            "id": "1y8zprs1ndq27w",
+            "text": "NIE UDAJEMY IDEALNOŚCI"
+          },
+          {
+            "id": "1cdd64vk81nxb",
+            "text": "Kolor, wielkość, osad czy struktura mogą się różnić."
+          },
+          {
+            "id": "maljp0f80zuo",
+            "text": "ROBIMY TO, CO SAMI CHCEMY JEŚĆ"
+          },
+          {
+            "id": "15j0ix21946m62",
+            "text": "To najprostszy filtr jakości."
           }
         ]
       },
@@ -2347,6 +2245,54 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "lr9wad1l1a43l",
             "text": "Nie chcemy robić więcej. Chcemy robić lepiej."
+          },
+          {
+            "id": "10wtcp21oo8jhw",
+            "text": "Jajka"
+          },
+          {
+            "id": "1ba6eku1otmkvq",
+            "text": "trzeba zebrać."
+          },
+          {
+            "id": "11cw4n51rrt8ux",
+            "text": "Chleb"
+          },
+          {
+            "id": "58ns73olpcft",
+            "text": "upiec."
+          },
+          {
+            "id": "1gmwmdn1p98ver",
+            "text": "Kombuchę"
+          },
+          {
+            "id": "1mfpyn55ijf33",
+            "text": "przefermentować."
+          },
+          {
+            "id": "17dptsmqirdeg",
+            "text": "Ocet"
+          },
+          {
+            "id": "ozb23z1uv8m1t",
+            "text": "potrzebuje czasu."
+          },
+          {
+            "id": "1l6jf0p1k4fcw5",
+            "text": "Małe partie."
+          },
+          {
+            "id": "1qpxaybeciq4j",
+            "text": "Małe stada."
+          },
+          {
+            "id": "mhjtbc1ro1dn4",
+            "text": "Codzienna kontrola."
+          },
+          {
+            "id": "c9j5p71asqm25",
+            "text": "Dużo pracy ręcznej."
           },
           {
             "id": "2hotg4io6c46",
@@ -2419,6 +2365,42 @@ export const PAGE_TEXT_REGISTRY: Record<string, PageTextGroup> = {
           {
             "id": "uj7l7a19ca5s4",
             "text": "Chcemy pokazać Ci, jak to robimy."
+          },
+          {
+            "id": "3fbzbq15buypq",
+            "text": "Czym karmimy."
+          },
+          {
+            "id": "1gyhso21ygrez0",
+            "text": "Jak przygotowujemy."
+          },
+          {
+            "id": "skvgdlkijbiv",
+            "text": "Ile czekamy."
+          },
+          {
+            "id": "nk5kar14c2e6j",
+            "text": "Dlaczego czasem coś wygląda inaczej."
+          },
+          {
+            "id": "1o8w5os1jrvezi",
+            "text": "Nie sprzedajemy czegoś, czego sami nie chcielibyśmy zjeść."
+          },
+          {
+            "id": "5k5moktrsvsu",
+            "text": "Nie przyspieszamy procesu tylko po to, żeby szybciej sprzedać."
+          },
+          {
+            "id": "1p6nhmpnu6c9n",
+            "text": "Nie udajemy, że natura produkuje identyczne rzeczy."
+          },
+          {
+            "id": "5ubbtc1ykjuw8",
+            "text": "Nie chowamy tego, jak powstaje produkt."
+          },
+          {
+            "id": "180di3jtu7pgl",
+            "text": "Jeśli czegoś nie wiemy – wolimy to powiedzieć niż wymyślić ładną historię."
           },
           {
             "id": "1urkhe011jrtbg",
