@@ -121,3 +121,40 @@ export function breadcrumbJsonLd(items: { name: string; url: string }[]) {
     })),
   };
 }
+
+export function articleJsonLd(post: {
+  title: string;
+  slug: string;
+  excerpt?: string | null;
+  image?: string | null;
+  datePublished: string;
+  dateModified?: string | null;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt || undefined,
+    image: post.image || DEFAULT_OG_IMAGE,
+    datePublished: post.datePublished,
+    dateModified: post.dateModified || post.datePublished,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${BASE_URL}/blog/${post.slug}`,
+    },
+    url: `${BASE_URL}/blog/${post.slug}`,
+    author: {
+      "@type": "Organization",
+      name: "Zdrowotnia",
+      url: BASE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Zdrowotnia",
+      logo: {
+        "@type": "ImageObject",
+        url: DEFAULT_OG_IMAGE,
+      },
+    },
+  };
+}
