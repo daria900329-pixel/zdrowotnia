@@ -113,7 +113,19 @@ const JOURNEY = [
   { img: delivery, label: "Trafia do Ciebie" },
 ];
 
+// punkty zaczepienia promieni (układ 1600x1000, jajko w środku)
+const RADIAL_NUTRIENTS = [
+  { ...NUTRIENTS_LEFT[0], side: "left" as const, x: 545, y: 175 },
+  { ...NUTRIENTS_LEFT[1], side: "left" as const, x: 480, y: 500 },
+  { ...NUTRIENTS_LEFT[2], side: "left" as const, x: 545, y: 825 },
+  { ...NUTRIENTS_RIGHT[0], side: "right" as const, x: 1055, y: 130 },
+  { ...NUTRIENTS_RIGHT[1], side: "right" as const, x: 1120, y: 390 },
+  { ...NUTRIENTS_RIGHT[2], side: "right" as const, x: 1120, y: 630 },
+  { ...NUTRIENTS_RIGHT[3], side: "right" as const, x: 1055, y: 870 },
+];
+
 const Eyebrow = ({ children }: { children: React.ReactNode }) => (
+
   <p className="text-[0.65rem] sm:text-xs tracking-[0.35em] uppercase text-muted-foreground mb-6">
     {children}
   </p>
@@ -205,60 +217,69 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
               </div>
             </ScrollReveal>
 
-            {/* --- desktop: czysty układ z delikatnymi liniami prowadzącymi --- */}
+            {/* --- desktop: promienie wychodzące dokoła jajka --- */}
             <ScrollReveal>
-              <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] items-center gap-x-8 max-w-5xl mx-auto mt-4">
-                {/* lewa kolumna */}
-                <div className="flex flex-col gap-12">
-                  {NUTRIENTS_LEFT.map((n) => (
-                    <div key={n.label} className="flex items-center gap-4">
-                      <div className="flex-1 text-right">
-                        <h3 className="text-[0.68rem] tracking-[0.22em] uppercase text-foreground mb-2">
-                          {n.label}
-                        </h3>
-                        <p className="text-[0.82rem] text-muted-foreground leading-relaxed">
-                          {n.text}
-                        </p>
-                      </div>
-                      <div className="flex items-center shrink-0">
-                        <span className="block h-px w-10 bg-primary/45" />
-                        <span className="block w-1.5 h-1.5 rounded-full bg-primary/70" />
-                      </div>
-                    </div>
-                  ))}
-                </div>
+              <div className="hidden lg:block relative w-full aspect-[16/10] max-w-5xl mx-auto">
+                <svg
+                  className="absolute inset-0 w-full h-full pointer-events-none"
+                  viewBox="0 0 1600 1000"
+                  aria-hidden="true"
+                >
+                  {RADIAL_NUTRIENTS.map((n) => {
+                    const dx = n.x - 800;
+                    const dy = n.y - 500;
+                    const len = Math.hypot(dx, dy);
+                    const ux = dx / len;
+                    const uy = dy / len;
+                    const x1 = 800 + ux * 285;
+                    const y1 = 500 + uy * 285;
+                    const x2 = 800 + ux * (len - 18);
+                    const y2 = 500 + uy * (len - 18);
+                    return (
+                      <g key={n.label}>
+                        <line
+                          x1={x1}
+                          y1={y1}
+                          x2={x2}
+                          y2={y2}
+                          className="stroke-primary/50"
+                          strokeWidth="1.4"
+                          vectorEffect="non-scaling-stroke"
+                        />
+                        <circle cx={x2} cy={y2} r="5" className="fill-primary/70" />
+                      </g>
+                    );
+                  })}
+                </svg>
 
-                {/* jajko */}
-                <div className="w-[19rem] xl:w-[22rem] flex items-center justify-center">
-                  <img
-                    src={eggOpen}
-                    alt="Rozbite jajko przepiórcze z widocznym żółtkiem"
-                    loading="lazy"
-                    className="w-full drop-shadow-[0_25px_45px_rgba(80,60,30,0.18)]"
-                  />
-                </div>
+                <img
+                  src={eggOpen}
+                  alt="Rozbite jajko przepiórcze z widocznym żółtkiem"
+                  loading="lazy"
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[32%] drop-shadow-[0_25px_45px_rgba(80,60,30,0.18)]"
+                />
 
-                {/* prawa kolumna */}
-                <div className="flex flex-col gap-10">
-                  {NUTRIENTS_RIGHT.map((n) => (
-                    <div key={n.label} className="flex items-center gap-4">
-                      <div className="flex items-center shrink-0">
-                        <span className="block w-1.5 h-1.5 rounded-full bg-primary/70" />
-                        <span className="block h-px w-10 bg-primary/45" />
-                      </div>
-                      <div className="flex-1 text-left">
-                        <h3 className="text-[0.68rem] tracking-[0.22em] uppercase text-foreground mb-2">
-                          {n.label}
-                        </h3>
-                        <p className="text-[0.82rem] text-muted-foreground leading-relaxed">
-                          {n.text}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                {RADIAL_NUTRIENTS.map((n) => (
+                  <div
+                    key={n.label}
+                    className={`absolute w-[24%] ${n.side === "left" ? "text-right" : "text-left"}`}
+                    style={{
+                      top: `${(n.y / 1000) * 100}%`,
+                      transform: "translateY(-50%)",
+                      ...(n.side === "left"
+                        ? { right: `${100 - (n.x / 1600) * 100 + 1.5}%` }
+                        : { left: `${(n.x / 1600) * 100 + 1.5}%` }),
+                    }}
+                  >
+                    <h3 className="text-[0.68rem] tracking-[0.22em] uppercase text-foreground mb-2">
+                      {n.label}
+                    </h3>
+                    <p className="text-[0.8rem] text-muted-foreground leading-relaxed">{n.text}</p>
+                  </div>
+                ))}
               </div>
             </ScrollReveal>
+
 
 
             {/* --- mobile / tablet --- */}
