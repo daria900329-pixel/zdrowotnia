@@ -1,12 +1,14 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
 import feedMix from "@/assets/quail/feed-mix.jpg";
+import quails from "@/assets/quail/quails.jpg";
 import freshEggs from "@/assets/quail/fresh-eggs.jpg";
-import breadCut from "@/assets/home/bread-cut.jpg";
+import breadCut from "@/assets/product-bread.jpg";
 import packing from "@/assets/quail/packing.jpg";
 import delivery from "@/assets/quail/delivery.jpg";
 
 const STEPS = [
   { img: feedMix, label: "Karmimy" },
+  { img: quails, label: "Opiekujemy się" },
   { img: freshEggs, label: "Zbieramy" },
   { img: breadCut, label: "Pieczemy i fermentujemy" },
   { img: packing, label: "Pakujemy" },
@@ -26,7 +28,7 @@ const JourneySection = () => {
           </h2>
         </ScrollReveal>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-x-5 gap-y-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-5 gap-y-10">
           {STEPS.map((s, i) => (
             <ScrollReveal key={s.label} delay={i * 90}>
               <img
