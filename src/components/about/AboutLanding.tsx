@@ -13,6 +13,7 @@ import handsEggs from "@/assets/home/hands-eggs.jpg";
 import kitchenCorner from "@/assets/home/kitchen-corner.jpg";
 import breadCut from "@/assets/home/bread-cut.jpg";
 import quails from "@/assets/quail/quails.jpg";
+import quailPortrait from "@/assets/about/quail-portrait.jpg.asset.json";
 import feedMix from "@/assets/quail/feed-mix.jpg";
 import freshEggs from "@/assets/quail/fresh-eggs.jpg";
 import kombuchaBrew from "@/assets/kombucha/step-brew.jpg";
