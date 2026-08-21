@@ -372,12 +372,12 @@ export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
             </ScrollReveal>
             <ScrollReveal delay={120}>
               <div className="flex flex-wrap justify-center gap-x-12 gap-y-6">
-                {TASTE.map((t) => (
+                {TASTE.map((taste) => (
                   <span
-                    key={t}
+                    key={taste}
                     className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground/85"
                   >
-                    {t}
+                    {t(taste)}
                   </span>
                 ))}
               </div>
@@ -449,7 +449,7 @@ export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
                 ].map((li) => (
                   <li key={li} className="flex gap-4">
                     <span className="text-primary">—</span>
-                    {li}
+                    {t(li)}
                   </li>
                 ))}
               </ul>
@@ -729,7 +729,7 @@ export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
                         {formatVolume(v.value, v.unit)}
                       </p>
                       <p className="text-sm text-muted-foreground mb-6">
-                        {CAPACITY_NOTES[v.value] ?? "dla Twojego stołu"}
+                        {t(CAPACITY_NOTES[v.value] ?? "dla Twojego stołu")}
                       </p>
                       <p className="text-xs tracking-[0.2em] uppercase text-primary">
                         {formatPrice(v.price)}
