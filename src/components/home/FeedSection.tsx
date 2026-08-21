@@ -21,12 +21,15 @@ const STATEMENTS = [
 const FeedSection = () => {
   return (
     <section className="bg-earth/5">
-      <img
-        src={img(quailsPhoto)}
-        alt="Przepiórki w naszym rodzinnym chowie"
-        loading="lazy"
-        className="w-full h-auto max-h-[80vh] object-contain object-center md:h-[70vh] md:object-cover"
-      />
+      <div className="bg-earth/10">
+        <img
+          src={img(quailsPhoto)}
+          alt="Przepiórki w naszym rodzinnym chowie"
+          loading="lazy"
+          className="w-full h-auto max-h-[85vh] object-contain object-center mx-auto"
+        />
+      </div>
+
 
       <div className="px-6 md:px-10 lg:px-16 py-20 md:py-28">
         <ScrollReveal className="max-w-3xl">
