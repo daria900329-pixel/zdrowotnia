@@ -6,10 +6,12 @@ import { Phone, Mail, MapPin, Send, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const { toast } = useToast();
   const { content, loading } = useSiteContent("contact");
+  const [sending, setSending] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -177,9 +179,13 @@ const Contact = () => {
                   />
                 </div>
 
-                <Button type="submit" variant="default" size="lg" className="w-full">
-                  <Send className="w-4 h-4 mr-2" />
-                  Wyślij wiadomość
+                <Button type="submit" variant="default" size="lg" className="w-full" disabled={sending}>
+                  {sending ? (
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  ) : (
+                    <Send className="w-4 h-4 mr-2" />
+                  )}
+                  {sending ? "Wysyłanie…" : "Wyślij wiadomość"}
                 </Button>
               </div>
             </form>
