@@ -149,6 +149,7 @@ export function AboutLanding() {
   const p7RestSentence = p7Rest ? `Robimy ${p7Rest}` : "";
 
   const p8 = clean(content.story_paragraph8 || "I jeśli pytasz: „gdzie trafisz lepiej?” — my naprawdę nie znamy lepszego miejsca.");
+  const [p8Prefix, p8Suffix] = p8.split(" — ").map((s) => s.trim());
 
 
   const scrollTo = (id: string) => {
