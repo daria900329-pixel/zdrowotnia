@@ -640,70 +640,70 @@ export function AboutLanding() {
         </div>
       </section>
 
-      {/* 13. SEKCJA EMOCJONALNA */}
-      <section className="relative py-32 md:py-48 overflow-hidden">
+      {/* 13 + 14. EMOCJONALNY FINAŁ NA JEDNYM ZDJĘCIU */}
+      <section className="relative min-h-[90vh] md:min-h-screen overflow-hidden flex flex-col">
         <img
-          src={img(kitchenCorner)}
-          alt="Stół w naszej kuchni"
+          src={img(heroProducts)}
+          alt="Chleb na zakwasie z domowymi przetworami"
           className="absolute inset-0 w-full h-full object-cover"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-background/85" />
-        <div className="container mx-auto px-6 relative text-center">
-          <ScrollReveal variant="fade-up">
-            <h2 className="font-serif text-3xl md:text-5xl text-foreground leading-tight mb-10">
-              {t("Chcemy po prostu wiedzieć, co stawiamy na stole.")}
-            </h2>
-            <div className="space-y-1 text-lg text-muted-foreground">
-              <p>{t("Dla siebie.")}</p>
-              <p>{t("Dla dzieci.")}</p>
-              <p>{t("Dla ludzi, którzy kupują od nas.")}</p>
-            </div>
-            <p className="font-serif text-xl md:text-2xl text-foreground mt-12 max-w-2xl mx-auto">
-              {t("I to jest wystarczający powód, żeby robić Zdrowotnię.")}
-            </p>
-          </ScrollReveal>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/55 to-foreground/80" />
+
+        {/* Górny blok — rozjaśniona połowa */}
+        <div className="relative flex-1 flex items-center justify-center py-24 md:py-32">
+          <div className="container mx-auto px-6 text-center">
+            <ScrollReveal variant="fade-up">
+              <h2 className="font-serif text-3xl md:text-5xl text-foreground leading-tight mb-10">
+                {t("Chcemy po prostu wiedzieć, co stawiamy na stole.")}
+              </h2>
+              <div className="space-y-1 text-lg text-muted-foreground">
+                <p>{t("Dla siebie.")}</p>
+                <p>{t("Dla dzieci.")}</p>
+                <p>{t("Dla ludzi, którzy kupują od nas.")}</p>
+              </div>
+              <p className="font-serif text-xl md:text-2xl text-foreground mt-12 max-w-2xl mx-auto">
+                {t("I to jest wystarczający powód, żeby robić Zdrowotnię.")}
+              </p>
+            </ScrollReveal>
+          </div>
+        </div>
+
+        {/* Dolny blok — przyciemniona połowa */}
+        <div className="relative flex-1 flex items-center justify-center py-24 md:py-32">
+          <div className="container mx-auto px-6 text-center">
+            <ScrollReveal variant="fade-up">
+              <h2 className="font-serif text-4xl md:text-6xl text-background mb-10">
+                {t("To jest nasza Zdrowotnia.")}
+              </h2>
+              <div className="space-y-1 text-lg text-background/80 mb-4">
+                <p>{t("Nie idealna.")}</p>
+                <p>{t("Nie przemysłowa.")}</p>
+                <p>{t("Nie z historią wymyśloną na potrzeby marketingu.")}</p>
+              </div>
+              <p className="font-serif text-2xl md:text-3xl text-background mb-12">
+                {t("Za to prawdziwa.")}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  to="/sklep"
+                  className="inline-flex items-center justify-center gap-3 bg-background text-foreground px-8 py-4 text-xs tracking-[0.3em] uppercase hover:bg-background/90 transition-colors"
+                >
+                  {t("Zobacz, co dziś mamy")}
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  to="/sklep"
+                  className="inline-flex items-center justify-center gap-3 border border-background/60 text-background px-8 py-4 text-xs tracking-[0.3em] uppercase hover:bg-background/10 transition-colors"
+                >
+                  {t("Poznaj nasze produkty")}
+                </Link>
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
-      {/* 14. FINAŁ */}
-      <section className="relative py-28 md:py-40 overflow-hidden">
-        <img
-          src={img(heroProducts)}
-          alt="Produkty Zdrowotni"
-          className="absolute inset-0 w-full h-full object-cover"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-foreground/65" />
-        <div className="container mx-auto px-6 relative text-center">
-          <ScrollReveal variant="fade-up">
-            <h2 className="font-serif text-4xl md:text-6xl text-background mb-10">
-              {t("To jest nasza Zdrowotnia.")}
-            </h2>
-            <div className="space-y-1 text-lg text-background/80 mb-4">
-              <p>{t("Nie idealna.")}</p>
-              <p>{t("Nie przemysłowa.")}</p>
-              <p>{t("Nie z historią wymyśloną na potrzeby marketingu.")}</p>
-            </div>
-            <p className="font-serif text-2xl md:text-3xl text-background mb-12">{t("Za to prawdziwa.")}</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/#produkty"
-                className="inline-flex items-center justify-center gap-3 bg-background text-foreground px-8 py-4 text-xs tracking-[0.3em] uppercase hover:bg-background/90 transition-colors"
-              >
-                {t("Zobacz, co dziś mamy")}
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                to="/#produkty"
-                className="inline-flex items-center justify-center gap-3 border border-background/60 text-background px-8 py-4 text-xs tracking-[0.3em] uppercase hover:bg-background/10 transition-colors"
-              >
-                {t("Poznaj nasze produkty")}
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
     </main>
   );
 }
