@@ -717,6 +717,12 @@ const Admin = () => {
             <AdminPageTexts />
           </TabsContent>
 
+          <TabsContent value="page_images">
+            <AdminPageImages />
+          </TabsContent>
+
+
+
           <TabsContent value="blog">
             <AdminBlog />
           </TabsContent>
