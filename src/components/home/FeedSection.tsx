@@ -1,6 +1,7 @@
 import { t } from "@/lib/pageText";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import quailsPhoto from "@/assets/quail/quails.jpg";
+import { img } from "@/lib/pageImages";
 
 const STATEMENTS = [
   {
@@ -21,7 +22,7 @@ const FeedSection = () => {
   return (
     <section className="bg-earth/5">
       <img
-        src={quailsPhoto}
+        src={img(quailsPhoto)}
         alt="Przepiórki w naszym rodzinnym chowie"
         loading="lazy"
         className="w-full h-[45vh] md:h-[70vh] object-cover"

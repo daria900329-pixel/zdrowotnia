@@ -1,6 +1,7 @@
 import { t } from "@/lib/pageText";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import handsEggs from "@/assets/home/hands-eggs.jpg";
+import { img } from "@/lib/pageImages";
 
 const Philosophy = () => {
   return (
@@ -28,7 +29,7 @@ const Philosophy = () => {
 
         <div className="order-1 lg:order-2">
           <img
-            src={handsEggs}
+            src={img(handsEggs)}
             alt="Dłonie zbierające jajka przepiórcze do drewnianej skrzynki"
             loading="lazy"
             width={1280}

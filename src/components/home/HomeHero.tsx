@@ -1,12 +1,13 @@
 import { t } from "@/lib/pageText";
 import { Link } from "react-router-dom";
 import heroTable from "@/assets/hero-products.jpg";
+import { img } from "@/lib/pageImages";
 
 const HomeHero = () => {
   return (
     <section className="relative min-h-[92vh] flex items-end overflow-hidden">
       <img
-        src={heroTable}
+        src={img(heroTable)}
         alt="Stół Zdrowotni: chleb na zakwasie, jajka przepiórcze, zioła, kombucha i ocet jabłkowy"
         width={1920}
         height={1280}

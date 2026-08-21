@@ -5,6 +5,7 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { useHomeProducts } from "./useHomeProducts";
 import { PRODUCT_STORIES, defaultStory } from "./homeData";
 import quailsPhoto from "@/assets/quail/quails.jpg";
+import { img } from "@/lib/pageImages";
 
 const StoryProducts = () => {
   const { products, loading } = useHomeProducts();
@@ -47,7 +48,7 @@ const StoryProducts = () => {
                   <ScrollReveal variant={reversed ? "fade-left" : "fade-right"}>
                     <Link to={`/product/${product.id}`} className="block group overflow-hidden">
                       <img
-                        src={image}
+                        src={img(image)}
                         alt={product.name}
                         loading="lazy"
                         className={`w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.03] ${

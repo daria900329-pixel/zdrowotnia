@@ -10,6 +10,7 @@ import kombucha from "@/assets/home/kombucha-editorial.jpg";
 import kitchenCorner from "@/assets/home/kitchen-corner.jpg";
 import eatSoft from "@/assets/quail/eat-soft.jpg";
 import heroTable from "@/assets/hero-products.jpg";
+import { img } from "@/lib/pageImages";
 
 const SHOTS = [
   { img: quails, alt: "Nasze przepiórki", cls: "aspect-[4/5]" },
@@ -40,7 +41,7 @@ const KitchenGallery = () => {
           {SHOTS.map((s, i) => (
             <ScrollReveal key={s.alt} delay={(i % 3) * 90} className="mb-4 sm:mb-6 break-inside-avoid">
               <img
-                src={s.img}
+                src={img(s.img)}
                 alt={s.alt}
                 loading="lazy"
                 className={`w-full object-cover ${s.cls}`}
