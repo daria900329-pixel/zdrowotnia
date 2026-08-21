@@ -1,4 +1,5 @@
 import { t } from "@/lib/pageText";
+import { usePageText } from "@/hooks/usePageText";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SEO, productJsonLd, breadcrumbJsonLd } from "@/components/SEO";

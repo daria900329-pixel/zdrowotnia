@@ -1,3 +1,4 @@
+import { usePageText } from "@/hooks/usePageText";
 import Header from "@/components/Header";
 import HomeHero from "@/components/home/HomeHero";
 import Philosophy from "@/components/home/Philosophy";
@@ -55,6 +56,7 @@ const faqJsonLd = {
 };
 
 const Index = () => {
+  usePageText("home");
   return (
     <div className="min-h-screen">
       <SEO
