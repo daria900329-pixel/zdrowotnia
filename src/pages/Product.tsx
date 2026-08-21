@@ -9,6 +9,9 @@ import { ProductDescription, ActiveSection } from "@/components/ProductDescripti
 import { ArrowLeft, Loader2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SEO, productJsonLd, breadcrumbJsonLd } from "@/components/SEO";
+import { QuailEggLanding } from "@/components/quail/QuailEggLanding";
+
+const QUAIL_PRODUCT_ID = "c04e492a-fe9f-461f-bc06-a5bb0539b58f";
 
 interface Product {
   id: string;
@@ -102,6 +105,10 @@ const Product = () => {
         <Footer />
       </div>
     );
+  }
+
+  if (product.id === QUAIL_PRODUCT_ID) {
+    return <QuailEggLanding product={product} />;
   }
 
   return (

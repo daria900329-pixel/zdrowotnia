@@ -107,7 +107,7 @@ export function QuailBuyBox({ productId, productName, imageUrl }: QuailBuyBoxPro
                   : "border-border text-muted-foreground hover:border-foreground/40"
               }`}
             >
-              {v.name} {v.unit}
+              {v.value} {v.unit}
             </button>
           ))}
         </div>
@@ -123,7 +123,7 @@ export function QuailBuyBox({ productId, productName, imageUrl }: QuailBuyBoxPro
           {formatPrice(price)}
         </span>
         <span className="text-sm text-muted-foreground">
-          / {selected.name} {selected.unit}
+          / {selected.value} {selected.unit}
         </span>
       </div>
 
