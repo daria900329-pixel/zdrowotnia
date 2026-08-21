@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&family=Caveat:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
@@ -135,7 +135,9 @@
   }
 
   .font-handwritten {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Caveat', 'Segoe Script', cursive;
+    font-weight: 600;
+    letter-spacing: 0.01em;
   }
 }
 
