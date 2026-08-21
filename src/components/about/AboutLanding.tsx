@@ -13,7 +13,6 @@ import handsEggs from "@/assets/home/hands-eggs.jpg";
 import kitchenCorner from "@/assets/home/kitchen-corner.jpg";
 import breadCut from "@/assets/home/bread-cut.jpg";
 import quails from "@/assets/quail/quails.jpg";
-import quailPortrait from "@/assets/about/quail-portrait.jpg.asset.json";
 import feedMix from "@/assets/quail/feed-mix.jpg";
 import freshEggs from "@/assets/quail/fresh-eggs.jpg";
 import kombuchaBrew from "@/assets/kombucha/step-brew.jpg";
@@ -426,15 +425,15 @@ export function AboutLanding() {
       </section>
 
       {/* 7. ZDROWOTNIA TO NIE FABRYKA */}
-      <section className="relative py-32 md:py-48 overflow-hidden">
+      <section className="relative grid overflow-hidden">
         <img
-          src={img(quailPortrait.url)}
+          src={img(quails)}
           alt="Nasza przepiórka"
-          className="absolute inset-0 w-full h-full object-cover object-[center_35%]"
+          className="col-start-1 row-start-1 w-full h-auto min-h-[34rem] md:min-h-0 object-cover md:object-contain"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-foreground/60" />
-        <div className="container mx-auto px-6 relative">
+        <div className="col-start-1 row-start-1 bg-foreground/60" />
+        <div className="container mx-auto px-6 py-24 md:py-32 relative col-start-1 row-start-1 self-center">
           <ScrollReveal variant="fade-up">
             <div className="max-w-2xl">
               <h2 className="font-serif text-3xl md:text-5xl text-background leading-tight mb-10">
