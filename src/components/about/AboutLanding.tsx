@@ -253,15 +253,15 @@ export function AboutLanding() {
             </ScrollReveal>
             <ScrollReveal variant="fade-left">
               <div className="space-y-12 lg:pt-12">
-                <div className="flex gap-6 items-baseline">
+                <div className="flex gap-6 items-center">
                   <span className="font-serif text-primary text-3xl md:text-4xl shrink-0 w-24">Ona</span>
                   <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{stripLabel(p1)}</p>
                 </div>
-                <div className="flex gap-6 items-baseline">
+                <div className="flex gap-6 items-center">
                   <span className="font-serif text-primary text-3xl md:text-4xl shrink-0 w-24">On</span>
                   <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{stripLabel(p2)}</p>
                 </div>
-                <div className="flex gap-6 items-baseline">
+                <div className="flex gap-6 items-center">
                   <span className="font-serif text-primary text-3xl md:text-4xl shrink-0 w-24">One</span>
                   <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{stripLabel(oneIntro)}</p>
                 </div>
