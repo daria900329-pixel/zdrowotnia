@@ -149,6 +149,7 @@ export function AboutLanding() {
   const p7RestSentence = p7Rest ? `Robimy ${p7Rest}` : "";
 
   const p8 = clean(content.story_paragraph8 || "I jeśli pytasz: „gdzie trafisz lepiej?” — my naprawdę nie znamy lepszego miejsca.");
+  const [p8Prefix, p8Suffix] = p8.split(" — ").map((s) => s.trim());
 
 
   const scrollTo = (id: string) => {
@@ -363,7 +364,7 @@ export function AboutLanding() {
           <ScrollReveal variant="fade-up">
             <div className="my-20 md:my-28 max-w-[1150px] mx-auto">
               {/* GÓRNY RZĄD */}
-              <div className="grid md:grid-cols-[55%_38%] gap-x-24 gap-y-12">
+              <div className="grid md:grid-cols-[50%_45%] gap-x-24 gap-y-12">
                 {/* Lewa — fermentacja */}
                 <div>
                   <p className="text-base md:text-[17px] leading-[1.6] text-muted-foreground mb-8">
@@ -402,8 +403,12 @@ export function AboutLanding() {
               <div className="grid md:grid-cols-[40%_55%] gap-x-24 gap-y-12">
                 {/* Lewa — osobisty dopisek */}
                 <div>
-                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                    {p8}
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
+                    {p8Prefix}
+                    {p8Prefix ? " —" : ""}
+                  </p>
+                  <p className="font-serif text-[20px] md:text-[22px] text-foreground leading-snug border-b border-primary/50 pb-1 inline-block">
+                    {p8Suffix}
                   </p>
                 </div>
 
