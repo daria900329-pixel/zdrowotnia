@@ -1,12 +1,13 @@
 import { t } from "@/lib/pageText";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import handsEggs from "@/assets/home/hands-eggs.jpg";
+import { img } from "@/lib/pageImages";
 
 const FinalStatement = () => {
   return (
     <section className="relative">
       <img
-        src={handsEggs}
+        src={img(handsEggs)}
         alt="Dłonie zbierające jaja przepiórcze w Zdrowotni"
         loading="lazy"
         className="w-full h-[70vh] md:h-[85vh] object-cover object-center"

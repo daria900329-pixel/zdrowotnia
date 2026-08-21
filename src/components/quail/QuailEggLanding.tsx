@@ -29,6 +29,8 @@ import feedMix from "@/assets/quail/feed-mix.jpg";
 import freshEggs from "@/assets/quail/fresh-eggs.jpg";
 import packing from "@/assets/quail/packing.jpg";
 import delivery from "@/assets/quail/delivery.jpg";
+import { img } from "@/lib/pageImages";
+import { usePageImages } from "@/hooks/usePageImages";
 
 interface QuailProduct {
   id: string;
@@ -135,6 +137,7 @@ const Eyebrow = ({ children }: { children: React.ReactNode }) => (
 
 export function QuailEggLanding({ product }: { product: QuailProduct }) {
   usePageText("quail");
+  usePageImages();
   const heroImage = product.image_url ?? freshEggs;
 
   return (
@@ -196,7 +199,7 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
 
             <div className="order-1 lg:order-2 relative">
               <img
-                src={heroImage}
+                src={img(heroImage)}
                 alt="Jaja przepiórcze Zdrowotnia"
                 className="w-full h-[52vh] sm:h-[70vh] lg:h-[88vh] object-cover"
               />
@@ -255,7 +258,7 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
                 </svg>
 
                 <img
-                  src={eggOpen}
+                  src={img(eggOpen)}
                   alt="Rozbite jajko przepiórcze z widocznym żółtkiem"
                   loading="lazy"
                   className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[32%] drop-shadow-[0_25px_45px_rgba(80,60,30,0.18)]"
@@ -288,7 +291,7 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
             <div className="lg:hidden">
               <ScrollReveal variant="zoom-in">
                 <img
-                  src={eggOpen}
+                  src={img(eggOpen)}
                   alt="Rozbite jajko przepiórcze z widocznym żółtkiem"
                   loading="lazy"
                   className="w-56 sm:w-72 mx-auto mb-12 drop-shadow-[0_25px_45px_rgba(80,60,30,0.18)]"
@@ -328,7 +331,7 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
           </div>
           <div className="order-1 lg:order-2 relative min-h-[45vh]">
             <img
-              src={yolkMacro}
+              src={img(yolkMacro)}
               alt="Makro żółtka jaja przepiórczego"
               loading="lazy"
               className="absolute inset-0 w-full h-full object-cover"
@@ -389,7 +392,7 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
           <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <ScrollReveal variant="fade-right">
               <img
-                src={kidsHands}
+                src={img(kidsHands)}
                 alt="Dziecięce dłonie trzymające jaja przepiórcze"
                 loading="lazy"
                 className="w-full aspect-[4/3] object-cover"
@@ -424,7 +427,7 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
             ].map((item, i) => (
               <ScrollReveal key={item.label} delay={i * 100}>
                 <img
-                  src={item.img}
+                  src={img(item.img)}
                   alt={item.label}
                   loading="lazy"
                   className="w-full aspect-[3/4] object-cover mb-3"
@@ -482,7 +485,7 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
         <section className="relative">
           <div className="relative h-[60vh] lg:h-[80vh]">
             <img
-              src={quailsPhoto}
+              src={img(quailsPhoto)}
               alt="Przepiórki w naszym rodzinnym chowie"
               loading="lazy"
               className="absolute inset-0 w-full h-full object-cover"
@@ -519,7 +522,7 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
           <div className="max-w-5xl mx-auto text-center">
             <ScrollReveal variant="zoom-in">
               <img
-                src={eggInHand}
+                src={img(eggInHand)}
                 alt="Jajko przepiórcze na dłoni"
                 loading="lazy"
                 className="w-full max-w-md mx-auto aspect-[4/3] object-cover mb-16"
@@ -550,7 +553,7 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
               {EAT_IDEAS.map((item, i) => (
                 <ScrollReveal key={item.label} delay={i * 80}>
                   <img
-                    src={item.img}
+                    src={img(item.img)}
                     alt={item.label}
                     loading="lazy"
                     className="w-full aspect-[3/4] object-cover mb-3"
@@ -569,7 +572,7 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
           <div className="max-w-5xl mx-auto">
             <ScrollReveal>
               <img
-                src={sizeCompare}
+                src={img(sizeCompare)}
                 alt="Porównanie: jedno jajko kurze i pięć jaj przepiórczych"
                 loading="lazy"
                 className="w-full object-cover mb-12"
@@ -599,7 +602,7 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
                 <ScrollReveal key={step.label} delay={i * 80}>
                   <div>
                     <img
-                      src={step.img}
+                      src={img(step.img)}
                       alt={step.label}
                       loading="lazy"
                       className="w-full aspect-square object-cover mb-4"
@@ -667,7 +670,7 @@ export function QuailEggLanding({ product }: { product: QuailProduct }) {
         <section className="grid lg:grid-cols-2 items-center bg-secondary/40">
           <div className="relative h-[45vh] lg:h-[85vh]">
             <img
-              src={heroImage}
+              src={img(heroImage)}
               alt={product.name}
               loading="lazy"
               className="absolute inset-0 w-full h-full object-cover"

@@ -1,6 +1,7 @@
 import { t } from "@/lib/pageText";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import dariaPhoto from "@/assets/home/daria.jpg";
+import { img } from "@/lib/pageImages";
 
 const FromDaria = () => {
   return (
@@ -8,7 +9,7 @@ const FromDaria = () => {
       <div className="grid lg:grid-cols-2 items-center">
         <div>
           <img
-            src={dariaPhoto}
+            src={img(dariaPhoto)}
             alt="Daria przy kuchennym stole podczas przygotowywania jedzenia"
             loading="lazy"
             width={1408}

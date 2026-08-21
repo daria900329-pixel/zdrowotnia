@@ -7,6 +7,7 @@ import breadCutAsset from "@/assets/product-bread.jpg.asset.json";
 const breadCut = breadCutAsset.url;
 import packing from "@/assets/quail/packing.jpg";
 import delivery from "@/assets/quail/delivery.jpg";
+import { img } from "@/lib/pageImages";
 
 const STEPS = [
   { img: feedMix, label: "Karmimy" },
@@ -34,7 +35,7 @@ const JourneySection = () => {
           {STEPS.map((s, i) => (
             <ScrollReveal key={s.label} delay={i * 90}>
               <img
-                src={s.img}
+                src={img(s.img)}
                 alt={s.label}
                 loading="lazy"
                 className={`w-full object-cover mb-4 ${

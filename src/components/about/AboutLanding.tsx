@@ -21,6 +21,8 @@ import vinegarFerment from "@/assets/vinegar/step-ferment.jpg";
 import rabbits from "@/assets/about/rabbits.jpg";
 import heroProducts from "@/assets/hero-products.jpg";
 import breadAsset from "@/assets/product-bread.jpg.asset.json";
+import { img } from "@/lib/pageImages";
+import { usePageImages } from "@/hooks/usePageImages";
 
 const bread = breadAsset.url;
 
@@ -98,6 +100,7 @@ const clean = (s: string) =>
 
 export function AboutLanding() {
   usePageText("about");
+  usePageImages();
   const { content } = useSiteContent("about_page");
   const [togetherImage, setTogetherImage] = useState<string | null>(null);
 
@@ -155,7 +158,7 @@ export function AboutLanding() {
       {/* 1. HERO */}
       <section className="relative min-h-[85vh] flex items-end overflow-hidden">
         <img
-          src={togetherImage || heroTable}
+          src={img(togetherImage || heroTable)}
           alt="Daria i Marcin — twórcy Zdrowotni"
           className="absolute top-40 left-0 right-0 bottom-0 w-full h-full object-cover object-top"
           loading="eager"
@@ -232,7 +235,7 @@ export function AboutLanding() {
             </ScrollReveal>
             <ScrollReveal variant="fade-left">
               <img
-                src={handsEggs}
+                src={img(handsEggs)}
                 alt="Ręce zbierające świeże jajka przepiórcze"
                 className="w-full aspect-[4/5] object-cover rounded-sm shadow-card"
                 loading="lazy"
@@ -258,7 +261,7 @@ export function AboutLanding() {
             <ScrollReveal variant="fade-right">
               <div className="lg:sticky lg:top-32">
                 <img
-                  src={togetherImage || heroTable}
+                  src={img(togetherImage || heroTable)}
                   alt="Daria i Marcin — twórcy Zdrowotni"
                   className="w-full aspect-[4/5] object-cover rounded-sm shadow-card"
                   loading="lazy"
@@ -294,7 +297,7 @@ export function AboutLanding() {
             <div className="grid lg:grid-cols-[1fr_1.15fr] gap-12 lg:gap-16 items-start mb-16 md:mb-20">
               <ScrollReveal variant="fade-right">
                 <img
-                  src={quails}
+                  src={img(quails)}
                   alt="Nasze przepiórki w gospodarstwie"
                   className="w-full aspect-[4/5] object-cover rounded-sm"
                   loading="lazy"
@@ -320,7 +323,7 @@ export function AboutLanding() {
               </ScrollReveal>
               <ScrollReveal variant="fade-left">
                 <img
-                  src={rabbits}
+                  src={img(rabbits)}
                   alt="Nasze króliki"
                   className="w-full aspect-[4/5] object-cover rounded-sm"
                   loading="lazy"
@@ -333,7 +336,7 @@ export function AboutLanding() {
           <div className="grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 items-start my-20 md:my-28">
             <ScrollReveal variant="fade-right">
               <img
-                src={bread}
+                src={img(bread)}
                 alt="Chleb na żywym zakwasie"
                 className="w-full aspect-[4/5] object-cover rounded-sm"
                 loading="lazy"
@@ -353,7 +356,7 @@ export function AboutLanding() {
           <ScrollReveal variant="fade-up">
             <div className="my-20 md:my-28">
               <img
-                src={vinegarFerment}
+                src={img(vinegarFerment)}
                 alt="Jabłka podczas naturalnej fermentacji"
                 className="w-full aspect-[16/9] md:aspect-[21/9] object-cover rounded-sm mb-10 md:mb-12"
                 loading="lazy"
@@ -420,7 +423,7 @@ export function AboutLanding() {
       {/* 7. ZDROWOTNIA TO NIE FABRYKA */}
       <section className="relative py-32 md:py-48 overflow-hidden">
         <img
-          src={quails}
+          src={img(quails)}
           alt="Nasze przepiórki w gospodarstwie"
           className="absolute inset-0 w-full h-full object-cover"
           loading="lazy"
@@ -463,7 +466,7 @@ export function AboutLanding() {
             </ScrollReveal>
             <ScrollReveal variant="fade-left">
               <img
-                src={feedMix}
+                src={img(feedMix)}
                 alt="Własna mieszanka paszowa bez pszenicy"
                 className="w-full aspect-[4/3] object-cover rounded-sm shadow-card"
                 loading="lazy"
@@ -523,7 +526,7 @@ export function AboutLanding() {
             ].map((item, i) => (
               <ScrollReveal key={item.alt} variant="fade-up" delay={i * 80}>
                 <img
-                  src={item.img}
+                  src={img(item.img)}
                   alt={item.alt}
                   className={`w-full object-cover rounded-sm ${i % 3 === 0 ? "aspect-square" : "aspect-[3/4]"}`}
                   loading="lazy"
@@ -582,7 +585,7 @@ export function AboutLanding() {
       {/* 13. SEKCJA EMOCJONALNA */}
       <section className="relative py-32 md:py-48 overflow-hidden">
         <img
-          src={kitchenCorner}
+          src={img(kitchenCorner)}
           alt="Stół w naszej kuchni"
           className="absolute inset-0 w-full h-full object-cover"
           loading="lazy"
@@ -608,7 +611,7 @@ export function AboutLanding() {
       {/* 14. FINAŁ */}
       <section className="relative py-28 md:py-40 overflow-hidden">
         <img
-          src={heroProducts}
+          src={img(heroProducts)}
           alt="Produkty Zdrowotni"
           className="absolute inset-0 w-full h-full object-cover"
           loading="lazy"

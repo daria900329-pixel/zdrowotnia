@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { useHomeProducts } from "./useHomeProducts";
 import quailsPhoto from "@/assets/quail/quails.jpg";
+import { img } from "@/lib/pageImages";
 
 const TodaySection = () => {
   const { products, loading } = useHomeProducts();
@@ -28,7 +29,7 @@ const TodaySection = () => {
                 <Link to={`/product/${product.id}`} className="group block">
                   <div className="overflow-hidden mb-4 bg-secondary/50">
                     <img
-                      src={product.image_url ?? quailsPhoto}
+                      src={img(product.image_url ?? quailsPhoto)}
                       alt={product.name}
                       loading="lazy"
                       className="w-full aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-[1.04]"
