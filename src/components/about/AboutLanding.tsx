@@ -388,6 +388,7 @@ export function AboutLanding() {
                     {p7RestSentence}
                   </p>
                 </div>
+
               </div>
 
               <div className="my-24 md:my-32" />
