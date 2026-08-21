@@ -253,7 +253,7 @@ export function AboutLanding() {
             </h2>
           </div>
 
-          {/* Top: couple image + three short fragments */}
+          {/* Top: couple image + three short fragments + quote */}
           <div className="grid lg:grid-cols-[1.25fr_1fr] gap-12 lg:gap-20 items-start mb-24 md:mb-32">
             <ScrollReveal variant="fade-right">
               <div className="lg:sticky lg:top-32">
@@ -279,20 +279,15 @@ export function AboutLanding() {
                   <span className="font-serif text-primary text-3xl md:text-4xl shrink-0 w-24">One</span>
                   <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{stripLabel(oneIntro)}</p>
                 </div>
+                <div className="pt-4 lg:pt-8">
+                  <div className="w-12 h-px bg-primary/40 mb-8" />
+                  <p className="font-serif text-2xl md:text-3xl text-foreground leading-snug">
+                    {childrenQuote}
+                  </p>
+                </div>
               </div>
-
             </ScrollReveal>
           </div>
-
-          {/* Full-width quote */}
-          <ScrollReveal variant="fade-up">
-            <div className="py-20 md:py-28 text-center max-w-5xl mx-auto">
-              <div className="w-px h-16 bg-primary/40 mx-auto mb-10" />
-              <p className="font-serif text-3xl md:text-5xl text-foreground leading-tight">
-                {childrenQuote}
-              </p>
-            </div>
-          </ScrollReveal>
 
           {/* Animals */}
           <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20 items-start my-24 md:my-32">
