@@ -1,3 +1,4 @@
+import { t } from "@/lib/pageText";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import quails from "@/assets/quail/quails.jpg";
 import eggInHand from "@/assets/quail/egg-in-hand.jpg";
@@ -28,10 +29,10 @@ const KitchenGallery = () => {
       <div className="px-6 md:px-10 lg:px-16">
         <ScrollReveal className="max-w-2xl mb-14 md:mb-20">
           <h2 className="font-serif text-[2rem] leading-[1.08] sm:text-4xl lg:text-[3rem] text-foreground mb-5 break-words">
-            Zdrowotnia od kuchni.
+            {t("Zdrowotnia od kuchni.")}
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            Bez studia. Bez udawania. Tak to naprawdę wygląda.
+            {t("Bez studia. Bez udawania. Tak to naprawdę wygląda.")}
           </p>
         </ScrollReveal>
 

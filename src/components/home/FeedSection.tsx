@@ -1,3 +1,4 @@
+import { t } from "@/lib/pageText";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import quailsPhoto from "@/assets/quail/quails.jpg";
 
@@ -29,15 +30,14 @@ const FeedSection = () => {
       <div className="px-6 md:px-10 lg:px-16 py-20 md:py-28">
         <ScrollReveal className="max-w-3xl">
           <p className="text-[0.62rem] sm:text-xs tracking-[0.4em] uppercase text-muted-foreground mb-8">
-            Wiemy, czym karmimy
+            {t("Wiemy, czym karmimy")}
           </p>
           <h2 className="font-serif text-[2rem] leading-[1.08] sm:text-5xl lg:text-[3.2rem] text-foreground mb-10 break-words">
-            Zanim coś trafi na Twój stół,
-            <span className="block text-primary">najpierw trafia na nasz.</span>
+            {t("Zanim coś trafi na Twój stół,")}
+            <span className="block text-primary">{t("najpierw trafia na nasz.")}</span>
           </h2>
           <p className="text-muted-foreground leading-relaxed max-w-2xl">
-            Dlatego interesuje nas nie tylko to, co otrzymujemy od zwierząt. Interesuje nas przede
-            wszystkim to, co wcześniej dajemy im my.
+            {t("Dlatego interesuje nas nie tylko to, co otrzymujemy od zwierząt. Interesuje nas przede wszystkim to, co wcześniej dajemy im my.")}
           </p>
         </ScrollReveal>
 

@@ -1,3 +1,4 @@
+import { t } from "@/lib/pageText";
 import { Link } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -14,10 +15,10 @@ const ShopGrid = () => {
       <div className="px-6 md:px-10 lg:px-16">
         <ScrollReveal className="max-w-2xl mb-14 md:mb-20">
           <p className="text-[0.62rem] sm:text-xs tracking-[0.4em] uppercase text-muted-foreground mb-8">
-            Do koszyka
+            {t("Do koszyka")}
           </p>
           <h2 className="font-serif text-[2rem] leading-[1.08] sm:text-4xl lg:text-[3rem] text-foreground break-words">
-            Z naszej Zdrowotni na Twój stół
+            {t("Z naszej Zdrowotni na Twój stół")}
           </h2>
         </ScrollReveal>
 
