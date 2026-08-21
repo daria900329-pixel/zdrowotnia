@@ -116,6 +116,7 @@ export function BreadLanding({ product }: { product: BreadProduct }) {
                 productId={product.id}
                 productName={product.name}
                 imageUrl={product.image_url}
+                note="Pieczony na naszym ponad 10-letnim zakwasie."
               />
 
               <p className="mt-10 text-[0.7rem] sm:text-xs tracking-[0.18em] uppercase text-foreground/70 leading-relaxed">
