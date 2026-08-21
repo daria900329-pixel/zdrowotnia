@@ -225,9 +225,18 @@ export function AboutLanding() {
       </section>
 
       {/* 4. NASZA DROGA DO ZDROWOTNI */}
-      <section className="py-24 md:py-32 bg-secondary/30">
+      <section id="nasza-droga" className="py-24 md:py-32 bg-secondary/30">
         <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+          {/* Header */}
+          <div className="max-w-4xl mb-16 md:mb-24">
+            <Eyebrow>My</Eyebrow>
+            <h2 className="font-serif text-4xl md:text-6xl text-foreground leading-tight">
+              {storyTitle}
+            </h2>
+          </div>
+
+          {/* Top: couple image + three short fragments */}
+          <div className="grid lg:grid-cols-[1.25fr_1fr] gap-12 lg:gap-20 items-start mb-24 md:mb-32">
             <ScrollReveal variant="fade-right">
               <div className="lg:sticky lg:top-32">
                 <img
@@ -239,22 +248,121 @@ export function AboutLanding() {
               </div>
             </ScrollReveal>
             <ScrollReveal variant="fade-left">
-              <Eyebrow>{t("My")}</Eyebrow>
-              <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-10">
-                {storyTitle}
-              </h2>
-              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
-                {storyParagraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
+              <div className="space-y-12 lg:pt-12">
+                <div className="flex gap-6 items-start">
+                  <span className="font-serif text-primary text-lg shrink-0 w-16">Ona</span>
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{p1}</p>
+                </div>
+                <div className="flex gap-6 items-start">
+                  <span className="font-serif text-primary text-lg shrink-0 w-16">On</span>
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{p2}</p>
+                </div>
+                <div className="flex gap-6 items-start">
+                  <span className="font-serif text-primary text-lg shrink-0 w-16">One</span>
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{oneIntro}</p>
+                </div>
               </div>
-              {storyHighlight && (
-                <p className="font-serif text-3xl md:text-4xl text-foreground leading-snug mt-12">
-                  {storyHighlight}
-                </p>
-              )}
             </ScrollReveal>
           </div>
+
+          {/* Full-width quote */}
+          <ScrollReveal variant="fade-up">
+            <div className="py-20 md:py-28 text-center max-w-5xl mx-auto">
+              <div className="w-px h-16 bg-primary/40 mx-auto mb-10" />
+              <p className="font-serif text-3xl md:text-5xl text-foreground leading-tight">
+                {childrenQuote}
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* Animals */}
+          <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20 items-start my-24 md:my-32">
+            <ScrollReveal variant="fade-right">
+              <img
+                src={quails}
+                alt="Nasze przepiórki w gospodarstwie"
+                className="w-full aspect-[4/5] object-cover rounded-sm"
+                loading="lazy"
+              />
+            </ScrollReveal>
+            <ScrollReveal variant="fade-left">
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                {p4BeforeHighlight}
+                <span className="block font-serif text-2xl md:text-3xl text-foreground leading-snug my-6">
+                  {p4Highlight}
+                </span>
+                {p4AfterHighlight}
+              </p>
+            </ScrollReveal>
+          </div>
+
+          {/* Rabbits */}
+          <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20 items-start my-24 md:my-32">
+            <ScrollReveal variant="fade-right">
+              <img
+                src={rabbits}
+                alt="Nasze króliki"
+                className="w-full aspect-[4/5] object-cover rounded-sm"
+                loading="lazy"
+              />
+            </ScrollReveal>
+            <ScrollReveal variant="fade-left">
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{rabbitText}</p>
+            </ScrollReveal>
+          </div>
+
+          {/* Bread */}
+          <div className="grid lg:grid-cols-[2fr_1fr] gap-12 lg:gap-20 items-start my-24 md:my-32">
+            <ScrollReveal variant="fade-right">
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{breadText}</p>
+            </ScrollReveal>
+            <ScrollReveal variant="fade-left">
+              <img
+                src={bread}
+                alt="Chleb na żywym zakwasie"
+                className="w-full aspect-[4/5] object-cover rounded-sm"
+                loading="lazy"
+              />
+            </ScrollReveal>
+          </div>
+
+          {/* Orchard / fermentation */}
+          <ScrollReveal variant="fade-up">
+            <div className="my-24 md:my-32">
+              <img
+                src={vinegarFerment}
+                alt="Jabłka podczas naturalnej fermentacji"
+                className="w-full aspect-[16/9] md:aspect-[21/9] object-cover rounded-sm mb-12 md:mb-16"
+                loading="lazy"
+              />
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-4xl">
+                {p6BeforeHighlight}
+                <span className="block font-serif text-3xl md:text-4xl text-foreground leading-snug my-6">
+                  {p6Highlight}
+                </span>
+                {p6AfterHighlight}
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* Final history */}
+          <ScrollReveal variant="fade-up">
+            <div className="my-24 md:my-32 max-w-4xl">
+              <p className="font-serif text-2xl md:text-4xl text-foreground leading-snug mb-8">
+                {p7First}
+              </p>
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
+                {p7RestSentence}
+              </p>
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-20">
+                {p8}
+              </p>
+              <div className="w-16 h-px bg-primary/40 mb-10" />
+              <p className="font-serif text-3xl md:text-5xl text-foreground leading-tight">
+                {storyHighlight}
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
