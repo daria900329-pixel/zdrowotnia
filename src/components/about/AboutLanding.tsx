@@ -306,11 +306,11 @@ export function AboutLanding() {
             </ScrollReveal>
             <ScrollReveal variant="fade-left">
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                {p4BeforeHighlight}
+                <DashedText text={p4BeforeHighlight} />
                 <span className="block font-serif text-2xl md:text-3xl text-foreground leading-snug my-6">
                   {p4Highlight}
                 </span>
-                {p4AfterHighlight}
+                <DashedText text={p4AfterHighlight} />
               </p>
             </ScrollReveal>
           </div>
