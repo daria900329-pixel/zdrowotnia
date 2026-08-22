@@ -9,7 +9,7 @@ const FromDaria = () => {
       <div className="grid lg:grid-cols-2 items-center">
         <div>
           <img
-            src={img(dariaPhoto)}
+            src={img(dariaPhoto, "gw4b181rhjtb6")}
             alt="Daria przy kuchennym stole podczas przygotowywania jedzenia"
             loading="lazy"
             width={1408}

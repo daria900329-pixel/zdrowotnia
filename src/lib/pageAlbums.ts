@@ -8,28 +8,6 @@
 
 export const PAGE_ALBUMS_SECTION_KEY = "page_albums";
 
-export type AlbumDef = {
-  id: string;
-  label: string;
-  page: string;
-  description: string;
-};
-
-export const ALBUM_REGISTRY: AlbumDef[] = [
-  {
-    id: "home-kitchen",
-    label: 'Galeria „Zdrowotnia od kuchni”',
-    page: "Strona główna",
-    description: "Zdjęcia dodane tutaj pojawią się w galerii na stronie głównej.",
-  },
-  {
-    id: "about-gallery",
-    label: 'Galeria „Nasza codzienność”',
-    page: "O nas",
-    description: "Zdjęcia dodane tutaj pojawią się w galerii na podstronie O nas.",
-  },
-];
-
 export type Albums = Record<string, string[]>;
 
 let active: Albums = {};

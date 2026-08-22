@@ -191,7 +191,7 @@ export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
 
             <div className="order-1 lg:order-2">
               <img
-                src={img(heroImage)}
+                src={img(heroImage, "10uiomw1l8oec8")}
                 alt={`${product.name} — butelka i szklanka bursztynowego napoju na drewnianym stole`}
                 width={1600}
                 height={1200}
@@ -206,7 +206,7 @@ export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 md:gap-24 items-center">
             <ScrollReveal>
               <img
-                src={img(pouring)}
+                src={img(pouring, "ysdkrr124dxt1")}
                 alt="Kombucha nalewana do cienkiej szklanki, widoczne bąbelki"
                 loading="lazy"
                 width={1408}
@@ -278,7 +278,7 @@ export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
 
             <ScrollReveal delay={200}>
               <img
-                src={img(teaLeaves)}
+                src={img(teaLeaves, "tevr7l7lnl8z")}
                 alt="Liście zielonej herbaty w ceramicznej miseczce"
                 loading="lazy"
                 width={1400}
@@ -315,7 +315,7 @@ export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
         {/* 5. ŻYJE SWOIM RYTMEM */}
         <section className="relative">
           <img
-            src={img(backlight)}
+            src={img(backlight, "18t8hy412gpupu")}
             alt="Butelka kombuchy pod światło — widoczne zmętnienie i drobny osad"
             loading="lazy"
             width={1600}
@@ -355,7 +355,7 @@ export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
             </ScrollReveal>
             <ScrollReveal delay={120}>
               <img
-                src={img(bubbles)}
+                src={img(bubbles, "tm7wkh1ov0red")}
                 alt="Makrofotografia bąbelków na ściance szklanki"
                 loading="lazy"
                 width={1408}
@@ -389,7 +389,7 @@ export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
             </ScrollReveal>
             <ScrollReveal delay={180}>
               <img
-                src={img(tasteShot)}
+                src={img(tasteShot, "1hzvvoq1px4brw")}
                 alt="Szklanka schłodzonej kombuchy w naturalnym świetle"
                 loading="lazy"
                 width={1408}
@@ -479,7 +479,7 @@ export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
             </ScrollReveal>
             <ScrollReveal delay={120}>
               <img
-                src={img(bottles)}
+                src={img(bottles, "ddwiw1flor8h")}
                 alt="Trzy butelki kombuchy obok siebie — różnice w barwie i zmętnieniu"
                 loading="lazy"
                 width={1600}
@@ -493,7 +493,7 @@ export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
         {/* 11. NAJLEPSZA DOBRZE SCHŁODZONA */}
         <section className="relative">
           <img
-            src={img(chilled)}
+            src={img(chilled, "ijjh8a1tk1aa4")}
             alt="Zimna butelka kombuchy pokryta skroploną wodą"
             loading="lazy"
             width={1600}
@@ -535,7 +535,7 @@ export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
                 <ScrollReveal key={w.label} delay={i * 80}>
                   <div className={i === WHEN.length - 1 ? "lg:-mt-10" : ""}>
                     <img
-                      src={img(w.img)}
+                      src={img(w.img, "ekuz35m5m2nb")}
                       alt={w.label}
                       loading="lazy"
                       width={1000}
@@ -567,7 +567,7 @@ export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
               {JOURNEY.map((s, i) => (
                 <ScrollReveal key={s.label} delay={i * 70}>
                   <img
-                    src={img(s.img)}
+                    src={img(s.img, "1wq650iccao6u")}
                     alt={s.label}
                     loading="lazy"
                     width={1200}
@@ -663,7 +663,7 @@ export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
                   </p>
                 </div>
                 <img
-                  src={img(backlight)}
+                  src={img(backlight, "q17icc1sc0e6u")}
                   alt="Kombucha pod światło — naturalny osad w butelce"
                   loading="lazy"
                   width={1600}
@@ -690,7 +690,7 @@ export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
             <ScrollReveal delay={150}>
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <img
-                  src={img(stepChill)}
+                  src={img(stepChill, "q17icc1sc0e6u")}
                   alt="Butelki kombuchy w chłodzie"
                   loading="lazy"
                   width={1200}
@@ -750,7 +750,7 @@ export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
         {/* 20. FINAŁ */}
         <section className="relative">
           <img
-            src={img(finalShot)}
+            src={img(finalShot, "10qr14b11a83gx")}
             alt="Szklanka zimnej kombuchy z bąbelkami obok butelki"
             loading="lazy"
             width={1600}

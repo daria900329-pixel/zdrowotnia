@@ -14,8 +14,7 @@ import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Loader2, Plus, Trash2, Edit, Save, X, LogOut, Upload, Package, FileText, BookOpen, Mail, Image as ImageIcon } from "lucide-react";
 import { AdminCMS } from "@/components/admin/AdminCMS";
-import { AdminPageTexts } from "@/components/admin/AdminPageTexts";
-import { AdminPageImages } from "@/components/admin/AdminPageImages";
+import { AdminPages } from "@/components/admin/AdminPages";
 import { AdminOrders } from "@/components/admin/AdminOrders";
 import { ProductVariantsInline } from "@/components/admin/ProductVariantsInline";
 import { ProductImagesManager } from "@/components/admin/ProductImagesManager";
@@ -290,8 +289,7 @@ const Admin = () => {
           <TabsList className="grid grid-cols-3 sm:grid-cols-6 w-full h-auto">
             <TabsTrigger value="products"><Package className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Produkty</span></TabsTrigger>
             <TabsTrigger value="content"><FileText className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Treści</span></TabsTrigger>
-            <TabsTrigger value="page_texts"><FileText className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Teksty stron</span></TabsTrigger>
-            <TabsTrigger value="page_images"><ImageIcon className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Zdjęcia stron</span></TabsTrigger>
+            <TabsTrigger value="pages"><FileText className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Strony</span></TabsTrigger>
 
             <TabsTrigger value="blog"><BookOpen className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Blog</span></TabsTrigger>
             <TabsTrigger value="emails"><Mail className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Maile</span></TabsTrigger>
@@ -716,12 +714,8 @@ const Admin = () => {
             <AdminCMS />
           </TabsContent>
 
-          <TabsContent value="page_texts">
-            <AdminPageTexts />
-          </TabsContent>
-
-          <TabsContent value="page_images">
-            <AdminPageImages />
+          <TabsContent value="pages">
+            <AdminPages />
           </TabsContent>
 
 

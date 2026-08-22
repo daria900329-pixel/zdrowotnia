@@ -128,7 +128,7 @@ export function BreadLanding({ product }: { product: BreadProduct }) {
 
             <div className="order-1 lg:order-2">
               <img
-                src={img(heroImage)}
+                src={img(heroImage, "qj5aah1ln2s8r")}
                 alt="Bochenek chleba żytniego na zakwasie od Zdrowotni"
                 className="w-full h-[52vh] sm:h-[70vh] lg:h-[88vh] object-cover"
               />
@@ -141,7 +141,7 @@ export function BreadLanding({ product }: { product: BreadProduct }) {
           <div className="max-w-[1150px] mx-auto grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
             <ScrollReveal variant="zoom-in">
               <img
-                src={img(breadCut)}
+                src={img(breadCut, "vi4i71jmxlgr")}
                 alt="Przekrojony bochenek chleba żytniego z widocznym miękiszem"
                 loading="lazy"
                 className="w-full aspect-[4/5] object-cover"
@@ -242,7 +242,7 @@ export function BreadLanding({ product }: { product: BreadProduct }) {
           <div className="max-w-[1150px] mx-auto grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
             <ScrollReveal variant="zoom-in">
               <img
-                src={img(heroImage)}
+                src={img(heroImage, "ou2p6es21wu2")}
                 alt="Skórka chleba z ziarnami słonecznika, dyni i siemienia lnianego"
                 loading="lazy"
                 className="w-full aspect-[4/5] object-cover order-1"
@@ -323,7 +323,7 @@ export function BreadLanding({ product }: { product: BreadProduct }) {
             </ScrollReveal>
             <ScrollReveal variant="zoom-in">
               <img
-                src={img(breadCut)}
+                src={img(breadCut, "b8uomm1ozgwcw")}
                 alt="Gruba kromka chleba żytniego z masłem"
                 loading="lazy"
                 className="w-full aspect-[4/5] object-cover"
@@ -349,7 +349,7 @@ export function BreadLanding({ product }: { product: BreadProduct }) {
             <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
               <ScrollReveal>
                 <img
-                  src={img(heroImage)}
+                  src={img(heroImage, "1n41u1l12fm5k7")}
                   alt={product.name}
                   loading="lazy"
                   className="w-full aspect-square object-cover"

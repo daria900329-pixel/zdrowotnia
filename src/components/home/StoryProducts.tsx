@@ -48,7 +48,7 @@ const StoryProducts = () => {
                   <ScrollReveal variant={reversed ? "fade-left" : "fade-right"}>
                     <Link to={`/product/${product.id}`} className="block group overflow-hidden">
                       <img
-                        src={img(image)}
+                        src={img(image, "rh445e1x4347m")}
                         alt={product.name}
                         loading="lazy"
                         className={`w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.03] ${

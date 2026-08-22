@@ -35,7 +35,7 @@ const JourneySection = () => {
           {STEPS.map((s, i) => (
             <ScrollReveal key={s.label} delay={i * 90}>
               <img
-                src={img(s.img)}
+                src={img(s.img, "c2piox1kjdrgz")}
                 alt={s.label}
                 loading="lazy"
                 className={`w-full object-cover mb-4 ${

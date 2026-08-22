@@ -531,7 +531,11 @@ export function AdminCMS() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Edycja treści strony</CardTitle>
+        <CardTitle>Ustawienia i dane globalne</CardTitle>
+        <p className="text-sm text-muted-foreground">
+          Dane kontaktowe, stopka i pozostałe ustawienia wspólne dla całego serwisu.
+          Teksty i zdjęcia poszczególnych sekcji stron edytujesz w zakładce „Strony”.
+        </p>
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="hero">
