@@ -201,6 +201,238 @@ export function KombuchaLanding({ product }: { product: KombuchaProduct }) {
           </div>
         </section>
 
+        {/* 1B. PO CO WŁAŚCIWIE KOMBUCHA */}
+        <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16">
+          <div className="max-w-[1150px] mx-auto">
+            <ScrollReveal>
+              <Eyebrow>{t("Po co właściwie kombucha?")}</Eyebrow>
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.08] text-foreground mb-10 max-w-3xl">
+                {t("Pijemy ją dla smaku.")}
+                <span className="block text-primary">
+                  {t("Ale zdecydowanie nie tylko dla smaku.")}
+                </span>
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
+                {t("Żywa kombucha powstaje wtedy, kiedy bakterie i drożdże biorą na warsztat słodzoną herbatę. Fermentacja zmienia jej skład, tworząc kwasy organiczne i inne związki, dzięki którym gotowy napój jest czymś zupełnie innym niż herbata, od której zaczęliśmy.")}
+              </p>
+              <p className="font-serif text-2xl sm:text-3xl lg:text-4xl text-foreground leading-[1.25] mt-12 max-w-4xl">
+                {t("I właśnie dlatego interesuje nas nie tylko to, jak smakuje. Ale też to, co może robić w organizmie.")}
+              </p>
+            </ScrollReveal>
+          </div>
+
+          {/* KORZYŚCI 01–05 */}
+          <div className="max-w-[1150px] mx-auto mt-24 md:mt-32 space-y-24 md:space-y-32">
+            <ScrollReveal>
+              <div className="grid md:grid-cols-[120px_1fr] gap-6 md:gap-12 items-start">
+                <div>
+                  <span className="font-serif text-6xl md:text-7xl text-primary/40 leading-none">01</span>
+                  <p className="text-[0.65rem] tracking-[0.3em] uppercase text-muted-foreground mt-3">
+                    {t("Trawienie")}
+                  </p>
+                </div>
+                <div className="max-w-2xl">
+                  <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground leading-[1.12] mb-6">
+                    {t("Żeby po jedzeniu było po prostu lżej.")}
+                  </h3>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    {t("Kombucha jest badana pod kątem wpływu na pracę przewodu pokarmowego. Pierwsze badania u ludzi pokazują poprawę części dolegliwości jelitowych i pracy jelit.")}
+                  </p>
+                  <p className="text-[0.7rem] tracking-[0.25em] uppercase text-foreground/70 mt-8">
+                    {t("trawienie")} <span className="text-primary">·</span> {t("praca jelit")}{" "}
+                    <span className="text-primary">·</span> {t("regularność")}
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal>
+              <div className="grid md:grid-cols-[120px_1fr] gap-6 md:gap-12 items-start">
+                <div>
+                  <span className="font-serif text-6xl md:text-7xl text-primary/40 leading-none">02</span>
+                  <p className="text-[0.65rem] tracking-[0.3em] uppercase text-muted-foreground mt-3">
+                    {t("Dobre bakterie")}
+                  </p>
+                </div>
+                <div className="max-w-2xl">
+                  <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground leading-[1.12] mb-6">
+                    {t("Bo w jelitach dzieje się znacznie więcej niż trawienie obiadu.")}
+                  </h3>
+                  <p className="text-lg text-muted-foreground leading-relaxed mb-5">
+                    {t("Żywa, niepasteryzowana kombucha jest produktem naturalnej fermentacji. Badania sugerują również, że jej spożywanie może wpływać na skład mikrobioty jelitowej.")}
+                  </p>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    {t("Dobre bakterie w naszych jelitach produkują substancje, które odżywiają komórki jelita i pomagają utrzymywać jego prawidłowe środowisko.")}
+                  </p>
+                  <p className="font-serif text-2xl sm:text-3xl text-primary leading-[1.25] mt-10">
+                    {t("Dbając o mikrobiotę, dbamy o całe środowisko jelit.")}
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal>
+              <div className="grid md:grid-cols-[120px_1fr] gap-6 md:gap-12 items-start">
+                <div>
+                  <span className="font-serif text-6xl md:text-7xl text-primary/40 leading-none">03</span>
+                  <p className="text-[0.65rem] tracking-[0.3em] uppercase text-muted-foreground mt-3">
+                    {t("Cukier po posiłku")}
+                  </p>
+                </div>
+                <div className="max-w-2xl">
+                  <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground leading-[1.12] mb-6">
+                    {t("Nie tylko ocet ma tu coś do powiedzenia.")}
+                  </h3>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    {t("Pierwsze niewielkie badania na ludziach sugerują, że żywa kombucha pita do posiłku może łagodzić poposiłkowy wzrost glukozy i insuliny.")}
+                  </p>
+                  <p className="font-serif text-3xl sm:text-4xl text-foreground leading-[1.2] mt-10">
+                    {t("Mniejsza huśtawka po jedzeniu?")}
+                    <span className="block text-muted-foreground">
+                      {t("To jeden z ciekawszych kierunków badań nad kombuchą.")}
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal>
+              <div className="grid md:grid-cols-[120px_1fr] gap-6 md:gap-12 items-start">
+                <div>
+                  <span className="font-serif text-6xl md:text-7xl text-primary/40 leading-none">04</span>
+                  <p className="text-[0.65rem] tracking-[0.3em] uppercase text-muted-foreground mt-3">
+                    {t("Antyoksydanty")}
+                  </p>
+                </div>
+                <div className="max-w-2xl">
+                  <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground leading-[1.12] mb-6">
+                    {t("Zielona herbata wnosi swoje. Fermentacja robi resztę.")}
+                  </h3>
+                  <p className="text-lg text-muted-foreground leading-relaxed mb-5">
+                    {t("Nasza kombucha zaczyna się od zielonej herbaty — naturalnego źródła polifenoli. To związki cenione ze względu na ich potencjał antyoksydacyjny.")}
+                  </p>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    {t("Podczas fermentacji zmienia się skład napoju i powstają kolejne związki będące efektem pracy bakterii i drożdży.")}
+                  </p>
+                  <p className="font-serif text-2xl sm:text-3xl text-primary leading-[1.25] mt-10">
+                    {t("Herbata + żywa fermentacja. Właśnie to jest w kombuchy najciekawsze.")}
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal>
+              <div className="grid md:grid-cols-[120px_1fr] gap-6 md:gap-12 items-start">
+                <div>
+                  <span className="font-serif text-6xl md:text-7xl text-primary/40 leading-none">05</span>
+                  <p className="text-[0.65rem] tracking-[0.3em] uppercase text-muted-foreground mt-3">
+                    {t("Odporność")}
+                  </p>
+                </div>
+                <div className="max-w-3xl">
+                  <h3 className="font-serif text-4xl sm:text-6xl lg:text-7xl text-foreground leading-[1.05] mb-10">
+                    {t("Odporność?")}
+                    <span className="block text-primary">{t("Spójrz najpierw na jelita.")}</span>
+                  </h3>
+                  <p className="text-lg text-muted-foreground leading-relaxed mb-5 max-w-2xl">
+                    {t("Jelita to nie tylko miejsce trawienia jedzenia. To ogromny ekosystem pozostający w stałym kontakcie z układem odpornościowym.")}
+                  </p>
+                  <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+                    {t("Mikroorganizmy żyjące w jelitach, produkowane przez nie substancje oraz sama bariera jelitowa uczestniczą w prawidłowym funkcjonowaniu odporności.")}
+                  </p>
+                  <p className="font-serif text-2xl sm:text-3xl lg:text-4xl text-foreground leading-[1.25] mt-12 max-w-3xl">
+                    {t("Dlatego kiedy myślimy o odporności, myślimy również o tym, czym każdego dnia karmimy nasze jelita.")}
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* 1C. AUTOIMMUNIZACJA */}
+        <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-secondary/50">
+          <div className="max-w-[1000px] mx-auto">
+            <ScrollReveal>
+              <Eyebrow>{t("A co, jeśli odporność zamiast chronić — zaczyna atakować?")}</Eyebrow>
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-foreground leading-[1.08] mb-10">
+                {t("Przy autoimmunizacji jelita")}
+                <span className="block text-primary">
+                  {t("są szczególnie ciekawym kawałkiem układanki.")}
+                </span>
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-5 max-w-3xl">
+                {t("Hashimoto, łuszczyca, RZS i inne choroby autoimmunologiczne nie wynikają po prostu ze „słabej odporności”. Tutaj układ odpornościowy działa nieprawidłowo i zaczyna reagować przeciwko własnym tkankom.")}
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-5 max-w-3xl">
+                {t("Dlatego nie chodzi nam o bezmyślne „wzmacnianie odporności”. Interesuje nas jej równowaga.")}
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
+                {t("A jelita są jednym z miejsc, którym warto się w tym kontekście przyglądać — mikrobiota, stan bariery jelitowej i układ odpornościowy są ze sobą ściśle powiązane.")}
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal delay={120}>
+              <p className="font-serif text-4xl sm:text-6xl lg:text-7xl text-foreground leading-[1.05] mt-16">
+                {t("Jelita i odporność")}
+                <span className="block text-primary">{t("rozmawiają ze sobą cały czas.")}</span>
+              </p>
+              <p className="font-serif text-2xl sm:text-3xl text-foreground/90 leading-[1.3] mt-10 max-w-3xl">
+                {t("Dlatego żywe, fermentowane jedzenie ma dla nas szczególne miejsce na stole.")}
+              </p>
+              <p className="text-base text-muted-foreground leading-relaxed mt-10 max-w-2xl">
+                {t("Nie twierdzimy, że kombucha leczy Hashimoto, RZS czy łuszczycę. Nie leczy. Traktujemy ją jako jeden z elementów różnorodnego sposobu odżywiania ukierunkowanego również na dbanie o środowisko jelit.")}
+              </p>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* 1D. A TO JESZCZE NIE KONIEC */}
+        <section className="py-28 md:py-44 px-6 md:px-10 lg:px-16">
+          <div className="max-w-3xl mx-auto text-center">
+            <ScrollReveal>
+              <Eyebrow>{t("Nauka nadal zagląda do butelki")}</Eyebrow>
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-foreground leading-[1.1] mb-10">
+                {t("A kombucha wciąż ma przed nami tajemnice.")}
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                {t("W badaniach laboratoryjnych i na modelach zwierzęcych naukowcy przyglądają się również potencjalnemu wpływowi kombuchy na:")}
+              </p>
+              <p className="text-[0.75rem] sm:text-sm tracking-[0.25em] uppercase text-foreground/80 mt-10 leading-loose">
+                {t("stan zapalny")} <span className="text-primary">·</span>{" "}
+                {t("gospodarkę tłuszczową")} <span className="text-primary">·</span> {t("wątrobę")}{" "}
+                <span className="text-primary">·</span> {t("stres oksydacyjny")}{" "}
+                <span className="text-primary">·</span> {t("metabolizm")}
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed mt-12">
+                {t("To jeszcze nie są obietnice, które możemy przenieść wprost na człowieka. Ale są wystarczająco ciekawe, żeby nauka chciała sprawdzać je dalej.")}
+              </p>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* 1E. FINAŁ WSTĘPU */}
+        <section className="py-28 md:py-48 px-6 md:px-10 lg:px-16">
+          <div className="max-w-4xl mx-auto">
+            <ScrollReveal>
+              <h2 className="font-serif text-5xl sm:text-6xl lg:text-8xl text-foreground leading-[1.03]">
+                {t("To nie jest po prostu")}
+                <span className="block text-primary">{t("herbata z bąbelkami.")}</span>
+              </h2>
+              <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed mt-12 max-w-2xl">
+                {t("To zielona herbata, żywe kultury bakterii i drożdży oraz czas.")}
+              </p>
+              <p className="font-handwritten text-4xl sm:text-5xl text-primary mt-8">
+                {t("resztę robi fermentacja.")}
+              </p>
+              <p className="text-[0.8rem] sm:text-sm tracking-[0.2em] uppercase text-foreground/70 mt-20">
+                {t("A teraz zobacz, co właściwie mieszka w naszym SCOBY")}{" "}
+                <span className="font-sans text-primary">↓</span>
+              </p>
+            </ScrollReveal>
+          </div>
+        </section>
+
+
         {/* 2. ZMYSŁOWA */}
         <section className="py-24 md:py-40 px-6 md:px-10 lg:px-16">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 md:gap-24 items-center">
