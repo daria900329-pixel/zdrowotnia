@@ -216,56 +216,108 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
             </div>
 
             {/* posiłek */}
-            <div className="mt-24 md:mt-32 grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+            <div className="mt-24 md:mt-32">
               <ScrollReveal>
-                <div>
+                <div className="text-center max-w-3xl mx-auto">
                   <Eyebrow>{t("Najciekawsze dzieje się przy stole")}</Eyebrow>
-                  <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground leading-[1.1] mb-8">
-                    {t("Ten sam posiłek.")}
-                    <span className="block text-primary">{t("Łagodniejsza odpowiedź organizmu.")}</span>
+                  <h3 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-foreground leading-[1.08] mb-6">
+                    {t("Ten sam posiłek.")}{" "}
+                    <span className="text-primary">{t("Łagodniejsza odpowiedź organizmu.")}</span>
                   </h3>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
                     {t("Ocet spożywany w okolicy posiłku może zmniejszać poposiłkowy wzrost glukozy i insuliny — szczególnie wtedy, gdy na talerzu pojawiają się węglowodany.")}
                   </p>
                 </div>
               </ScrollReveal>
 
               <ScrollReveal variant="zoom-in">
-                <figure className="bg-background/60 border border-foreground/10 p-6 sm:p-10">
-                  <svg viewBox="0 0 400 220" className="w-full h-auto" role="img"
+                <figure className="mt-12 sm:mt-16">
+                  <svg viewBox="0 0 1000 620" className="w-full h-auto" role="img"
                        aria-label="Schemat: łagodniejsza krzywa odpowiedzi glikemicznej po posiłku z octem">
-                    <line x1="40" y1="180" x2="380" y2="180" stroke="currentColor" strokeWidth="1"
-                          className="text-foreground/25" />
-                    <line x1="40" y1="20" x2="40" y2="180" stroke="currentColor" strokeWidth="1"
-                          className="text-foreground/25" />
-                    <path d="M40 175 C 90 175, 110 35, 160 45 C 215 56, 260 150, 380 168"
-                          fill="none" stroke="currentColor" strokeWidth="2"
-                          className="text-foreground/40" strokeDasharray="5 5" />
-                    <path d="M40 175 C 95 175, 125 95, 180 100 C 240 106, 280 155, 380 172"
-                          fill="none" stroke="currentColor" strokeWidth="2.5" className="text-primary" />
-                    <text x="168" y="34" className="fill-current text-foreground/50"
-                          style={{ fontSize: "11px", letterSpacing: "0.12em" }}>
-                      {t("bez octu")}
+                    <defs>
+                      <linearGradient id="vinegarFill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.30" />
+                        <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.04" />
+                      </linearGradient>
+                      <linearGradient id="plainFill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="currentColor" stopOpacity="0.09" />
+                        <stop offset="100%" stopColor="currentColor" stopOpacity="0.02" />
+                      </linearGradient>
+                      <marker id="axisArrow" markerWidth="8" markerHeight="8" refX="6" refY="3"
+                              orient="auto" markerUnits="strokeWidth">
+                        <path d="M0,0 L6,3 L0,6 z" fill="currentColor" />
+                      </marker>
+                    </defs>
+
+                    {/* osie */}
+                    <g className="text-foreground/40">
+                      <line x1="120" y1="500" x2="960" y2="500" stroke="currentColor" strokeWidth="1.5"
+                            markerEnd="url(#axisArrow)" />
+                      <line x1="120" y1="500" x2="120" y2="60" stroke="currentColor" strokeWidth="1.5"
+                            markerEnd="url(#axisArrow)" />
+                    </g>
+
+                    {/* obszary pod krzywymi */}
+                    <g className="text-foreground">
+                      <path d="M120 494 C 220 490, 250 380, 320 240 C 370 140, 430 120, 500 165 C 590 222, 660 380, 760 445 C 840 480, 900 492, 950 494 L 950 500 L 120 500 Z"
+                            fill="url(#plainFill)" />
+                    </g>
+                    <path d="M120 494 C 230 492, 290 470, 360 400 C 420 340, 470 320, 520 330 C 610 348, 680 420, 780 462 C 860 490, 910 494, 950 496 L 950 500 L 120 500 Z"
+                          fill="url(#vinegarFill)" />
+
+                    {/* krzywe */}
+                    <path d="M120 494 C 220 490, 250 380, 320 240 C 370 140, 430 120, 500 165 C 590 222, 660 380, 760 445 C 840 480, 900 492, 950 494"
+                          fill="none" stroke="currentColor" strokeWidth="3"
+                          className="text-foreground/35" strokeDasharray="14 12" strokeLinecap="round" />
+                    <path d="M120 494 C 230 492, 290 470, 360 400 C 420 340, 470 320, 520 330 C 610 348, 680 420, 780 462 C 860 490, 910 494, 950 496"
+                          fill="none" stroke="hsl(var(--primary))" strokeWidth="4" strokeLinecap="round" />
+
+                    {/* legenda */}
+                    <g>
+                      <line x1="800" y1="112" x2="860" y2="112" stroke="currentColor" strokeWidth="2.5"
+                            className="text-foreground/35" strokeDasharray="10 8" strokeLinecap="round" />
+                      <text x="876" y="117" className="fill-current text-foreground/60"
+                            style={{ fontSize: "20px", letterSpacing: "0.06em" }}>{t("bez octu")}</text>
+                      <line x1="800" y1="152" x2="860" y2="152" stroke="hsl(var(--primary))"
+                            strokeWidth="3.5" strokeLinecap="round" />
+                      <text x="876" y="158" className="fill-current text-primary"
+                            style={{ fontSize: "20px", letterSpacing: "0.06em" }}>{t("z octem")}</text>
+                    </g>
+
+                    {/* opis osi Y */}
+                    <text x="14" y="290" className="fill-current text-foreground/55 font-serif italic"
+                          style={{ fontSize: "20px" }}>
+                      <tspan x="14" dy="0">{t("poziom")}</tspan>
+                      <tspan x="14" dy="26">{t("glukozy")}</tspan>
+                      <tspan x="14" dy="26">{t("we krwi")}</tspan>
                     </text>
-                    <text x="192" y="90" className="fill-current text-primary"
-                          style={{ fontSize: "11px", letterSpacing: "0.12em" }}>
-                      {t("z octem")}
-                    </text>
-                    <text x="40" y="200" className="fill-current text-foreground/40"
-                          style={{ fontSize: "10px", letterSpacing: "0.2em" }}>
-                      {t("posiłek")}
-                    </text>
-                    <text x="330" y="200" className="fill-current text-foreground/40"
-                          style={{ fontSize: "10px", letterSpacing: "0.2em" }}>
-                      {t("czas")}
+
+                    {/* opisy osi X */}
+                    <text x="124" y="534" className="fill-current text-foreground/50"
+                          style={{ fontSize: "17px", letterSpacing: "0.18em" }}>{t("POSIŁEK")}</text>
+                    <text x="884" y="534" className="fill-current text-foreground/50"
+                          style={{ fontSize: "17px", letterSpacing: "0.18em" }}>{t("CZAS")}</text>
+
+                    {/* adnotacja */}
+                    <path d="M700 300 C 690 340, 682 366, 676 382" fill="none" stroke="hsl(var(--primary))"
+                          strokeWidth="2" markerEnd="url(#axisArrow)" className="text-primary" />
+                    <text x="716" y="292" className="fill-current text-primary font-serif italic"
+                          style={{ fontSize: "22px" }}>
+                      <tspan x="716" dy="0">{t("Łagodniejszy")}</tspan>
+                      <tspan x="716" dy="30">{t("wzrost. Spokojniejszy")}</tspan>
+                      <tspan x="716" dy="30">{t("powrót do równowagi.")}</tspan>
                     </text>
                   </svg>
-                  <figcaption className="mt-6 text-xs text-muted-foreground/70 leading-relaxed">
-                    {t("Schemat poglądowy. Nie przedstawia konkretnych wartości ani wyników badań.")}
+                  <figcaption className="mt-6 text-center text-sm text-muted-foreground/80 leading-relaxed max-w-2xl mx-auto">
+                    {t("Mniejszy poposiłkowy wzrost glukozy i insuliny — to jeden z najlepiej przebadanych efektów spożywania octu.")}
+                    <span className="block mt-2 text-xs text-muted-foreground/60">
+                      {t("Schemat poglądowy. Nie przedstawia konkretnych wartości ani wyników badań.")}
+                    </span>
                   </figcaption>
                 </figure>
               </ScrollReveal>
             </div>
+
 
             {/* sytość i masa ciała */}
             <div className="mt-24 md:mt-32 max-w-4xl">
