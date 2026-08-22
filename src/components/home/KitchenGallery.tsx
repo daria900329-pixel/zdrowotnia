@@ -52,7 +52,7 @@ const KitchenGallery = () => {
           {shots.map((s, i) => (
             <ScrollReveal key={`${s.img}-${i}`} delay={(i % 3) * 90} className="mb-4 sm:mb-6 break-inside-avoid">
               <img
-                src={img(s.img)}
+                src={img(s.img, "4b5bucynmr0i")}
                 alt={s.alt}
                 loading="lazy"
                 className={`w-full object-cover ${s.cls}`}

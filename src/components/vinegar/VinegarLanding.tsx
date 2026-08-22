@@ -156,7 +156,7 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
 
             <div className="order-1 lg:order-2">
               <img
-                src={img(heroImage)}
+                src={img(heroImage, "12go65mqn17jo")}
                 alt="Butelka octu jabłkowego Zdrowotnia na drewnianym stole z jabłkami"
                 className="w-full h-[52vh] sm:h-[70vh] lg:h-[88vh] object-cover"
               />
@@ -186,7 +186,7 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
             </ScrollReveal>
             <ScrollReveal variant="zoom-in">
               <img
-                src={img(pouring)}
+                src={img(pouring, "1qhx1aude41hy")}
                 alt="Ocet jabłkowy nalewany do ceramicznej miseczki"
                 loading="lazy"
                 className="w-full aspect-[4/5] object-cover"
@@ -207,7 +207,7 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
             <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
               <ScrollReveal>
                 <img
-                  src={img(applesCrate)}
+                  src={img(applesCrate, "1iw9rt91f0k62t")}
                   alt="Jabłka z przydomowego sadu w drewnianej skrzynce"
                   loading="lazy"
                   className="w-full aspect-[4/5] object-cover"
@@ -242,7 +242,7 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
           <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
             <ScrollReveal variant="zoom-in">
               <img
-                src={img(sediment)}
+                src={img(sediment, "87qhwq1yemcus")}
                 alt="Naturalny osad na dnie butelki octu jabłkowego"
                 loading="lazy"
                 className="w-full aspect-[4/3] object-cover"
@@ -294,7 +294,7 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
             </ScrollReveal>
             <ScrollReveal variant="zoom-in">
               <img
-                src={img(tasteShot)}
+                src={img(tasteShot, "190hea2pjbdyu")}
                 alt="Kropla octu jabłkowego na drewnianej łyżce obok przekrojonego jabłka"
                 loading="lazy"
                 className="w-full aspect-[4/5] object-cover"
@@ -318,7 +318,7 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
                 <ScrollReveal key={u.label} delay={i * 70}>
                   <figure>
                     <img
-                      src={img(u.img)}
+                      src={img(u.img, "1tn4dvcayqc6u")}
                       alt={u.label}
                       loading="lazy"
                       className="w-full aspect-[4/5] object-cover mb-4"
@@ -346,7 +346,7 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
         <section className="grid lg:grid-cols-2 items-stretch">
           <ScrollReveal>
             <img
-              src={img(morning)}
+              src={img(morning, "19vpkbrfaxt0h")}
               alt="Szklanka wody z odrobiną octu jabłkowego w porannym świetle"
               loading="lazy"
               className="w-full h-full min-h-[45vh] object-cover"
@@ -470,7 +470,7 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
             </ScrollReveal>
             <ScrollReveal variant="zoom-in">
               <img
-                src={img(backlight)}
+                src={img(backlight, "1ct0o2pzigv4")}
                 alt="Butelka octu jabłkowego pod światło z widoczną naturalną mętnością"
                 loading="lazy"
                 className="w-full aspect-[4/5] object-cover"
@@ -494,7 +494,7 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
                 <ScrollReveal key={s.label} delay={i * 60}>
                   <figure>
                     <img
-                      src={img(s.img)}
+                      src={img(s.img, "1fzq1dv1a0xm1n")}
                       alt={s.label}
                       loading="lazy"
                       className="w-full aspect-[3/4] object-cover mb-3"
@@ -522,7 +522,7 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
                 <ScrollReveal key={p.label} delay={i * 70}>
                   <figure>
                     <img
-                      src={img(p.img)}
+                      src={img(p.img, "f0kqv71iu7mpz")}
                       alt={p.label}
                       loading="lazy"
                       className="w-full aspect-[4/5] object-cover mb-4"
@@ -540,7 +540,7 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
         {/* ============ 14. CHCĘ SPRÓBOWAĆ ============ */}
         <section className="relative">
           <img
-            src={img(tryShot)}
+            src={img(tryShot, "o361sh15npffh")}
             alt="Otwarta butelka octu jabłkowego, łyżka z kroplą octu i przekrojone jabłko"
             loading="lazy"
             className="w-full h-[70vh] object-cover"
@@ -569,7 +569,7 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
           <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
             <ScrollReveal>
               <img
-                src={img(heroImage)}
+                src={img(heroImage, "541wec11np14w")}
                 alt={product.name}
                 loading="lazy"
                 className="w-full aspect-square object-cover"

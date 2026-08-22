@@ -39,7 +39,7 @@ const ShopGrid = () => {
                       className="block overflow-hidden bg-secondary/50 mb-5"
                     >
                       <img
-                        src={img(product.image_url ?? quailsPhoto)}
+                        src={img(product.image_url ?? quailsPhoto, "v4jsszx5kxcr")}
                         alt={product.name}
                         loading="lazy"
                         className="w-full aspect-[4/3] object-cover transition-transform duration-700 hover:scale-[1.03]"

@@ -23,7 +23,7 @@ const FeedSection = () => {
     <section className="bg-earth/5">
       <div className="relative left-1/2 w-screen max-w-none -translate-x-1/2 h-[55vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
         <img
-          src={img(quailsPhoto)}
+          src={img(quailsPhoto, "ucoyuaatv6du")}
           alt="Przepiórki w naszym rodzinnym chowie"
           loading="lazy"
           className="w-full h-full object-cover object-center"

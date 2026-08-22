@@ -7,7 +7,7 @@ const FinalStatement = () => {
   return (
     <section className="relative">
       <img
-        src={img(handsEggs)}
+        src={img(handsEggs, "vazsv4j8b2n4")}
         alt="Dłonie zbierające jaja przepiórcze w Zdrowotni"
         loading="lazy"
         className="w-full h-[70vh] md:h-[85vh] object-cover object-center"

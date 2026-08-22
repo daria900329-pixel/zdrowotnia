@@ -29,7 +29,7 @@ const Philosophy = () => {
 
         <div className="order-1 lg:order-2">
           <img
-            src={img(handsEggs)}
+            src={img(handsEggs, "1pcf4wf1fio73l")}
             alt="Dłonie zbierające jajka przepiórcze do drewnianej skrzynki"
             loading="lazy"
             width={1280}

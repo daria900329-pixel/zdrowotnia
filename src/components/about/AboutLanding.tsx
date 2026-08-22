@@ -183,7 +183,7 @@ export function AboutLanding() {
             </ScrollReveal>
             <ScrollReveal variant="fade-up">
               <img
-                src={img(togetherImage || heroTable)}
+                src={img(togetherImage || heroTable, "1875j477vp6sz")}
                 alt="Daria i Marcin — twórcy Zdrowotni"
                 className="w-full aspect-[4/5] md:aspect-[4/5] object-cover object-top rounded-sm shadow-card"
                 loading="eager"
@@ -243,7 +243,7 @@ export function AboutLanding() {
             </ScrollReveal>
             <ScrollReveal variant="fade-left">
               <img
-                src={img(handsEggs)}
+                src={img(handsEggs, "1ogbzdi9xhnbe")}
                 alt="Ręce zbierające świeże jajka przepiórcze"
                 className="w-full aspect-[4/5] object-cover rounded-sm shadow-card"
                 loading="lazy"
@@ -269,7 +269,7 @@ export function AboutLanding() {
             <ScrollReveal variant="fade-right">
               <div className="lg:sticky lg:top-32">
                 <img
-                  src={img(togetherImage || heroTable)}
+                  src={img(togetherImage || heroTable, "1jgurz5991xa9")}
                   alt="Daria i Marcin — twórcy Zdrowotni"
                   className="w-full aspect-[4/5] object-cover rounded-sm shadow-card"
                   loading="lazy"
@@ -305,7 +305,7 @@ export function AboutLanding() {
             <div className="grid lg:grid-cols-[1fr_1.15fr] gap-12 lg:gap-16 items-start mb-16 md:mb-20">
               <ScrollReveal variant="fade-right">
                 <img
-                  src={img(quailsCare)}
+                  src={img(quailsCare, "1jgurz5991xa9")}
                   alt="Nasze przepiórki w gospodarstwie"
                   className="w-full aspect-[4/5] object-cover rounded-sm"
                   loading="lazy"
@@ -331,7 +331,7 @@ export function AboutLanding() {
               </ScrollReveal>
               <ScrollReveal variant="fade-left">
                 <img
-                  src={img(rabbits)}
+                  src={img(rabbits, "1jgurz5991xa9")}
                   alt="Nasze króliki"
                   className="w-full aspect-[4/5] object-cover rounded-sm"
                   loading="lazy"
@@ -344,7 +344,7 @@ export function AboutLanding() {
           <div className="grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 items-start my-20 md:my-28">
             <ScrollReveal variant="fade-right">
               <img
-                src={img(bread)}
+                src={img(bread, "1jgurz5991xa9")}
                 alt="Chleb na żywym zakwasie"
                 className="w-full aspect-[4/5] object-cover rounded-sm"
                 loading="lazy"
@@ -467,7 +467,7 @@ export function AboutLanding() {
       {/* 7. ZDROWOTNIA TO NIE FABRYKA */}
       <section className="relative grid overflow-hidden">
         <img
-          src={img(quails)}
+          src={img(quails, "13xi4x7o2c15l")}
           alt="Nasza przepiórka"
           className="col-start-1 row-start-1 w-full h-auto min-h-[34rem] md:min-h-0 object-cover md:object-contain"
           loading="lazy"
@@ -510,7 +510,7 @@ export function AboutLanding() {
             </ScrollReveal>
             <ScrollReveal variant="fade-left">
               <img
-                src={img(feedMix)}
+                src={img(feedMix, "1xn2n4v12kwvfz")}
                 alt="Własna mieszanka paszowa bez pszenicy"
                 className="w-full aspect-[4/3] object-cover rounded-sm shadow-card"
                 loading="lazy"
@@ -570,7 +570,7 @@ export function AboutLanding() {
             ].map((item, i) => (
               <ScrollReveal key={item.alt} variant="fade-up" delay={i * 80}>
                 <img
-                  src={img(item.img)}
+                  src={img(item.img, "1275tbko4s7t0")}
                   alt={item.alt}
                   className={`w-full object-cover rounded-sm ${i % 3 === 0 ? "aspect-square" : "aspect-[3/4]"}`}
                   loading="lazy"
@@ -629,7 +629,7 @@ export function AboutLanding() {
       {/* 13 + 14. EMOCJONALNY FINAŁ NA JEDNYM ZDJĘCIU — DWIE PÓŁKI */}
       <section className="relative min-h-[110vh] md:min-h-screen overflow-hidden flex flex-col">
         <img
-          src={img(heroProducts)}
+          src={img(heroProducts, "1gi7kn1l7wdpf")}
           alt="Chleb na zakwasie z domowymi przetworami"
           className="absolute inset-0 w-full h-full object-cover"
           loading="lazy"

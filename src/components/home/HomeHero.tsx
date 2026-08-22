@@ -7,7 +7,7 @@ const HomeHero = () => {
   return (
     <section className="relative min-h-[92vh] flex items-end overflow-hidden">
       <img
-        src={img(heroTable)}
+        src={img(heroTable, "1sj54gu1i5dfre")}
         alt="Stół Zdrowotni: chleb na zakwasie, jajka przepiórcze, zioła, kombucha i ocet jabłkowy"
         width={1920}
         height={1280}
