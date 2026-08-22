@@ -177,7 +177,19 @@ const Auth = () => {
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="password">Hasło</Label>
+              <div className="flex items-center justify-between">
+                <Label htmlFor="password">Hasło</Label>
+                {isLogin && (
+                  <button
+                    type="button"
+                    onClick={handleResetPassword}
+                    disabled={resetting || submitting}
+                    className="text-xs text-muted-foreground hover:text-primary transition-colors disabled:opacity-50"
+                  >
+                    {resetting ? "Wysyłanie..." : "Nie pamiętam hasła"}
+                  </button>
+                )}
+              </div>
               <Input
                 id="password"
                 type="password"
@@ -189,7 +201,13 @@ const Auth = () => {
               {errors.password && (
                 <p className="text-sm text-destructive">{errors.password}</p>
               )}
+              {resetSent && isLogin && (
+                <p className="text-sm text-muted-foreground">
+                  Link do zmiany hasła jest już w Twojej skrzynce.
+                </p>
+              )}
             </div>
+
             
             <Button type="submit" className="w-full" disabled={submitting}>
               {submitting ? (
