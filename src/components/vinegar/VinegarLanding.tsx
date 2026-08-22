@@ -198,7 +198,7 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
                   <div className="grid md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-2 md:gap-12 items-baseline py-7 md:py-9 border-b border-foreground/10">
                     <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground tracking-tight">
                       {t(p.label)}
-                      <span className="text-primary ml-3 text-2xl sm:text-3xl align-baseline">
+                      <span className="font-sans text-primary ml-3 text-2xl sm:text-3xl align-baseline">
                         {p.dir}
                       </span>
                     </h3>
@@ -299,7 +299,7 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
                     {t("Tyle potrafi ocet.")}
                     <span className="block">
                       {t("A teraz zobacz, dlaczego nasz nie jest po prostu octem z półki.")}
-                      <span className="text-primary ml-2">↓</span>
+                      <span className="font-sans text-primary ml-2">↓</span>
                     </span>
                   </p>
                 </div>
