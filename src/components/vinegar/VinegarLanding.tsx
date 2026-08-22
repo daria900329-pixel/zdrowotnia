@@ -38,6 +38,14 @@ interface VinegarProduct {
   image_url: string | null;
 }
 
+const POTENTIAL = [
+  { label: "Glukoza", dir: "↓", text: "łagodniejsza odpowiedź po posiłku" },
+  { label: "Insulina", dir: "↓", text: "mniejsza odpowiedź poposiłkowa" },
+  { label: "Sytość", dir: "↑", text: "może utrzymywać się dłużej" },
+  { label: "Masa ciała", dir: "↓", text: "niewielki, ale obserwowany w badaniach efekt" },
+  { label: "Cholesterol", dir: "↓", text: "obserwowany wpływ na cholesterol całkowity" },
+];
+
 const DIFFERENCE = [
   { label: "Jabłka", text: "To od nich wszystko się zaczyna." },
   { label: "Czas", text: "Fermentacja nie lubi pośpiechu." },
@@ -164,7 +172,144 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
           </div>
         </section>
 
+        {/* ============ 1B. DLACZEGO OCET — NAUKA ============ */}
+        <section className="section-padding bg-secondary/30">
+          <div className="max-w-[1150px] mx-auto">
+            <ScrollReveal>
+              <Eyebrow>{t("Niepozorna butelka. Dużo ciekawej fizjologii.")}</Eyebrow>
+              <h2 className="font-serif text-[2.4rem] leading-[1.06] sm:text-6xl lg:text-7xl text-foreground mb-10">
+                {t("Jedna łyżka.")}
+                <span className="block text-primary">{t("Zaskakująco dużo możliwości.")}</span>
+              </h2>
+              <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 max-w-5xl">
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  {t("Głównym bohaterem octu jest kwas octowy. I okazuje się, że nauka przygląda mu się znacznie szerzej niż tylko jako składnikowi nadającemu kwaśny smak.")}
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  {t("Badania nad octem dotyczą między innymi odpowiedzi glukozy i insuliny po posiłku, sytości, masy ciała, cholesterolu oraz ciśnienia.")}
+                </p>
+              </div>
+            </ScrollReveal>
+
+            {/* typograficzne zestawienie */}
+            <div className="mt-20 border-t border-foreground/10">
+              {POTENTIAL.map((p, i) => (
+                <ScrollReveal key={p.label} delay={i * 70}>
+                  <div className="grid md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-2 md:gap-12 items-baseline py-7 md:py-9 border-b border-foreground/10">
+                    <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground tracking-tight">
+                      {t(p.label)}
+                      <span className="font-sans text-primary ml-3 text-2xl sm:text-3xl align-baseline">
+                        {p.dir}
+                      </span>
+                    </h3>
+                    <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                      {t(p.text)}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              ))}
+              <ScrollReveal>
+                <p className="pt-7 text-sm text-muted-foreground/80 italic">
+                  {t("+ badania wskazują również na niewielki wpływ na ciśnienie skurczowe")}
+                </p>
+              </ScrollReveal>
+            </div>
+
+            {/* posiłek */}
+            <div className="mt-24 md:mt-32 grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+              <ScrollReveal>
+                <div>
+                  <Eyebrow>{t("Najciekawsze dzieje się przy stole")}</Eyebrow>
+                  <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground leading-[1.1] mb-8">
+                    {t("Ten sam posiłek.")}
+                    <span className="block text-primary">{t("Łagodniejsza odpowiedź organizmu.")}</span>
+                  </h3>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    {t("Ocet spożywany w okolicy posiłku może zmniejszać poposiłkowy wzrost glukozy i insuliny — szczególnie wtedy, gdy na talerzu pojawiają się węglowodany.")}
+                  </p>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal variant="zoom-in">
+                <figure className="bg-background/60 border border-foreground/10 p-6 sm:p-10">
+                  <svg viewBox="0 0 400 220" className="w-full h-auto" role="img"
+                       aria-label="Schemat: łagodniejsza krzywa odpowiedzi glikemicznej po posiłku z octem">
+                    <line x1="40" y1="180" x2="380" y2="180" stroke="currentColor" strokeWidth="1"
+                          className="text-foreground/25" />
+                    <line x1="40" y1="20" x2="40" y2="180" stroke="currentColor" strokeWidth="1"
+                          className="text-foreground/25" />
+                    <path d="M40 175 C 90 175, 110 35, 160 45 C 215 56, 260 150, 380 168"
+                          fill="none" stroke="currentColor" strokeWidth="2"
+                          className="text-foreground/40" strokeDasharray="5 5" />
+                    <path d="M40 175 C 95 175, 125 95, 180 100 C 240 106, 280 155, 380 172"
+                          fill="none" stroke="currentColor" strokeWidth="2.5" className="text-primary" />
+                    <text x="168" y="34" className="fill-current text-foreground/50"
+                          style={{ fontSize: "11px", letterSpacing: "0.12em" }}>
+                      {t("bez octu")}
+                    </text>
+                    <text x="192" y="90" className="fill-current text-primary"
+                          style={{ fontSize: "11px", letterSpacing: "0.12em" }}>
+                      {t("z octem")}
+                    </text>
+                    <text x="40" y="200" className="fill-current text-foreground/40"
+                          style={{ fontSize: "10px", letterSpacing: "0.2em" }}>
+                      {t("posiłek")}
+                    </text>
+                    <text x="330" y="200" className="fill-current text-foreground/40"
+                          style={{ fontSize: "10px", letterSpacing: "0.2em" }}>
+                      {t("czas")}
+                    </text>
+                  </svg>
+                  <figcaption className="mt-6 text-xs text-muted-foreground/70 leading-relaxed">
+                    {t("Schemat poglądowy. Nie przedstawia konkretnych wartości ani wyników badań.")}
+                  </figcaption>
+                </figure>
+              </ScrollReveal>
+            </div>
+
+            {/* sytość i masa ciała */}
+            <div className="mt-24 md:mt-32 max-w-4xl">
+              <ScrollReveal>
+                <Eyebrow>{t("A co z apetytem i wagą?")}</Eyebrow>
+                <p className="text-lg text-muted-foreground leading-relaxed mb-10">
+                  {t("Ocet nie odchudza za nas. Ale badania sugerują, że może wpływać na odczuwanie sytości, a w części badań i metaanaliz obserwowano również niewielkie zmniejszenie masy ciała.")}
+                </p>
+                <p className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-foreground leading-[1.2]">
+                  {t("Mały element diety, który może działać w tę samą stronę co Ty.")}
+                </p>
+              </ScrollReveal>
+            </div>
+
+            {/* finał */}
+            <div className="mt-28 md:mt-40 text-center">
+              <ScrollReveal>
+                <p className="font-serif text-[3rem] sm:text-7xl lg:text-8xl leading-[1.02] text-foreground">
+                  {t("Nie cud.")}
+                  <span className="block text-primary">{t("Kwas octowy.")}</span>
+                </p>
+                <p className="mt-10 text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
+                  {t("I całkiem sporo nauki za niepozorną łyżką octu.")}
+                </p>
+              </ScrollReveal>
+
+              <ScrollReveal>
+                <div className="mt-20 md:mt-28">
+                  <div className="h-px w-16 bg-primary/50 mx-auto mb-10" />
+                  <p className="font-serif text-2xl sm:text-3xl text-foreground/80 max-w-2xl mx-auto leading-snug">
+                    {t("Tyle potrafi ocet.")}
+                    <span className="block">
+                      {t("A teraz zobacz, dlaczego nasz nie jest po prostu octem z półki.")}
+                      <span className="font-sans text-primary ml-2">↓</span>
+                    </span>
+                  </p>
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
+        </section>
+
         {/* ============ 2. EMOCJE ============ */}
+
         <section className="section-padding">
           <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
             <ScrollReveal>
