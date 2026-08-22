@@ -9,6 +9,7 @@ import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
+import ResetPassword from "./pages/ResetPassword";
 import Admin from "./pages/Admin";
 import Product from "./pages/Product";
 import CheckoutSuccess from "./pages/CheckoutSuccess";
@@ -35,6 +36,7 @@ const App = () => (
                   <Route path="/o-nas" element={<AboutPage />} />
                   <Route path="/product/:id" element={<Product />} />
                   <Route path="/auth" element={<Auth />} />
+                  <Route path="/reset-password" element={<ResetPassword />} />
                   <Route path="/admin" element={<Admin />} />
                   <Route path="/checkout/success" element={<CheckoutSuccess />} />
                   <Route path="/checkout/cancel" element={<CheckoutCancel />} />
