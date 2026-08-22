@@ -20,11 +20,34 @@ const Auth = () => {
   const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
+  const [resetting, setResetting] = useState(false);
+  const [resetSent, setResetSent] = useState(false);
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
-  
-  const { user, loading, signIn, signUp } = useAuth();
+
+  const { user, loading, signIn, signUp, resetPassword } = useAuth();
   const { toast } = useToast();
   const navigate = useNavigate();
+
+  const handleResetPassword = async () => {
+    const emailResult = emailSchema.safeParse(email);
+    if (!emailResult.success) {
+      setErrors({ email: "Podaj swój adres email, żeby zresetować hasło" });
+      return;
+    }
+    setResetting(true);
+    const { error } = await resetPassword(email);
+    setResetting(false);
+    if (error) {
+      toast({ title: "Błąd", description: error.message, variant: "destructive" });
+      return;
+    }
+    setResetSent(true);
+    toast({
+      title: "Sprawdź skrzynkę",
+      description: "Wysłaliśmy link do ustawienia nowego hasła.",
+    });
+  };
+
 
   useEffect(() => {
     if (!loading && user) {
