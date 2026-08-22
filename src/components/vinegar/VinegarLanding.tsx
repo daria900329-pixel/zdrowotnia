@@ -299,7 +299,9 @@ export function VinegarLanding({ product }: { product: VinegarProduct }) {
                     {t("Tyle potrafi ocet.")}
                     <span className="block">
                       {t("A teraz zobacz, dlaczego nasz nie jest po prostu octem z półki.")}
-                      <span className="font-sans text-primary ml-2">↓</span>
+                    </span>
+                    <span className="block mt-4">
+                      {t("Bo sklepowy ocet najczęściej jest filtrowany i pasteryzowany. Naszego nie „poprawiamy” po fermentacji — pozostaje niepasteryzowany, niefiltrowany, naturalnie mętny i z matką octową, co umacnia jego właściwości.")}
                     </span>
                   </p>
                 </div>
