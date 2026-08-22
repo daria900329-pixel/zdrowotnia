@@ -38,6 +38,14 @@ interface VinegarProduct {
   image_url: string | null;
 }
 
+const POTENTIAL = [
+  { label: "Glukoza", dir: "↓", text: "łagodniejsza odpowiedź po posiłku" },
+  { label: "Insulina", dir: "↓", text: "mniejsza odpowiedź poposiłkowa" },
+  { label: "Sytość", dir: "↑", text: "może utrzymywać się dłużej" },
+  { label: "Masa ciała", dir: "↓", text: "niewielki, ale obserwowany w badaniach efekt" },
+  { label: "Cholesterol", dir: "↓", text: "obserwowany wpływ na cholesterol całkowity" },
+];
+
 const DIFFERENCE = [
   { label: "Jabłka", text: "To od nich wszystko się zaczyna." },
   { label: "Czas", text: "Fermentacja nie lubi pośpiechu." },
