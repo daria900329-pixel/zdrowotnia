@@ -66,7 +66,7 @@ export function QuailBuyBox({ productId, productName, imageUrl, note }: QuailBuy
       selected.name,
       selected.unit,
       selected.value,
-      selected.price,
+      selected.promo_price ?? selected.price,
       imageUrl
     );
 

@@ -51,7 +51,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         variant_id,
         quantity,
         products:product_id (name, image_url),
-        product_variants:variant_id (name, unit, value, price)
+        product_variants:variant_id (name, unit, value, price, promo_price)
       `)
       .eq("user_id", user.id);
 
@@ -67,7 +67,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         variant_name: item.product_variants?.name || "",
         variant_unit: item.product_variants?.unit || "",
         variant_value: item.product_variants?.value || 0,
-        price: item.product_variants?.price || 0,
+        price: item.product_variants?.promo_price ?? item.product_variants?.price ?? 0,
         image_url: item.products?.image_url || null,
       }));
       setItems(cartItems);

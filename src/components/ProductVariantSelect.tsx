@@ -57,7 +57,7 @@ export function ProductVariantSelect({ productId, productName, imageUrl }: Produ
       selectedVariant.name,
       selectedVariant.unit,
       selectedVariant.value,
-      selectedVariant.price,
+      selectedVariant.promo_price ?? selectedVariant.price,
       imageUrl
     );
     setAdding(false);
