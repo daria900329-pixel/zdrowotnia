@@ -61,7 +61,7 @@ serve(async (req) => {
     const variantIds = items.map(item => item.variant_id);
     const { data: variants, error: variantsError } = await supabase
       .from("product_variants")
-      .select("id, price, name, product_id, is_active")
+      .select("id, price, promo_price, name, product_id, is_active")
       .in("id", variantIds);
 
     if (variantsError) {
@@ -134,7 +134,7 @@ serve(async (req) => {
         throw new Error("Product and variant mismatch");
       }
 
-      const serverPrice = Number(variant.price);
+      const serverPrice = Number(variant.promo_price ?? variant.price);
       totalAmount += serverPrice * item.quantity;
 
       return {
@@ -177,7 +177,7 @@ serve(async (req) => {
         variant_id: item.variant_id,
         product_name: product!.name,
         variant_name: variant!.name,
-        price: Number(variant!.price),
+        price: Number(variant!.promo_price ?? variant!.price),
         quantity: item.quantity,
       };
     });
