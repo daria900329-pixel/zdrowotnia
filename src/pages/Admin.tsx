@@ -730,9 +730,14 @@ const Admin = () => {
             <AdminEmailTemplates />
           </TabsContent>
 
+          <TabsContent value="messages">
+            <AdminMessages />
+          </TabsContent>
+
           <TabsContent value="orders">
             <AdminOrders />
           </TabsContent>
+
         </Tabs>
       </div>
     </div>
