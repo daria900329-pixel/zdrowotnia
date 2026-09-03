@@ -286,15 +286,17 @@ const Admin = () => {
         </div>
 
         <Tabs defaultValue="products" className="space-y-6">
-          <TabsList className="grid grid-cols-3 sm:grid-cols-6 w-full h-auto">
+          <TabsList className="grid grid-cols-3 sm:grid-cols-7 w-full h-auto">
             <TabsTrigger value="products"><Package className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Produkty</span></TabsTrigger>
             <TabsTrigger value="content"><FileText className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Treści</span></TabsTrigger>
             <TabsTrigger value="pages"><FileText className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Strony</span></TabsTrigger>
 
             <TabsTrigger value="blog"><BookOpen className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Blog</span></TabsTrigger>
             <TabsTrigger value="emails"><Mail className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Maile</span></TabsTrigger>
+            <TabsTrigger value="messages"><Inbox className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Wiadomości</span></TabsTrigger>
             <TabsTrigger value="orders"><Package className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Zamówienia</span></TabsTrigger>
           </TabsList>
+
 
           <TabsContent value="products">
             <div className="mb-6">
