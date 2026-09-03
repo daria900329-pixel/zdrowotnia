@@ -12,8 +12,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Loader2, Plus, Trash2, Edit, Save, X, LogOut, Upload, Package, FileText, BookOpen, Mail, Image as ImageIcon } from "lucide-react";
+import { Loader2, Plus, Trash2, Edit, Save, X, LogOut, Upload, Package, FileText, BookOpen, Mail, Inbox, Image as ImageIcon } from "lucide-react";
 import { AdminCMS } from "@/components/admin/AdminCMS";
+import { AdminMessages } from "@/components/admin/AdminMessages";
+
 import { AdminPages } from "@/components/admin/AdminPages";
 import { AdminOrders } from "@/components/admin/AdminOrders";
 import { ProductVariantsInline } from "@/components/admin/ProductVariantsInline";
@@ -286,15 +288,17 @@ const Admin = () => {
         </div>
 
         <Tabs defaultValue="products" className="space-y-6">
-          <TabsList className="grid grid-cols-3 sm:grid-cols-6 w-full h-auto">
+          <TabsList className="grid grid-cols-3 sm:grid-cols-7 w-full h-auto">
             <TabsTrigger value="products"><Package className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Produkty</span></TabsTrigger>
             <TabsTrigger value="content"><FileText className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Treści</span></TabsTrigger>
             <TabsTrigger value="pages"><FileText className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Strony</span></TabsTrigger>
 
             <TabsTrigger value="blog"><BookOpen className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Blog</span></TabsTrigger>
             <TabsTrigger value="emails"><Mail className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Maile</span></TabsTrigger>
+            <TabsTrigger value="messages"><Inbox className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Wiadomości</span></TabsTrigger>
             <TabsTrigger value="orders"><Package className="w-4 h-4 mr-1 sm:mr-2" /><span className="hidden sm:inline">Zamówienia</span></TabsTrigger>
           </TabsList>
+
 
           <TabsContent value="products">
             <div className="mb-6">
@@ -728,9 +732,14 @@ const Admin = () => {
             <AdminEmailTemplates />
           </TabsContent>
 
+          <TabsContent value="messages">
+            <AdminMessages />
+          </TabsContent>
+
           <TabsContent value="orders">
             <AdminOrders />
           </TabsContent>
+
         </Tabs>
       </div>
     </div>

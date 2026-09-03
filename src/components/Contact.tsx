@@ -30,10 +30,17 @@ const Contact = () => {
     e.preventDefault();
     setSending(true);
     try {
-      const { error } = await supabase.functions.invoke("send-contact-message", {
-        body: formData,
+      const { error } = await supabase.from("contact_messages").insert({
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        message: formData.message.trim(),
       });
       if (error) throw error;
+
+      // Powiadomienie e-mail jest opcjonalne — wiadomość i tak trafia do panelu.
+      supabase.functions
+        .invoke("send-contact-message", { body: formData })
+        .catch(() => undefined);
 
       toast({
         title: "Wiadomość wysłana!",
@@ -51,6 +58,7 @@ const Contact = () => {
       setSending(false);
     }
   };
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({
