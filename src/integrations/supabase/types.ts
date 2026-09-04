@@ -206,6 +206,115 @@ export type Database = {
         }
         Relationships: []
       }
+      manual_order_items: {
+        Row: {
+          created_at: string
+          id: string
+          order_id: string
+          product_id: string | null
+          product_name: string
+          quantity: number
+          unit_price: number
+          variant_id: string | null
+          variant_name: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          order_id: string
+          product_id?: string | null
+          product_name: string
+          quantity?: number
+          unit_price?: number
+          variant_id?: string | null
+          variant_name?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          order_id?: string
+          product_id?: string | null
+          product_name?: string
+          quantity?: number
+          unit_price?: number
+          variant_id?: string | null
+          variant_name?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "manual_order_items_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "manual_orders"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "manual_order_items_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "manual_order_items_variant_id_fkey"
+            columns: ["variant_id"]
+            isOneToOne: false
+            referencedRelation: "product_variants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      manual_orders: {
+        Row: {
+          created_at: string
+          customer_email: string | null
+          customer_name: string
+          customer_phone: string | null
+          delivery_address: string | null
+          due_date: string
+          fulfillment: Database["public"]["Enums"]["fulfillment_method"]
+          id: string
+          is_paid: boolean
+          note: string | null
+          status: Database["public"]["Enums"]["manual_order_status"]
+          total_amount: number
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          customer_email?: string | null
+          customer_name: string
+          customer_phone?: string | null
+          delivery_address?: string | null
+          due_date: string
+          fulfillment?: Database["public"]["Enums"]["fulfillment_method"]
+          id?: string
+          is_paid?: boolean
+          note?: string | null
+          status?: Database["public"]["Enums"]["manual_order_status"]
+          total_amount?: number
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          customer_email?: string | null
+          customer_name?: string
+          customer_phone?: string | null
+          delivery_address?: string | null
+          due_date?: string
+          fulfillment?: Database["public"]["Enums"]["fulfillment_method"]
+          id?: string
+          is_paid?: boolean
+          note?: string | null
+          status?: Database["public"]["Enums"]["manual_order_status"]
+          total_amount?: number
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       order_items: {
         Row: {
           created_at: string
@@ -526,6 +635,14 @@ export type Database = {
     Enums: {
       app_role: "admin" | "user"
       contact_message_status: "unread" | "to_reply" | "replied" | "archived"
+      fulfillment_method: "pickup" | "delivery"
+      manual_order_status:
+        | "new"
+        | "confirmed"
+        | "in_progress"
+        | "ready"
+        | "completed"
+        | "cancelled"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -655,6 +772,15 @@ export const Constants = {
     Enums: {
       app_role: ["admin", "user"],
       contact_message_status: ["unread", "to_reply", "replied", "archived"],
+      fulfillment_method: ["pickup", "delivery"],
+      manual_order_status: [
+        "new",
+        "confirmed",
+        "in_progress",
+        "ready",
+        "completed",
+        "cancelled",
+      ],
     },
   },
 } as const
